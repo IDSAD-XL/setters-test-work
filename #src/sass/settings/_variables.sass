@@ -1,6 +1,6 @@
 //!PADDINGS AND MARGINS
 $container-side-paddings: 15
-	
+
 //!COLORS
 $color-bg-day-primary: #FFFFFF
 $color-bg-day-additional: #F5F5F5
@@ -17,12 +17,13 @@ $color-yellow: #FCEA1C
 $color-blue: #1C54FC
 
 //!FONTS
-@import "_fonts.sass"
+
 $font-garphik: garphik
 
 @mixin font($size)
 	font-family: $font-garphik
 	font-style: normal
+	font-weight: normal
 	@if ($size != ui)
 		font-size: ($size + px)
 	@if ($size == 124)
@@ -46,4 +47,4 @@ $font-garphik: garphik
 		font-size: 12px
 		line-height: 12px
 		font-weight: bold
-		font-weight: normal
+		letter-spacing: 0.02em
