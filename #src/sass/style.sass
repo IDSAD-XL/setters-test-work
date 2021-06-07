@@ -1,4 +1,4 @@
-@mixin font($font_name, $file_name, $weight, $style) 
+@mixin font($font_name, $file_name, $weight, $style)
 	@font-face
 		font-family: $font_name
 		font-display: swap
@@ -6,4 +6,51 @@
 		font-weight: #{$weight}
 		font-style: #{$style}
 
-@import "_fonts.sass"
+@import "_variables.sass"
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+body
+	position: relative
+	display: flex
+	flex-direction: column
+	align-items: center
+	background-color: $color-font-night-primary
+
+.flex-justify-center
+	display: flex
+	justify-content: center
+
+.container
+	padding: 0 $container-side-paddings
+	width: 100%
+	@media screen and (min-width: 1920px)
+		max-width: (1560+$container-side-paddings*2px)
+	@media screen and (min-width: 1440px)
+		max-width: (1160+$container-side-paddings*2px)
+	@media screen and (min-width: 1024px)
+		max-width: (940 + $container-side-paddings*2px)
+	@media screen and (min-width: 375px)
+		max-width: (300 + $container-side-paddings*2px)
+
+.header.container
+	max-width: 1560px
+	width: 100%
+	@media screen and (min-width: 1920px)
+		padding: 0 55px !important
+	@media screen and (min-width: 1440px)
+		padding-right: 55px
+		padding-left: 85px
+		padding:
+		left: 55px
+		right: 66px
+	@media screen and (min-width: 1024px)
+		padding: 0 42px !important
+	@media screen and (min-width: 375px)
+		padding: 0 20px !important
+
+.header
+	height: 80px

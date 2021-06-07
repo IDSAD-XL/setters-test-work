@@ -1,0 +1,83 @@
+@font-face {
+  font-family: "garphik";
+  font-display: swap;
+  src: url("../fonts/garphik.woff") format("woff"), url("../fonts/garphik.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #D7D7D7;
+}
+
+.flex-justify-center {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  padding: 0 15;
+  width: 100%;
+}
+
+.header.container {
+  max-width: 1560px;
+  width: 100%;
+}
+
+.header {
+  height: 80px;
+}
+
+@media screen and (min-width: 375px) {
+  .container {
+    max-width: 330px;
+  }
+
+  .header.container {
+    padding: 0 20px !important;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    max-width: 970px;
+  }
+
+  .header.container {
+    padding: 0 42px !important;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    max-width: 1190px;
+  }
+
+  .header.container {
+    padding-right: 55px;
+    padding-left: 85px;
+    left: 55px;
+    right: 66px;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    max-width: 1590px;
+  }
+
+  .header.container {
+    padding: 0 55px !important;
+  }
+}
