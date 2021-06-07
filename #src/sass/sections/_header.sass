@@ -1,3 +1,4 @@
+@import "settings/_variables.sass"
 .header
 	height: 80px
 	&__inner
@@ -12,9 +13,11 @@
 		display: flex
 		justify-content: space-between
 		@include font($size: 16)
-		&__left
+		&_left
 			display: flex
 			align-items: center
 		&__items
 			display: flex
 			list-style: none
+		&_item
+			margin-left: 40px

@@ -43,8 +43,122 @@
 }
 
 .top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
+}
+
+.top-section__content {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+}
+
+.top-section__bubbles-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 60px;
+}
+
+.top-section__bubbles {
+  margin-top: 60px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.top-section__bubbles_item {
+  position: relative;
+  margin: 0 20px;
+}
+
+.top-section__bubble-number {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  color: #000000;
+  background-color: #fff;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-section__bubble-number.round {
+  border-radius: 50%;
+}
+
+.top-section__bubble-number.grey {
+  background-color: #989898;
+}
+
+.top-section__bubble-number.yellow {
+  background-color: #FCEA1C;
+}
+
+.top-section__bubble-number.red {
+  background-color: #FC1C2B;
+}
+
+.top-section__title {
+  margin: 50px 0;
+  text-align: center;
+}
+
+.top-section__title_small {
+  display: block;
+  margin-bottom: 20px;
+  font-family: garphik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+}
+
+.top-section__title_big {
+  display: block;
+  font-family: garphik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 160px;
+  letter-spacing: -0.02em;
+  line-height: 133px;
+}
+
+.top-section__sponsors {
+  position: relative;
+  list-style: none;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.top-section__sponsors__item {
+  margin: 0 30px;
+}
+
+.top-section__scroll__wrapper {
+  position: absolute;
+  right: -120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 30px;
+}
+
+.top-section__scroll__arrow {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+}
+
+.top-section__scroll__circle {
+  width: 128px;
+  height: 128px;
 }
 
 .header {
@@ -73,7 +187,7 @@
   line-height: 24px;
 }
 
-.header__menu__left {
+.header__menu_left {
   display: flex;
   align-items: center;
 }
@@ -81,6 +195,45 @@
 .header__menu__items {
   display: flex;
   list-style: none;
+}
+
+.header__menu_item {
+  margin-left: 40px;
+}
+
+.gradient-border {
+  border-width: 3px;
+  position: relative;
+  background: #1D1D1D;
+  border-radius: 3px;
+}
+
+.gradient-border::after {
+  position: absolute;
+  content: "";
+  top: -3px;
+  left: -3px;
+  z-index: -1;
+  width: calc(100% + 3px * 2);
+  height: calc(100% + 3px * 2);
+  background: linear-gradient(60deg, #5f86f2, #a65ff2, #f25fd0, #f25f61, #f2cb5f, #abf25f, #5ff281, #5ff2f0);
+  background-size: 300% 300%;
+  background-position: 0 50%;
+  border-radius: 6px;
+  -webkit-animation: moveGradient 4s alternate infinite;
+          animation: moveGradient 4s alternate infinite;
+}
+
+@-webkit-keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
 }
 
 * {
@@ -105,17 +258,32 @@ body {
   justify-content: center;
 }
 
-@media screen and (min-width: 375px) {
+@media screen and (min-width: 1824px) {
   .container {
-    max-width: 330px;
+    max-width: 1590px;
   }
 
   .header.container {
-    padding: 0 20px !important;
+    padding: 0 55px !important;
+  }
+
+  .top-section__sponsors {
+    justify-content: center;
   }
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1400px) and (max-width: 1823px) {
+  .container {
+    max-width: 1190px;
+  }
+
+  .header.container {
+    padding-right: 55px;
+    padding-left: 66px;
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1399px) {
   .container {
     max-width: 970px;
   }
@@ -125,25 +293,12 @@ body {
   }
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 375px) and (max-width: 999px) {
   .container {
-    max-width: 1190px;
+    max-width: 330px;
   }
 
   .header.container {
-    padding-right: 55px;
-    padding-left: 85px;
-    left: 55px;
-    right: 66px;
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .container {
-    max-width: 1590px;
-  }
-
-  .header.container {
-    padding: 0 55px !important;
+    padding: 0 20px !important;
   }
 }
