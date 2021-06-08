@@ -1,6 +1,6 @@
 @import "settings/_variables.sass"
 .container
-	padding: 0 $container-side-paddings
+	padding: 0 $container-side-paddings+px
 	width: 100%
 	@media screen and (min-width: $xl)
 		max-width: (1560+$container-side-paddings*2px)
@@ -9,7 +9,7 @@
 	@media screen and (min-width: $m) and (max-width: $l - 1px)
 		max-width: (940 + $container-side-paddings*2px)
 	@media screen and (min-width: $s) and (max-width: $m - 1px)
-		max-width: (300 + $container-side-paddings*2px)
+		width: 100vw
 
 .header.container
 	max-width: 1560px

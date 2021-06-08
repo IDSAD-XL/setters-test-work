@@ -23,3 +23,35 @@ $gradient-border-width: 3px
 @keyframes moveGradient
 	50%
 		background-position: 100% 50%
+
+@keyframes gradientBorder
+	0%
+		filter: hue-rotate(0)
+	50%
+		filter: hue-rotate(360deg)
+	100%
+		filter: hue-rotate(0)
+
+.gradient-border-part
+	position: fixed
+	z-index: 1000
+	animation: gradientBorder infinite 10s
+	&.left
+		left: 0
+		top: 0
+		height: 100vh
+	&.right
+		right: 0
+		top: 0
+		height: 100vh
+	&.top
+		top: 0
+		left: 0
+		width: 100vw
+		height: 5px
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			width: 105vw
+	&.bottom
+		bottom: 0
+		left: 0
+		width: 100vw
