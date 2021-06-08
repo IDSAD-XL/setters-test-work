@@ -1,8 +1,9 @@
 @import "settings/_variables.sass"
 .header
+	will-change: transform
 	height: 80px
-	// @media screen and (min-width: 0) and (max-width: $m - 1px)
-	// 	position: fixed
+	@media screen and (min-width: 0) and (max-width: $m - 1px)
+		position: fixed
 	&__inner
 		display: flex
 		align-items: center
@@ -46,5 +47,5 @@
 					transform-origin: right
 					transition: transform .3s cubic-bezier(.65,.05,.36,1)
 				&:hover::after
-				    transform-origin: left
-				    transform: scaleX(1)
+					transform-origin: left
+					transform: scaleX(1)

@@ -201,6 +201,7 @@
 }
 
 .header {
+  will-change: transform;
   height: 80px;
 }
 
@@ -378,7 +379,7 @@
 .menu__btn {
   display: flex;
   align-items: center;
-  position: absolute;
+  position: fixed;
   top: 25px;
   right: 30px;
   width: 30px;
@@ -710,6 +711,10 @@ body {
 
   .top-section__scroll__wrapper {
     display: none;
+  }
+
+  .header {
+    position: fixed;
   }
 
   .header_logo {
