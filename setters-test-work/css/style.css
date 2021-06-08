@@ -227,6 +227,24 @@
 .header__menu_item a {
   text-decoration: none;
   color: #D7D7D7;
+  position: relative;
+}
+
+.header__menu_item a:after {
+  content: "";
+  border-bottom: solid 1px #dfd3c3;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.header__menu_item a:hover::after {
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 @-webkit-keyframes gradientBorder {
