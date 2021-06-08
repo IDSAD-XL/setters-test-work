@@ -1,9 +1,11 @@
 @import "settings/_variables.sass"
 .hamburger-menu
+	z-index: 20
 	@media screen and (min-width: $m)
 		display: none
 #menu__toggle
 	opacity: 0
+	z-index: 50
 	&:checked ~ .menu__btn > span
 		transform: rotate(45deg)
 	&:checked ~ .menu__btn > span::before
@@ -19,13 +21,13 @@
 .menu__btn
 	display: flex
 	align-items: center
-	position: fixed
+	position: absolute
 	top: 25px
 	right: 30px
 	width: 30px
 	height: 25px
 	cursor: pointer
-	z-index: 2
+	z-index: 20
 	& > span, & > span::before, & > span::after
 		display: block
 		position: absolute
@@ -46,29 +48,83 @@
 		border-radius: 11px
 
 .menu__box
-	display: block
-	position: fixed
+	z-index: 10
+	display: flex
+	flex-direction: column
+	position: absolute
 	visibility: hidden
 	top: 0
 	right: 0
 	width: 100vw
 	height: 100%
-	margin: 0
-	padding: 80px 15px
 	list-style: none
-	background-color: #ECEFF1
+	background-color: #FFFFFF
 	box-shadow: 1px 0px 6px rgba(0, 0, 0, .2)
 	transition-duration: .25s
 	z-index: 1
 
 .menu__item
-	display: block
-	padding: 12px 24px
-	color: #333
-	font-family: 'Roboto', sans-serif
-	font-size: 20px
-	font-weight: 600
-	text-decoration: none
-	transition-duration: .25s
-	&:hover
-		background-color: #CFD8DC
+	display: flex
+	align-items: center
+	transition-duration: 0
+	padding: 0 30px
+	border-bottom: 2px solid #D7D7D7
+	&.top
+		background-color: $color-bg-day-additional
+		height: 150px
+	a
+		text-decoration: none
+		color: #000
+		@include font($size: 28)
+	&.expand
+		flex-grow: 1
+		display: flex
+		flex-direction: column
+		padding: 0
+		.menu__item_part
+			width: 100%
+			display: flex
+			align-items: center
+			justify-content: space-between
+			flex-grow: 1
+			padding: 0 30px
+			border-bottom: 2px solid #D7D7D7
+		.menu__item_part:last-child
+			border-bottom: 0
+	&.half
+		height: 120px
+		display: flex
+		flex-wrap: wrap
+		padding: 0
+		.menu__item_part
+			text-transform: uppercase
+			justify-content: center
+			display: flex
+			align-items: center
+			text-align: center
+			color: #000
+			@include font($size: 20)
+			width: 50%
+			height: 50%
+			&:nth-child(1)
+				border-right: 2px solid #D7D7D7
+			&:nth-child(1), &:nth-child(2)
+				border-bottom: 2px solid #D7D7D7
+			&:nth-child(3)
+				width: 100%
+	&.social
+		display: flex
+		justify-content: center
+		height: 64px
+		.menu__item_part
+			display: flex
+			justify-content: center
+			align-items: center
+			height: 100%
+			width: 64px
+			border-right: 2px solid #D7D7D7
+			img
+				max-width: 100%
+				max-height: 100%
+			&:nth-child(1)
+				border-left: 2px solid #D7D7D7

@@ -140,6 +140,11 @@
 
 .top-section__sponsors__item.text {
   text-align: left;
+  font-family: garphik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 .top-section__sponsors__wrapper {
@@ -312,24 +317,29 @@
 
 .gradient-bottom-dark.left {
   position: fixed;
-  left: 0;
-  width: 4px;
-  height: 100vh;
+  left: -1px;
+  width: 6px;
+  height: 101vh;
 }
 
 .gradient-bottom-dark.right {
   position: fixed;
-  width: 4px;
-  right: 0;
-  height: 100vh;
+  width: 6px;
+  right: -1px;
+  height: 101vh;
 }
 
 .gradient-bottom-dark {
   z-index: 20;
 }
 
+.hamburger-menu {
+  z-index: 20;
+}
+
 #menu__toggle {
   opacity: 0;
+  z-index: 50;
 }
 
 #menu__toggle:checked ~ .menu__btn > span {
@@ -354,13 +364,13 @@
 .menu__btn {
   display: flex;
   align-items: center;
-  position: fixed;
+  position: absolute;
   top: 25px;
   right: 30px;
   width: 30px;
   height: 25px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 20;
 }
 
 .menu__btn > span,
@@ -390,35 +400,124 @@
 }
 
 .menu__box {
-  display: block;
-  position: fixed;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
   visibility: hidden;
   top: 0;
   right: 0;
   width: 100vw;
   height: 100%;
-  margin: 0;
-  padding: 80px 15px;
   list-style: none;
-  background-color: #ECEFF1;
+  background-color: #FFFFFF;
   box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
   transition-duration: .25s;
   z-index: 1;
 }
 
 .menu__item {
-  display: block;
-  padding: 12px 24px;
-  color: #333;
-  font-family: 'Roboto', sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  text-decoration: none;
-  transition-duration: .25s;
+  display: flex;
+  align-items: center;
+  transition-duration: 0;
+  padding: 0 30px;
+  border-bottom: 2px solid #D7D7D7;
 }
 
-.menu__item:hover {
-  background-color: #CFD8DC;
+.menu__item.top {
+  background-color: #F5F5F5;
+  height: 150px;
+}
+
+.menu__item a {
+  text-decoration: none;
+  color: #000;
+  font-family: garphik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+.menu__item.expand {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.menu__item.expand .menu__item_part {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  padding: 0 30px;
+  border-bottom: 2px solid #D7D7D7;
+}
+
+.menu__item.expand .menu__item_part:last-child {
+  border-bottom: 0;
+}
+
+.menu__item.half {
+  height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0;
+}
+
+.menu__item.half .menu__item_part {
+  text-transform: uppercase;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000;
+  font-family: garphik;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  width: 50%;
+  height: 50%;
+}
+
+.menu__item.half .menu__item_part:nth-child(1) {
+  border-right: 2px solid #D7D7D7;
+}
+
+.menu__item.half .menu__item_part:nth-child(1),
+.menu__item.half .menu__item_part:nth-child(2) {
+  border-bottom: 2px solid #D7D7D7;
+}
+
+.menu__item.half .menu__item_part:nth-child(3) {
+  width: 100%;
+}
+
+.menu__item.social {
+  display: flex;
+  justify-content: center;
+  height: 64px;
+}
+
+.menu__item.social .menu__item_part {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 64px;
+  border-right: 2px solid #D7D7D7;
+}
+
+.menu__item.social .menu__item_part img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.menu__item.social .menu__item_part:nth-child(1) {
+  border-left: 2px solid #D7D7D7;
 }
 
 * {
@@ -559,6 +658,14 @@ body {
     margin: 0 0;
   }
 
+  .top-section__title_small {
+    font-family: garphik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
   .top-section__title_big {
     font-family: garphik;
     font-style: normal;
@@ -589,10 +696,6 @@ body {
 
   .top-section__scroll__wrapper {
     display: none;
-  }
-
-  .header {
-    position: fixed;
   }
 
   .header_logo {
@@ -627,5 +730,15 @@ body {
   .gradient-bottom-dark {
     background: #1d1d1d;
     background: linear-gradient(180deg, rgba(29, 29, 29, 0) 70%, #1d1d1d 90%);
+  }
+}
+
+@media screen and (min-width: 0) and (max-width: 1399px) {
+  .top-section__sponsors__item.text {
+    font-family: garphik;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
