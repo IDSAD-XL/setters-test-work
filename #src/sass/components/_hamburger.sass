@@ -74,14 +74,14 @@
 	transition-duration: 0
 	padding: 0 30px
 	border-bottom: 2px solid #D7D7D7
-	&.top
-		background-color: $color-bg-day-additional
+	&_top
+		background-color: #F5F5F5
 		height: 150px
 	a
 		text-decoration: none
 		color: #000
 		@include font($size: 28)
-	&.expand
+	&_expand
 		flex-grow: 1
 		display: flex
 		flex-direction: column
@@ -96,7 +96,7 @@
 			border-bottom: 2px solid #D7D7D7
 		.menu__item_part:last-child
 			border-bottom: 0
-	&.half
+	&_half
 		height: 120px
 		display: flex
 		flex-wrap: wrap
@@ -117,7 +117,7 @@
 				border-bottom: 2px solid #D7D7D7
 			&:nth-child(3)
 				width: 100%
-	&.social
+	&_social
 		display: flex
 		justify-content: center
 		height: 64px

@@ -1,5 +1,7 @@
 @import "settings/_variables.sass"
 .header
+	display: flex
+	justify-content: center
 	will-change: transform
 	height: 80px
 	@media screen and (min-width: 0) and (max-width: $m - 1px)
@@ -34,7 +36,7 @@
 			margin-left: 40px
 			a
 				text-decoration: none
-				color: $color-font-night-primary
+				color: var(--color-font-primary)
 				position: relative
 				&:after
 					content: ""

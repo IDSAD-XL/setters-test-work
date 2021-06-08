@@ -51,11 +51,11 @@
 	&__bubble-number.round
 		border-radius: 50%
 	&__bubble-number.grey
-		background-color: $color-font-day-secondary
+		background-color: var(--color-font-secondary)
 	&__bubble-number.yellow
-		background-color: $color-yellow
+		background-color: var(--color-yellow)
 	&__bubble-number.red
-		background-color: $color-red
+		background-color: var(--color-red)
 	&__title
 		margin: 50px 0
 		text-align: center
@@ -98,7 +98,7 @@
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				margin: 0
 				margin-right: 30px
-			&.text
+			&_text
 				text-align: left
 				@include font($size: 20)
 				@media screen and (min-width: 0) and (max-width: $l - 1px)

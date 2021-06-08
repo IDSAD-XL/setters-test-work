@@ -1,7 +1,7 @@
 @import "settings/_variables.sass"
 $gradient-border-width: 4px
 
-@keyframes gradientBorder
+@keyframes gradient-border
 	0%
 		filter: hue-rotate(0)
 	50%
@@ -9,35 +9,32 @@ $gradient-border-width: 4px
 	100%
 		filter: hue-rotate(0)
 
-.gradient-border-part
+.gradient-border__part
 	position: fixed
 	z-index: 10
-	animation: gradientBorder infinite 10s
-	&.left
+	animation: gradient-border infinite 10s
+	&_left
 		left: 0
 		top: -2px
-		// height: calc(100vh + 10px)
 		height: calc(100vh + 2px)
 		width: $gradient-border-width
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			height: 110vh
-	&.right
+	&_right
 		width: $gradient-border-width
 		right: 0
 		top: -2px
-		// height: calc(100vh + 10px)
 		height: calc(100vh + 4px)
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			height: 110vh
-	&.top
+	&_top
 		top: 0
 		left: -3px
-		// width: calc( 100vw + 20px )
 		width: calc( 100vw + 6px )
 		height: $gradient-border-width
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			width: 110vw
-	&.bottom
+	&_bottom
 		bottom: 0
 		left: -3px
 		height: $gradient-border-width

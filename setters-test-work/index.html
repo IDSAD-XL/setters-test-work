@@ -9,18 +9,19 @@
 </head>
 
 <body>
-<!-- open -->
+	
 
-<div class="gradient-border-wrapper">
-	<img class="gradient-border-part top" src="img/border/top-part.png" alt="">
-	<img class="gradient-border-part left" src="img/border/left-part.png" alt="">
-	<img class="gradient-border-part right" src="img/border/right-part.png" alt="">
-	<img class="gradient-border-part bottom" src="img/border/bottom-part.png" alt="">
+
+<div class="gradient-border">
+	<img class="gradient-border__part gradient-border__part_top" src="img/border/top-part.png" alt="">
+	<img class="gradient-border__part gradient-border__part_left" src="img/border/left-part.png" alt="">
+	<img class="gradient-border__part gradient-border__part_right" src="img/border/right-part.png" alt="">
+	<img class="gradient-border__part gradient-border__part_bottom" src="img/border/bottom-part.png" alt="">
 	<div class="gradient-bottom-dark left"></div>
 	<div class="gradient-bottom-dark right"></div>
 </div>
 <div class="top-section container">
-	<header class="header container flex-justify-center ">
+	<header class="header container">
 	<div class="header__inner">
 		<div class="header__menu">
 			<div class="header__menu_left">
@@ -38,13 +39,14 @@
 				</ul>
 			</div>
 			<div class="header__menu_right">
-				<button class="btn btn-blue btn-primary">
+				<button class="button button-blue button-primary">
 					Оставить заявку
 				</button>
 			</div>
 		</div>
 	</div>
 </header>
+
 	<div class="hamburger-menu">
 	<input id="menu__toggle" type="checkbox" />
 	<label class="menu__btn" for="menu__toggle">
@@ -52,10 +54,10 @@
 	</label>
 
 	<ul class="menu__box">
-		<li class="menu__item top">
+		<li class="menu__item menu__item_top">
 			<img src="img/logo-black.png" alt="" style="mix-blend-mode: difference;">
 		</li>
-		<li class="menu__item expand">
+		<li class="menu__item menu__item_expand">
 			<div class="menu__item_part">
 				<a href="#">Работа</a>
 				<img src="img/arrow-black.png" alt="">
@@ -69,7 +71,7 @@
 				<img src="img/arrow-black.png" alt="">
 			</div>
 		</li>
-		<li class="menu__item half">
+		<li class="menu__item menu__item_half">
 			<div class="menu__item_part">
 				Презентация
 			</div>
@@ -80,7 +82,7 @@
 				SETTERS EDUCATION
 			</div>
 		</li>
-		<li class="menu__item social">
+		<li class="menu__item menu__item_social">
 			<div class="menu__item_part">
 				<img src="img/socials/instagram.png" alt="">
 			</div>
@@ -134,7 +136,7 @@
 	</div>
 	<div class="top-section__sponsors__wrapper">
 		<div class="top-section__wrapper__item">
-			<p class="top-section__sponsors__item text">
+			<p class="top-section__sponsors__item top-section__sponsors__item_text">
 				Меняем рекламную <br>
 				индустрию вместе с <br>
 				брендами, которые любим
@@ -162,23 +164,25 @@
 		
 	</div>
 </section>
-	<div class="top-section__scroll__wrapper" id="scrollWrapper">
-		<!-- <img class="top-section__scroll__circle" src="img/scroll-arrow-circle.png" alt="">
-		<img class="top-section__scroll__arrow" src="img/scroll-arrow.png" alt=""> -->
-		<svg id="scrollCircle" class="top-section__scroll__circle" width="128" height="128" viewBox="0 0 128 128"
-			fill="none" xmlns="http://www.w3.org/2000/svg">
-			<circle cx="64" cy="64" r="63" stroke="#D7D7D7" stroke-width="2" />
-		</svg>
-		<svg id="scrollArrow" class="top-section__scroll__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
-			xmlns="http://www.w3.org/2000/svg">
-			<path d="M12 2L12 22M12 22L2 12M12 22L22 12" stroke="#D7D7D7" stroke-width="2.5" stroke-linecap="round"
-				stroke-linejoin="round" />
-		</svg>
 
-	</div>
+	<div class="top-section__scroll__wrapper" id="scrollWrapper">
+	<!-- <img class="top-section__scroll__circle" src="img/scroll-arrow-circle.png" alt="">
+	<img class="top-section__scroll__arrow" src="img/scroll-arrow.png" alt=""> -->
+	<svg id="scrollCircle" class="top-section__scroll__circle" width="128" height="128" viewBox="0 0 128 128"
+		fill="none" xmlns="http://www.w3.org/2000/svg">
+		<circle cx="64" cy="64" r="63" stroke="#D7D7D7" stroke-width="2" />
+	</svg>
+	<svg id="scrollArrow" class="top-section__scroll__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none"
+		xmlns="http://www.w3.org/2000/svg">
+		<path d="M12 2L12 22M12 22L2 12M12 22L22 12" stroke="#D7D7D7" stroke-width="2.5" stroke-linecap="round"
+			stroke-linejoin="round" />
+	</svg>
+
 </div>
 
-<!-- close -->
+</div>
+
+
 <!-- libs -->
 <script src="js/magnet-mouse.min.js"></script>
 
