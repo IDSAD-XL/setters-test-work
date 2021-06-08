@@ -135,10 +135,18 @@
 			justify-content: center
 			align-items: center
 			bottom: 50px
+			transform-style: preserve-3d
+			backface-visibility: hidden
+			transition: all .3s ease
+			cursor: pointer
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				bottom: 60px
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				display: none
+			&:hover
+				.top-section__scroll__circle
+					circle
+						stroke: #1C54FC
 		&__arrow
 			position: absolute
 			width: 20px
@@ -149,3 +157,18 @@
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				width: 100px
 				height: 100px
+
+.top-section__scroll__wrapper
+	.top-section__scroll__circle
+		circle
+			transition: .2s
+	.top-section__scroll__arrow
+		path
+			transition: .2s
+	&:hover
+		.top-section__scroll__circle
+			circle
+				stroke: #1C54FC
+		.top-section__scroll__arrow
+			path
+				stroke: #1C54FC

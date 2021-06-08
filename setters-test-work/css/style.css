@@ -187,6 +187,15 @@
   justify-content: center;
   align-items: center;
   bottom: 50px;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+
+.top-section__scroll__wrapper:hover .top-section__scroll__circle circle {
+  stroke: #1C54FC;
 }
 
 .top-section__scroll__arrow {
@@ -198,6 +207,22 @@
 .top-section__scroll__circle {
   width: 128px;
   height: 128px;
+}
+
+.top-section__scroll__wrapper .top-section__scroll__circle circle {
+  transition: .2s;
+}
+
+.top-section__scroll__wrapper .top-section__scroll__arrow path {
+  transition: .2s;
+}
+
+.top-section__scroll__wrapper:hover .top-section__scroll__circle circle {
+  stroke: #1C54FC;
+}
+
+.top-section__scroll__wrapper:hover .top-section__scroll__arrow path {
+  stroke: #1C54FC;
 }
 
 .header {
