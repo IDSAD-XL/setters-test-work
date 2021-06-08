@@ -11,10 +11,14 @@
 <body>
 <!-- open -->
 
-<img class="gradient-border-part top" src="img/border/top-part.png" alt="">
-<img class="gradient-border-part left" src="img/border/left-part.png" alt="">
-<img class="gradient-border-part right" src="img/border/right-part.png" alt="">
-<img class="gradient-border-part bottom" src="img/border/bottom-part.png" alt="">
+<div class="gradient-border-wrapper">
+	<img class="gradient-border-part top" src="img/border/top-part.png" alt="">
+	<img class="gradient-border-part left" src="img/border/left-part.png" alt="">
+	<img class="gradient-border-part right" src="img/border/right-part.png" alt="">
+	<img class="gradient-border-part bottom" src="img/border/bottom-part.png" alt="">
+	<div class="gradient-bottom-dark left"></div>
+	<div class="gradient-bottom-dark right"></div>
+</div>
 <div class="top-section container">
 	<header class="header container flex-justify-center ">
 	<div class="header__inner">
@@ -23,13 +27,13 @@
 				<img src="img/logo-night.png" alt="" class="header_logo">
 				<ul class="header__menu__items">
 					<li class="header__menu_item">
-						Работа
+						<a href="#">Работа</a>
 					</li>
 					<li class="header__menu_item">
-						Карьера
+						<a href="#">Карьера</a>
 					</li>
 					<li class="header__menu_item">
-						Контакты
+						<a href="#">Контакты</a>
 					</li>
 				</ul>
 			</div>
@@ -85,28 +89,35 @@
 			стратегии
 		</span>
 	</div>
-	<ul class="top-section__sponsors">
-		<li class="top-section__sponsors__item">
-			Меняем рекламную <br>
-			индустрию вместе с <br>
-			брендами, которые любим
-		</li>
-		<li class="top-section__sponsors__item">
-			<img src="img/top-section-sponsors/nike1.png" alt="">
-		</li>
-		<li class="top-section__sponsors__item">
-			<img src="img/top-section-sponsors/SBERBANK.png" alt="">
-		</li>
-		<li class="top-section__sponsors__item">
-			<img src="img/top-section-sponsors/Borjomi.png" alt="">
-		</li>
-		<li class="top-section__sponsors__item">
-			<img src="img/top-section-sponsors/CHUPA_CHUPS.png" alt="">
-		</li>
-		<li class="top-section__sponsors__item">
-			<img src="img/top-section-sponsors/ASUS.png" alt="">
-		</li>
-	</ul>
+	<div class="top-section__sponsors__wrapper">
+		<div class="top-section__wrapper__item">
+			<p class="top-section__sponsors__item text">
+				Меняем рекламную <br>
+				индустрию вместе с <br>
+				брендами, которые любим
+			</p>
+		</div>
+		<div class="top-section__wrapper__item">
+			<ul class="top-section__sponsors">
+				<li class="top-section__sponsors__item">
+					<img src="img/top-section-sponsors/nike1.png" alt="">
+				</li>
+				<li class="top-section__sponsors__item">
+					<img src="img/top-section-sponsors/SBERBANK.png" alt="">
+				</li>
+				<li class="top-section__sponsors__item">
+					<img src="img/top-section-sponsors/Borjomi.png" alt="">
+				</li>
+				<li class="top-section__sponsors__item">
+					<img src="img/top-section-sponsors/CHUPA_CHUPS.png" alt="">
+				</li>
+				<li class="top-section__sponsors__item">
+					<img src="img/top-section-sponsors/ASUS.png" alt="">
+				</li>
+			</ul>
+		</div>
+		
+	</div>
 </section>
 	<div class="top-section__scroll__wrapper">
 		<img class="top-section__scroll__circle" src="img/scroll-arrow-circle.png" alt="">

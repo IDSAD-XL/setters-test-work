@@ -13,18 +13,30 @@
 		flex-grow: 1
 		justify-content: space-between
 		margin-bottom: 60px
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			padding-top: 60px
 	&__bubbles-wrapper
+		max-width: 100%
+		overflow-x: hidden
 		display: flex
 		flex-direction: column
 		justify-content: space-between
+		align-items: center
 	&__bubbles
 		margin-top: 60px
 		list-style: none
 		display: flex
 		justify-content: center
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			max-width: 500px
+			width: 100%
+			justify-content: space-between
+			padding: 0 10px
 		&_item
 			position: relative
 			margin: 0 20px
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				margin: 0 0
 	&__bubble-number
 		position: absolute
 		top: 0
@@ -63,7 +75,7 @@
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				line-height: 72px
 				@include font($size: 76)
-			@media screen and (min-width: $s) and (max-width: $m - 1px)
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				@include font($size: 40)
 	&__sponsors
 		position: relative
@@ -73,10 +85,36 @@
 		align-items: center
 		overflow-x: hidden
 		max-width: 100%
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			width: 100%
+			justify-content: space-between
+			padding: 0 10px
 		@media screen and (min-width: $xl)
 			justify-content: center
 		&__item
 			margin: 0 30px
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				margin: 0
+				margin-right: 30px
+			&.text
+				text-align: left
+				@media screen and (min-width: 0) and (max-width: $m - 1px)
+					margin-right: 0
+					text-align: center
+		&__wrapper
+			width: 100%
+			display: flex
+			justify-content: left
+			overflow-x: hidden
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				flex-wrap: wrap-reverse
+
+	&__wrapper
+		&__item
+			width: 100%
+			display: flex
+			justify-content: center
+
 	&__sponsors:after
 		content: ''
 		position: absolute

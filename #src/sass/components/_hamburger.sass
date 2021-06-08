@@ -20,13 +20,12 @@
 	display: flex
 	align-items: center
 	position: fixed
-	top: 20px
+	top: 25px
 	right: 30px
 	width: 30px
-	height: 26px
+	height: 25px
 	cursor: pointer
 	z-index: 2
-	border-radius: 11px
 	& > span, & > span::before, & > span::after
 		display: block
 		position: absolute
@@ -34,14 +33,17 @@
 		height: 3px
 		background-color: #C4C4C4
 		transition-duration: .25s
+		border-radius: 11px
 	& > span::before
 		width: 40px
 		content: ''
 		top: -8px
+		border-radius: 11px
 	& > span::after
 		width: 40px
 		content: ''
 		top: 8px
+		border-radius: 11px
 
 .menu__box
 	display: block
