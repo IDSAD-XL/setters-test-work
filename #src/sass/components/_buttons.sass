@@ -1,8 +1,13 @@
 @import "settings/_variables.sass"
+$btn-primary: #1C54FC
+$btn-hover: #4070FF
+
 .btn
+	cursor: pointer
 	border: 0
 	border-radius: 5px
 	@include font($size: ui)
+	&:hover
 
 .btn-primary
 	min-width: 184px
@@ -13,5 +18,11 @@
 	letter-spacing: 0.05em
 
 .btn-blue
-	background-color: $color-blue
+	background-color: $btn-primary
+	transition: .1s
 	color: #fff
+	&:hover
+		background-color: $btn-hover
+	&:active
+		background-color: transparent
+		border: 2px solid $btn-primary
