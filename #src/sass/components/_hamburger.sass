@@ -8,12 +8,15 @@
 	z-index: 50
 	&:checked ~ .menu__btn > span
 		transform: rotate(45deg)
+		top: 45px
 	&:checked ~ .menu__btn > span::before
 		top: 0
 		transform: rotate(0)
+		background-color: #000
 	&:checked ~ .menu__btn > span::after
 		top: 0
 		transform: rotate(90deg)
+		background-color: #000
 	&:checked ~ .menu__box
 		visibility: visible
 		right: 0

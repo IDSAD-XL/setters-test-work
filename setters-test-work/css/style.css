@@ -355,16 +355,19 @@
 
 #menu__toggle:checked ~ .menu__btn > span {
   transform: rotate(45deg);
+  top: 45px;
 }
 
 #menu__toggle:checked ~ .menu__btn > span::before {
   top: 0;
   transform: rotate(0);
+  background-color: #000;
 }
 
 #menu__toggle:checked ~ .menu__btn > span::after {
   top: 0;
   transform: rotate(90deg);
+  background-color: #000;
 }
 
 #menu__toggle:checked ~ .menu__box {
