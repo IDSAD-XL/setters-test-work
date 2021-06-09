@@ -1,0 +1,11 @@
+.link
+	text-decoration: none
+	&-primary
+		color: var(--button-color-primary)
+		transition: .2s
+		@include font($size: 28)
+		&:hover
+			color: var(--button-color-hover)
+	&-light
+		@include font($size: 16)
+		color: var(--color-font-secondary)
