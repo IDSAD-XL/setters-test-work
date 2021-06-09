@@ -32,11 +32,12 @@
 			width: 100%
 			justify-content: space-between
 			padding: 0 10px
-		&_item
-			position: relative
-			margin: 0 20px
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
-				margin: 0 0
+
+	&__bubble
+		position: relative
+		margin: 0 20px
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			margin: 0 0
 	&__bubble-number
 		position: absolute
 		top: 0
@@ -68,6 +69,7 @@
 				@include font($size: 40)
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				@include font($size: 20)
+				margin-bottom: -5px
 		&_big
 			display: block
 			@media screen and (min-width: $xl)
@@ -91,10 +93,20 @@
 			width: 100%
 			justify-content: space-between
 			padding: 0 10px
+		@media screen and (min-width: 450px) and (min-height: 1000px)
+			justify-content: center
 		@media screen and (min-width: $xl)
 			justify-content: center
-		&__item
+		&:after
+			content: ''
+			position: absolute
+			width: 100%
+			height: 100%
+			background: rgb(29,29,29)
+			background: linear-gradient(90deg, rgba(29,29,29,0) 60%, rgba(29,29,29,1) 80%)
+		&-item
 			margin: 0 30px
+
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				margin: 0
 				margin-right: 30px
@@ -106,7 +118,17 @@
 				@media screen and (min-width: 0) and (max-width: $m - 1px)
 					margin-right: 0
 					text-align: center
-		&__wrapper
+		&-box
+			display: flex
+			justify-content: center
+			&:nth-child(2)
+				width: 100%
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				&:nth-child(1)
+					width: 100%
+					margin-top: 15px
+		&-wrapper
+			padding: 0 15px
 			width: 100%
 			display: flex
 			justify-content: left
@@ -119,16 +141,8 @@
 			width: 100%
 			display: flex
 			justify-content: center
-
-	&__sponsors:after
-		content: ''
-		position: absolute
-		width: 100%
-		height: 100%
-		background: rgb(29,29,29)
-		background: linear-gradient(90deg, rgba(29,29,29,0) 60%, rgba(29,29,29,1) 80%)
 	&__scroll
-		&__wrapper
+		&-wrapper
 			position: absolute
 			right: 55px
 			display: flex
@@ -144,31 +158,21 @@
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				display: none
 			&:hover
-				.top-section__scroll__circle
-					circle
-						stroke: #1C54FC
-		&__arrow
+				circle
+					stroke: #1C54FC
+				path
+					stroke: #1C54FC
+		&-arrow
 			position: absolute
 			width: 20px
 			height: 20px
-		&__circle
+			path
+				transition: .2s
+		&-circle
 			width: 128px
 			height: 128px
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				width: 100px
 				height: 100px
-
-.top-section__scroll__wrapper
-	.top-section__scroll__circle
-		circle
-			transition: .2s
-	.top-section__scroll__arrow
-		path
-			transition: .2s
-	&:hover
-		.top-section__scroll__circle
 			circle
-				stroke: #1C54FC
-		.top-section__scroll__arrow
-			path
-				stroke: #1C54FC
+				transition: .2s

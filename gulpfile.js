@@ -84,7 +84,7 @@ function css() {
 		.pipe(sass({
 			importer: tildeImporter
 		}))
-		.pipe(group_media())
+		// .pipe(group_media())
 		.pipe(
 			autoprefixer({
 				overrideBrowserlist: ["last 5 versions"],
@@ -144,7 +144,7 @@ function fontsStyle(params) {
 				let fontname = items[i].split('.');
 				fontname = fontname[0];
 				if (c_fontname != fontname) {
-					fs.appendFile(source_folder + '/sass/_fonts.sass', '@include font("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb);
+					fs.appendFile(source_folder + '/sass/_fonts.sass', '@include font-import("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb);
 				}
 				c_fontname = fontname;
 			}

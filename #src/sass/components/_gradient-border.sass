@@ -1,5 +1,4 @@
 @import "settings/_variables.sass"
-$gradient-border-width: 4px
 
 @keyframes gradient-border
 	0%
@@ -9,53 +8,52 @@ $gradient-border-width: 4px
 	100%
 		filter: hue-rotate(0)
 
-.gradient-border__part
-	position: fixed
-	z-index: 10
-	animation: gradient-border infinite 10s
-	&_left
+.gradient-border
+	&__left, &__right, &__top, &__bottom
+		position: fixed
+		z-index: 10
+		animation: gradient-border infinite 10s
+	&__left, &__right
+		&_dark
+			z-index: 20
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				background: rgb(29,29,29)
+				background: linear-gradient(180deg, rgba(29,29,29,0) 70%, rgba(29,29,29,1) 90%)
+	&__left
 		left: 0
 		top: -2px
 		height: calc(100vh + 2px)
-		width: $gradient-border-width
+		width: var(--gradient-border-width)
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			height: 110vh
-	&_right
-		width: $gradient-border-width
+		&_dark
+			position: fixed
+			left: -1px
+			width: var(--gradient-border-width) + 2px
+			height: 101vh
+	&__right
+		width: var(--gradient-border-width)
 		right: 0
 		top: -2px
 		height: calc(100vh + 4px)
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			height: 110vh
-	&_top
+		&_dark
+			position: fixed
+			width: var(--gradient-border-width) + 2px
+			right: -1px
+			height: 101vh
+	&__top
 		top: 0
 		left: -3px
 		width: calc( 100vw + 6px )
-		height: $gradient-border-width
+		height: var(--gradient-border-width)
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			width: 110vw
-	&_bottom
+	&__bottom
 		bottom: 0
 		left: -3px
-		height: $gradient-border-width
+		height: var(--gradient-border-width)
 		width: calc( 100vw + 6px )
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			opacity: 0
-
-.gradient-bottom-dark.left
-	position: fixed
-	left: -1px
-	width: $gradient-border-width + 2px
-	height: 101vh
-
-.gradient-bottom-dark.right
-	position: fixed
-	width: $gradient-border-width + 2px
-	right: -1px
-	height: 101vh
-
-.gradient-bottom-dark
-	z-index: 20
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
-		background: rgb(29,29,29)
-		background: linear-gradient(180deg, rgba(29,29,29,0) 70%, rgba(29,29,29,1) 90%)

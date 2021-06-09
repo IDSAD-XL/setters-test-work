@@ -3,23 +3,11 @@
 	padding: 0 var(--container-side-paddings)+px
 	width: 100%
 	@media screen and (min-width: $xl)
-		max-width: calc(1560px + var(--container-side-paddings)px * 2px)
+		max-width: calc(1560px + var(--container-side-paddings) * 2)
 	@media screen and (min-width: $l) and (max-width: $xl - 1px)
-		max-width: calc(1250px + var(--container-side-paddings)px - 1px)
+		max-width: calc(1250px + var(--container-side-paddings) * 2)
 	@media screen and (min-width: $m) and (max-width: $l - 1px)
-		max-width: calc(940px + var(--container-side-paddings) * 2px)
+		max-width: calc(940px + var(--container-side-paddings) * 2)
 	@media screen and (min-width: 0) and (max-width: $m - 1px)
 		width: 100vw
 
-.header.container
-	max-width: 1560px
-	width: 100%
-	@media screen and (min-width: $xl)
-		padding: 0 55px
-	@media screen and (min-width: $l) and (max-width: $xl - 1px)
-		padding-right: 55px
-		padding-left: 66px
-	@media screen and (min-width: $m) and (max-width: $l - 1px)
-		padding: 0 42px
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
-		padding: 0 20px
