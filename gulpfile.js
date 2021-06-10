@@ -15,13 +15,16 @@ let path = {
 		html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
 		css: source_folder + "/sass/style.sass",
 		js: source_folder + "/js/*.js",
+		jsFolder: source_folder + "/js/",
+		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
 	watch: {
 		html: source_folder + "/**/*.html",
 		css: source_folder + "/sass/**/*.sass",
-		js: source_folder + "/js/**/*.js",
+		js: source_folder + "/js/*.js",
+		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
 	clean: "./" + project_folder + "/",
@@ -68,14 +71,15 @@ function html() {
 
 function js() {
 	return src(path.src.js)
-		.pipe(fileinclude())
+		.pipe(concat("common.min.js"))
 		.pipe(dest(path.build.js))
-		.pipe(
-			rename({
-				extname: ".min.js"
-			})
-		)
-		.pipe(dest(path.build.js))
+		.pipe(browsersync.stream())
+}
+
+function jsLibs() {
+	return src(path.src.jsLibs)
+		.pipe(concat("#libs.js"))
+		.pipe(dest(path.src.jsFolder))
 		.pipe(browsersync.stream())
 }
 
@@ -84,7 +88,6 @@ function css() {
 		.pipe(sass({
 			importer: tildeImporter
 		}))
-		// .pipe(group_media())
 		.pipe(
 			autoprefixer({
 				overrideBrowserlist: ["last 5 versions"],
@@ -165,7 +168,7 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, html, css, images, fonts), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, fonts), fontsStyle);
 let watch = gulp.parallel(build, watchfiles, browserSync);
 
 exports.fontsStyle = fontsStyle;
