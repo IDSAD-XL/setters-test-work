@@ -95,9 +95,17 @@ function openRequestPopup(evt) {
 }
 
 function closeRequestPopup(evt) {
-	evt.preventDefault()
+
 	popupRequest.classList.add('popup_hide')
 	body.classList.remove('modal-open')
 }
 
+const popupRequestBody = document.querySelector('#popup-request__body')
+document.addEventListener('click', (e) => {
+	let target = e.target
+	if (target.classList.contains('open-request-popup')) return
+	if (!popupRequestBody.contains(target) && body.classList.contains('modal-open')) {
+		closeRequestPopup(false)
+	}
+})
 
