@@ -32,10 +32,24 @@ function setBodyUnScrollable() {
 
 //! Footer scroll to top arrows
 const scrollTopArrows = document.querySelectorAll(".footer-sticky__arrow-top")
-const topSection = document.querySelector(".top-section")
+const topSection = document.querySelector("#top-section")
 scrollTopArrows.forEach((e) => {
 	e.addEventListener('click', () => {
 		topSection.scrollIntoView({ behavior: "smooth" })
 	})
 })
 
+//! Footer hide at top section
+const stickyFooter = document.querySelector("#footer-sticky")
+const gradientBorder = document.querySelector('#gradient-border')
+
+window.addEventListener("scroll", () => {
+	if (window.scrollY == 0) {
+		stickyFooter.classList.add('footer-sticky_hide')
+		gradientBorder.classList.add('gradient-border_fullscreen')
+	}
+	else {
+		stickyFooter.classList.remove('footer-sticky_hide')
+		gradientBorder.classList.remove('gradient-border_fullscreen')
+	}
+})

@@ -10,6 +10,7 @@
 
 .gradient-border
 	&__left, &__right, &__top, &__bottom
+		transition: .2s
 		position: fixed
 		z-index: 10
 		animation: gradient-border infinite 10s
@@ -57,3 +58,8 @@
 		width: calc( 100vw + 6px )
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			opacity: 0
+	&_fullscreen
+		.gradient-border__left, .gradient-border__right
+			height: 101vh
+		.gradient-border__bottom
+			bottom: 0
