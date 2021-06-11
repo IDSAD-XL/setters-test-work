@@ -53,3 +53,51 @@ window.addEventListener("scroll", () => {
 		gradientBorder.classList.remove('gradient-border_fullscreen')
 	}
 })
+
+//! Popups
+//? textarea
+const requestTextarea = document.querySelector("#request-popup__details");
+requestTextarea.setAttribute("style", "height:" + (requestTextarea.scrollHeight) + "px;");
+requestTextarea.addEventListener("input", OnInput, false);
+
+function OnInput() {
+	if (this.height >= 500) return;
+	this.style.height = "auto";
+	this.style.height = (this.scrollHeight + 5) + "px";
+}
+//? textarea mobile
+function setRequestPopupPlaceholder() {
+	requestTextarea.placeholder = (window.innerWidth > 2024) ?
+		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством. Какую цель вы хотели бы достичь или какую главную проблему вы хотели бы решить с нашей помощью?"
+		:
+		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством"
+}
+setRequestPopupPlaceholder()
+window.addEventListener('resize', setRequestPopupPlaceholder, false)
+
+//! Popup open
+const popupRequest = document.querySelector('#popup-request')
+const popupRequestOpenTriggers = document.querySelectorAll(".open-request-popup")
+const popupRequestCloseTriggers = document.querySelectorAll(".close-request-popup")
+
+popupRequestOpenTriggers.forEach((e) => {
+	e.addEventListener('click', openRequestPopup, false)
+})
+
+popupRequestCloseTriggers.forEach((e) => {
+	e.addEventListener('click', closeRequestPopup, false)
+})
+
+function openRequestPopup(evt) {
+	evt.preventDefault()
+	popupRequest.classList.remove('popup_hide')
+	body.classList.add('modal-open')
+}
+
+function closeRequestPopup(evt) {
+	evt.preventDefault()
+	popupRequest.classList.add('popup_hide')
+	body.classList.remove('modal-open')
+}
+
+
