@@ -10,13 +10,16 @@
 	transition: .2s
 	opacity: 1
 	background-color: rgba(0, 0, 0, 0.7)
+	padding: 64px 140px
+	@media screen and (min-width: 0) and (max-width: $m - 1px)
+		padding: 0
 	&_hide
 		opacity: 0
 		display: none
 	&-body
 		position: relative
 		max-width: 1560px
-		margin: 64px 140px
+		margin: auto
 		border-radius: 60px
 		background-color: #F5F5F5
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
