@@ -22,11 +22,26 @@
 				</span>
 				<div class="popup-request__inner-block popup-request__inputs-block">
 					<div class="popup-request__inputs-inner">
-						<input type="text" class="popup-request__input input input-primary" placeholder="Ваше имя">
-						<input type="tel" class="popup-request__input input input-primary" placeholder="Телефон">
-						<input type="email" class="popup-request__input input input-primary" placeholder="E-mail">
-						<input type="text" class="popup-request__input input input-primary"
-							placeholder="Название компании">
+						@@include('../components/_input.html', {
+							"type": "text",
+							"customClass": "popup-request__input",
+							"placeholder": "Ваше имя"
+						})
+						@@include('../components/_input.html', {
+							"type": "tel",
+							"customClass": "popup-request__input",
+							"placeholder": "Телефон"
+						})
+						@@include('../components/_input.html', {
+							"type": "email",
+							"customClass": "popup-request__input",
+							"placeholder": "E-mail"
+						})
+						@@include('../components/_input.html', {
+							"type": "text",
+							"customClass": "popup-request__input",
+							"placeholder": "Название компании"
+						})
 					</div>
 				</div>
 				<div class="popup-request__inner-block popup-request__details">
