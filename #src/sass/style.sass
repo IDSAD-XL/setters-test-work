@@ -1,9 +1,21 @@
-@mixin font($font_name, $file_name, $weight, $style) 
-	@font-face
-		font-family: $font_name
-		font-display: swap
-		src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2")
-		font-weight: #{$weight}
-		font-style: #{$style}
+//?Settings
+@import "settings/_mixins.sass"
+@import "settings/_fonts.sass"
+@import "settings/_variables.sass"
+@import "settings/_root.sass"
+@import "settings/_default.sass"
+//?Components
+@import "components/_containers.sass"
+@import "components/_buttons.sass"
+@import "components/_gradient-border.sass"
+@import "components/_menu.sass"
+@import "components/_links.sass"
+@import "components/_inputs.sass"
+//?Sections
+@import "sections/_top-section.sass"
+@import "sections/_header.sass"
+@import "sections/_footer.sass"
 
-@import "_fonts.sass"
+//!STYLES FOR TEST
+.test-block
+	height: 100vh

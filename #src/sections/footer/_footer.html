@@ -1,0 +1,67 @@
+<div class="test-block">
+
+</div>
+<div class="footer-sticky footer-sticky_hide" id="footer-sticky">
+	<div class="footer-sticky__left">
+		<div class="footer-sticky__item">
+			<a href="#">Презентация</a>
+		</div>
+		<div class="footer-sticky__item footer__mobile-hide">
+			<a href="#">SETTERS EDUCATION</a>
+		</div>
+		<div class="footer-sticky__item">
+			<a href="#">Блог</a>
+		</div>
+		<div class="footer-sticky__item footer-sticky__item_tablet">
+			<img class="footer-sticky__arrow-top" src="img/arrow-top.svg" alt="">
+		</div>
+	</div>
+	<div class="footer-sticky__right footer__mobile-hide">
+		@@include('_social-links.html', {
+		"customClass": "footer-sticky__item"
+		})
+		<div class="footer-sticky__item">
+			<img class="footer-sticky__arrow-top" src="img/arrow-top.svg" alt="">
+		</div>
+	</div>
+</div>
+<footer class="footer">
+	<div class="footer-tablet">
+		<div class="footer-tablet__inner">
+			<div class="footer-tablet__item">
+				<a href="#"><img src="img/socials/instagram.svg" alt=""></a>
+			</div>
+			@@include('_social-links.html', {
+			"customClass": "footer-tablet__item"
+			})
+		</div>
+	</div>
+	<div class="footer-mobile">
+		<div class="footer-mobile__item">
+			<a href="#">SETTERS EDUCATION</a>
+		</div>
+		@@include('_social-links.html', {
+		"customClass": "footer-mobile__item"
+		})
+	</div>
+	<div class="footer-content">
+		<div class="footer-content__left">
+			<a class="link link-primary" href="#">Оставить заявку</a>
+		</div>
+		<div class="footer-content__right">
+			<form id="footerSubscribe" action="#">
+				<span>Подписаться на рассылку</span>
+				<div class="footer-content__right-form-inner">
+					<input class="input input-primary" type="text" placeholder="Введите свой имейл" required>
+					<button class="button button-primary button-blue button-black-active">
+						Подписаться
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<a class="link link-light" href="#">Политика обработки данных</a>
+		<a class="link link-light" href="#">Политика конфиденциальности</a>
+	</div>
+</footer>

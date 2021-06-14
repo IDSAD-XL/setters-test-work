@@ -14,14 +14,17 @@ let path = {
 	src: {
 		html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
 		css: source_folder + "/sass/style.sass",
-		js: source_folder + "/js/common.js",
+		js: source_folder + "/js/*.js",
+		jsFolder: source_folder + "/js/",
+		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
 	watch: {
 		html: source_folder + "/**/*.html",
-		css: source_folder + "/sass/*.sass",
-		js: source_folder + "/js/**/*.js",
+		css: source_folder + "/sass/**/*.sass",
+		js: source_folder + "/js/*.js",
+		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
 	clean: "./" + project_folder + "/",
@@ -68,15 +71,15 @@ function html() {
 
 function js() {
 	return src(path.src.js)
-		.pipe(fileinclude())
+		.pipe(concat("common.min.js"))
 		.pipe(dest(path.build.js))
-		.pipe(uglify())
-		.pipe(
-			rename({
-				extname: ".min.js"
-			})
-		)
-		.pipe(dest(path.build.js))
+		.pipe(browsersync.stream())
+}
+
+function jsLibs() {
+	return src(path.src.jsLibs)
+		.pipe(concat("#libs.js"))
+		.pipe(dest(path.src.jsFolder))
 		.pipe(browsersync.stream())
 }
 
@@ -85,7 +88,6 @@ function css() {
 		.pipe(sass({
 			importer: tildeImporter
 		}))
-		.pipe(group_media())
 		.pipe(
 			autoprefixer({
 				overrideBrowserlist: ["last 5 versions"],
@@ -136,8 +138,8 @@ gulp.task('otf2ttf', function () {
 
 function fontsStyle(params) {
 
-	let file_content = fs.readFileSync(source_folder + '/sass/_fonts.sass');
-	fs.writeFile(source_folder + '/sass/_fonts.sass', '', cb);
+	let file_content = fs.readFileSync(source_folder + '/sass/settings/_fonts.sass');
+	fs.writeFile(source_folder + '/sass/settings/_fonts.sass', '', cb);
 	return fs.readdir(path.build.fonts, function (err, items) {
 		if (items) {
 			let c_fontname;
@@ -145,7 +147,7 @@ function fontsStyle(params) {
 				let fontname = items[i].split('.');
 				fontname = fontname[0];
 				if (c_fontname != fontname) {
-					fs.appendFile(source_folder + '/sass/_fonts.sass', '@include font("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb);
+					fs.appendFile(source_folder + '/sass/settings/_fonts.sass', '@include font-import("' + fontname + '", "' + fontname + '", "400", "normal")\r\n', cb);
 				}
 				c_fontname = fontname;
 			}
@@ -166,7 +168,7 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(js, html, css, images, fonts), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, fonts), fontsStyle);
 let watch = gulp.parallel(build, watchfiles, browserSync);
 
 exports.fontsStyle = fontsStyle;
