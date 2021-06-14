@@ -5,13 +5,16 @@
 		&-heading
 			@include font($size: 20)
 			color: var(--color-blue)
-	&__input
+	&__input-wrapper
 		height: 60px
 		width: 47%
-		margin: 20px 0
 		min-width: 230px
+		margin: 20px 0
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			width: 100%
+	&__input
+		height: 60px
+		width: 100%
 	&__inputs-block
 		width: 100%
 		display: flex
