@@ -1,0 +1,55 @@
+@import "settings/_variables.sass"
+
+.card
+	width: 360px
+	margin: 20px
+	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+		margin: 16px
+		width: 292px
+	@media screen and ( max-width: $m )
+		width: calc( 100% - 40px )
+	img
+		max-width: 100%
+		object-fit: contain
+
+	&-layout
+		display: flex
+		flex-direction: column
+		width: 1200px
+		@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			width: 980px
+		@media screen and ( max-width: $m )
+			width: 340px
+	&-row
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		&--1
+			max-height: 1400px
+			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+				max-height: 1200px
+			@media screen and ( max-width: $m )
+				max-height: none
+		&--2
+			@media screen and ( max-width: $m )
+				margin: 0 20px
+	&-title
+		color: #000
+		@include font($size:60)
+		@media screen and ( max-width: $m )
+			@include font($size:36)
+			line-height: 36px
+	&-text
+		display: none
+		@include font($size: 24)
+		&_desktop-show
+			@media screen and ( min-width: $l + 1px)
+				display: block
+		@media screen and ( max-width: $m )
+			display: block
+	&__mobile-link
+		display: none
+		@include font($size:20)
+		margin-top: 40px
+		@media screen and ( max-width: $m )
+			display: block
