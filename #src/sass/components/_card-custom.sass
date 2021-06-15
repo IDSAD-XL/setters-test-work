@@ -4,46 +4,17 @@
 	border-radius: 60px
 	padding: 40px 60px 60px 60px
 	max-width: 100%
-	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-		flex-wrap: wrap
-		width: 940px
 	@media screen and ( max-width: $m )
-		flex-wrap: wrap
-		width: 100% 
 		padding: 40px 24px 24px 40px
 		border-radius: 32px
-	&_3col
-		margin: 0 15px
+	&__title
+		color: #000
+		@include font($size:60)
 		@media screen and ( max-width: $m )
-			margin: 0
-		.card-custom-part:nth-child(1)
-			justify-content: space-between
-			.link
-				margin-bottom: 30px
-				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					margin-bottom: 0
-				@media screen and ( max-width: $m )
-					display: none
-		.card-custom-part
-			&:nth-child(1)
-				margin-right: 100px
-				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					margin-right: 0
-					padding-bottom: 32px
-					border-bottom: 2px solid var(--color-font-primary)
-					flex-direction: row
-					align-items: flex-end
-					width: 100%
-				@media screen and ( max-width: $m )
-					flex-direction: row
-					width: 100%
-			&:nth-child(2)
-				flex-grow: 1
-				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					padding-top: 32px
-					flex-direction: row
-					justify-content: space-between
-
+			@include font($size:36)
+			line-height: 36px
+		img
+			max-width: 100%
 	&-part
 		display: flex
 		flex-direction: column
@@ -59,28 +30,6 @@
 					@include font($size:24)
 				@media screen and ( max-width: $m )
 					@include font($size:20)
-			&:nth-child(1)
-				padding-bottom: 25px
-				margin-bottom: 30px
-				border-bottom: 2px solid var(--color-font-primary)
-				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					margin-bottom: 0
-					padding-bottom: 0
-					border: 0
-					.card-custom-part__item-inner
-						flex-direction: column
-					.card-custom-part__item-block
-						width: 100%
-				@media screen and ( max-width: $m )
-					margin-top: 32px
-			&:nth-child(2)
-				.card-custom-part__item-block:nth-child(1)
-					padding-right: 40px
-					@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-						a
-							padding-right: 40px
-					@media screen and ( max-width: $m )
-						margin-bottom: 12px
 
 			&-title
 				margin-bottom: 20px
@@ -117,8 +66,12 @@
 					@media screen and ( max-width: $m )
 						color: #000000
 						@include font($size: 12)
+
 	&__contact-icon
 		transform: translateY(8px)
 		@media screen and ( max-width: $m )
 			width: 32px
 			height: 32px
+	&__text
+		color: #000000
+		@include font($size:20)

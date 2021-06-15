@@ -2,15 +2,15 @@
 	<div class="card-row card-row--1">
 		<div class="card">
 			<img src="../../img/cards/GAZPROM_CASE_Final_3_2 1.png" alt="">
-			<span class="card-text">Газпром нефть</span>
+			<span class="card__text">Газпром нефть</span>
 		</div>
 		<div class="card">
 			<img src="../../img/cards/Comp 1_3.png" alt="">
-			<span class="card-text">Школа Рыбакова</span>
+			<span class="card__text">Школа Рыбакова</span>
 		</div>
 		<div class="card">
 			<img src="../../img/cards/photo_2021-03-31_08-14-38 1.png" alt="">
-			<span class="card-text">Практика</span>
+			<span class="card__text">Практика</span>
 		</div>
 		<div class="card">
 			<img src="../../img/cards/ChupaChups_TikTok_Showreal_02_short (1) (1).png" alt="">
@@ -20,17 +20,65 @@
 		</div>
 		<div class="card">
 			<img src="../../img/cards/mentos_case_autoplay_low_q 2.png" alt="">
-			<span class="card-text card-text_desktop-show">Комплиментос</span>
+			<span class="card__text card__text_desktop-show">Комплиментос</span>
 		</div>
 		<div class="card">
 			<img src="../../img/cards/GAZPROM_CASE_Final_3_2 (1).png" alt="">
 		</div>
 		<div class="card">
 			<img src="../../img/cards/photo_2021-03-31_08-14-31 1.png" alt="">
-			<span class="card-text">Коллеги в интернетах</span>
+			<span class="card__text">Коллеги в интернетах</span>
 		</div>
 	</div>
 	<div class="card-row card-row--2">
 		@@include('../components/_card-custom_3col.html')
+	</div>
+	<div class="card-row card-row--3">
+		<div class="card-col card-col-x2">
+			<div class="card-col__item">
+				<div class="card">
+					<img src="../../img/cards/mentos_case_autoplay_low_q 1.png" alt="">
+				</div>
+				<div class="card">
+					<img src="../../img/cards/Rectangle 74.png" alt="">
+				</div>
+			</div>
+			<div class="card-col__item">
+				@@include('../components/_card-custom_2col.html', {
+				"title": "Говорят, <br> хороших спецов днём с огнём <img class='card-custom__contact-icon card-custom__contact-icon--mobile' src='../../img/icons/team.svg' alt=''> не сыщешь! <img class='card-custom__contact-icon card-custom__contact-icon--desktop' src='../../img/icons/team.svg' alt=''>",
+				"text": "Мы — огонь, время суток — не имеет значение, вакансии — есть! Давайте поработаем?"
+				})
+			</div>
+		</div>
+		<div class="card-col">
+			<div class="card">
+				<img src="../../img/cards/GAZPROM_CASE_Final_3_2 1.png" alt="">
+				<span class="card__text">Газпром нефть</span>
+			</div>
+		</div>
+	</div>
+	<div class="card-row card-row--4">
+		<div class="card-col">
+			<div class="card">
+				<img src="../../img/cards/Comp 1_3.png" alt="">
+				<span class="card__text">Газпром нефть</span>
+			</div>
+		</div>
+		<div class="card-col card-col-x2">
+			<div class="card-col__item">
+				<div class="card">
+					<img src="../../img/cards/CHUPA_CASE_10_2.png" alt="">
+				</div>
+				<div class="card">
+					<img src="../../img/cards/photo_2021-03-31_08-14-38 1.png" alt="">
+				</div>
+			</div>
+			<div class="card-col__item">
+				@@include('../components/_card-custom_2col.html', {
+				"title": "<img src='../../img/4_se_logo_full_loop 1.svg' alt=''>",
+				"text": "Делимся своим опытом с коллегами и компаниями. Онлайн-обучение — пожалуйста, курсы и семинары — будьте любезны обучение под ваши задачи и запросы— легко!"
+				})
+			</div>
+		</div>
 	</div>
 </div>
