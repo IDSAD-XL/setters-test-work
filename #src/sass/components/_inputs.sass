@@ -11,3 +11,38 @@
 		@include font($size: 16px)
 		&:focus
 			border-bottom: 2px solid var(--color-blue)
+	&-wrapper
+		position: relative
+		label
+			position: absolute
+			left: 20px
+			top: 20px
+			color: #666666
+			transition: .1s
+			@include font($size: 16)
+		input
+			position: relative
+			color: #000
+			&:focus ~ .input-label, &:not(:placeholder-shown) ~ .input-label
+				top: 0
+				@include font($size: 10)
+			&:not(:focus):not(:valid):not(:placeholder-shown)
+				border-bottom: 2px solid var(--color-red)
+				& ~ .input-error-icon, & ~ .input-error-text
+					display: block
+			&:not(:focus):valid:not(:placeholder-shown)
+				border-bottom: 2px solid var(--color-green)
+				& ~ .input-success-icon
+					display: block
+	&-error-text
+		display: none
+		position: absolute
+		bottom: -25px
+		left: 0
+		color: var(--color-red)
+		@include font($size: 16)
+	&-success-icon, &-error-icon
+		display: none
+		position: absolute
+		right: 20px
+		top: 25px

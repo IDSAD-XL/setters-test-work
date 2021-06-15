@@ -1,0 +1,17 @@
+<div class="input-wrapper @@customWrapperClass">
+	<input type="@@type" class="@@customClass input input-primary" placeholder="&nbsp" @@if(type==='tel' )
+		{pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" }>
+	<label class="input-label">@@placeholder</label>
+	<svg class="input-success-icon" width="18" height="14" viewBox="0 0 18 14" fill="none"
+		xmlns="http://www.w3.org/2000/svg">
+		<path d="M17 1L6 13L1 7.54545" stroke="#00CF6B" stroke-width="2" stroke-linecap="round"
+			stroke-linejoin="round" />
+	</svg>
+	<svg class="input-error-icon" width="4" height="16" viewBox="0 0 4 16" fill="none"
+		xmlns="http://www.w3.org/2000/svg">
+		<path
+			d="M2 16C1.45833 16 0.989583 15.8667 0.59375 15.6C0.197917 15.3185 0 14.9778 0 14.5778C0 14.1778 0.197917 13.8444 0.59375 13.5778C0.989583 13.2963 1.45833 13.1556 2 13.1556C2.54167 13.1556 3.01042 13.2963 3.40625 13.5778C3.80208 13.8444 4 14.1778 4 14.5778C4 14.9778 3.80208 15.3185 3.40625 15.6C3.01042 15.8667 2.54167 16 2 16ZM0.59375 0H3.46875L3.03125 11.4H1.03125L0.59375 0Z"
+			fill="#FC1C2B" />
+	</svg>
+	@@if (errorText !== "none"){<span class="input-error-text">@@errorText</span>}
+</div>

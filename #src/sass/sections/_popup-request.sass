@@ -1,0 +1,68 @@
+.popup-request
+	&__form
+		display: flex
+		flex-direction: column
+		&-heading
+			@include font($size: 20)
+			color: var(--color-blue)
+	&__input-wrapper
+		height: 60px
+		width: 47%
+		min-width: 230px
+		margin: 20px 0
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			width: 100%
+	&__input
+		height: 60px
+		width: 100%
+	&__inputs-block
+		width: 100%
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+	&__inputs-inner
+		width: 100%
+		justify-content: space-between
+		display: flex
+		flex-wrap: wrap
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			justify-content: center
+	&__details
+		display: flex
+		flex-direction: column
+		color: #000
+		@include font($size: 20)
+		.popup-request__input
+			width: 100%
+			min-height:
+		textarea
+			overflow-y: auto
+			margin-top: 20px
+			text-indent: 0
+			padding: 10px 20px
+			height: 0
+			height: 120px
+			width: 100%
+			resize: none
+	&__bottom
+		display: flex
+		flex-wrap: wrap
+		margin-top: 60px
+		span
+			color: #666666
+			@include font($size: 12)
+			a
+				color: #666666
+		button
+			margin-right: 46px
+			margin-bottom: 12px
+	&__title
+		&_mobile
+			display: none
+	&__title
+		&_desktop
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				display: none
+		&_mobile
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				display: flex

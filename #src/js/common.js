@@ -53,3 +53,50 @@ window.addEventListener("scroll", () => {
 		gradientBorder.classList.remove('gradient-border_fullscreen')
 	}
 })
+
+//! Popups
+//? textarea
+const requestTextarea = document.querySelector("#request-popup__details");
+//? textarea mobile
+function setRequestPopupPlaceholder() {
+	requestTextarea.placeholder = (window.innerWidth > 2024) ?
+		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством. Какую цель вы хотели бы достичь или какую главную проблему вы хотели бы решить с нашей помощью?"
+		:
+		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством"
+}
+setRequestPopupPlaceholder()
+window.addEventListener('resize', setRequestPopupPlaceholder, false)
+
+//! Popup open
+const popupRequest = document.querySelector('#popup-request')
+const popupRequestOpenTriggers = document.querySelectorAll(".open-request-popup")
+const popupRequestCloseTriggers = document.querySelectorAll(".close-request-popup")
+
+popupRequestOpenTriggers.forEach((e) => {
+	e.addEventListener('click', openRequestPopup, false)
+})
+
+popupRequestCloseTriggers.forEach((e) => {
+	e.addEventListener('click', closeRequestPopup, false)
+})
+
+function openRequestPopup(evt) {
+	evt.preventDefault()
+	popupRequest.classList.remove('popup_hide')
+	body.classList.add('modal-open')
+}
+
+function closeRequestPopup(evt) {
+	popupRequest.classList.add('popup_hide')
+	body.classList.remove('modal-open')
+}
+
+const popupRequestBody = document.querySelector('#popup-request__body')
+document.addEventListener('click', (e) => {
+	let target = e.target
+	if (target.classList.contains('open-request-popup')) return
+	if (!popupRequestBody.contains(target) && body.classList.contains('modal-open')) {
+		closeRequestPopup()
+	}
+})
+
