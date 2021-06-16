@@ -73,16 +73,14 @@ const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
 
 popupToggles.forEach((e) => {
-	console.log(e);
 	let targetPopup = document.getElementById(e.dataset.target)
-	console.log(targetPopup);
 	e.addEventListener('click', (evt) => {
 		evt.preventDefault()
 		targetPopup.classList.remove('popup_hide')
 		body.classList.add('modal-open')
 	})
 	let popupBody = targetPopup.querySelector('.popup-body')
-	document.addEventListener('click', (e) => {
+	targetPopup.addEventListener('click', (e) => {
 		e.preventDefault()
 		let clicked = e.target
 		if (clicked.classList.contains('open-popup')) return
