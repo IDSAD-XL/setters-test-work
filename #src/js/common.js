@@ -57,14 +57,6 @@ window.addEventListener("scroll", () => {
 //! Popups
 //? textarea
 const requestTextarea = document.querySelector("#request-popup__details");
-requestTextarea.setAttribute("style", "height:" + (requestTextarea.scrollHeight) + "px;");
-requestTextarea.addEventListener("input", OnInput, false);
-
-function OnInput() {
-	if (this.height >= 500) return;
-	this.style.height = "auto";
-	this.style.height = (this.scrollHeight + 5) + "px";
-}
 //? textarea mobile
 function setRequestPopupPlaceholder() {
 	requestTextarea.placeholder = (window.innerWidth > 2024) ?
