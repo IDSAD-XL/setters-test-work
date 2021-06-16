@@ -71,9 +71,6 @@ window.addEventListener('resize', setRequestPopupPlaceholder, false)
 //! Popup open
 const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
-const popupRequest = document.querySelector('#popup-request')
-const popupRequestOpenTriggers = document.querySelectorAll(".open-request-popup")
-const popupRequestCloseTriggers = document.querySelectorAll(".close-request-popup")
 
 popupToggles.forEach((e) => {
 	console.log(e);
