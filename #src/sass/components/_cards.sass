@@ -3,6 +3,8 @@
 .card
 	width: 360px
 	margin: 20px
+	a
+		text-decoration: none
 	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 		margin: 16px
 		width: 292px
@@ -57,6 +59,8 @@
 			@media screen and ( max-width: $m )
 				flex-wrap: wrap
 	&__text
+		color: #fff
+		text-decoration: none
 		display: none
 		@include font($size: 24)
 		&_desktop-show
