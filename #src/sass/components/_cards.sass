@@ -1,0 +1,70 @@
+@import "settings/_variables.sass"
+
+.card
+	width: 360px
+	margin: 20px
+	a
+		text-decoration: none
+	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+		margin: 16px
+		width: 292px
+	@media screen and ( max-width: $m )
+		width: calc( 100% - 40px )
+	img
+		max-width: 100%
+		object-fit: contain
+
+	&-layout
+		display: flex
+		flex-direction: column
+		width: 1200px
+		@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			width: 980px
+		@media screen and ( max-width: $m )
+			width: 340px
+	&-row
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		&--1
+			max-height: 1400px
+			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+				max-height: 1200px
+			@media screen and ( max-width: $m )
+				max-height: none
+		&--2
+			margin: 0 20px
+		&--3
+			flex-direction: row
+			margin-top: 20px
+		&--4
+			flex-direction: row
+	&__mobile-link
+		display: none
+		@include font($size:20)
+		margin-top: 40px
+		@media screen and ( max-width: $m )
+			display: block
+	&-col
+		@media screen and ( max-width: $m )
+			width: 100%
+		&-x2
+			width: 66.6%
+			@media screen and ( max-width: $m )
+				width: 100%
+		&__item
+			display: flex
+			flex-direction: row
+			justify-content: space-between
+			@media screen and ( max-width: $m )
+				flex-wrap: wrap
+	&__text
+		color: #fff
+		text-decoration: none
+		display: none
+		@include font($size: 24)
+		&_desktop-show
+			@media screen and ( min-width: $l + 1px)
+				display: block
+		@media screen and ( max-width: $m )
+			display: block

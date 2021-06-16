@@ -1,0 +1,20 @@
+.card-custom_2col
+	margin: 20px 20px
+	width: 100%
+	display: flex
+	flex-direction: row
+	.card-custom__text
+		margin-top: 20px
+		margin-bottom: 32px
+		@media screen and ( max-width: $m )
+			@include font($size:16)
+	.card__link
+		margin-bottom: 0
+	.card-custom__contact-icon
+		&--desktop
+			@media screen and ( max-width: $m )
+				display: none
+		&--mobile
+			margin-right: 20px
+			@media screen and ( min-width: $m + 1 )
+				display: none
