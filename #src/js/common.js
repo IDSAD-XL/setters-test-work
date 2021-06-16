@@ -73,29 +73,32 @@ const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
 
 popupToggles.forEach((e) => {
-	console.log(e);
-	let targetPopup = document.getElementById(e.dataset.target)
-	console.log(targetPopup);
+	const targetPopup = document.getElementById(e.dataset.target)
 	e.addEventListener('click', (evt) => {
 		evt.preventDefault()
-		targetPopup.classList.remove('popup_hide')
-		body.classList.add('modal-open')
+		openPopup(targetPopup)
 	})
-	let popupBody = targetPopup.querySelector('.popup-body')
+	const popupBody = targetPopup.querySelector('.popup-body')
 	document.addEventListener('click', (e) => {
 		e.preventDefault()
-		let clicked = e.target
+		const clicked = e.target
 		if (clicked.classList.contains('open-popup')) return
 		if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
-			targetPopup.classList.add('popup_hide')
-			body.classList.remove('modal-open')
+			closePopup(targetPopup)
 		}
 	})
-	let closeButton = targetPopup.querySelector('.close-popup')
+	const closeButton = targetPopup.querySelector('.close-popup')
 	closeButton.addEventListener('click', (e) => {
 		e.preventDefault()
-		targetPopup.classList.add('popup_hide')
-		body.classList.remove('modal-open')
+		closePopup(targetPopup)
 	})
 })
 
+function closePopup(popup) {
+	popup.classList.add('popup_hide')
+	body.classList.remove('modal-open')
+}
+function openPopup(popup) {
+	popup.classList.remove('popup_hide')
+	body.classList.add('modal-open')
+}
