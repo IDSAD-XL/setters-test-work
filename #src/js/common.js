@@ -98,6 +98,7 @@ function closePopup(popup) {
 	popup.classList.add('popup_hide')
 	body.classList.remove('modal-open')
 }
+
 function openPopup(popup) {
 	popup.classList.remove('popup_hide')
 	body.classList.add('modal-open')
