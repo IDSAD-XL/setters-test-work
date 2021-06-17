@@ -79,7 +79,7 @@ popupToggles.forEach((e) => {
 		openPopup(targetPopup)
 	})
 	const popupBody = targetPopup.querySelector('.popup-body')
-	document.addEventListener('click', (e) => {
+	targetPopup.addEventListener('click', (e) => {
 		e.preventDefault()
 		const clicked = e.target
 		if (clicked.classList.contains('open-popup')) return
