@@ -67,36 +67,38 @@ function setRequestPopupPlaceholder() {
 setRequestPopupPlaceholder()
 window.addEventListener('resize', setRequestPopupPlaceholder, false)
 
+
 //! Popup open
-const popupRequest = document.querySelector('#popup-request')
-const popupRequestOpenTriggers = document.querySelectorAll(".open-request-popup")
-const popupRequestCloseTriggers = document.querySelectorAll(".close-request-popup")
+const popups = document.querySelectorAll(".popup")
+const popupToggles = document.querySelectorAll(".open-popup")
 
-popupRequestOpenTriggers.forEach((e) => {
-	e.addEventListener('click', openRequestPopup, false)
+popupToggles.forEach((e) => {
+	const targetPopup = document.getElementById(e.dataset.target)
+	e.addEventListener('click', (evt) => {
+		evt.preventDefault()
+		openPopup(targetPopup)
+	})
+	const popupBody = targetPopup.querySelector('.popup-body')
+	document.addEventListener('click', (e) => {
+		e.preventDefault()
+		const clicked = e.target
+		if (clicked.classList.contains('open-popup')) return
+		if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+			closePopup(targetPopup)
+		}
+	})
+	const closeButton = targetPopup.querySelector('.close-popup')
+	closeButton.addEventListener('click', (e) => {
+		e.preventDefault()
+		closePopup(targetPopup)
+	})
 })
 
-popupRequestCloseTriggers.forEach((e) => {
-	e.addEventListener('click', closeRequestPopup, false)
-})
-
-function openRequestPopup(evt) {
-	evt.preventDefault()
-	popupRequest.classList.remove('popup_hide')
-	body.classList.add('modal-open')
-}
-
-function closeRequestPopup(evt) {
-	popupRequest.classList.add('popup_hide')
+function closePopup(popup) {
+	popup.classList.add('popup_hide')
 	body.classList.remove('modal-open')
 }
-
-const popupRequestBody = document.querySelector('#popup-request__body')
-document.addEventListener('click', (e) => {
-	let target = e.target
-	if (target.classList.contains('open-request-popup')) return
-	if (!popupRequestBody.contains(target) && body.classList.contains('modal-open')) {
-		closeRequestPopup()
-	}
-})
-
+function openPopup(popup) {
+	popup.classList.remove('popup_hide')
+	body.classList.add('modal-open')
+}
