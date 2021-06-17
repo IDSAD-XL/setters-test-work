@@ -2,7 +2,7 @@
 	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 		flex-wrap: wrap
 		width: 940px
-	@media screen and ( max-width: $m )
+	@media screen and ( max-width: $m - 1px )
 		flex-wrap: wrap
 		width: 100%
 		margin: 0 15px
@@ -13,7 +13,7 @@
 			margin-bottom: 30px
 			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 				margin-bottom: 0
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				display: none
 	.card-custom-part
 		&:nth-child(1)
@@ -25,7 +25,7 @@
 				flex-direction: row
 				align-items: flex-end
 				width: 100%
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				flex-direction: row
 				width: 100%
 		&:nth-child(2)
@@ -47,7 +47,7 @@
 					flex-direction: column
 				.card-custom-part__item-block
 					width: 100%
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				margin-top: 32px
 		&:nth-child(2)
 			.card-custom-part__item-block:nth-child(1)
@@ -55,5 +55,5 @@
 				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 					a
 						padding-right: 40px
-				@media screen and ( max-width: $m )
+				@media screen and ( max-width: $m - 1px )
 					margin-bottom: 12px

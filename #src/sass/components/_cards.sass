@@ -8,7 +8,7 @@
 	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 		margin: 16px
 		width: 292px
-	@media screen and ( max-width: $m )
+	@media screen and ( max-width: $m - 1px )
 		width: calc( 100% - 40px )
 	img
 		max-width: 100%
@@ -19,8 +19,8 @@
 		flex-direction: column
 		width: 1200px
 		@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-			width: 980px
-		@media screen and ( max-width: $m )
+			width: 940px
+		@media screen and ( max-width: $m - 1px )
 			width: 340px
 	&-row
 		display: flex
@@ -30,33 +30,37 @@
 			max-height: 1400px
 			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 				max-height: 1200px
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				max-height: none
 		&--2
 			margin: 0 20px
 		&--3
 			flex-direction: row
 			margin-top: 20px
+			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+				flex-wrap: nowrap
 		&--4
 			flex-direction: row
+			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+				flex-wrap: nowrap
 	&__mobile-link
 		display: none
 		@include font($size:20)
 		margin-top: 40px
-		@media screen and ( max-width: $m )
+		@media screen and ( max-width: $m - 1px )
 			display: block
 	&-col
-		@media screen and ( max-width: $m )
+		@media screen and ( max-width: $m - 1px )
 			width: 100%
 		&-x2
 			width: 66.6%
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				width: 100%
 		&__item
 			display: flex
 			flex-direction: row
 			justify-content: space-between
-			@media screen and ( max-width: $m )
+			@media screen and ( max-width: $m - 1px )
 				flex-wrap: wrap
 	&__text
 		color: #fff
@@ -66,5 +70,5 @@
 		&_desktop-show
 			@media screen and ( min-width: $l + 1px)
 				display: block
-		@media screen and ( max-width: $m )
+		@media screen and ( max-width: $m - 1px )
 			display: block
