@@ -103,8 +103,21 @@
 			position: absolute
 			width: 100%
 			height: 100%
-			background: rgb(29,29,29)
-			background: linear-gradient(90deg, rgba(29,29,29,0) 60%, rgba(29,29,29,1) 80%)
+			background: rgb(49, 49, 49)
+			background: linear-gradient(90deg, rgba(49, 49, 49, 0) 70%, rgba(49,49,49,1) 100%)
+			@media screen and (min-width: $m) and (max-width: $l - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 90%, rgba(49,49,49,1) 100%)
+		&:nth-child(1)
+			&:before
+				content: ''
+				position: absolute
+				width: 100%
+				height: 100%
+				background: rgb(49, 49, 49)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 1) 0%, rgba(49,49,49,0) 10%)
+
 		&-item
 			margin: 0 30px
 
@@ -142,4 +155,3 @@
 			width: 100%
 			display: flex
 			justify-content: center
-	
