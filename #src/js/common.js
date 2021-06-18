@@ -182,5 +182,8 @@ function openPopup(popup) {
 //!Card sliders
 const sliders = document.querySelectorAll('.splide');
 sliders.forEach((e) => {
-	new Splide(e).mount();
+	new Splide(e, {
+		autoplay: true,
+		interval: 3000
+	}).mount();
 })
