@@ -1,7 +1,7 @@
 <div class="card">
 	@@if(type === 'image'){
 	<a href="#">
-		<img src="img/cards/@@src" alt="">
+		<img class="card__image" src="img/cards/@@src" alt="">
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>
 		}
@@ -27,7 +27,7 @@
 	@@if(type === 'video'){
 	<div class="card-video open-popup" data-target="@@popupId">
 		<div class="card-video__duration">0:15</div>
-		<img src="img/cards/@@src" alt="">
+		<img class="card__image" src="img/cards/@@src" alt="">
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>
 		}

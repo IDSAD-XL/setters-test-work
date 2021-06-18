@@ -1,8 +1,11 @@
 @import "settings/_variables.sass"
 
 .card
+	position: relative
 	width: 360px
 	margin: 20px
+	overflow: hidden
+	border-radius: 5px
 	a
 		text-decoration: none
 	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
@@ -63,23 +66,33 @@
 			@media screen and ( max-width: $m - 1px )
 				flex-wrap: wrap
 	&__text
+		position: absolute
+		bottom: 30px
 		color: #fff
 		text-decoration: none
 		display: block
 		max-height: 0
 		opacity: 0
+		z-index: 2
 		transition: max-height .3s ease-in-out, opacity .2s linear
 		@include font($size: 24, $type:med)
 		@media screen and ( max-width: $m - 1px )
 			max-height: 24px
 			opacity: 1
 			display: block
+	&__image
+		transition: .2s ease-in-out
+
 	&:hover
-		.card__text
-			max-height: 24px
-			opacity: 1
+		@media screen and ( max-width: $m - 1px )
+			.card__text
+				opacity: 1
+			.card__image, .card-slider
+				transform: translateY(-35px)
+
 	&-slider
 		position: relative
+		transition: transform .2s ease-in-out
 		.splide
 			&__pagination
 				&__page
@@ -109,6 +122,7 @@
 			position: absolute
 			right: 14px
 			top: 16px
+			z-index: 1
 			@include font($size:ui)
 			font-weight: bold
 			filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.35))
