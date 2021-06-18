@@ -63,25 +63,25 @@
 			display: block
 			margin-bottom: 20px
 			@media screen and (min-width: $xl)
-				@include font($size: 48)
+				@include font($size: 48, $type:med)
 			@media screen and (min-width: $l) and (max-width: $xl - 1px)
-				@include font($size: 40)
+				@include font($size: 40, $type:med)
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
-				@include font($size: 20)
+				@include font($size: 20, $type:med)
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
-				@include font($size: 16)
+				@include font($size: 16, $type:med)
 				margin-bottom: -5px
 		&_big
 			display: block
 			@media screen and (min-width: $xl)
-				@include font($size: 160)
+				@include font($size: 160, $type:med)
 			@media screen and (min-width: $l) and (max-width: $xl - 1px)
-				@include font($size: 124)
+				@include font($size: 124, $type:med)
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				line-height: 72px
-				@include font($size: 76)
+				@include font($size: 76, $type:med)
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
-				@include font($size: 40)
+				@include font($size: 40, $type:med)
 	&__sponsors
 		position: relative
 		list-style: none
@@ -126,9 +126,9 @@
 				margin-right: 30px
 			&_text
 				text-align: left
-				@include font($size: 20)
+				@include font($size: 20, $type:med)
 				@media screen and (min-width: 0) and (max-width: $l - 1px)
-					@include font($size: 16)
+					@include font($size: 16, $type:med)
 				@media screen and (min-width: 0) and (max-width: $m - 1px)
 					max-width: 228px
 					margin-right: 0

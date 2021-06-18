@@ -4,14 +4,15 @@ body.menu-open
 	overflow-y: hidden
 
 .menu
-	z-index: 20
+	z-index: 25
 	@media screen and (min-width: $m)
 		display: none
 	&__toggle
+		position: fixed
 		opacity: 0
 		z-index: 50
 		&:checked ~ .menu__button
-			position: absolute
+			position: fixed
 		&:checked ~ .menu__button > span
 			transform: rotate(45deg)
 			top: 45px
@@ -26,6 +27,7 @@ body.menu-open
 		&:checked ~ .menu__box
 			visibility: visible
 			right: 0
+			max-height: 100vh
 
 	&__button
 		display: flex
@@ -36,7 +38,7 @@ body.menu-open
 		width: 30px
 		height: 25px
 		cursor: pointer
-		z-index: 20
+		z-index: 30
 		& > span, & > span::before, & > span::after
 			display: block
 			position: absolute
@@ -59,7 +61,7 @@ body.menu-open
 	&__box
 		position: fixed
 		overflow-y: auto
-		z-index: 10
+		z-index: 25
 		display: flex
 		flex-direction: column
 		visibility: hidden
@@ -67,12 +69,11 @@ body.menu-open
 		right: 0
 		width: 100vw
 		height: 100%
-		max-height: 100vh
+		max-height: 0
 		list-style: none
 		background-color: #FFFFFF
 		box-shadow: 1px 0px 6px rgba(0, 0, 0, .2)
-		transition-duration: .25s
-		z-index: 1
+		transition-duration: .3s
 
 	&__item
 		display: flex
@@ -83,15 +84,17 @@ body.menu-open
 		&_top
 			background-color: #F5F5F5
 			height: 150px
-		a
-			text-decoration: none
-			color: #000
-			@include font($size: 28)
+			img
+				width: 184px
+				height: 44px
 		&_expand
 			flex-grow: 1
 			display: flex
 			flex-direction: column
 			padding: 0
+			a
+				text-decoration: none
+				@include font($size: 28, $type:med)
 			.menu__item_part
 				width: 100%
 				display: flex
@@ -107,6 +110,10 @@ body.menu-open
 			display: flex
 			flex-wrap: wrap
 			padding: 0
+			a
+				font-weight: 500
+				text-decoration: none
+				color: #000
 			.menu__item_part
 				text-transform: uppercase
 				justify-content: center
@@ -114,7 +121,8 @@ body.menu-open
 				align-items: center
 				text-align: center
 				color: #000
-				@include font($size: 20)
+				font-weight: bolder
+				@include font($size: 20, $type:med)
 				width: 50%
 				height: 50%
 				&:nth-child(1)
@@ -134,8 +142,13 @@ body.menu-open
 				height: 100%
 				width: 64px
 				border-right: 2px solid #D7D7D7
+				padding: 10px 10px
+				a
+					width: 100%
+					height: 100%
 				img
+					object-fit: contain
 					max-width: 100%
-					max-height: 100%
+					height: 100%
 				&:nth-child(1)
 					border-left: 2px solid #D7D7D7

@@ -9,9 +9,9 @@
 		border-radius: 32px
 	&__title
 		color: #000
-		@include font($size:60)
+		@include font($size:60, $type:med)
 		@media screen and ( max-width: $m - 1px )
-			@include font($size:36)
+			@include font($size:36, $type:med)
 			line-height: 36px
 		img
 			max-width: 100%
@@ -25,21 +25,21 @@
 			a
 				text-decoration: none
 				color: #000
-				@include font($size: 28)
+				@include font($size: 28, $type:med)
 				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					@include font($size:24)
+					@include font($size:24, $type:med)
 				@media screen and ( max-width: $m - 1px )
-					@include font($size:20)
+					@include font($size:20, $type:med)
 
 			&-title
 				margin-bottom: 20px
 				color: var(--color-font-secondary)
-				@include font($size:20)
+				@include font($size:20, $type:med)
 				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					@include font($size: 16)
+					@include font($size: 16, $type:med)
 				@media screen and ( max-width: $m - 1px )
 					margin-bottom: 20px
-					@include font($size:14)
+					@include font($size:14, $type:med)
 
 			&-inner
 				display: flex
