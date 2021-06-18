@@ -13,13 +13,11 @@ class hoverEffect {
 	attachEventsListener() {
 		window.addEventListener("mousemove", (e) => this.onMouseMove(e));
 		window.addEventListener("resize", (e) => this.calculatePosition(e));
+		window.addEventListener("scroll", (e) => this.calculatePosition(e));
 	}
 
 	HandleScroll() {
 		gsap.to(this.scrollCircle, {
-			scrollTrigger: {
-				scrub: true
-			},
 			rotate: 180,
 			ease: Linear.easeNone
 		});
