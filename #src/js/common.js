@@ -103,3 +103,41 @@ function openPopup(popup) {
 	popup.classList.remove('popup_hide')
 	body.classList.add('modal-open')
 }
+//!Top section heading 
+const glitchWords = ['стратегии', 'креативы']
+const glitchTitle = document.querySelector('#top-section__title-glitch-word')
+
+glitchWord(0)
+
+function glitchWord(ind) {
+	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
+	const word = glitchWords[index]
+	glitchLoop(0, word, word.length)
+	setTimeout(glitchWord, 2300, index)
+}
+
+function glitchLoop(count, word) {
+	if (count > 3) {
+		setGlitchWord(word)
+		return
+	}
+	setGlitchWord(randomString(word.length))
+	setTimeout(glitchLoop, 50, count + 1, word)
+}
+
+function setGlitchWord(word) {
+	glitchTitle.innerHTML = word
+}
+
+function randomString(len) {
+	let str = ''
+	for (let i = 0; i < len; i++) {
+		str += String.fromCharCode(randomInteger(33, 126))
+	}
+	return str
+}
+
+function randomInteger(min, max) {
+	let rand = min + Math.random() * (max + 1 - min);
+	return Math.floor(rand);
+}
