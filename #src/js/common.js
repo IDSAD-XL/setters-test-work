@@ -182,9 +182,18 @@ function openPopup(popup) {
 //!Card sliders
 const sliders = document.querySelectorAll('.splide');
 sliders.forEach((e) => {
-	new Splide(e, {
+	const slider = new Splide(e, {
 		type: 'loop',
 		autoplay: true,
-		interval: 3000
+		interval: 3000,
+		pauseOnHover: true
 	}).mount();
+	const sliderNumber = e.querySelector('.splide__slide-number')
+	const slidesCount = slider.length;
+	sliderNumber.innerHTML = `1/${slidesCount}`
+	slider.on('moved', () => {
+		let currentSlide = slider.index
+		sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+	})
+
 })

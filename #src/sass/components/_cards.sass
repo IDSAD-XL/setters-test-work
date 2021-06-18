@@ -79,6 +79,7 @@
 			max-height: 24px
 			opacity: 1
 	&-slider
+		position: relative
 		.splide
 			&__pagination
 				&__page
@@ -89,3 +90,16 @@
 						background-color: var(--color-blue)
 			&__arrow
 				display: none
+			&__slide-number
+				color: #fff
+				position: absolute
+				top: 16px
+				right: 16px
+				z-index: 10
+				border-radius: 60px
+				width: 40px
+				height: 32px
+				display: flex
+				justify-content: center
+				align-items: center
+				background: rgba(29, 29, 29, 0.6)
