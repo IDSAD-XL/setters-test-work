@@ -14,8 +14,7 @@
 		flex-grow: 1
 		justify-content: space-between
 		margin-bottom: 60px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
-			padding-top: 60px
+		padding-top: 177px
 	&__bubbles-wrapper
 		max-width: 100%
 		overflow-x: hidden
@@ -24,7 +23,6 @@
 		justify-content: space-between
 		align-items: center
 	&__bubbles
-		margin-top: 60px
 		list-style: none
 		display: flex
 		justify-content: center
@@ -68,8 +66,10 @@
 				@include font($size: 48)
 			@media screen and (min-width: $l) and (max-width: $xl - 1px)
 				@include font($size: 40)
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
+			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				@include font($size: 20)
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				@include font($size: 16)
 				margin-bottom: -5px
 		&_big
 			display: block
@@ -130,6 +130,7 @@
 				@media screen and (min-width: 0) and (max-width: $l - 1px)
 					@include font($size: 16)
 				@media screen and (min-width: 0) and (max-width: $m - 1px)
+					max-width: 228px
 					margin-right: 0
 					text-align: center
 		&-box

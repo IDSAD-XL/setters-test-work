@@ -1,12 +1,14 @@
 @import "settings/_variables.sass"
 
 .header
+	position: fixed
 	display: flex
 	justify-content: center
 	will-change: transform
 	height: 80px
 	max-width: 1920px
 	width: 100%
+	z-index: 10
 	@media screen and (min-width: $xl)
 		padding: 0 55px
 	@media screen and (min-width: $l) and (max-width: $xl - 1px)
@@ -44,12 +46,15 @@
 			list-style: none
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				display: none
-		&_item
+		&-item
 			margin-left: 40px
 			a
 				text-decoration: none
 				color: var(--color-font-primary)
 				position: relative
+				transition: .1s
+				&:hover
+					color: var(--color-blue)
 				&:after
 					content: ""
 					border-bottom: solid 1px #dfd3c3

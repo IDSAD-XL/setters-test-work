@@ -18,7 +18,10 @@
 		"customClass": "footer-sticky__item"
 		})
 		<div class="footer-sticky__item">
-			<img class="footer-sticky__arrow-top" src="img/arrow-top.svg" alt="">
+			<svg class="footer-sticky__arrow-top" width="28" height="29" viewBox="0 0 28 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M14 26L14 2M14 2L2 14M14 2L26 14" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+
 		</div>
 	</div>
 </div>
@@ -49,7 +52,11 @@
 			<form id="footerSubscribe" action="#">
 				<span>Подписаться на рассылку</span>
 				<div class="footer-content__right-form-inner">
-					<input class="input input-primary" type="text" placeholder="Введите свой имейл" required>
+					@@include('../components/_input.html', {
+					"type": "email",
+					"placeholder": "Введите свой имейл",
+					"errorText": "none"
+					})
 					<button class="button button-primary button-blue button-black-active">
 						Подписаться
 					</button>
