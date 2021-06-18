@@ -183,6 +183,7 @@ function openPopup(popup) {
 const sliders = document.querySelectorAll('.splide');
 sliders.forEach((e) => {
 	new Splide(e, {
+		type: 'loop',
 		autoplay: true,
 		interval: 3000
 	}).mount();
