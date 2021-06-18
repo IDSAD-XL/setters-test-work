@@ -82,8 +82,13 @@ class hoverEffect {
 	}
 }
 
-let magnetScroll = document.querySelector("#scrollWrapper");
+const magnetScroll = document.querySelector("#scrollWrapper");
+const contentSection = document.querySelector('.content')
 new hoverEffect(magnetScroll);
+magnetScroll.addEventListener('click', (e) => {
+	e.preventDefault()
+	contentSection.scrollIntoView({ behavior: "smooth" })
+})
 
 //! Mobile burger menu
 const menuCheckbox = document.querySelector('#menu__toggle')
