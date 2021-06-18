@@ -160,19 +160,23 @@ popupToggles.forEach((e) => {
 		openPopup(targetPopup)
 	})
 	const popupBody = targetPopup.querySelector('.popup-body')
-	targetPopup.addEventListener('click', (e) => {
-		e.preventDefault()
-		const clicked = e.target
-		if (clicked.classList.contains('open-popup')) return
-		if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
-			closePopup(targetPopup)
-		}
-	})
+	if (popupBody != null) {
+		targetPopup.addEventListener('click', (e) => {
+			e.preventDefault()
+			const clicked = e.target
+			if (clicked.classList.contains('open-popup')) return
+			if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+				closePopup(targetPopup)
+			}
+		})
+	}
 	const closeButton = targetPopup.querySelector('.close-popup')
-	closeButton.addEventListener('click', (e) => {
-		e.preventDefault()
-		closePopup(targetPopup)
-	})
+	if (closeButton != null) {
+		closeButton.addEventListener('click', (e) => {
+			e.preventDefault()
+			closePopup(targetPopup)
+		})
+	}
 })
 
 function closePopup(popup) {
