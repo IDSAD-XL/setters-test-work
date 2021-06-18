@@ -17,6 +17,9 @@
 				</ul>
 			</div>
 		</div>
+		@@if(text !== 'none') {
+		<span class="card__text @@customTextClass">@@text</span>
+		}
 	</a>
 	}
 	@@if(type === 'video'){

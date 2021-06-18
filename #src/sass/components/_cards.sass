@@ -65,13 +65,17 @@
 	&__text
 		color: #fff
 		text-decoration: none
-		display: none
+		display: block
+		max-height: 0
+		opacity: 0
+		transition: max-height .3s ease-in-out, opacity .2s linear
 		@include font($size: 24)
-		&_desktop-show
-			@media screen and ( min-width: $l + 1px)
-				display: block
 		@media screen and ( max-width: $m - 1px )
 			display: block
+	&:hover
+		.card__text
+			max-height: 24px
+			opacity: 1
 	&-slider
 		.splide__pagination
 			&__page
