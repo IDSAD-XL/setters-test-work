@@ -82,9 +82,12 @@
 			display: block
 	&__image
 		transition: .2s ease-in-out
+	&::after
+		content: ""
+		width: 100%
 
 	&:hover
-		@media screen and ( max-width: $m - 1px )
+		@media screen and ( min-width: $m )
 			.card__text
 				opacity: 1
 			.card__image, .card-slider
