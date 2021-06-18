@@ -7,6 +7,7 @@ let path = {
 	build: {
 		html: project_folder + "/",
 		css: project_folder + "/css/",
+		cssFiles: project_folder + "/css/*.css",
 		js: project_folder + "/js/",
 		img: project_folder + "/img/",
 		fonts: project_folder + "/fonts/",
@@ -14,6 +15,7 @@ let path = {
 	src: {
 		html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
 		css: source_folder + "/sass/style.sass",
+		cssLibs: source_folder + "/css/*.css",
 		js: source_folder + "/js/*.js",
 		jsFolder: source_folder + "/js/",
 		jsLibs: source_folder + "/js/libs/*.js",
@@ -105,6 +107,13 @@ function css() {
 		.pipe(browsersync.stream())
 }
 
+function cssLibs() {
+	return src(path.src.cssLibs)
+		.pipe(concat('csslibs.css'))
+		.pipe(dest(path.build.css))
+}
+
+
 function images() {
 	return src(path.src.img)
 		.pipe(
@@ -159,7 +168,7 @@ function cb() { }
 
 function watchfiles(params) {
 	gulp.watch([path.watch.html], html);
-	gulp.watch([path.watch.css], css);
+	gulp.watch([path.watch.css], css, cssLibs);
 	gulp.watch([path.watch.js], js);
 	gulp.watch([path.watch.img], images);
 }
@@ -168,7 +177,7 @@ function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, fonts), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, fonts, cssLibs), fontsStyle);
 let watch = gulp.parallel(build, watchfiles, browserSync);
 
 exports.fontsStyle = fontsStyle;

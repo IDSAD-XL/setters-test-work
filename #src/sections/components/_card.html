@@ -1,8 +1,34 @@
 <div class="card">
-	<a href="">
+	@@if(type === 'image'){
+	<a href="#">
 		<img src="img/cards/@@src" alt="">
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>
 		}
 	</a>
+	}
+	@@if(type === 'slider'){
+	<a href="#">
+		<div class="splide card-slider">
+			<div class="splide__track">
+				<ul class="splide__list">
+					@@for (let i = 0; i < slides.length; i++){ <li class="splide__slide"><img src="img/cards/`+slides[i].src+`" alt=""></li>
+						}
+				</ul>
+			</div>
+		</div>
+	</a>
+	}
+	@@if(type === 'video'){
+	<div class="open-popup" data-target="@@popupId">
+		<img src="img/cards/@@src" alt="">
+		@@if(text !== 'none') {
+		<span class="card__text @@customTextClass">@@text</span>
+		}
+	</div>
+	@@include('../popups/_popup-video.html', {
+	"popupId": "@@popupId",
+	"videosrc": "@@videosrc"
+	})
+	}
 </div>
