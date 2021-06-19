@@ -186,9 +186,9 @@ function openPopup(popup) {
 	popup.classList.remove('popup_hide')
 	body.classList.add('modal-open')
 }
-//!Card sliders
-const sliders = document.querySelectorAll('.splide');
-sliders.forEach((e) => {
+//!Card Sliders
+const cardSliders = document.querySelectorAll('.splide');
+cardSliders.forEach((e) => {
 	const slider = new Splide(e, {
 		type: 'loop',
 		autoplay: true,

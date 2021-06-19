@@ -26,8 +26,10 @@
 	}
 	@@if(type === 'video'){
 	<div class="card-video open-popup" data-target="@@popupId">
-		<div class="card-video__duration">0:15</div>
-		<img class="card__image" src="img/cards/@@src" alt="">
+		<div class="card-video__image-wrapper">
+			<div class="card-video__duration">0:15</div>
+			<img class="card-video__image" src="img/cards/@@src" alt="">
+		</div>
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>
 		}

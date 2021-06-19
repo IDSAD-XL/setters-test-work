@@ -81,7 +81,7 @@
 			opacity: 1
 			display: block
 	&__image
-		transition: .2s ease-in-out
+		transition: transform .2s ease-in-out
 		width: 100%
 	&::after
 		content: ""
@@ -91,7 +91,7 @@
 		@media screen and ( min-width: $m )
 			.card__text
 				opacity: 1
-			.card__image, .card-slider
+			.card__image, .card-slider, .card-video__image-wrapper
 				transform: translateY(-35px)
 
 	&-slider
@@ -130,3 +130,5 @@
 			@include font($size:ui)
 			font-weight: bold
 			filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.35))
+		&__image-wrapper
+			transition: transform .2s ease-in-out
