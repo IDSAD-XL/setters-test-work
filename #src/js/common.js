@@ -187,13 +187,14 @@ function openPopup(popup) {
 	body.classList.add('modal-open')
 }
 //!Card Sliders
-const cardSliders = document.querySelectorAll('.splide');
+const cardSliders = document.querySelectorAll('.card-layout .splide');
 cardSliders.forEach((e) => {
 	const slider = new Splide(e, {
 		type: 'loop',
 		autoplay: true,
 		interval: 3000,
-		pauseOnHover: true
+		pauseOnHover: true,
+		arrows: false
 	}).mount();
 	const sliderNumber = e.querySelector('.splide__slide-number')
 	const slidesCount = slider.length;
@@ -242,3 +243,23 @@ function randomInteger(min, max) {
 	let rand = min + Math.random() * (max + 1 - min);
 	return Math.floor(rand);
 }
+
+//!Top Section slider
+const topSectionSlider = document.querySelector('#top-section__sponsors')
+const sponsorsSlider = new Splide(topSectionSlider, {
+	perPage: 5,
+	perMove: 1,
+	arrows: false,
+	pagination: false,
+	autoWidth: true,
+	gap: '60px',
+	swipeDistanceThreshold: 200,
+	breakpoints: {
+		1440: {
+			gap: '40px'
+		},
+		1024: {
+			gap: '30px'
+		}
+	}
+}).mount()

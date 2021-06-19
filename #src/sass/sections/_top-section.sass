@@ -85,11 +85,6 @@
 	&__sponsors
 		position: relative
 		list-style: none
-		display: flex
-		justify-content: left
-		align-items: center
-		overflow-x: hidden
-		max-width: 100%
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			width: 100%
 			justify-content: space-between
@@ -98,32 +93,12 @@
 			justify-content: center
 		@media screen and (min-width: $xl)
 			justify-content: center
-		&:after
-			content: ''
-			position: absolute
-			width: 100%
-			height: 100%
-			background: rgb(49, 49, 49)
-			background: linear-gradient(90deg, rgba(49, 49, 49, 0) 70%, rgba(49,49,49,1) 100%)
-			@media screen and (min-width: $m) and (max-width: $l - 1px)
-				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
-				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 90%, rgba(49,49,49,1) 100%)
-		&:nth-child(1)
-			&:before
-				content: ''
-				position: absolute
-				width: 100%
-				height: 100%
-				background: rgb(49, 49, 49)
-				background: linear-gradient(90deg, rgba(49, 49, 49, 1) 0%, rgba(49,49,49,0) 10%)
 
 		&-item
-			margin: 0 30px
-
+			display: flex
+			align-items: center
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				margin: 0
-				margin-right: 30px
 			&_text
 				text-align: left
 				@include font($size: 20, $type:med)
@@ -134,25 +109,67 @@
 					margin-right: 0
 					text-align: center
 		&-box
-			display: flex
-			justify-content: center
+			&:nth-child(1)
+				min-width: 280px
+				margin-right: 60px
 			&:nth-child(2)
 				width: 100%
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				&:nth-child(1)
 					width: 100%
 					margin-top: 15px
+					margin-right: 0
+					display: flex
+					justify-content: center
 		&-wrapper
 			padding: 0 15px
 			width: 100%
 			display: flex
 			justify-content: left
+			align-items: center
 			overflow-x: hidden
+			position: relative
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				flex-wrap: wrap-reverse
+			&:after
+				content: ""
+				position: absolute
+				top: 0
+				width: 100%
+				height: 100%
+				z-index: 2
+				pointer-events: none
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 70%, rgba(49,49,49,1) 100%)
+			@media screen and (min-width: $m) and (max-width: $l - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 90%, rgba(49,49,49,1) 100%)
 
 	&__wrapper
 		&__item
 			width: 100%
 			display: flex
 			justify-content: center
+
+#top-section__sponsors
+	.splide__track
+		position: relative
+		&:after
+			content: ""
+			position: absolute
+			top: 0
+			width: 100%
+			height: 100%
+			z-index: 2
+			background: linear-gradient(90deg, rgba(49, 49, 49, 0) 70%, rgba(49,49,49,1) 100%)
+			@media screen and (min-width: $m) and (max-width: $l - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
+			@media screen and (min-width: 0) and (max-width: $m - 1px)
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 90%, rgba(49,49,49,1) 100%)
+		&:before
+			content: ""
+			z-index: 2
+			position: absolute
+			width: 100%
+			height: 100%
+			background: linear-gradient(90deg, rgba(49, 49, 49, 1) 0%, rgba(49,49,49,0) 5%)
