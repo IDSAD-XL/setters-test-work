@@ -1,7 +1,7 @@
 <div class="card">
 	@@if(type === 'image'){
 	<a href="#">
-		<img class="card__image" src="img/cards/@@src" alt="">
+		<img class="card__image" src="img/cards/@@src">
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>
 		}
@@ -14,7 +14,7 @@
 			<div class="splide__track">
 
 				<ul class="splide__list">
-					@@for (let i = 0; i < slides.length; i++){ <li class="splide__slide"><img src="img/cards/`+slides[i].src+`" alt=""></li>
+					@@for (let i = 0; i < slides.length; i++){ <li class="splide__slide"><img src="img/cards/`+slides[i].src+`"></li>
 						}
 				</ul>
 			</div>
@@ -28,7 +28,7 @@
 	<div class="card-video open-popup" data-target="@@popupId">
 		<div class="card-video__image-wrapper">
 			<div class="card-video__duration">0:15</div>
-			<img class="card-video__image" src="img/cards/@@src" alt="">
+			<img class="card-video__image" src="img/cards/@@src">
 		</div>
 		@@if(text !== 'none') {
 		<span class="card__text @@customTextClass">@@text</span>

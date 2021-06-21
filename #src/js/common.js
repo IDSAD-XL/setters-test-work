@@ -12,8 +12,8 @@ class hoverEffect {
 
 	attachEventsListener() {
 		window.addEventListener("mousemove", (e) => this.onMouseMove(e));
-		window.addEventListener("resize", (e) => this.calculatePosition(e));
-		window.addEventListener("scroll", (e) => this.calculatePosition(e));
+		window.addEventListener("resize", (e) => this.calculatePosition(e), { passive: true });
+		window.addEventListener("scroll", (e) => this.calculatePosition(e), { passive: true });
 	}
 
 	HandleScroll() {
@@ -131,7 +131,7 @@ window.addEventListener("scroll", () => {
 		stickyFooter.classList.remove('footer-sticky_hide')
 		gradientBorder.classList.remove('gradient-border_fullscreen')
 	}
-})
+}, { passive: true })
 
 //! Popups
 //? textarea
@@ -144,7 +144,7 @@ function setRequestPopupPlaceholder() {
 		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством"
 }
 setRequestPopupPlaceholder()
-window.addEventListener('resize', setRequestPopupPlaceholder, false)
+window.addEventListener('resize', setRequestPopupPlaceholder, { passive: true })
 
 
 //! Popup open
