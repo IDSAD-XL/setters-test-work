@@ -247,7 +247,6 @@ function randomInteger(min, max) {
 //!Top Section slider
 const topSectionSlider = document.querySelector('#top-section__sponsors')
 const sponsorsSlider = new Splide(topSectionSlider, {
-	perPage: 5,
 	perMove: 1,
 	arrows: false,
 	pagination: false,
