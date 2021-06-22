@@ -5,7 +5,7 @@
 	padding: 40px 60px 60px 60px
 	max-width: 100%
 	@media screen and ( max-width: $m - 1px )
-		padding: 40px 24px 24px 40px
+		padding: 40px 24px
 		border-radius: 32px
 	&__title
 		color: #000
@@ -59,6 +59,8 @@
 				span
 					color: var(--color-font-secondary)
 					@include font($size:14)
+					line-height: 20px
+					margin-top: 4px
 					@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 						margin-top: 8px
 						color: #000000
@@ -74,4 +76,4 @@
 			height: 32px
 	&__text
 		color: #000000
-		@include font($size:20)
+		@include font($size:20, $type:med)

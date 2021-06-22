@@ -38,15 +38,14 @@
 
 .input
 	&-primary
-		background-color: #F9F9F9
+		background-color: #E9E9E9
 		border: 0
 		text-indent: 20px
-
 		min-height: 40px
 		border-radius: 5px 5px 0 0
 		color: var(--color-font-secondary)
 		transition: .2s
-		@include font($size: 16px)
+		@include font($size: 16)
 	&-wrapper
 		position: relative
 		label
@@ -86,7 +85,8 @@
 					&::after
 						animation: animate-border-4 .3s cubic-bezier(.65,.05,.36,1)
 	&-underline
-		position: relative
+		position: absolute
+		bottom: 0
 		width: 100%
 		transition: .1s
 		&:after
