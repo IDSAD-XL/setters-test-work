@@ -16,7 +16,11 @@
 	img
 		max-width: 100%
 		object-fit: contain
-
+	&_show-animate
+		opacity: 0
+		transition: opacity 1s linear
+		&.shown
+			opacity: 1
 	&-layout
 		display: flex
 		flex-direction: column

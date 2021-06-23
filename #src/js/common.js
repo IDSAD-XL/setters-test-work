@@ -79,7 +79,6 @@ class hoverEffect {
 		});
 	}
 }
-
 const magnetScroll = document.querySelector("#scrollWrapper");
 const contentSection = document.querySelector('.content')
 new hoverEffect(magnetScroll);
@@ -107,7 +106,6 @@ function setBodyScrollable() {
 function setBodyUnScrollable() {
 	body.classList.remove('menu-open')
 }
-
 
 //! Footer scroll to top arrows
 const scrollTopArrows = document.querySelectorAll(".footer-sticky__arrow-top")
@@ -145,7 +143,6 @@ function setRequestPopupPlaceholder() {
 }
 setRequestPopupPlaceholder()
 window.addEventListener('resize', setRequestPopupPlaceholder, { passive: true })
-
 
 //! Popup open
 const popups = document.querySelectorAll(".popup")
@@ -186,6 +183,7 @@ function openPopup(popup) {
 	popup.classList.remove('popup_hide')
 	body.classList.add('modal-open')
 }
+
 //!Card Sliders
 const cardSliders = document.querySelectorAll('.card-layout .splide');
 cardSliders.forEach((e) => {
@@ -203,8 +201,8 @@ cardSliders.forEach((e) => {
 		let currentSlide = slider.index
 		sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
 	})
-
 })
+
 //!Top section heading 
 const glitchWords = ['стратегии', 'креативы']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
@@ -244,21 +242,39 @@ function randomInteger(min, max) {
 	return Math.floor(rand);
 }
 
-//!Top Section slider
-const topSectionSlider = document.querySelector('#top-section__sponsors')
-const sponsorsSlider = new Splide(topSectionSlider, {
-	perMove: 1,
-	arrows: false,
-	pagination: false,
-	autoWidth: true,
-	gap: '60px',
-	swipeDistanceThreshold: 200,
-	breakpoints: {
-		1440: {
-			gap: '40px'
-		},
-		1024: {
-			gap: '30px'
-		}
+//!Card show 
+const cards = document.querySelectorAll('.card_show-animate')
+const cardLayout = document.querySelector('#main-card-layout')
+let lowestPoint = cardLayout.scrollTop
+document.addEventListener('scroll', animateCardsShow, { passive: true })
+
+animateCardsShow()
+function animateCardsShow() {
+	if (window.scrollY > lowestPoint) {
+		let visibleCards = []
+		cards.forEach((e) => {
+			if (isVisible(e) && !e.classList.contains('visible')) {
+				e.classList.add('visible')
+				visibleCards.push(e)
+			}
+		})
+		let leftCornerElement = visibleCards[0]
+		visibleCards.forEach((e) => {
+
+			if (e.offsetLeft > leftCornerElement.offsetLeft && e.offsetTop < leftCornerElement.offsetTop) {
+				leftCornerElement = e
+			}
+		})
+		visibleCards.forEach((e) => {
+			let distance = (leftCornerElement.offsetTop - e.offsetTop) + (leftCornerElement.offsetLeft - e.offsetLeft)
+			e.style.transitionDelay = `${-distance}ms`
+			e.classList.add('shown')
+			console.log(-distance * 0.5);
+		})
+		console.log(leftCornerElement)
 	}
-}).mount()
+}
+
+function isVisible(elem) {
+	return elem.getBoundingClientRect().y < window.innerHeight
+}
