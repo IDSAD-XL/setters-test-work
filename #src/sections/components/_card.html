@@ -1,14 +1,8 @@
 <div class="card">
 	@@if(type === 'image'){
-	<!-- <a href="#">
-		<img alt=" " class="card__image" src="img/cards/@@src">
-		@@if(text !== 'none') {
-		<span class="card__text @@customTextClass">@@text</span>
-		}
-	</a> -->
 	<div class="card-image open-popup" data-target="@@popupId">
-		<div class="card-video__image-wrapper">
-			<img alt=" " class="card-video__image" src="img/cards/@@src">
+		<div class="card-inner">
+			<img alt=" " class="card-image__image" src="img/cards/@@src">
 		</div>
 		<span class="card__text @@customTextClass">@@text</span>
 	</div>
@@ -34,7 +28,7 @@
 	}
 	@@if(type === 'video'){
 	<div class="card-video open-popup" data-target="@@popupId">
-		<div class="card-video__image-wrapper">
+		<div class="card-inner">
 			<div class="card-video__duration">0:15</div>
 			<img alt=" " class="card-video__image" src="img/cards/@@src">
 		</div>
