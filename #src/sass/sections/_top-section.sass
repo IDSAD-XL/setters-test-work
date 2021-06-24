@@ -22,7 +22,7 @@
 		justify-content: space-between
 		margin-bottom: 60px
 		padding-top: 177px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@media screen and (min-width: 0) and (max-width: $xl - 1px)
 			padding-top: 120px
 	&__bubbles-wrapper
 		max-width: 100%
@@ -68,13 +68,16 @@
 	&__title
 		margin: 50px 0
 		text-align: center
+		@media screen and (min-width: $l) and (max-width: $xl - 1px)
+			margin: 0
+			margin-bottom: 100px
 		&_small
 			display: block
 			margin-bottom: 20px
 			@media screen and (min-width: $xl)
 				@include font($size: 48, $type:med)
 			@media screen and (min-width: $l) and (max-width: $xl - 1px)
-				@include font($size: 40, $type:med)
+				@include font($size: 28, $type:med)
 			@media screen and (min-width: $m) and (max-width: $l - 1px)
 				@include font($size: 20, $type:med)
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
