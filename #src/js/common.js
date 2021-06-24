@@ -246,10 +246,14 @@ function randomInteger(min, max) {
 const cards = document.querySelectorAll('.card_show-animate')
 const cardLayout = document.querySelector('#main-card-layout')
 let lowestPoint = cardLayout.scrollTop
+let cardsShowedCount = 0
 document.addEventListener('scroll', animateCardsShow, { passive: true })
 
 animateCardsShow()
 function animateCardsShow() {
+	if (cardsShowedCount == cards.length) {
+		document.removeEventListener('scroll', animateCardsShow)
+	}
 	if (window.scrollY > lowestPoint) {
 		let visibleCards = []
 		cards.forEach((e) => {
@@ -260,21 +264,23 @@ function animateCardsShow() {
 		})
 		let leftCornerElement = visibleCards[0]
 		visibleCards.forEach((e) => {
-
-			if (e.offsetLeft > leftCornerElement.offsetLeft && e.offsetTop < leftCornerElement.offsetTop) {
+			if (e.offsetLeft < leftCornerElement.offsetLeft &&
+				e.offsetTop < leftCornerElement.offsetTop) {
 				leftCornerElement = e
 			}
 		})
 		visibleCards.forEach((e) => {
-			let distance = (leftCornerElement.offsetTop - e.offsetTop) + (leftCornerElement.offsetLeft - e.offsetLeft)
-			e.style.transitionDelay = `${-distance}ms`
+			let distance = (Math.abs(leftCornerElement.offsetTop - e.offsetTop)) +
+				(Math.abs(leftCornerElement.offsetLeft - e.offsetLeft))
+			e.style.transitionDelay = `${distance}ms`
+			e.style.animationDelay = `${distance}ms`
 			e.classList.add('shown')
-			console.log(-distance * 0.5);
+			cardsShowedCount++
 		})
-		console.log(leftCornerElement)
 	}
 }
 
 function isVisible(elem) {
-	return elem.getBoundingClientRect().y < window.innerHeight
+	const bound = elem.getBoundingClientRect()
+	return ((bound.top > 0 || bound.top + elem.offsetHeight > 0) && bound.top < window.innerHeight)
 }
