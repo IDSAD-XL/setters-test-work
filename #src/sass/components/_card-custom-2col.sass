@@ -6,15 +6,9 @@
 	.card-custom__text
 		margin-top: 20px
 		margin-bottom: 32px
-		@media screen and ( max-width: $m )
+		@media screen and ( max-width: $m - 1px )
 			@include font($size:16)
 	.card__link
 		margin-bottom: 0
-	.card-custom__contact-icon
-		&--desktop
-			@media screen and ( max-width: $m )
-				display: none
-		&--mobile
-			margin-right: 20px
-			@media screen and ( min-width: $m + 1 )
-				display: none
+		@media screen and ( max-width: $m - 1px )
+			@include font($size: 20, $type:med)

@@ -4,14 +4,14 @@
 	border-radius: 60px
 	padding: 40px 60px 60px 60px
 	max-width: 100%
-	@media screen and ( max-width: $m )
-		padding: 40px 24px 24px 40px
+	@media screen and ( max-width: $m - 1px )
+		padding: 40px 24px
 		border-radius: 32px
 	&__title
 		color: #000
-		@include font($size:60)
-		@media screen and ( max-width: $m )
-			@include font($size:36)
+		@include font($size:60, $type:med)
+		@media screen and ( max-width: $m - 1px )
+			@include font($size:36, $type:med)
 			line-height: 36px
 		img
 			max-width: 100%
@@ -25,21 +25,21 @@
 			a
 				text-decoration: none
 				color: #000
-				@include font($size: 28)
+				@include font($size: 28, $type:med)
 				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					@include font($size:24)
-				@media screen and ( max-width: $m )
-					@include font($size:20)
+					@include font($size:24, $type:med)
+				@media screen and ( max-width: $m - 1px )
+					@include font($size:20, $type:med)
 
 			&-title
 				margin-bottom: 20px
 				color: var(--color-font-secondary)
-				@include font($size:20)
+				@include font($size:20, $type:med)
 				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-					@include font($size: 16)
-				@media screen and ( max-width: $m )
+					@include font($size: 16, $type:med)
+				@media screen and ( max-width: $m - 1px )
 					margin-bottom: 20px
-					@include font($size:14)
+					@include font($size:14, $type:med)
 
 			&-inner
 				display: flex
@@ -47,31 +47,33 @@
 				justify-content: space-between
 				a
 					height: 32px
-				@media screen and ( max-width: $m )
+				@media screen and ( max-width: $m - 1px )
 					flex-direction: column
 
 			&-block
 				width: 50%
 				display: flex
 				flex-direction: column
-				@media screen and ( max-width: $m )
+				@media screen and ( max-width: $m - 1px )
 					width: 100%
 				span
 					color: var(--color-font-secondary)
 					@include font($size:14)
+					line-height: 20px
+					margin-top: 4px
 					@media screen and ( max-width: $l ) and (min-width: $m - 1px)
 						margin-top: 8px
 						color: #000000
 						@include font($size: 12)
-					@media screen and ( max-width: $m )
+					@media screen and ( max-width: $m - 1px )
 						color: #000000
 						@include font($size: 12)
 
 	&__contact-icon
 		transform: translateY(8px)
-		@media screen and ( max-width: $m )
+		@media screen and ( max-width: $m - 1px )
 			width: 32px
 			height: 32px
 	&__text
 		color: #000000
-		@include font($size:20)
+		@include font($size:20, $type:med)

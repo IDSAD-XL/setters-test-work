@@ -6,10 +6,13 @@
 		font-weight: #{$weight}
 		font-style: #{$style}
 
-@mixin font($size)
-	font-family: $font-garphik
+@mixin font($size, $type: reg)
 	font-style: normal
-	font-weight: normal
+	font-weight: 400
+	@if ($type == reg)
+		font-family: $font-garphik-regular
+	@if ($type == med)
+		font-family: $font-garphik-medium
 	@if ($size != ui)
 		font-size: ($size + px)
 	@if ($size == 160)
@@ -30,10 +33,11 @@
 		line-height: 28px
 	@if ($size == 16)
 		line-height: 24px
+		font-weight: 500
 	@if ($size == 12)
 		line-height: 20px
 	@if ($size == ui)
-		font-size: 12px
-		line-height: 12px
-		font-weight: bold
+		font-size: 16px
+		line-height: 16px
+		font-weight: normal
 		letter-spacing: 0.02em

@@ -16,39 +16,49 @@
 		background: #FFFFFF
 		color: #000
 		position: sticky
+		left: 0
 		bottom: 0
 		border: 2px solid #D7D7D7
 		z-index: 20
-		@media screen and (min-width: 768px) and (max-width: $m - 1px)
+		overflow-y: hidden
+		@media screen and (min-width: 768px) and (max-width: $m)
 			justify-content: center
 		@media screen and (min-width: 0) and (max-width: 750px)
-			justify-content: center
+			height: 60px
 		&_hide
 			height: 0
 			bottom: -5px
+			width: 100%
 		&__item
 			height: 100%
 			display: flex
 			justify-content: center
 			align-items: center
 			text-transform: uppercase
-			@include font($size: 20)
+			@include font($size: 20, $type:med)
 			flex-grow: 1
+			transition: .1s
 			a
+				transition: .1s
 				color: #000
 				text-decoration: none
 				display: flex
 				align-items: center
 			&_tablet
 				display: none
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 0px) and (max-width: $m)
 					display: flex
 					flex-grow: 0
+
+			&:hover
+				background-color: var(--color-blue)
+				a
+					color: #fff
 		&__left, &__right
 			display: flex
 		&__left
 			padding-left: 60px
-			@media screen and (min-width: 750px) and (max-width: $m - 1px)
+			@media screen and (min-width: 750px) and (max-width: $m)
 				width: 100%
 				max-width: 750px
 				padding-right: 60px
@@ -60,6 +70,12 @@
 			border-right: 2px solid #D7D7D7
 			&:nth-child(1)
 				border-left: 2px solid #D7D7D7
+				@media screen and (min-width: 0) and (max-width: 750px)
+					border-left: 0
+			&:nth-last-child(1)
+				@media screen and (min-width: 0) and (max-width: 750px)
+					width: 60px
+					border-right: 0
 		&__right &__item
 			min-width: 40px
 			border-left: 2px solid #D7D7D7
@@ -68,7 +84,7 @@
 		&__right &__item:nth-last-child(1)
 			width: 60px
 		&__right
-			@media screen and (min-width: 750px) and (max-width: $m - 1px)
+			@media screen and (min-width: 750px) and (max-width: $m)
 				display: none
 		&__mobile-hide
 			@media screen and (min-width: 0) and (max-width: 750px)
@@ -76,17 +92,18 @@
 		&__arrow-top
 			cursor: pointer
 			transition: .1s
+			path
+				transition: .2s
 			&:hover
-				transform: scale(1.1)
-			&:active
-				transform: scale(0.95)
+				path
+					stroke: #fff
 	&-content
 		width: 100%
 		height: 150px
 		display: flex
 		justify-content: space-between
 		padding: 0 70px
-		@media screen and (min-width: 750px) and (max-width: $m - 1px)
+		@media screen and (min-width: 750px) and (max-width: $m)
 			height: 250px
 			justify-content: center
 		@media screen and (min-width: 0) and (max-width: 750px)
@@ -101,23 +118,23 @@
 		&__right
 			display: flex
 			color: var(--color-font-additional)
-			@include font($size: 28)
-			@media screen and (min-width: 750px) and (max-width: $m - 1px)
+			@include font($size: 28, $type:med)
+			@media screen and (min-width: 750px) and (max-width: $m)
 				margin-bottom: 100px
 				justify-content: center
 				max-width: 630px
 				width: 100%
 			span
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 750px) and (max-width: $m)
 					margin-top: 10px
-					@include font($size: 20)
+					@include font($size: 20, $type:med)
 				@media screen and (min-width: 0) and (max-width: 750px)
-					@include font($size: 20)
+					@include font($size: 20, $type:med)
 			form
 				display: flex
 				justify-content: center
 				align-items: center
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 750px) and (max-width: $m)
 					align-items: flex-start
 					justify-content: space-between
 				@media screen and (min-width: 0) and (max-width: 750px)
@@ -129,35 +146,44 @@
 				flex-wrap: wrap
 				@media screen and (min-width: 0) and (max-width: 750px)
 					justify-content: center
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 750px) and (max-width: $m)
 					justify-content: flex-end
 			button
 				@media screen and (min-width: $m) and (max-width: $l - 1px)
 					margin-top: 20px
 					margin-left: 10px
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 750px) and (max-width: $m)
 					margin-top: 40px
 					margin-right: 50px
 				@media screen and (min-width: 0) and (max-width: 750px)
 					width: 100%
 					margin-top: 16px
-			input
-				text-indent: 10px
+			.input-wrapper
+				height: 40px
 				width: 250px
 				margin-left: 40px
 				margin-right: 20px
+				input
+					width: 100%
+					height: 100%
+					background-color: #E9E9E9
+				label
+					top: 10px
 				@media screen and (min-width: $m) and (max-width: $l - 1px)
 					margin-left: 0
-				@media screen and (min-width: 750px) and (max-width: $m - 1px)
+				@media screen and (min-width: 750px) and (max-width: $m)
 					width: 250px
 					margin-right: 0
 				@media screen and (min-width: 0) and (max-width: 750px)
+					height: 60px
 					width: 100%
 					margin: 0
 					margin-top: 20px
+					label
+						top: 20px
 
 		&__left
-			@media screen and (min-width: 750px) and (max-width: $m - 1px)
+			@media screen and (min-width: 750px) and (max-width: $m)
 				display: none
 
 	&-bottom
@@ -182,7 +208,7 @@
 		border-bottom: 2px solid #D7D7D7
 		border-left: 2px solid #D7D7D7
 		border-right: 2px solid #D7D7D7
-		@media screen and (min-width: 750px) and (max-width: $m - 1px)
+		@media screen and (min-width: 750px) and (max-width: $m)
 			display: flex
 			justify-content: center
 		&__inner
@@ -206,9 +232,11 @@
 				border-right: 2px solid #D7D7D7
 				flex-grow: 1
 				text-transform: uppercase
-				@include font($size: 20)
+				@include font($size: 20, $type:med)
 				color: #000
 	&-mobile
+		border-left: 2px solid #D7D7D7
+		border-right: 2px solid #D7D7D7
 		display: none
 		@media screen and (min-width: 0) and (max-width: 750px)
 			display: flex
@@ -222,7 +250,7 @@
 			display: flex
 			justify-content: center
 			align-items: center
-			@include font($size: 20)
+			@include font($size: 20, $type:med)
 			color: #000
 			a
 				color: #000
@@ -231,11 +259,26 @@
 				align-items: center
 			&:nth-last-child(1), &:nth-child(1)
 				border-bottom: 2px solid #D7D7D7
+				border-left: 0
 				width: 100%
 			&:nth-last-child(1)
 				border-top: 2px solid #D7D7D7
 			&:nth-last-child(2)
 				border-right: 2px solid #D7D7D7
+			@media screen and (min-width: 0px) and (max-width: $m)
+				height: 60px
+				min-width: 60px
 	&__mobile-hide
 		@media screen and (min-width: 0) and (max-width: 750px)
 			display: none
+	&__social-link
+		transition: .2s
+		&:hover
+			color: #fff
+			background-color: var(--color-blue)
+			path
+				stroke: #fff
+			.social-link_telegram
+				path
+					fill: #fff
+					stroke: none

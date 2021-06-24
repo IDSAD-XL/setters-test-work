@@ -1,0 +1,37 @@
+.scroll
+	&-wrapper
+		z-index: 5
+		position: absolute
+		right: 55px
+		display: flex
+		justify-content: center
+		align-items: center
+		bottom: 40px
+		transform-style: preserve-3d
+		backface-visibility: hidden
+		cursor: pointer
+		@media screen and (min-width: $m) and (max-width: $l - 1px)
+			bottom: 50px
+		@media screen and (min-width: 0) and (max-width: $m - 1px)
+			display: none
+		@media screen and (min-width: 1920px)
+			right: calc((100vw - 1920px)/2 + 55px)
+		&:hover
+			circle
+				stroke: #1C54FC
+			path
+				stroke: #1C54FC
+	&-arrow
+		position: absolute
+		width: 20px
+		height: 20px
+		path
+			transition: .2s
+	&-circle
+		width: 128px
+		height: 128px
+		@media screen and (min-width: $m) and (max-width: $l - 1px)
+			width: 100px
+			height: 100px
+		circle
+			transition: .2s

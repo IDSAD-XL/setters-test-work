@@ -1,8 +1,43 @@
-<div class="card">
-	<a href="">
-		<img src="img/cards/@@src" alt="">
-		@@if(text !== 'none') {
+<div class="card card_show-animate">
+	@@if(type === 'image'){
+	<div class="card-image open-popup" data-target="@@popupId">
+		<div class="card-inner">
+			<img alt=" " class="card-image__image" src="img/cards/@@src">
+		</div>
 		<span class="card__text @@customTextClass">@@text</span>
-		}
+	</div>
+	@@include('../popups/_popup-card.html', {
+	"type": "image",
+	"popupId": "@@popupId",
+	"popupsrc": "@@popupsrc"
+	})
+	}
+	@@if(type === 'slider'){
+	<a href="#">
+		<div class="splide card-slider">
+			<div class="splide__slide-number"></div>
+			<div class="splide__track">
+				<ul class="splide__list">
+					@@for (let i = 0; i < slides.length; i++){ <li class="splide__slide"> <img alt=" " src="img/cards/`+slides[i].src+`"></li>
+						}
+				</ul>
+			</div>
+		</div>
+		<span class="card__text @@customTextClass">@@text</span>
 	</a>
+	}
+	@@if(type === 'video'){
+	<div class="card-video open-popup" data-target="@@popupId">
+		<div class="card-inner">
+			<div class="card-video__duration">0:15</div>
+			<img alt=" " class="card-video__image" src="img/cards/@@src">
+		</div>
+		<span class="card__text @@customTextClass">@@text</span>
+	</div>
+	@@include('../popups/_popup-card.html', {
+	"type": "video",
+	"popupId": "@@popupId",
+	"popupsrc": "@@popupsrc"
+	})
+	}
 </div>

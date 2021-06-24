@@ -1,12 +1,16 @@
 @import "settings/_variables.sass"
 
 .header
+	position: fixed
 	display: flex
 	justify-content: center
 	will-change: transform
 	height: 80px
-	max-width: 1560px
+	max-width: 1920px
 	width: 100%
+	z-index: 10
+	background: rgba(49, 49, 49, 0.8)
+	backdrop-filter: blur(18px)
 	@media screen and (min-width: $xl)
 		padding: 0 55px
 	@media screen and (min-width: $l) and (max-width: $xl - 1px)
@@ -44,12 +48,15 @@
 			list-style: none
 			@media screen and (min-width: 0) and (max-width: $m - 1px)
 				display: none
-		&_item
+		&-item
 			margin-left: 40px
 			a
 				text-decoration: none
 				color: var(--color-font-primary)
 				position: relative
+				transition: .1s
+				&:hover
+					color: var(--color-blue)
 				&:after
 					content: ""
 					border-bottom: solid 1px #dfd3c3
@@ -59,7 +66,8 @@
 					width: 100%
 					transform: scaleX(0)
 					transform-origin: right
-					transition: transform .3s cubic-bezier(.65,.05,.36,1)
+					transition: transform .3s cubic-bezier(.65,.05,.36,1), border-bottom .2s linear
 				&:hover::after
 					transform-origin: left
 					transform: scaleX(1)
+					border-bottom: solid 1px var(--color-blue)

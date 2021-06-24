@@ -1,39 +1,104 @@
+@keyframes animate-border-1
+	0%
+		transform-origin: right
+		transform: scale(1)
+	50%
+		transform: scale(0)
+	100%
+		transform-origin: left
+		transform: scale(1)
+
+@keyframes animate-border-2
+	0%
+		transform-origin: right
+		transform: scale(1)
+	50%
+		transform: scale(0)
+	100%
+		transform-origin: left
+		transform: scale(1)
+
+@keyframes animate-border-3
+	0%
+		transform-origin: right
+		transform: scale(1)
+	50%
+		transform: scale(0)
+	100%
+		transform-origin: left
+		transform: scale(1)
+
+@keyframes animate-border-4
+	0%
+		transform-origin: right
+		transform: scale(0)
+	100%
+		transform-origin: left
+		transform: scale(1)
+
 .input
 	&-primary
-		background-color: #F9F9F9
+		background-color: #E9E9E9
 		border: 0
 		text-indent: 20px
-		border-bottom: 2px solid #666666
 		min-height: 40px
 		border-radius: 5px 5px 0 0
 		color: var(--color-font-secondary)
 		transition: .2s
-		@include font($size: 16px)
-		&:focus
-			border-bottom: 2px solid var(--color-blue)
+		@include font($size: 16)
 	&-wrapper
 		position: relative
 		label
 			position: absolute
 			left: 20px
 			top: 20px
-			color: #666666
+			color: var(--color-font-additional-night)
 			transition: .1s
+			pointer-events: none
 			@include font($size: 16)
 		input
 			position: relative
 			color: #000
+			&:focus ~ .input-underline, &:not(:placeholder-shown) ~ .input-underline
+				&::after
+					border-bottom: 2px solid var(--color-blue)
+					animation: animate-border-1 .3s cubic-bezier(.65,.05,.36,1)
 			&:focus ~ .input-label, &:not(:placeholder-shown) ~ .input-label
 				top: 0
 				@include font($size: 10)
 			&:not(:focus):not(:valid):not(:placeholder-shown)
-				border-bottom: 2px solid var(--color-red)
 				& ~ .input-error-icon, & ~ .input-error-text
 					display: block
+				& ~ .input-underline
+					&::after
+						border-bottom: 2px solid var(--color-red)
+						animation: animate-border-2 .3s cubic-bezier(.65,.05,.36,1)
 			&:not(:focus):valid:not(:placeholder-shown)
-				border-bottom: 2px solid var(--color-green)
 				& ~ .input-success-icon
 					display: block
+				& ~ .input-underline
+					&::after
+						border-bottom: 2px solid var(--color-green)
+						animation: animate-border-3 .3s cubic-bezier(.65,.05,.36,1)
+			&:not(:focus)
+				& ~ .input-underline
+					&::after
+						animation: animate-border-4 .3s cubic-bezier(.65,.05,.36,1)
+	&-underline
+		position: absolute
+		bottom: 0
+		width: 100%
+		transition: .1s
+		&:after
+			content: ""
+			border-bottom: solid 2px #666666
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			transform-origin: right
+			transform: scaleX(1)
+
 	&-error-text
 		display: none
 		position: absolute

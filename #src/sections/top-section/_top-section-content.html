@@ -3,31 +3,31 @@
 		<ul class="top-section__bubbles open-popup" data-target="popup-rewards">
 			<li class="top-section__bubble">
 				<div class="top-section__bubble-number round grey">2</div>
-				<img src="img/top-section-bubbles/ADCR 1.png" alt="">
+				<img alt=" " src="img/top-section-bubbles/ADCE.svg">
 			</li>
 			<li class="top-section__bubble">
 				<div class="top-section__bubble-number round grey">2</div>
-				<img src="img/top-section-bubbles/ADCR 2.png" alt="">
+				<img alt=" " src="img/top-section-bubbles/ADCR.svg">
 			</li>
 			<li class="top-section__bubble">
 				<div class="top-section__bubble-number round yellow">3</div>
-				<img src="img/top-section-bubbles/ADCR 3.png" alt="">
+				<img alt=" " src="img/top-section-bubbles/G8.svg">
 			</li>
 			<li class="top-section__bubble">
 				<div class="top-section__bubble-number red">2</div>
-				<img src="img/top-section-bubbles/ADCR 4.png" alt="">
+				<img alt=" " src="img/top-section-bubbles/RedApple.svg">
 			</li>
 		</ul>
 	</div>
 	<div class="top-section__title">
 		<span class="top-section__title_small">
-			Мы — SETTERS
+			Мы коммуникационное агентство
 		</span>
-		</br>
+		<br>
 		<span class="top-section__title_big">
 			Разрабатываем
-			</br>
-			стратегии
+			<br>
+			<span id="top-section__title-glitch-word">стратегии</span>
 		</span>
 	</div>
 	<div class="top-section__sponsors-wrapper">
@@ -38,25 +38,19 @@
 				брендами, которые любим
 			</p>
 		</div>
-		<div class="top-section__sponsors-box">
-			<ul class="top-section__sponsors">
-				<li class="top-section__sponsors-item">
-					<img src="img/top-section-sponsors/nike1.png" alt="">
-				</li>
-				<li class="top-section__sponsors-item">
-					<img src="img/top-section-sponsors/SBERBANK.png" alt="">
-				</li>
-				<li class="top-section__sponsors-item">
-					<img src="img/top-section-sponsors/Borjomi.png" alt="">
-				</li>
-				<li class="top-section__sponsors-item">
-					<img src="img/top-section-sponsors/CHUPA_CHUPS.png" alt="">
-				</li>
-				<li class="top-section__sponsors-item">
-					<img src="img/top-section-sponsors/ASUS.png" alt="">
-				</li>
-			</ul>
-		</div>
-
+		@@include('_top-section__sponsors.html', {
+		"images": [
+		{"src": "nike1.png"},
+		{"src": "Property 1=SBERBANK.svg"},
+		{"src": "Property 1=Borjomi.svg"},
+		{"src": "Property 1=CHUPA_CHUPS.svg"},
+		{"src": "Property 1=ASUS.svg"},
+		{"src": "Property 1=JAGER.svg"},
+		{"src": "Property 1=LANCOM.svg"},
+		{"src": "Property 1=MTS.svg"},
+		{"src": "Property 1=SOVKOMBANK.svg"},
+		{"src": "Property 1=LOREAL.svg"}
+		]
+		})
 	</div>
 </section>
