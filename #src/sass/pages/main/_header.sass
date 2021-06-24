@@ -26,12 +26,31 @@
 		display: flex
 		align-items: center
 		width: 100%
-	&_logo
+	&__logo
 		width: 164px
 		height: 40px
+		&_dark
+			display: none
 		@media screen and (min-width: 0) and (max-width: $m - 1px)
 			height: 24px
 			width: 100px
+	&.dark
+		.header__logo_light
+			display: block
+		.header__logo_dark
+			display: none
+	&.light
+		background: rgba(245, 245, 245, 0.8)
+		backdrop-filter: blur(18px)
+		.header__logo_light
+			display: none
+		.header__logo_dark
+			display: block
+		.header__menu
+			a
+				color: #000
+				&:hover
+					color: var(--color-blue)
 	&__menu
 		width: 100%
 		display: flex
