@@ -120,10 +120,12 @@ if (scrollTopArrows) {
 	scrollTopArrows.forEach((e) => {
 		e.addEventListener('click', () => {
 			// topSection.scrollIntoView({ behavior: "smooth" })
-			body.animate({ scrollTop: 0 }, 800)
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			})
 		})
 	})
-
 }
 
 //! Footer hide at top section
@@ -142,47 +144,39 @@ window.addEventListener("scroll", () => {
 }, { passive: true })
 
 //! Popups
-//? textarea
-const requestTextarea = document.querySelector("#request-popup__details");
-//? textarea mobile
-function setRequestPopupPlaceholder() {
-	requestTextarea.placeholder = (window.innerWidth > 2024) ?
-		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством. Какую цель вы хотели бы достичь или какую главную проблему вы хотели бы решить с нашей помощью?"
-		:
-		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством"
-}
-setRequestPopupPlaceholder()
-window.addEventListener('resize', setRequestPopupPlaceholder, { passive: true })
 
 //! Popup open
 const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
 
-popupToggles.forEach((e) => {
-	const targetPopup = document.getElementById(e.dataset.target)
-	e.addEventListener('click', (evt) => {
-		evt.preventDefault()
-		openPopup(targetPopup)
-	})
-	const popupBody = targetPopup.querySelector('.popup-body')
-	if (popupBody != null) {
-		targetPopup.addEventListener('click', (e) => {
-			e.preventDefault()
-			const clicked = e.target
-			if (clicked.classList.contains('open-popup')) return
-			if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+if (popups && popupToggles) {
+	popupToggles.forEach((e) => {
+		const targetPopup = document.getElementById(e.dataset.target)
+		e.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			openPopup(targetPopup)
+		})
+		const popupBody = targetPopup.querySelector('.popup-body')
+		if (popupBody != null) {
+			targetPopup.addEventListener('click', (e) => {
+				e.preventDefault()
+				const clicked = e.target
+				if (clicked.classList.contains('open-popup')) return
+				if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+					closePopup(targetPopup)
+				}
+			})
+		}
+		const closeButton = targetPopup.querySelector('.close-popup')
+		if (closeButton != null) {
+			closeButton.addEventListener('click', (e) => {
+				e.preventDefault()
 				closePopup(targetPopup)
-			}
-		})
-	}
-	const closeButton = targetPopup.querySelector('.close-popup')
-	if (closeButton != null) {
-		closeButton.addEventListener('click', (e) => {
-			e.preventDefault()
-			closePopup(targetPopup)
-		})
-	}
-})
+			})
+		}
+	})
+}
+
 
 function closePopup(popup) {
 	popup.classList.add('popup_hide')
@@ -196,28 +190,32 @@ function openPopup(popup) {
 
 //!Card Sliders
 const cardSliders = document.querySelectorAll('.card-layout .splide');
-cardSliders.forEach((e) => {
-	const slider = new Splide(e, {
-		type: 'loop',
-		autoplay: true,
-		interval: 3000,
-		pauseOnHover: true,
-		arrows: false
-	}).mount();
-	const sliderNumber = e.querySelector('.splide__slide-number')
-	const slidesCount = slider.length;
-	sliderNumber.innerHTML = `1/${slidesCount}`
-	slider.on('moved', () => {
-		let currentSlide = slider.index
-		sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+if (cardSliders) {
+	cardSliders.forEach((e) => {
+		const slider = new Splide(e, {
+			type: 'loop',
+			autoplay: true,
+			interval: 3000,
+			pauseOnHover: true,
+			arrows: false
+		}).mount();
+		const sliderNumber = e.querySelector('.splide__slide-number')
+		const slidesCount = slider.length;
+		sliderNumber.innerHTML = `1/${slidesCount}`
+		slider.on('moved', () => {
+			let currentSlide = slider.index
+			sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+		})
 	})
-})
+}
 
 //!Top section heading 
 const glitchWords = ['стратегии', 'креативы']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
 
-glitchWord(0)
+if (glitchTitle) {
+	glitchWord(0)
+}
 
 function glitchWord(ind) {
 	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
@@ -254,43 +252,68 @@ function randomInteger(min, max) {
 
 //!Card show 
 const cards = document.querySelectorAll('.card_show-animate')
-const cardLayout = document.querySelector('#main-card-layout')
-let lowestPoint = cardLayout.scrollTop
-let cardsShowedCount = 0
-document.addEventListener('scroll', animateCardsShow, { passive: true })
+const cardLayout = document.querySelector('.card-layout')
+let lowestPoint
+let cardsShowedCount
 
-animateCardsShow()
+if (cardLayout && cards) {
+	document.addEventListener('scroll', animateCardsShow, { passive: true })
+	lowestPoint = cardLayout.scrollTop
+	cardsShowedCount = 0
+	animateCardsShow()
+}
+
 function animateCardsShow() {
 	if (cardsShowedCount == cards.length) {
 		document.removeEventListener('scroll', animateCardsShow)
 	}
-	if (window.scrollY > lowestPoint) {
-		let visibleCards = []
-		cards.forEach((e) => {
-			if (isVisible(e) && !e.classList.contains('visible')) {
-				e.classList.add('visible')
-				visibleCards.push(e)
-			}
-		})
-		let leftCornerElement = visibleCards[0]
-		visibleCards.forEach((e) => {
-			if (e.offsetLeft < leftCornerElement.offsetLeft &&
-				e.offsetTop < leftCornerElement.offsetTop) {
-				leftCornerElement = e
-			}
-		})
-		visibleCards.forEach((e) => {
-			let distance = (Math.abs(leftCornerElement.offsetTop - e.offsetTop)) +
-				(Math.abs(leftCornerElement.offsetLeft - e.offsetLeft))
-			e.style.transitionDelay = `${distance}ms`
-			e.style.animationDelay = `${distance}ms`
-			e.classList.add('shown')
-			cardsShowedCount++
-		})
-	}
+	let visibleCards = []
+	cards.forEach((e) => {
+		if (isVisible(e) && !e.classList.contains('visible')) {
+			e.classList.add('visible')
+			visibleCards.push(e)
+		}
+	})
+	let leftCornerElement = visibleCards[0]
+	visibleCards.forEach((e) => {
+		if (e.offsetLeft < leftCornerElement.offsetLeft &&
+			e.offsetTop < leftCornerElement.offsetTop) {
+			leftCornerElement = e
+		}
+	})
+	visibleCards.forEach((e) => {
+		let distance = (Math.abs(leftCornerElement.offsetTop - e.offsetTop)) +
+			(Math.abs(leftCornerElement.offsetLeft - e.offsetLeft))
+		e.style.transitionDelay = `${distance}ms`
+		e.style.animationDelay = `${distance}ms`
+		e.classList.add('shown')
+		cardsShowedCount++
+	})
+
 }
 
 function isVisible(elem) {
 	const bound = elem.getBoundingClientRect()
 	return ((bound.top > 0 || bound.top + elem.offsetHeight > 0) && bound.top < window.innerHeight)
+}
+
+//!Cases
+const casesContent = document.querySelector('.cases-content')
+const casesSwitcher = document.getElementsByName('cases-switch')
+const casesSwitchList = document.getElementById('cases-switch-list')
+const casesSwitchCards = document.getElementById('cases-switch-cards')
+
+if (casesSwitcher) {
+	casesSwitcher.forEach((e) => {
+		e.addEventListener('change', (e) => {
+			if (casesSwitchCards.checked) {
+				casesContent.classList.add('mode-cards')
+				casesContent.classList.remove('mode-list')
+			}
+			else {
+				casesContent.classList.remove('mode-cards')
+				casesContent.classList.add('mode-list')
+			}
+		})
+	})
 }

@@ -48,7 +48,6 @@ let { src, dest } = require('gulp'),
 	rename = require('gulp-rename'),              //Подключение переименования файлов
 	del = require('del'),                         //Подключение удаления файлов
 	imagemin = require('gulp-imagemin'),          //Подключение сжатия картинок
-	pngquant = require('imagemin-pngquant'),      //Подключение для работы с png
 	cache = require('gulp-cache'),                //Подключение кеширования
 	autoprefixer = require('gulp-autoprefixer'),  //Подключение автопрефиксера 
 	group_media = require('gulp-group-css-media-queries'),

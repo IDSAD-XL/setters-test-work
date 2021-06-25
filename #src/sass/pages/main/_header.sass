@@ -6,7 +6,6 @@
 	justify-content: center
 	will-change: transform
 	height: 80px
-	max-width: 1920px
 	width: 100%
 	z-index: 10
 	background: rgba(49, 49, 49, 0.8)
@@ -26,6 +25,7 @@
 		display: flex
 		align-items: center
 		width: 100%
+		max-width: 1920px
 	&__logo
 		width: 164px
 		height: 40px
@@ -51,6 +51,12 @@
 				color: #000
 				&:hover
 					color: var(--color-blue)
+		& ~ .menu .menu__button
+			span
+				background-color: #000
+				&::after , &::before
+					background-color: #000
+
 	&__menu
 		width: 100%
 		display: flex
