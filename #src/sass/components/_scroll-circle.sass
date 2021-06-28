@@ -2,20 +2,23 @@
 	&-wrapper
 		z-index: 5
 		position: absolute
-		right: 55px
+		right: 60px
 		display: flex
 		justify-content: center
 		align-items: center
-		bottom: 40px
+		bottom: 10px
 		transform-style: preserve-3d
 		backface-visibility: hidden
 		cursor: pointer
+		@include media($type: desktop)
+			bottom: 0
 		@include media($type: tablet)
-			bottom: 50px
+			right: 45px
+			bottom: 0
 		@include media($type: mobile)
 			display: none
 		@include media($type: ultra-wide)
-			right: calc((100vw - 1920px)/2 + 55px)
+			right: calc((100vw - 1920px)/2 + 60px)
 		&:hover
 			circle
 				stroke: #1C54FC

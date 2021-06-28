@@ -20,10 +20,13 @@
 		flex-direction: column
 		flex-grow: 1
 		justify-content: space-between
-		margin-bottom: 60px
+		margin-bottom: 16px
 		padding-top: 178px
 		@include media($type: desktop)
 			padding-top: 118px
+		@include media($type: tablet)
+			padding-top: 105px
+			margin-bottom: 6px
 	&__bubbles-wrapper
 		max-width: 100%
 		overflow-x: hidden
@@ -66,20 +69,22 @@
 	&__bubble-number.red
 		background-color: var(--color-red)
 	&__title
-		margin: 50px 0
+		margin: 40px 0
 		text-align: center
+		color: #D4d4d4
 		@include media($type: desktop)
 			margin: 0
-			margin-bottom: 100px
+			margin-bottom: 78px
 		&_small
 			display: block
-			margin-bottom: 20px
+			margin-bottom: 36px
 			@include media($type: ultra-wide)
 				@include font($size: 48, $type:med)
 			@include media($type: desktop)
-				@include font($size: 28, $type:med)
+				@include font($size: 24, $type:med)
 			@include media($type: tablet)
 				@include font($size: 20, $type:med)
+				margin-bottom: 0
 			@include media($type: mobile)
 				@include font($size: 16, $type:med)
 				margin-bottom: -5px
@@ -89,6 +94,7 @@
 				@include font($size: 160, $type:med)
 			@include media($type: desktop)
 				@include font($size: 124, $type:med)
+				line-height: 100%
 			@include media($type: tablet)
 				line-height: 72px
 				@include font($size: 76, $type:med)
@@ -115,6 +121,7 @@
 				margin-right: 30px
 			&_text
 				text-align: left
+				max-width: 280px
 				@include font($size: 20, $type:med)
 				@include media($max-width: $l)
 					@include font($size: 16, $type:med)
@@ -149,6 +156,8 @@
 				z-index: 2
 				right: -2px
 				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 80%, rgba(49,49,49,1) 100%)
+				@include media($type: desktop)
+					background: linear-gradient(90deg, rgba(49, 49, 49, 0) 75%, rgba(49,49,49,1) 80%)
 				@include media($type: tablet)
 					background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
 				@include media($type: mobile)
