@@ -21,9 +21,9 @@
 		border: 2px solid #D7D7D7
 		z-index: 20
 		overflow-y: hidden
-		@media screen and (min-width: 768px) and (max-width: $m)
+		@include media($min-width: 768px, $max-width: $m)
 			justify-content: center
-		@media screen and (min-width: 0) and (max-width: 750px)
+		@include media($max-width: 767px)
 			height: 60px
 		&_hide
 			height: 0
@@ -46,7 +46,7 @@
 				align-items: center
 			&_tablet
 				display: none
-				@media screen and (min-width: 0px) and (max-width: $m)
+				@include media($type: $m)
 					display: flex
 					flex-grow: 0
 
@@ -58,11 +58,11 @@
 			display: flex
 		&__left
 			padding-left: 60px
-			@media screen and (min-width: 750px) and (max-width: $m)
+			@include media($min-width: 768px, $max-width: $m)
 				width: 100%
 				max-width: 750px
 				padding-right: 60px
-			@media screen and (min-width: 0) and (max-width: 750px)
+			@include media($max-width: 767px)
 				width: 100%
 				padding-left: 0
 		&__left &__item
@@ -70,10 +70,10 @@
 			border-right: 2px solid #D7D7D7
 			&:nth-child(1)
 				border-left: 2px solid #D7D7D7
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					border-left: 0
 			&:nth-last-child(1)
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					width: 60px
 					border-right: 0
 		&__right &__item
@@ -84,10 +84,10 @@
 		&__right &__item:nth-last-child(1)
 			width: 60px
 		&__right
-			@media screen and (min-width: 750px) and (max-width: $m)
+			@include media($min-width: 768px, $max-width: $m)
 				display: none
 		&__mobile-hide
-			@media screen and (min-width: 0) and (max-width: 750px)
+			@include media($max-width: 767px)
 				display: none
 		&__arrow-top
 			cursor: pointer
@@ -103,10 +103,10 @@
 		display: flex
 		justify-content: space-between
 		padding: 0 70px
-		@media screen and (min-width: 750px) and (max-width: $m)
+		@include media($min-width: 768px, $max-width: $m)
 			height: 250px
 			justify-content: center
-		@media screen and (min-width: 0) and (max-width: 750px)
+		@include media($max-width: 767px)
 			text-align: center
 			height: 350px
 			padding: 0 50px
@@ -119,43 +119,43 @@
 			display: flex
 			color: var(--color-font-additional)
 			@include font($size: 28, $type:med)
-			@media screen and (min-width: 750px) and (max-width: $m)
+			@include media($min-width: 768px, $max-width: $m)
 				margin-bottom: 100px
 				justify-content: center
 				max-width: 630px
 				width: 100%
 			span
-				@media screen and (min-width: 750px) and (max-width: $m)
+				@include media($min-width: 768px, $max-width: $m)
 					margin-top: 10px
 					@include font($size: 20, $type:med)
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					@include font($size: 20, $type:med)
 			form
 				display: flex
 				justify-content: center
 				align-items: center
-				@media screen and (min-width: 750px) and (max-width: $m)
+				@include media($min-width: 768px, $max-width: $m)
 					align-items: flex-start
 					justify-content: space-between
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					flex-wrap: wrap
 			&-form-inner
 				display: flex
 				align-items: center
 				justify-content: flex-start
 				flex-wrap: wrap
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					justify-content: center
-				@media screen and (min-width: 750px) and (max-width: $m)
+				@include media($min-width: 768px, $max-width: $m)
 					justify-content: flex-end
 			button
-				@media screen and (min-width: $m) and (max-width: $l - 1px)
+				@include media($type: tablet)
 					margin-top: 20px
 					margin-left: 10px
-				@media screen and (min-width: 750px) and (max-width: $m)
+				@include media($min-width: 768px, $max-width: $m)
 					margin-top: 40px
 					margin-right: 50px
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					width: 100%
 					margin-top: 16px
 			.input-wrapper
@@ -169,12 +169,12 @@
 					background-color: #E9E9E9
 				label
 					top: 10px
-				@media screen and (min-width: $m) and (max-width: $l - 1px)
+				@include media($type: tablet)
 					margin-left: 0
-				@media screen and (min-width: 750px) and (max-width: $m)
+				@include media($min-width: 768px, $max-width: $m)
 					width: 250px
 					margin-right: 0
-				@media screen and (min-width: 0) and (max-width: 750px)
+				@include media($max-width: 767px)
 					height: 60px
 					width: 100%
 					margin: 0
@@ -183,7 +183,7 @@
 						top: 20px
 
 		&__left
-			@media screen and (min-width: 750px) and (max-width: $m)
+			@include media($min-width: 768px, $max-width: $m)
 				display: none
 
 	&-bottom
@@ -194,9 +194,9 @@
 		border: 2px solid #D7D7D7
 		a
 			margin-right: 40px
-			@media screen and (min-width: 0) and (max-width: 750px)
+			@include media($max-width: 767px)
 				margin: 0 15px
-		@media screen and (min-width: 0) and (max-width: 750px)
+		@include media($max-width: 767px)
 			flex-wrap: wrap
 			justify-content: center
 			padding: 0 20px
@@ -208,7 +208,7 @@
 		border-bottom: 2px solid #D7D7D7
 		border-left: 2px solid #D7D7D7
 		border-right: 2px solid #D7D7D7
-		@media screen and (min-width: 750px) and (max-width: $m)
+		@include media($min-width: 768px, $max-width: $m)
 			display: flex
 			justify-content: center
 		&__inner
@@ -238,7 +238,7 @@
 		border-left: 2px solid #D7D7D7
 		border-right: 2px solid #D7D7D7
 		display: none
-		@media screen and (min-width: 0) and (max-width: 750px)
+		@include media($max-width: 767px)
 			display: flex
 			flex-wrap: wrap
 			background-color: #fff
@@ -265,11 +265,11 @@
 				border-top: 2px solid #D7D7D7
 			&:nth-last-child(2)
 				border-right: 2px solid #D7D7D7
-			@media screen and (min-width: 0px) and (max-width: $m)
+			@include media($type: $m)
 				height: 60px
 				min-width: 60px
 	&__mobile-hide
-		@media screen and (min-width: 0) and (max-width: 750px)
+		@include media($max-width: 767px)
 			display: none
 	&__social-link
 		transition: .2s

@@ -10,16 +10,16 @@
 	z-index: 10
 	background: rgba(49, 49, 49, 0.8)
 	backdrop-filter: blur(18px)
-	@media screen and (min-width: $xl)
-		padding: 0 55px
-	@media screen and (min-width: $l) and (max-width: $xl - 1px)
+	@include media($type: ultra-wide)
+		padding: 0 60px
+	@include media($type: desktop)
 		padding-right: 55px
 		padding-left: 66px
-	@media screen and (min-width: $m) and (max-width: $l - 1px)
+	@include media($type: tablet)
 		padding: 0 42px
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
+	@include media($type: mobile)
 		padding: 0 20px
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
+	@include media($type: mobile)
 		position: fixed
 	&__inner
 		display: flex
@@ -31,7 +31,7 @@
 		height: 40px
 		&_dark
 			display: none
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			height: 24px
 			width: 100px
 	&.dark
@@ -66,12 +66,12 @@
 			display: flex
 			align-items: center
 		&_right
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
+			@include media($type: mobile)
 				display: none
 		&__items
 			display: flex
 			list-style: none
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
+			@include media($type: mobile)
 				display: none
 		&-item
 			margin-left: 40px

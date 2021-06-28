@@ -6,9 +6,9 @@
 	.card-custom__text
 		margin-top: 20px
 		margin-bottom: 32px
-		@media screen and ( max-width: $m - 1px )
+		@include media($type: mobile)
 			@include font($size:16)
 	.card__link
 		margin-bottom: 0
-		@media screen and ( max-width: $m - 1px )
+		@include media($type: mobile)
 			@include font($size: 20, $type:med)

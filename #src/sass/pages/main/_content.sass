@@ -13,14 +13,14 @@
 		max-width: 100vw
 		background-color: #666666
 		border-radius: 64px
-		@media screen and ( max-width: $xl ) and (min-width: $l - 1px)
+		@include media($type: desktop)
 			width: 1160px
 			height: 8px
 			border-radius: 48px
-		@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+		@include media($type: tablet)
 			width: 1016px
 			height: 6px
 			border-radius: 55px
-		@media screen and ( max-width: $m )
+		@include media($type: mobile)
 			width: 300px
 			height: 4px

@@ -10,11 +10,11 @@
 		transform-style: preserve-3d
 		backface-visibility: hidden
 		cursor: pointer
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			bottom: 50px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			display: none
-		@media screen and (min-width: 1920px)
+		@include media($type: ultra-wide)
 			right: calc((100vw - 1920px)/2 + 55px)
 		&:hover
 			circle
@@ -30,7 +30,7 @@
 	&-circle
 		width: 128px
 		height: 128px
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			width: 100px
 			height: 100px
 		circle

@@ -12,7 +12,7 @@
 		display: flex
 		margin-top: 170px
 		flex-wrap: wrap
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			margin-top: 140px
 	&__title
 		display: flex
@@ -20,11 +20,11 @@
 		width: 50%
 		@include font($size:160, $type:med)
 		line-height: 1em
-		@media screen and (min-width: $l) and (max-width: $xl - 1px)
+		@include media($type: desktop)
 			@include font($size: 124, $type:med)
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			@include font($size: 76, $type:med)
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			margin-bottom: 16px
 			width: 100%
 			@include font($size: 40, $type:med)
@@ -36,15 +36,15 @@
 		padding-right: 50px
 		width: 50%
 		@include font($size:20, $type:med)
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			@include font($size: 16, $type:med)
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			@include font($size: 16, $type:med)
 			padding: 0
 			width: 100%
 	&__subtitle
 		margin-top: 40px
-		@media screen and (min-width: 0) and (max-width: $l - 1px)
+		@include media($max-width: $l)
 			margin-top: -10px
 		a
 			circle
@@ -52,14 +52,14 @@
 			svg
 				transform: translateY(5px)
 			@include font($size:76, $type:med)
-			@media screen and (min-width: $l) and (max-width: $xl - 1px)
+			@include media($type: desktop)
 				@include font($size: 60, $type:med)
-			@media screen and (min-width: $m) and (max-width: $l - 1px)
+			@include media($type: tablet)
 				@include font($size: 40, $type:med)
 				svg
 					width: 32px
 					transform: translateY(12px)
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
+			@include media($type: mobile)
 				@include font($size: 20, $type:med)
 				svg
 					width: 32px
@@ -91,10 +91,10 @@
 	&-switches
 		margin-top: 60px
 		padding: 0 38px
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			margin-top: 50px
 			padding: 0 15px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			margin-top: 30px
 			padding: 0 29px
 	&__switch
@@ -106,7 +106,7 @@
 		&:hover
 			rect
 				fill: var(--color-blue)
-		@media screen and (min-width: 0) and (max-width: $l - 1px)
+		@include media($max-width: $l)
 			&:nth-child(1)
 				margin-right: 5px
 			svg
@@ -126,9 +126,9 @@
 		align-content: center
 		padding: 0 20px
 		max-height: 2000px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			max-height: none
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			max-height: 1700px
 			margin-top: 10px
 			padding: 0 2px
@@ -136,7 +136,7 @@
 		margin: 0
 		width: 50%
 		padding: 20px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			width: 100%
 		img
 			max-width: 100%
@@ -146,9 +146,9 @@
 	&-list
 		width: 100vw
 		margin-top: 60px
-		@media screen and (min-width: $m) and (max-width: $l - 1px)
+		@include media($type: tablet)
 			padding: 0 65px
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			margin-top: 30px
 			padding: 0 38px
 		&__item
@@ -156,11 +156,11 @@
 			height: 130px
 			display: flex
 			justify-content: center
-			@media screen and (min-width: $m) and (max-width: $l - 1px)
+			@include media($type: tablet)
 				height: 120px
-			@media screen and (min-width: 0) and (max-width: $l - 1px)
+			@include media($max-width: $l)
 				height: 80px
-			@media screen and (min-width: $l)
+			@include media($min-width: $l)
 				&:hover
 					background-color: var(--color-blue)
 					.cases-list__item-inner
@@ -172,19 +172,19 @@
 			svg
 				margin-left: 20px
 				transform: translateY(3px)
-				@media screen and (min-width: 0) and (max-width: $l - 1px)
+				@include media($max-width: $l)
 					display: none
 					transition: .2s
 			&-name
 				@include font($size: 40, $type: med)
 				color: #000
 				text-decoration: none
-				@media screen and (min-width: 0) and (max-width: $l - 1px)
+				@include media($max-width: $l)
 					@include font($size: 32, $type: med)
 					color: var(--color-blue)
 					&:hover
 						color: var(--button-color-hover)
-				@media screen and (min-width: 0) and (max-width: $m - 1px)
+				@include media($type: mobile)
 					@include font($size:20, $type:med)
 			&-inner
 				cursor: pointer
@@ -198,7 +198,7 @@
 					border-top: 2px solid #D7D7D7
 				&:nth-last-child(1)
 					border-bottom: 0
-				@media screen and (min-width: 0) and (max-width: $m - 1px)
+				@include media($type: mobile)
 					padding-left: 0
 
 			&-image
@@ -206,5 +206,5 @@
 				opacity: 0
 				height: 130px
 				transform: scale(1.76)
-				@media screen and (min-width: 0) and (max-width: $l - 1px)
+				@include media($max-width: $l)
 					display: none

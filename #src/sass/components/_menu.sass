@@ -5,7 +5,7 @@ body.menu-open
 
 .menu
 	z-index: 25
-	@media screen and (min-width: $m)
+	@include media($min-width: $m)
 		display: none
 	&__toggle
 		position: fixed
