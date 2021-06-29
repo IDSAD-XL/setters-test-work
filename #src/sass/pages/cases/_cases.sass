@@ -156,6 +156,9 @@
 		@include media($max-width: $l)
 			width: calc(50% - 20px)
 			margin: 10px
+			&:hover
+				.card__image, .card-slider, .card-inner
+					transform: none
 		@include media($type: mobile)
 			width: 100%
 		img
@@ -163,6 +166,12 @@
 			max-height: 100%
 		.card__text
 			color: #000
+			@include media($max-width: $l)
+				position: static
+				margin-top: 12px
+				max-height: 28px
+				opacity: 1
+				display: block
 	&-list
 		width: 100vw
 		margin-top: 60px
