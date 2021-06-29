@@ -256,11 +256,21 @@ const cardLayout = document.querySelector('.card-layout')
 let lowestPoint
 let cardsShowedCount
 
-if (cardLayout && cards) {
-	document.addEventListener('scroll', animateCardsShow, { passive: true })
-	lowestPoint = cardLayout.scrollTop
-	cardsShowedCount = 0
-	animateCardsShow()
+setAnimateCards()
+function setAnimateCards() {
+	if (cardLayout && cards) {
+		hideAllCards()
+		document.addEventListener('scroll', animateCardsShow, { passive: true })
+		lowestPoint = cardLayout.scrollTop
+		cardsShowedCount = 0
+		animateCardsShow()
+	}
+}
+
+function hideAllCards() {
+	cards.forEach((card) => {
+		card.classList.remove('shown', 'visible')
+	})
 }
 
 function animateCardsShow() {
@@ -309,6 +319,7 @@ if (casesSwitcher) {
 			if (casesSwitchCards.checked) {
 				casesContent.classList.add('mode-cards')
 				casesContent.classList.remove('mode-list')
+				setAnimateCards()
 			}
 			else {
 				casesContent.classList.remove('mode-cards')
