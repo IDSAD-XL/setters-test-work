@@ -2,11 +2,44 @@
 
 .case
 	&-content
+		background-color: #F5F5F5
 		width: 100vw
 		min-height: 100vh
-		margin-top: 170px
+		padding-top: 170px
 		display: flex
 		justify-content: center
+		img
+			border-radius: 5px
 		&-inner
 			display: flex
 			flex-direction: column
+		.splide
+			&__arrows
+				display: block
+			&__arrow
+				display: block
+				background-color: transparent
+				&--prev
+					transform: scaleX(-1)
+				svg
+					width: 24px
+					height: 24px
+			&__pagination
+				display: none
+			&__slide-number
+				margin-top: 24px
+				display: flex
+				width: 100%
+				justify-content: center
+				color: var(--color-font-secondary)
+				@include font($size:24, $type:med)
+		&_review
+			border: 0
+			width: 100%
+			background-color: #fff
+			display: flex
+			justify-content: center
+		&_next-project-block
+			width: 100%
+			display: flex
+			justify-content: center

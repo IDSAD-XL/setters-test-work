@@ -1,10 +1,16 @@
 .link
 	cursor: pointer
 	text-decoration: none
+	color: var(--button-color-primary)
+	transition: .2s
+	&:hover
+		color: var(--button-color-hover)
 	&-primary
-		color: var(--button-color-primary)
-		transition: .2s
 		@include font($size: 28, $type:med)
+
+	&-small
+		@include font($size: 16, $type:med)
+		color: var(--button-color-primary)
 		&:hover
 			color: var(--button-color-hover)
 	&-light

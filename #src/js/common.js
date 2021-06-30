@@ -189,7 +189,7 @@ function openPopup(popup) {
 }
 
 //!Card Sliders
-const cardSliders = document.querySelectorAll('.card-layout .splide');
+const cardSliders = document.querySelectorAll('.splide');
 if (cardSliders) {
 	cardSliders.forEach((e) => {
 		const slider = new Splide(e, {
@@ -197,7 +197,6 @@ if (cardSliders) {
 			autoplay: true,
 			interval: 3000,
 			pauseOnHover: true,
-			arrows: false
 		}).mount();
 		const sliderNumber = e.querySelector('.splide__slide-number')
 		const slidesCount = slider.length;

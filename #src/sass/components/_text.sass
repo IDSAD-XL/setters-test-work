@@ -1,0 +1,32 @@
+@import "settings/_variables.sass"
+
+.heading
+	color: #000
+	&.regular
+		@include font($type: reg)
+	&.white
+		color: #fff
+
+h1.heading
+	@include font($size:124, $type: med)
+h2.heading
+	@include font($size: 60, $type: med)
+h3.heading
+	@include font($size: 40, $type: med)
+h4.heading
+	@include font($size: 28, $type: med)
+
+p.text, span.text
+	color: #000
+	&-primary
+		@include font($size: 20, $type: reg)
+	&-small
+		@include font($size: 16, $type: reg)
+	&-extra-small
+		@include font($size: 14, $type: reg)
+	&-light
+		color: var(--color-font-secondary)
+	&-bold
+		@include font($type: med)
+	&.white
+		color: #fff
