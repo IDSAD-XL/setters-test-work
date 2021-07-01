@@ -17,7 +17,7 @@
 		&.shown
 			opacity: 1
 			transition: opacity 1200ms ease 0s, transform 1200ms ease 0s
-			transform: translateX(0px) translateY(-10px) translateZ(0px)
+			transform: translateX(0px) translateY(0px) translateZ(0px)
 			opacity: 1
 	&-layout
 		display: flex
@@ -25,6 +25,24 @@
 		width: 100%
 		@include media($type: mobile)
 			width: 340px
+
+	&-column
+		display: flex
+		flex-direction: column
+		@include media($type: mobile)
+			width: 100%
+		.card
+			&:last-child
+				margin-bottom: 0
+	&-row
+		display: flex
+		flex-direction: row
+		width: 100%
+		margin-bottom: 40px
+		&:last-child
+			margin-bottom: 0
+		@include media($type: mobile)
+			flex-direction: column
 		&_cols-1
 			.card-column
 				width: 100%
@@ -45,8 +63,7 @@
 			@include media($type: mobile)
 				.card-column
 					width: 100%
-			
-				
+
 		&_cols-3
 			.card-column
 				width: calc(100%/3 - 80px/3)
@@ -67,35 +84,11 @@
 					margin-right: 16px
 				.card-column_right
 					margin-left: 16px
-
-	&-column
-		display: flex
-		flex-direction: column
-		@include media($type: mobile)
-			width: 100%
-	&-row
-		display: flex
-		flex-direction: row
-		width: 100%
-		@include media($type: mobile)
-			flex-direction: column
-		&--1
-			max-height: 1400px
-			@include media($type: tablet)
-				max-height: 1200px
 			@include media($type: mobile)
-				max-height: none
-		&--2
-			margin: 0 20px
-		&--3
-			flex-direction: row
-			margin-top: 20px
-			@include media($type: tablet)
-				flex-wrap: nowrap
-		&--4
-			flex-direction: row
-			@include media($type: tablet)
-				flex-wrap: nowrap
+				.card-column
+					width: 100%
+					margin: 0
+
 	&__mobile-link
 		display: none
 		@include font($size:20)
@@ -106,7 +99,34 @@
 		@include media($type: mobile)
 			width: 100%
 		&-x2
-			width: 66.6%
+			width: calc( (100%/3 - 80px/3) * 2 + 40px )
+			&_left
+				margin-right: 40px
+				@include media($type: mobile)
+					margin-right: 0
+			&_right
+				margin-left: 40px
+				@include media($type: mobile)
+					margin-left: 0
+			&_smaller
+				@include media($type: mobile)
+					margin-bottom: 40px
+			&_left ~ &_smaller
+				@include media($type: mobile)
+					margin-top: 40px
+					margin-bottom: 0
+			&_bigger
+				&-cards-wrapper
+					.card:nth-child(1)
+						margin-right: 40px
+						@include media($type: mobile)
+						margin-right: 0
+			&_smaller
+				width: calc( 100%/3 - 80px/3 )
+				@include media($type: mobile)
+					width: 100%
+				.card
+					margin-bottom: 0
 			@include media($type: mobile)
 				width: 100%
 		&__item
