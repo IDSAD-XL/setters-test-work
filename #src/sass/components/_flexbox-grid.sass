@@ -26,9 +26,20 @@
 				margin-left: 20px
 	& > *
 		max-width: 100%
+	&--space-between
+		display: flex
+		justify-content: space-between
+	&--space-around
+		display: flex
+		justify-content: space-around
 	&--split
 		display: flex
 		flex-direction: row
 		flex-wrap: wrap
 		& > *
 			width: 50%
+	&--last-element-bottom
+		display: flex
+		flex-direction: column
+		& > *:nth-last-child(2)
+			flex: 1 1 auto

@@ -1,17 +1,23 @@
-@import "settings/_variables.sass";
+$padding: (t, padding-top),
+		  (b, padding-bottom),
+		  (l, padding-left),
+		  (r, padding-right);
 
+$margin:  (t, margin-top),
+		  (b, margin-bottom),
+		  (l, margin-left),
+		  (r, margin-right);
 
-$margin:(t, margin-top),
-		(b, margin-bottom),
-		(l, margin-left),
-		(r, margin-right);
-$sizes: (0, 0), 
-		(1, 24px),
-		(2, 32px), 
-		(3, 40px), 
-		(4, 60px), 
-		(5, 80px);
-
+$sizes:   (0, 0), 
+		  (1, 24px),
+		  (2, 32px), 
+		  (3, 40px), 
+		  (4, 60px), 
+		  (5, 80px),
+		  (text-1, 4px),
+		  (text-2, 8px),
+		  (text-3, 12px),
+		  (text-4, 16px);
 
 @each $item, $margin-direction in $margin {
 	@each $size, $value in $sizes {
@@ -21,3 +27,10 @@ $sizes: (0, 0),
 	}
 }
 
+@each $item, $padding-direction in $padding {
+	@each $size, $value in $sizes {
+		.p#{$item}-#{$size} {
+			#{$padding-direction}: #{$value};
+		}
+	}
+}
