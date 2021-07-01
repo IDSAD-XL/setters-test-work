@@ -1,0 +1,23 @@
+@import "settings/_variables.sass";
+
+
+$margin:(t, margin-top),
+		(b, margin-bottom),
+		(l, margin-left),
+		(r, margin-right);
+$sizes: (0, 0), 
+		(1, 24px),
+		(2, 32px), 
+		(3, 40px), 
+		(4, 60px), 
+		(5, 80px);
+
+
+@each $item, $margin-direction in $margin {
+	@each $size, $value in $sizes {
+		.m#{$item}-#{$size} {
+			#{$margin-direction}: #{$value};
+		}
+	}
+}
+
