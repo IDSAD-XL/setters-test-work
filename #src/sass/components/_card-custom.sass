@@ -7,6 +7,8 @@
 	@include media($type: mobile)
 		padding: 40px 24px
 		border-radius: 32px
+	@include media($max-width: $l)
+		flex-direction: column
 	&__title
 		color: #000
 		@include font($size:60, $type:med)
