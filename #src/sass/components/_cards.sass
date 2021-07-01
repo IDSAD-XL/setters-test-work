@@ -1,14 +1,5 @@
 @import "settings/_variables.sass"
 
-@keyframes animate-card-show
-	0%
-		transform: translateY(200px)
-	70%
-		animation-timing-function: ease-in-out
-		transform: translateY(-50px)
-	100%
-		transform: translateY(0)
-
 .card
 	position: relative
 	width: 360px
@@ -27,11 +18,11 @@
 		object-fit: contain
 	&_show-animate
 		opacity: 0
-		// transform: translateY(400px)
-		transition: opacity 1s linear
+		transform: translateX(0px) translateY(80px) translateZ(0px)
 		&.shown
-			animation: animate-card-show .4s ease-out
-			transform: none
+			opacity: 1
+			transition: opacity 1200ms ease 0s, transform 1200ms ease 0s
+			transform: translateX(0px) translateY(-10px) translateZ(0px)
 			opacity: 1
 	&-layout
 		display: flex
