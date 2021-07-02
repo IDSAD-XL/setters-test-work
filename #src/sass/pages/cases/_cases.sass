@@ -80,7 +80,7 @@
 		@include media($type: tablet)
 			padding: 0
 		@include media($type: mobile)
-			padding: 0 40px
+			padding: 0 37.5px
 
 	&-content
 		display: flex
@@ -143,19 +143,35 @@
 		@include media($type: tablet)
 			margin-top: 10px
 	&-card
-		@include media($max-width: $l)
-			&:hover
+		&:hover
+			.card__text
+				
+			@include media($max-width: $l)
 				.card__image, .card-slider, .card-inner
 					transform: none
 		img
 			max-width: 100%
 			max-height: 100%
+			@include media($type: mobile)
+				max-width: 300px
+		&.size-default
+			@include media($type: mobile)
+				img
+					width: 300px
+					height: 300px
+					object-fit: cover
+		&.size-small
+			@include media($type: mobile)
+				img
+					width: 300px
+					height: 160px
+					object-fit: cover
 		.card__text
 			color: #000
 			@include media($max-width: $l)
 				position: static
 				margin-top: 12px
-				max-height: 28px
+				max-height: 3em
 				opacity: 1
 				display: block
 			@include media($type: mobile)
@@ -163,7 +179,6 @@
 	&-list
 		width: 100vw
 		margin-top: 60px
-		width: 100vw
 		@include media($type: mobile)
 			max-width: 100%
 			margin-top: 30px
