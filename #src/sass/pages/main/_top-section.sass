@@ -74,13 +74,16 @@
 		color: #fff
 		@include media($type: desktop)
 			margin: 0
-			margin-bottom: 78px
+			margin-bottom: 84px
+			margin-top: 76px
+
 		&_small
 			display: block
 			margin-bottom: 36px
 			@include media($type: ultra-wide)
 				@include font($size: 48, $type:med)
 			@include media($type: desktop)
+				margin-bottom: 19px
 				@include font($size: 24, $type:med)
 			@include media($type: tablet)
 				@include font($size: 20, $type:med)
@@ -94,7 +97,8 @@
 				@include font($size: 160, $type:med)
 			@include media($type: desktop)
 				@include font($size: 124, $type:med)
-				line-height: 100%
+				&-glitch
+					line-height: 140px
 			@include media($type: tablet)
 				line-height: 72px
 				@include font($size: 76, $type:med)
@@ -191,7 +195,6 @@
 					display: flex
 					justify-content: center
 		&-wrapper
-			padding: 0 15px
 			width: 100%
 			display: flex
 			justify-content: center
