@@ -220,7 +220,7 @@ if (cardSliders) {
 }
 
 //!Top section heading 
-const glitchWords = ['стратегии', 'креативы']
+const glitchWords = ['стратегии', 'креатив', 'дизайн']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
 
 if (glitchTitle) {
@@ -348,6 +348,21 @@ if (casesList) {
 	let delay = 0
 	casesListName.forEach((e) => {
 		e.style.animationDelay = `${delay}ms`;
+		delay += 200
+	})
+}
+
+if (animateText) {
+	let delay = 0
+	animateText.forEach((e) => {
+		function setAnimateDelay() {
+			e.style.overflowY = "visible"
+		}
+		const textInner = e.querySelector('.text_animate-show-inner')
+		setTimeout(setAnimateDelay, delay + 1200)
+		e.style.animationDelay = `${delay}ms`
+		textInner.style.animationDelay = `${delay}ms`
+		e.classList.add('shown')
 		delay += 200
 	})
 }
