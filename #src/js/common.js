@@ -1,3 +1,9 @@
+//!Check if mobile
+const body = document.querySelector('body');
+if (window.innerWidth < 1024) {
+	body.classList.add('mobile')
+}
+
 //! Magnet circle at the first section
 class hoverEffect {
 	constructor(el) {
@@ -92,7 +98,7 @@ if (magnetScroll && contentSection) {
 
 //! Mobile burger menu
 const menuCheckbox = document.querySelector('#menu__toggle')
-const body = document.querySelector('body');
+
 
 if (menuCheckbox) {
 	menuCheckbox.addEventListener('change', () => {
@@ -144,11 +150,16 @@ window.addEventListener("scroll", () => {
 }, { passive: true })
 
 //! Popups
-
-//! Popup open
 const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
 
+if (popups) {
+	popups.forEach((e) => {
+		document.body.appendChild(e)
+	})
+}
+
+//! Popup open
 if (popups && popupToggles) {
 	popupToggles.forEach((e) => {
 		const targetPopup = document.getElementById(e.dataset.target)
@@ -343,7 +354,6 @@ if (casesList) {
 //!Cards parallax
 class ParallaxEffect {
 	constructor(el, block) {
-		this.el = el
 		this.block = block
 		this.blockTop = getCoords(block).top
 		this.coefficient = el.k
@@ -355,9 +365,6 @@ class ParallaxEffect {
 	}
 	attachEventsListener() {
 		window.addEventListener("scroll", (e) => this.calculatePosition(), { passive: true })
-		console.log(this);
-		console.log(this.isUnderTrigger());
-		console.log(this.blockTop);
 	}
 	calculatePosition() {
 		if (window.scrollY > this.blockTop) {
@@ -376,10 +383,6 @@ class ParallaxEffect {
 			ease: Power1.easeOut
 		})
 	}
-	isUnderTrigger() {
-		return pageYOffset > this.triggerPoint
-	}
-
 	setDefaultPosition() {
 		this.column.style.transform = "none";
 	}
@@ -397,6 +400,7 @@ function getCoords(e) {
 const parallaxBlocks = [
 	{
 		blockId: "main-card-layout",
+		trigger: -400,
 		columns: [
 			{ id: "mainCardsColumnLeft", k: 0.2 },
 			{ id: "mainCardsColumnCenter", k: 0.5 },
@@ -417,14 +421,13 @@ const parallaxBlocks = [
 	}
 ]
 
-parallaxBlocks.forEach((e) => {
-	const block = document.getElementById(e.blockId)
-	if (block) {
-		e.columns.forEach((e) => {
-			new ParallaxEffect(e, block)
-		})
-	}
-})
-
-
-
+if (!body.classList.contains('mobile')) {
+	parallaxBlocks.forEach((e) => {
+		const block = document.getElementById(e.blockId)
+		if (block) {
+			e.columns.forEach((e) => {
+				new ParallaxEffect(e, block)
+			})
+		}
+	})
+}
