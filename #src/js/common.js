@@ -340,6 +340,7 @@ if (casesSwitcher) {
 }
 
 //!Cases list
+const animateText = document.querySelectorAll('.text_animate-show')
 const casesList = document.querySelector('#casesList')
 
 if (casesList) {

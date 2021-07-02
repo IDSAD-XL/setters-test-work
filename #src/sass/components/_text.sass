@@ -1,5 +1,11 @@
 @import "settings/_variables.sass"
 
+@keyframes list-item-text
+	0%
+		transform: translateY(100%)
+	100%
+		transform: translateY(0)
+
 .heading
 	color: #000
 	&.regular
@@ -30,3 +36,16 @@ p.text, span.text
 		@include font($type: med)
 	&.white
 		color: #fff
+
+.text_animate-show
+	overflow-y: hidden
+	&-inner
+		// transition: transform 1s ease
+		transform: translateY(100%)
+		animation: list-item-text 1200ms ease
+		animation-fill-mode: forwards
+		transition: 1200ms ease
+	&.shown
+		animation: list-item-text 1200ms ease
+		animation-fill-mode: forwards
+		transition: 1200ms ease
