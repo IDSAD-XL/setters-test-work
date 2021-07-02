@@ -141,6 +141,10 @@
 				max-width: 750px
 				width: 100%
 				padding: 0 60px
+				@include media($type: ultra-wide)
+					max-width: none
+				@include media($type: desktop)
+					max-width: none
 				@include media($type: mobile)
 					padding: 0
 					width: 100%
