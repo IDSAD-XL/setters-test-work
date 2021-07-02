@@ -416,7 +416,7 @@ const parallaxBlocks = [
 		blockId: "cases-card-layout",
 		columns: [
 			{ id: "casesCardColumnLeft", k: 0.5 },
-			{ id: "casesCardColumnRught", k: 0.1 }
+			{ id: "casesCardColumnRight", k: 0.1 }
 		]
 	}
 ]
