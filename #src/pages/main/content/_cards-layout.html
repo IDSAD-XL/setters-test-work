@@ -1,6 +1,6 @@
 <div class="card-layout container" id="main-card-layout">
 	<div class="card-row card-row_cols-3 card-row--1">
-		<div class="card-column card-column_left">
+		<div class="card-column card-column_left" id="mainCardsColumnLeft">
 			@@include('../../components/_card.html', {
 			"src": "GAZPROM_CASE_Final_3_2 1.png",
 			"text": "Газпром нефть",
@@ -16,7 +16,7 @@
 			"popupsrc": "Comp 1_3.png"
 			})
 		</div>
-		<div class="card-column card-column_center">
+		<div class="card-column card-column_center" id="mainCardsColumnCenter">
 			@@include('../../components/_card.html', {
 			"src": "photo_2021-03-31_08-14-38 1.png",
 			"text": "Практика",
@@ -43,7 +43,7 @@
 			"popupsrc": "CHUPA_CASE_10.png"
 			})
 		</div>
-		<div class="card-column card-column_right">
+		<div class="card-column card-column_right" id="mainCardsColumnRight">
 			@@include('../../components/_card.html', {
 			"src": "mentos_case_autoplay_low_q 2.png",
 			"text": "Комплиментос",
@@ -68,11 +68,11 @@
 			})
 		</div>
 	</div>
-	<div class="card-row card-row_cols-1">
+	<div class="card-row card-row_cols-1" id="mainCardsContactBlock">
 		@@include('../../components/_card-custom_3col.html')
 	</div>
 	<div class="card-row">
-		<div class="card-col card-col-x2 card-col-x2_bigger card-col-x2_left">
+		<div class="card-col card-col-x2 card-col-x2_bigger card-col-x2_left" id="mainCardsX2Left_1">
 			<div class="card-col__item card-col-x2_bigger-cards-wrapper">
 				@@include('../../components/_card.html', {
 				"src": "mentos_case_autoplay_low_q 1.png",
@@ -93,7 +93,7 @@
 				@@include('../../components/_card-custom_2col_1.html')
 			</div>
 		</div>
-		<div class="card-col card-col-x2_smaller">
+		<div class="card-col card-col-x2_smaller" id="mainCardsX2Right_1">
 			@@include('../../components/_card.html', {
 			"src": "GAZPROM_CASE_Final_3_2 1.png",
 			"text": "Газпром нефть",
@@ -104,7 +104,7 @@
 		</div>
 	</div>
 	<div class="card-row">
-		<div class="card-col card-col-x2_smaller">
+		<div class="card-col card-col-x2_smaller" id="mainCardsX2Left_2">
 			@@include('../../components/_card.html', {
 			"src": "Comp 1_3.png",
 			"text": "Газпром нефть",
@@ -113,7 +113,7 @@
 			"popupsrc": "Comp 1_3.png"
 			})
 		</div>
-		<div class="card-col card-col-x2 card-col-x2_bigger card-col-x2_right">
+		<div class="card-col card-col-x2 card-col-x2_bigger card-col-x2_right" id="mainCardsX2Right_2">
 			<div class="card-col__item card-col-x2_bigger-cards-wrapper">
 				@@include('../../components/_card.html', {
 				"src": "CHUPA_CASE_10_2.png",

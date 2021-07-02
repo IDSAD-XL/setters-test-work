@@ -339,3 +339,92 @@ if (casesList) {
 		delay += 200
 	})
 }
+
+//!Cards parallax
+class ParallaxEffect {
+	constructor(el, block) {
+		this.el = el
+		this.block = block
+		this.blockTop = getCoords(block).top
+		this.coefficient = el.k
+		this.column = document.getElementById(el.id)
+		this.topCoods = getCoords(this.column).top
+		this.triggerPoint =
+			el.trigger == null ? this.topCoods : this.topCoods + el.trigger
+		this.attachEventsListener()
+	}
+	attachEventsListener() {
+		window.addEventListener("scroll", (e) => this.calculatePosition(), { passive: true })
+		console.log(this);
+		console.log(this.isUnderTrigger());
+		console.log(this.blockTop);
+	}
+	calculatePosition() {
+		if (window.scrollY > this.blockTop) {
+			const distance = pageYOffset - this.blockTop
+			const y = -distance * this.coefficient
+			this.move(y)
+		}
+		else {
+			this.setDefaultPosition()
+		}
+	}
+	move(y) {
+		gsap.to(this.column, {
+			y: y,
+			duration: 0.4,
+			ease: Power1.easeOut
+		})
+	}
+	isUnderTrigger() {
+		return pageYOffset > this.triggerPoint
+	}
+
+	setDefaultPosition() {
+		this.column.style.transform = "none";
+	}
+}
+
+function getCoords(e) {
+	var box = e.getBoundingClientRect();
+	return {
+		top: box.top + pageYOffset,
+		left: box.left + pageXOffset
+	};
+
+}
+
+const parallaxBlocks = [
+	{
+		blockId: "main-card-layout",
+		columns: [
+			{ id: "mainCardsColumnLeft", k: 0.2 },
+			{ id: "mainCardsColumnCenter", k: 0.5 },
+			{ id: "mainCardsColumnRight", k: 0.3 },
+			{ id: "mainCardsContactBlock", k: 0.2 },
+			{ id: "mainCardsX2Left_1", k: 0.2 },
+			{ id: "mainCardsX2Right_1", k: 0.2 },
+			{ id: "mainCardsX2Left_2", k: 0.2 },
+			{ id: "mainCardsX2Right_2", k: 0.2 },
+		]
+	},
+	{
+		blockId: "cases-card-layout",
+		columns: [
+			{ id: "casesCardColumnLeft", k: 0.5 },
+			{ id: "casesCardColumnRught", k: 0.1 }
+		]
+	}
+]
+
+parallaxBlocks.forEach((e) => {
+	const block = document.getElementById(e.blockId)
+	if (block) {
+		e.columns.forEach((e) => {
+			new ParallaxEffect(e, block)
+		})
+	}
+})
+
+
+

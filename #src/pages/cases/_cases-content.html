@@ -37,9 +37,9 @@
 					</svg>
 				</label>
 			</div>
-			<div class="cases-cards card-layout container">
+			<div class="cases-cards card-layout container" id="cases-card-layout">
 				<div class="card-row card-row_cols-2">
-					<div class="card-column card-column_left">
+					<div class="card-column card-column_left" id="casesCardColumnLeft">
 						@@loop('_cases-card.html', [
 						{"src": "case_1.png",
 						"text": "КомплиMentos",
@@ -55,7 +55,7 @@
 						"customClass": "size-default"},
 						])
 					</div>
-					<div class="card-column card-column_right">
+					<div class="card-column card-column_right" id="casesCardColumnRight">
 						@@loop('_cases-card.html', [
 						{"src": "case_5.png",
 						"text": "Амедиатека",
