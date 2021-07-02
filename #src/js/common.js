@@ -399,20 +399,6 @@ function getCoords(e) {
 
 const parallaxBlocks = [
 	{
-		blockId: "main-card-layout",
-		trigger: -400,
-		columns: [
-			{ id: "mainCardsColumnLeft", k: 0.2 },
-			{ id: "mainCardsColumnCenter", k: 0.5 },
-			{ id: "mainCardsColumnRight", k: 0.3 },
-			{ id: "mainCardsContactBlock", k: 0.2 },
-			{ id: "mainCardsX2Left_1", k: 0.2 },
-			{ id: "mainCardsX2Right_1", k: 0.2 },
-			{ id: "mainCardsX2Left_2", k: 0.2 },
-			{ id: "mainCardsX2Right_2", k: 0.2 },
-		]
-	},
-	{
 		blockId: "cases-card-layout",
 		columns: [
 			{ id: "casesCardColumnLeft", k: 0.5 },
