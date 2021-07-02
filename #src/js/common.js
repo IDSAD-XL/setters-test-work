@@ -327,3 +327,16 @@ if (casesSwitcher) {
 		})
 	})
 }
+
+//!Cases list
+const casesList = document.querySelector('#casesList')
+const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
+
+if (casesListName) {
+	let delay = 0
+	casesListName.forEach((e) => {
+		e.style.animationDelay = `${delay}ms`;
+		// e.style.transitionDelay = `${delay + 1200}ms`;
+		delay += 200
+	})
+}

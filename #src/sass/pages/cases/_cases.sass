@@ -1,5 +1,11 @@
 @import "settings/_variables.sass"
 
+@keyframes list-item-text
+	0%
+		transform: translateY(100%)
+	100%
+		transform: translateY(0)
+
 .cases
 	display: flex
 	justify-content: center
@@ -99,9 +105,10 @@
 				display: none
 			.cases-list
 				display: block
-			.cases-list__item-inner
-				transition: max-height 1s ease
-				max-height: 130px
+			.cases-list__item-name-inner
+				animation: list-item-text 1200ms ease
+				animation-fill-mode: forwards
+				transition: 1200ms ease
 	&-switches
 		margin-top: 60px
 		padding: 0
@@ -141,14 +148,13 @@
 		padding: 0
 		@include media($type: desktop)
 			margin-left: 3px
+		@include media($type: tablet)
+			margin-top: 40px
 		@include media($type: mobile)
 			max-width: 100%
-		@include media($type: tablet)
-			margin-top: 10px
+			margin-top: 32px
 	&-card
 		&:hover
-			.card__text
-
 			@include media($max-width: $l)
 				.card__image, .card-slider, .card-inner
 					transform: none
@@ -223,7 +229,6 @@
 				@include font($size: 40, $type: med)
 				color: #000
 				text-decoration: none
-				transform: translateY(100%)
 				@include media($max-width: $l)
 					@include font($size: 32, $type: med)
 					color: var(--color-blue)
@@ -233,6 +238,9 @@
 					@include font($size:20, $type:med)
 				&-wrapper
 					overflow-y: hidden
+				&-inner
+					transition: transform 1s ease
+					transform: translateY(100%)
 			&-inner
 				cursor: pointer
 				transition: .2s
