@@ -99,6 +99,9 @@
 				display: none
 			.cases-list
 				display: block
+			.cases-list__item-inner
+				transition: max-height 1s ease
+				max-height: 130px
 	&-switches
 		margin-top: 60px
 		padding: 0
@@ -145,7 +148,7 @@
 	&-card
 		&:hover
 			.card__text
-				
+
 			@include media($max-width: $l)
 				.card__image, .card-slider, .card-inner
 					transform: none
@@ -171,7 +174,7 @@
 			@include media($max-width: $l)
 				position: static
 				margin-top: 12px
-				max-height: 3em
+				max-height: none
 				opacity: 1
 				display: block
 			@include media($type: mobile)
@@ -220,6 +223,7 @@
 				@include font($size: 40, $type: med)
 				color: #000
 				text-decoration: none
+				transform: translateY(100%)
 				@include media($max-width: $l)
 					@include font($size: 32, $type: med)
 					color: var(--color-blue)
@@ -227,6 +231,8 @@
 						color: var(--button-color-hover)
 				@include media($type: mobile)
 					@include font($size:20, $type:med)
+				&-wrapper
+					overflow-y: hidden
 			&-inner
 				cursor: pointer
 				transition: .2s
