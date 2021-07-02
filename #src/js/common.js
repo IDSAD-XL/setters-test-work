@@ -336,7 +336,6 @@ if (casesListName) {
 	let delay = 0
 	casesListName.forEach((e) => {
 		e.style.animationDelay = `${delay}ms`;
-		// e.style.transitionDelay = `${delay + 1200}ms`;
 		delay += 200
 	})
 }
