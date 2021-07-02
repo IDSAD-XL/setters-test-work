@@ -330,9 +330,9 @@ if (casesSwitcher) {
 
 //!Cases list
 const casesList = document.querySelector('#casesList')
-const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
 
-if (casesListName) {
+if (casesList) {
+	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
 	let delay = 0
 	casesListName.forEach((e) => {
 		e.style.animationDelay = `${delay}ms`;
