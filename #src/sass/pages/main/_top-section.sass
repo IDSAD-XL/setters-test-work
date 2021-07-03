@@ -74,6 +74,9 @@
 		margin: 40px 0
 		text-align: center
 		color: #fff
+		flex: 1 1 auto
+		@include media($type: ultra-wide)
+			margin-top: 104px
 		@include media($type: desktop)
 			margin: 0
 			margin-bottom: 84px
@@ -83,7 +86,8 @@
 			display: block
 			margin-bottom: 36px
 			@include media($type: ultra-wide)
-				@include font($size: 48, $type:med)
+				@include font($size: 28, $type:med)
+				margin-bottom: 48px
 			@include media($type: desktop)
 				margin-bottom: 19px
 				@include font($size: 24, $type:med)
@@ -97,6 +101,7 @@
 			display: block
 			@include media($type: ultra-wide)
 				@include font($size: 160, $type:med)
+				line-height: 1em
 			@include media($type: desktop)
 				@include font($size: 124, $type:med)
 				&-glitch
