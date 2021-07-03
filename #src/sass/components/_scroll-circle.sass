@@ -6,19 +6,19 @@
 		display: flex
 		justify-content: center
 		align-items: center
-		bottom: 10px
+		bottom: 20px
 		transform-style: preserve-3d
 		backface-visibility: hidden
 		cursor: pointer
 		@include media($type: desktop)
-			bottom: 0
+			bottom: 6px
 		@include media($type: tablet)
-			right: 45px
-			bottom: 0
+			right: 44px
+			bottom: 5px
 		@include media($type: mobile)
 			display: none
 		@include media($type: ultra-wide)
-			right: calc((100vw - 1920px)/2 + 60px)
+			right: calc((100vw - 1920px)/2 + 64px)
 		&:hover
 			circle
 				stroke: #1C54FC

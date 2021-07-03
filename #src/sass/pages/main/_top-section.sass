@@ -13,6 +13,8 @@
 	align-items: center
 	width: 100%
 	min-height: calc(100vh - 44px)
+	@include media($type: tablet)
+		min-height: calc(100vh - 30px)
 	&__content
 		color: #fff
 		position: relative
@@ -20,7 +22,7 @@
 		flex-direction: column
 		flex-grow: 1
 		justify-content: space-between
-		margin-bottom: 16px
+		margin-bottom: 33px
 		padding-top: 178px
 		@include media($type: ultra-wide)
 			max-width: 1250px
@@ -28,7 +30,7 @@
 			padding-top: 118px
 		@include media($type: tablet)
 			padding-top: 105px
-			margin-bottom: 6px
+			margin-bottom: 10px
 	&__bubbles-wrapper
 		max-width: 100%
 		overflow-x: hidden
@@ -49,8 +51,11 @@
 	&__bubble
 		position: relative
 		margin: 0 20px
+		width: 56px
+		height: 56px
 		@include media($type: mobile)
 			margin: 0 0
+
 	&__bubble-number
 		position: absolute
 		top: 0
@@ -71,12 +76,14 @@
 	&__bubble-number.red
 		background-color: var(--color-red)
 	&__title
-		margin: 40px 0
 		text-align: center
 		color: #fff
 		flex: 1 1 auto
 		@include media($type: ultra-wide)
 			margin-top: 104px
+		@include media($type: tablet)
+			padding-left: 35px
+			margin-top: 36px
 		@include media($type: desktop)
 			margin: 0
 			margin-bottom: 84px
@@ -87,13 +94,14 @@
 			margin-bottom: 36px
 			@include media($type: ultra-wide)
 				@include font($size: 28, $type:med)
-				margin-bottom: 48px
+				margin-bottom: 31px
 			@include media($type: desktop)
 				margin-bottom: 19px
 				@include font($size: 24, $type:med)
 			@include media($type: tablet)
 				@include font($size: 20, $type:med)
 				margin-bottom: 0
+				margin-left: -16px
 			@include media($type: mobile)
 				@include font($size: 16, $type:med)
 				margin-bottom: -5px
@@ -107,7 +115,8 @@
 				&-glitch
 					line-height: 140px
 			@include media($type: tablet)
-				line-height: 72px
+				line-height: 1em
+				letter-spacing: -0.02em
 				@include font($size: 76, $type:med)
 			@include media($type: mobile)
 				@include font($size: 40, $type:med)
@@ -134,19 +143,26 @@
 				text-align: left
 				max-width: 280px
 				@include font($size: 20, $type:med)
-				@include media($max-width: $l)
+				@include media($type: tablet)
 					@include font($size: 16, $type:med)
+					line-height: 20px
 				@include media($type: mobile)
 					max-width: 228px
 					margin-right: 0
 					text-align: center
 		&-box
-			min-width: 280px
+			min-width: 290px
 			display: flex
-			justify-content: center
+			justify-content: flex-start
+			@include media($type: ultra-wide)
+				margin-left: 23px
+			@include media($type: tablet)
+				margin-top: -4px
 			@include media($type: mobile)
 				margin-right: 0
 				margin-top: 28px
+			@include media($type: tablet)
+				margin-bottom: 14px
 		&-list
 			position: relative
 			overflow-x: hidden
@@ -210,6 +226,8 @@
 			position: relative
 			@include media($type: mobile)
 				flex-wrap: wrap-reverse
+			@include media($type: tablet)
+				align-items: flex-end
 
 	&__wrapper
 		&__item
