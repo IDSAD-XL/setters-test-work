@@ -19,10 +19,12 @@
 		margin-top: 170px
 		flex-wrap: wrap
 		width: 100%
+		padding: 0 15px
 		@include media($type: tablet)
 			margin-top: 150px
 		@include media($type: mobile)
 			margin-top: 120px
+			padding: 0
 	&__title
 		display: flex
 		align-items: center
@@ -115,10 +117,12 @@
 		margin-top: 60px
 		padding: 0
 		width: 100%
+		padding: 0 15px
 		@include media($type: tablet)
 			margin-top: 50px
 		@include media($type: mobile)
 			margin-top: 30px
+			padding: 0
 	&__switch
 		cursor: pointer
 		&:nth-child(1)
@@ -147,7 +151,7 @@
 		flex-direction: column
 		flex-wrap: wrap
 		align-content: center
-		padding: 0
+		padding: 0 15px
 		@include media($type: desktop)
 			margin-left: 3px
 		@include media($type: tablet)
@@ -155,6 +159,7 @@
 		@include media($type: mobile)
 			max-width: 100%
 			margin-top: 32px
+			padding: 0
 	&-card
 		&:hover
 			@include media($max-width: $l)
@@ -254,10 +259,12 @@
 				padding-top: 44px
 				border-bottom: 2px solid #D7D7D7
 				position: relative
+				max-width: 1160px
 				@include media($type: tablet)
 					padding-left: 50px
 					padding-bottom: 44px
 					padding-top: 44px
+					max-width: 940px
 				@include media($type: mobile)
 					padding-left: 0
 					padding-bottom: 24px

@@ -31,6 +31,8 @@
 		@include media($type: tablet)
 			padding-top: 105px
 			margin-bottom: 10px
+		@include media($type: mobile)
+			padding-top: 120px
 	&__bubbles-wrapper
 		max-width: 100%
 		overflow-x: hidden
@@ -88,23 +90,26 @@
 			margin: 0
 			margin-bottom: 84px
 			margin-top: 76px
+		@include media($type: mobile)
+			margin-top: 76px
 
 		&_small
 			display: block
 			margin-bottom: 36px
 			@include media($type: ultra-wide)
 				@include font($size: 28, $type:med)
-				margin-bottom: 31px
+				margin-bottom: 48px
 			@include media($type: desktop)
-				margin-bottom: 19px
+				margin-bottom: 36px
 				@include font($size: 24, $type:med)
 			@include media($type: tablet)
 				@include font($size: 20, $type:med)
-				margin-bottom: 0
+				margin-bottom: 16px
 				margin-left: -16px
 			@include media($type: mobile)
 				@include font($size: 16, $type:med)
-				margin-bottom: -5px
+				line-height: 24px
+				margin-bottom: 16px
 		&_big
 			display: block
 			@include media($type: ultra-wide)
@@ -119,7 +124,7 @@
 				letter-spacing: -0.02em
 				@include font($size: 76, $type:med)
 			@include media($type: mobile)
-				@include font($size: 40, $type:med)
+				@include font($size: 44, $type:med)
 	&__sponsors
 		display: flex
 		justify-content: flex-start
