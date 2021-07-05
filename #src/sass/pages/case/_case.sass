@@ -14,6 +14,8 @@
 		&-inner
 			display: flex
 			flex-direction: column
+			@include media($type: mobile)
+				padding: 0 37.5px
 		.splide
 			&__arrows
 				display: block

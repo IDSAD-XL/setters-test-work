@@ -20,17 +20,43 @@
 
 h1.heading
 	@include font($size:124, $type: med)
+	@include media($type: tablet)
+		@include font($size: 76, $type:med)
+		line-height: 56px
+	@include media($type: mobile)
+		@include font($size: 40, $type: med)
+
 h2.heading
 	@include font($size: 60, $type: med)
+	@include media($type: tablet)
+		@include font($size: 40, $type: med)
+	@include media($type: mobile)
+		@include font($size: 28, $type: med)
 h3.heading
 	@include font($size: 40, $type: med)
+	@include media($type: tablet)
+		@include font($size: 32, $type: med)
+	@include media($type: mobile)
+		@include font($size: 28, $type: med)
 h4.heading
 	@include font($size: 28, $type: med)
+	@include media($type: tablet)
+		@include font($size: 24, $type: med)
+	@include media($type: mobile)
+		@include font($size: 20, $type: med)
 
 p.text, span.text
 	color: #000
 	&-primary
 		@include font($size: 20, $type: reg)
+		&.smaller
+			@include media($type: tablet)
+				@include font($size: 16, $type: no-type)
+			@include media($type: mobile)
+				@include font($size: 14, $type: no-type)
+		&:not(.no-mobile)
+			@include media($type: mobile)
+				@include font($size: 16, $type: no-type)
 	&-small
 		@include font($size: 16, $type: reg)
 	&-extra-small

@@ -14,6 +14,18 @@
 				margin-right: 20px
 			&:nth-child(even)
 				margin-left: 20px
+			@include media($type: tablet)
+				width: calc(50% - 10px)
+				&:nth-child(odd)
+					margin-right: 10px
+				&:nth-child(even)
+					margin-left: 10px
+			@include media($type: mobile)
+				width: 100%
+				&:nth-child(odd)
+					margin-right: 0
+				&:nth-child(even)
+					margin-left: 0
 	&--3
 		& > *
 			width: calc(100%/3 - 80px/3)
@@ -24,6 +36,24 @@
 				margin-right: 20px
 			&:nth-child(3n+3)
 				margin-left: 20px
+			@include media($type: tablet)
+				width: calc(100%/3 - 40px/3)
+				&:nth-child(3n+1)
+					margin-right: 10px
+				&:nth-child(3n+2)
+					margin-left: 10px
+					margin-right: 10px
+				&:nth-child(3n+3)
+					margin-left: 10px
+			@include media($type: mobile)
+				width: 100%
+				&:nth-child(3n+1)
+					margin-right: 0
+				&:nth-child(3n+2)
+					margin-left: 0
+					margin-right: 0
+				&:nth-child(3n+3)
+					margin-left: 0
 	& > *
 		max-width: 100%
 	&--space-between
@@ -38,6 +68,12 @@
 		flex-wrap: wrap
 		& > *
 			width: 50%
+			@include media($type: mobile)
+				width: 100%
+		&.no-mobile
+			& > *
+				width: 50%
+
 	&--last-element-bottom
 		display: flex
 		flex-direction: column

@@ -8,35 +8,25 @@ $margin:  (t, margin-top),
 		  (l, margin-left),
 		  (r, margin-right);
 
-//?       (SIZE,   >1920,  >1440,  >1024,  <1024)
-$sizes:   (0,      0),  
-		  (1,      24px,   24px,   16px,   16px),
-		  (2,      32px,   32px,   24px,   24px), 
-		  (3,      40px,   40px,   32px,   24px), 
-		  (4,      56px),       
-		  (5,      60px,   60px,   40px,   32px), 
-		  (6,      80px,   80px,   80px,   40px),
+//?       (SIZE, >1920, >1440, >1024, <1024)
+$sizes:   (0, 0), 
+		  (1, 24px),
+		  (2, 32px), 
+		  (3, 40px),
+		  (4, 56px), 
+		  (5, 60px), 
+		  (6, 80px, 60px),
 		  (text-1, 4px),
-		  (text-2, 8px,    8px,    4px,    4px),
+		  (text-2, 8px),
 		  (text-3, 12px),
-		  (text-4, 16px),
-		  (text-5, 28px);
+		  (text-4, 16px);
 
 
 @each $item, $margin-direction in $margin {
-	@each $size, $value, $desktop, $tablet, $mobile in $sizes {
+	@each $size, $value in $sizes {
 		.m#{$item}-#{$size} {
 			#{$margin-direction}: #{$value};
-			@include media($type: desktop) {
-			  #{$margin-direction}: #{$desktop};
-			}
-			@include media($type: tablet) {
-			  #{$margin-direction}: #{$tablet};
-			}
-			@include media($type: mobile) {
-			  #{$margin-direction}: #{$mobile};
-			}
-		  }
+		}
 	}
 }
 
@@ -70,19 +60,10 @@ $sizes:   (0,      0),
 }
 
 @each $item, $padding-direction in $padding {
-	@each $size, $value, $desktop, $tablet, $mobile in $sizes {
+	@each $size, $value in $sizes {
 		.p#{$item}-#{$size} {
 			#{$padding-direction}: #{$value};
-			@include media($type: desktop) {
-			  #{$padding-direction}: #{$desktop};
-			}
-			@include media($type: tablet) {
-			  #{$padding-direction}: #{$tablet};
-			}
-			@include media($type: mobile) {
-			  #{$padding-direction}: #{$mobile};
-			}
-		  }
+		}
 	}
 }
 
