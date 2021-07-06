@@ -199,16 +199,36 @@ function openPopup(popup) {
 	body.classList.add('modal-open')
 }
 
-//!Card Sliders
-const cardSliders = document.querySelectorAll('.splide');
-if (cardSliders) {
-	cardSliders.forEach((e) => {
-		const slider = new Splide(e, {
-			type: 'loop',
-			autoplay: true,
-			interval: 3000,
-			pauseOnHover: true,
-		}).mount();
+//!Sliders
+const sliders = document.querySelectorAll('.splide');
+const slidersOptions = {
+	card: {
+		type: 'loop',
+		autoplay: true,
+		interval: 3000,
+		pauseOnHover: true,
+	},
+	case: {
+		type: 'loop',
+		autoplay: true,
+		interval: 3000,
+		pauseOnHover: true,
+		breakpoints: {
+			1023: {
+				arrows: false,
+				padding: {
+					right: '40px',
+					left: '40px'
+				}
+			}
+		}
+	}
+}
+if (sliders) {
+	sliders.forEach((e) => {
+		const options = e.classList.contains('card-slider') ?
+			slidersOptions.card : slidersOptions.case
+		const slider = new Splide(e, options).mount();
 		const sliderNumber = e.querySelector('.splide__slide-number')
 		const slidesCount = slider.length;
 		sliderNumber.innerHTML = `1/${slidesCount}`

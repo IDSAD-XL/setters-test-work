@@ -18,26 +18,7 @@
 			flex-direction: column
 			@include media($type: mobile)
 				padding: 0 37.5px
-		.splide
-			&__arrows
-				display: block
-			&__arrow
-				display: block
-				background-color: transparent
-				&--prev
-					transform: scaleX(-1)
-				svg
-					width: 24px
-					height: 24px
-			&__pagination
-				display: none
-			&__slide-number
-				margin-top: 24px
-				display: flex
-				width: 100%
-				justify-content: center
-				color: var(--color-font-secondary)
-				@include font($size:24, $type:med)
+				max-width: 375px
 		&_review
 			border: 0
 			width: 100%
@@ -57,3 +38,48 @@
 				padding: 0 37.5px
 				img
 					display: none
+	&-slider
+		.splide
+			&__slide
+				margin: 0 10px
+				transition: .2s
+				opacity: 0.5
+				@include media($type: mobile)
+					display: flex
+					justify-content: center
+				&.is-active
+					opacity: 1
+			&__arrows
+				display: block
+				@include media($type: mobile)
+					display: none
+			&__arrow
+				display: block
+				background-color: transparent
+				&--prev
+					transform: scaleX(-1)
+				svg
+					width: 24px
+					height: 24px
+			&__pagination
+				display: none
+			&__slide-number
+				margin-top: 24px
+				display: flex
+				width: 100%
+				justify-content: center
+				color: var(--color-font-secondary)
+				@include font($size:24, $type:med)
+				@include media($type: tablet)
+					margin-top: 16px
+					@include font($size: 20, $type:med)
+				@include media($type: mobile)
+					margin-top: 8px
+					@include font($size: 16, $type:med)
+	&__mobile
+		&-hide
+			@include media($type: mobile)
+				display: none
+		&-show
+			@include media($min-width: $m)
+				display: none
