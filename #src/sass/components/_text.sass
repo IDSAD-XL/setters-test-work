@@ -38,6 +38,8 @@ h3.heading
 		@include font($size: 32, $type: med)
 	@include media($type: mobile)
 		@include font($size: 28, $type: med)
+		&.smaller-m
+			@include font($size: 20, $type: med)
 h4.heading
 	@include font($size: 28, $type: med)
 	@include media($type: tablet)
@@ -57,6 +59,9 @@ p.text, span.text
 		&:not(.no-mobile)
 			@include media($type: mobile)
 				@include font($size: 16, $type: no-type)
+		&.bigger
+			@include media($type: mobile)
+				@include font($size: 20, $type: no-type)
 	&-small
 		@include font($size: 16, $type: reg)
 	&-extra-small
@@ -65,6 +70,9 @@ p.text, span.text
 		color: var(--color-font-secondary)
 	&-bold
 		@include font($type: med)
+	&.no-mobile-bold
+		@include media($type: mobile)
+			@include font($type: reg)
 	&.white
 		color: #fff
 

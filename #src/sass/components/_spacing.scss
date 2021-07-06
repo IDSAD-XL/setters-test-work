@@ -20,7 +20,8 @@ $sizes:   (0,      0),
 		  (text-2, 8px,    8px,    4px,    4px),
 		  (text-3, 12px),
 		  (text-4, 16px),
-		  (text-5, 28px);
+		  (text-5, 20px),
+		  (text-6, 28px);
 
 
 @each $item, $margin-direction in $margin {

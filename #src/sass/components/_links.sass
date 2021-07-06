@@ -7,6 +7,9 @@
 		color: var(--button-color-hover)
 	&-primary
 		@include font($size: 28, $type:med)
+		&.mobile-smaller
+			@include media($type: mobile)
+				@include font($size: 20, $type: med)
 
 	&-small
 		@include font($size: 16, $type:med)

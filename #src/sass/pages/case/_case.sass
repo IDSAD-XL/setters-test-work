@@ -8,6 +8,8 @@
 		padding-top: 170px
 		display: flex
 		justify-content: center
+		@include media($type: mobile)
+			padding-top: 128px
 		img
 			border-radius: 5px
 			max-width: 100%
@@ -42,8 +44,16 @@
 			background-color: #fff
 			display: flex
 			justify-content: center
+			@include media($type: mobile)
+				padding: 0 37.5px
 		&_next-project-block
 			padding: 26px 0
 			width: 100%
 			display: flex
 			justify-content: center
+			img
+				max-width: 100%
+			@include media($type: mobile)
+				padding: 0 37.5px
+				img
+					display: none
