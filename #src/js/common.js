@@ -453,3 +453,15 @@ if (!body.classList.contains('mobile')) {
 		}
 	})
 }
+
+//!Readmore
+const readmoreBlocks = document.querySelectorAll('.readmore')
+readmoreBlocks.forEach((block) => {
+	const expandButton = block.querySelector('.readmore__expand')
+	expandButton.addEventListener('click', (button) => {
+		button.preventDefault();
+		block.style.maxHeight = `${block.scrollHeight + 100}px`
+		block.classList.remove('hidden')
+		block.classList.add('expanded')
+	})
+})
