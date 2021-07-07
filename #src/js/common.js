@@ -361,6 +361,7 @@ if (casesSwitcher) {
 
 //!Cases list
 const animateText = document.querySelectorAll('.text_animate-show')
+const animateBlocks = document.querySelectorAll('.block_animate-show')
 const casesList = document.querySelector('#casesList')
 const observeElements = document.querySelectorAll('.to-observe')
 
