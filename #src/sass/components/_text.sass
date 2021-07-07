@@ -83,9 +83,8 @@ p.text, span.text
 	overflow-x: visible
 	&-inner
 		transform: translateY(120%)
-
-	&.shown
-
+	&.animated
 		.text_animate-show-inner
 			animation: animate-text-show 1200ms ease
+			animation-delay: .3s
 			animation-fill-mode: forwards

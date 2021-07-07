@@ -1,6 +1,9 @@
 .readmore
 	position: relative
 	transition: max-height 1.2s ease
+	overflow-x: hidden
+	&__expand
+		display: none
 	@include media($type: mobile)
 		position: relative
 		max-height: 600px
@@ -19,6 +22,7 @@
 			position: absolute
 			z-index: 2
 			bottom: 60px
+			display: block
 			.link
 				font-size: 20px
 		&.expanded

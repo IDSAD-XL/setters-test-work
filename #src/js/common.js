@@ -362,6 +362,29 @@ if (casesSwitcher) {
 //!Cases list
 const animateText = document.querySelectorAll('.text_animate-show')
 const casesList = document.querySelector('#casesList')
+const observeElements = document.querySelectorAll('.to-observe')
+
+function createAnimatedTextElement(el) {
+	const content = el.innerHTML
+	const newInner = `<div class="text_animate-show-inner">${content}</div>`
+	el.innerHTML = newInner
+}
+
+animateText.forEach((e) => {
+	createAnimatedTextElement(e)
+})
+
+const observer = new IntersectionObserver((entries, observer) => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			entry.target.classList.add('animated');
+		}
+	});
+});
+
+Array.prototype.forEach.call(observeElements, (el) => {
+	observer.observe(el);
+});
 
 if (casesList) {
 	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
@@ -372,20 +395,7 @@ if (casesList) {
 	})
 }
 
-if (animateText) {
-	let delay = 0
-	animateText.forEach((e) => {
-		function setAnimateDelay() {
-			e.style.overflowY = "visible"
-		}
-		const textInner = e.querySelector('.text_animate-show-inner')
-		setTimeout(setAnimateDelay, delay + 1200)
-		e.style.animationDelay = `${delay}ms`
-		textInner.style.animationDelay = `${delay}ms`
-		e.classList.add('shown')
-		delay += 200
-	})
-}
+
 
 //!Cards parallax
 class ParallaxEffect {
