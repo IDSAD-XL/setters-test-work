@@ -481,3 +481,36 @@ readmoreBlocks.forEach((block) => {
 		block.classList.add('expanded')
 	})
 })
+
+//!List Image animation
+const itemsToAnimateImage = document.querySelectorAll('.image_animation-move')
+
+if (itemsToAnimateImage) {
+	itemsToAnimateImage.forEach((e) => {
+		const image = e.querySelector('.image_to-animate')
+		e.addEventListener('mousemove', (e) => {
+			e.preventDefault()
+			const parent = e.target.closest('.image_animation-move')
+			const targetCoords = parent.getBoundingClientRect();
+			const xCoord = e.clientX - targetCoords.right;
+			const yCoord = e.clientY - targetCoords.top;
+			gsap.to(image, {
+				x: xCoord * 0.02,
+				y: yCoord * 0.02,
+				duration: 0.6,
+				scaleX: 1.2,
+				scaleY: 1.2,
+				ease: Power2.ease
+			});
+		})
+		e.addEventListener('mouseout', (e) => {
+			e.preventDefault()
+			gsap.to(image, {
+				duration: 0.61,
+				scaleX: 1.5,
+				scaleY: 1.5,
+				ease: Power2.ease
+			})
+		})
+	})
+}

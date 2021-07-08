@@ -16,3 +16,15 @@
 		transition: opacity 1.2s ease 0s,transform 1.2s ease 0s
 		transform: translateX(0) translateY(0) translateZ(0)
 		opacity: 1
+
+.image
+	&_animation
+		&-move
+
+		&-wrapper
+			border-radius: 5px
+			overflow: hidden
+			.image_to-animate
+				transform: scale(1.5)
+				max-width: 100%
+	&_to-animate
