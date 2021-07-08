@@ -488,7 +488,8 @@ const itemsToAnimateImage = document.querySelectorAll('.image_animation-move')
 if (itemsToAnimateImage) {
 	itemsToAnimateImage.forEach((e) => {
 		const image = e.querySelector('.image_to-animate')
-		const scale = e.classList.contains('image_animation-no-scale')
+		const scale = image.classList.contains('image_animation-no-scale')
+		console.log(scale);
 		e.addEventListener('mousemove', (e) => {
 			e.preventDefault()
 			const parent = e.target.closest('.image_animation-move')
