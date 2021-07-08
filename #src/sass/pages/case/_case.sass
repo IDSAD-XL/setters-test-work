@@ -41,14 +41,18 @@
 	&-slider
 		.splide
 			&__slide
-				margin: 0 10px
-				transition: .2s
-				opacity: 0.5
+				transition: width 0s 0.9s cubic-bezier(.33,1,.68,1),left 0s 0.9s,right 0s 0.9s
 				@include media($type: mobile)
+					margin: 0 10px
+					opacity: 0.5
 					display: flex
 					justify-content: center
 				&.is-active
-					opacity: 1
+					z-index: 1
+					transition: width 0.9s 0s cubic-bezier(.33,1,.68,1),left 0s 0s,right 0s 0s
+					@include media($type: mobile)
+						opacity: 1
+
 			&__arrows
 				display: block
 				@include media($type: mobile)

@@ -210,9 +210,8 @@ const slidersOptions = {
 	},
 	case: {
 		type: 'loop',
-		autoplay: true,
-		interval: 3000,
-		pauseOnHover: true,
+		autoplay: false,
+		speed: 1200,
 		breakpoints: {
 			1023: {
 				arrows: false,
@@ -228,13 +227,19 @@ if (sliders) {
 	sliders.forEach((e) => {
 		const options = e.classList.contains('card-slider') ?
 			slidersOptions.card : slidersOptions.case
-		const slider = new Splide(e, options).mount();
+		const slider = new Splide(e, options).mount()
 		const sliderNumber = e.querySelector('.splide__slide-number')
-		const slidesCount = slider.length;
+		const slidesCount = slider.length
 		sliderNumber.innerHTML = `1/${slidesCount}`
 		slider.on('moved', () => {
-			let currentSlide = slider.index
+			const currentSlide = slider.index
 			sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+		})
+		slider.on('move', (oldIndex, newIndex, destSlide) => {
+			const currentSlide = e.querySelector('.is-active')
+			currentSlide.classList.remove('splide__next-slide')
+			const nextSlide = currentSlide.nextElementSibling
+			nextSlide.classList.add('splide__next-slide')
 		})
 	})
 }
