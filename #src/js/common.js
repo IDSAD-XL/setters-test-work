@@ -535,3 +535,88 @@ if (itemsToAnimateImage) {
 		})
 	})
 }
+
+class LeafSlider {
+	constructor(block) {
+		this.block = block
+		this.index = 0
+		this.slides = block.querySelectorAll('.leaf-slider__slide')
+		this.buttonPrev = block.querySelector('.leaf-slider--prev')
+		this.buttonNext = block.querySelector('.leaf-slider--next')
+		this.setSlidesClasses()
+		this.mount()
+		this.attachEventsListener()
+	}
+	mount() {
+		const leafTrack = document.createElement("div")
+		// this.setSliderHeight(this.findHighestSlide())
+		leafTrack.classList.add('leaf-slider__track')
+		this.slides.forEach((slide) => {
+			slide.classList.add('mounted')
+			leafTrack.appendChild(slide)
+		})
+		this.track = leafTrack
+		this.block.appendChild(leafTrack)
+		this.slides[0]
+	}
+	setSlidesClasses() {
+		let counter = 0
+		this.slides.forEach((slide) => {
+			slide.classList.add(`leaf-slider__slide_${counter}`)
+			slide.style.zIndex = counter
+			counter++
+		})
+	}
+	attachEventsListener() {
+		this.buttonPrev.addEventListener('click', (e) => {
+			this.slideDown(e)
+		})
+		this.buttonNext.addEventListener('click', (e) => {
+			this.slideUp(e)
+		})
+	}
+	slideUp() {
+		console.log(this.index);
+		if (this.index + 1 > this.slides.length - 1) {
+			return
+		}
+		this.index++
+		this.slides[this.index].classList.remove('right')
+		this.slides[this.index].classList.add('active', 'left')
+	}
+	slideDown() {
+		console.log(this.index);
+		if (this.index - 1 < 0) {
+			return
+		}
+		this.slides[this.index].classList.remove('active')
+		this.index--
+		this.slides[this.index].classList.remove('left')
+		this.slides[this.index].classList.add('right')
+	}
+	activeSlide() {
+
+	}
+	getSlideByIndex(index) {
+		return this.slides[index]
+	}
+	// findHighestSlide() {
+	// 	let finalHeight = 0
+	// 	this.slides.forEach((slide) => {
+	// 		if (slide.offsetHeight > finalHeight) {
+	// 			finalHeight = slide.offsetHeight
+	// 		}
+	// 	})
+	// 	return finalHeight
+	// }
+	// setSliderHeight(height) {
+	// 	this.block.style.height = `${height}px`
+	// }
+
+}
+
+const leafSliders = document.querySelectorAll('.leaf-slider')
+leafSliders.forEach((e) => {
+	const slider = new LeafSlider(e)
+	console.log(slider);
+})
