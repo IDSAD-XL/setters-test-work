@@ -495,7 +495,7 @@ if (itemsToAnimateImage) {
 			const targetCoords = parent.getBoundingClientRect();
 			const xCoord = e.clientX - targetCoords.right;
 			const yCoord = e.clientY - targetCoords.top;
-			if (scale) {
+			if (!scale) {
 				gsap.to(image, {
 					x: xCoord * 0.02,
 					y: yCoord * 0.02,
@@ -516,7 +516,7 @@ if (itemsToAnimateImage) {
 		})
 		e.addEventListener('mouseout', (e) => {
 			e.preventDefault()
-			if (scale) {
+			if (!scale) {
 				gsap.to(image, {
 					duration: 0.61,
 					scaleX: 1.5,
