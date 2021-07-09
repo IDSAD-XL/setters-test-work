@@ -1,20 +1,95 @@
+
+@keyframes left-slide
+	0%
+		transform: translateX(-100%)
+	100%
+		transform: translateX(0)
+
+@keyframes right-slide
+	0%
+		transform: translateX(100%)
+	100%
+		transform: translateX(0)
+
+@keyframes image-scale--left
+	0%
+		transform: scale(1.2) translateX(-50%)
+	100%
+		transform: scale(1) translateX(0)
+
+@keyframes image-scale--right
+	0%
+		transform: scale(1.2) translateX(50%)
+	100%
+		transform: scale(1) translateX(0)
+
 .leaf-slider
+	display: flex
+	align-items: center
+	position: relative
 	&__track
 		position: relative
 		overflow: hidden
 		width: 100%
-		height: 535px
+		height: 100%
+		border-radius: 5px
+	&__arrows
+		z-index: 10
+		position: absolute
+		width: 100%
+		display: flex
+		justify-content: space-between
+	&__arrow
+		background-color: transparent
+		border: none
+		width: 24px
+		height: 24px
+		cursor: pointer
+		svg
+			max-width: 100%
+			max-height: 100%
+	&__numeric
+		position: absolute
+		bottom: 0
+		width: 100%
+		display: flex
+		justify-content: center
+		z-index: 10
+		color: #989898
+		@include font($size:24 , $type: reg)
+		@include media($type: tablet)
+			@include font($size: 20, $type: reg)
+		@include media($type: mobile)
+			@include font($size: 16, $type: med)
+	&--prev
+		margin-left: 25px
+	&--next
+		margin-right: 25px
 	&__slide
 		top: 0
-		position: absolute
+		overflow: hidden
+		z-index: 0
+		&.mounted
+			position: absolute
 		img
-			transition: transform 1s ease
-		&.left
-			img
-				transform: translateX(-100%)
-		&.right
-			img
-				transform: translateX(100%)
+			transition: transform 1.2s cubic-bezier(0.33, 1, 0.68, 1)
 		&.active
+			z-index: 1
 			img
 				transform: translateX(0)
+		&.left
+			z-index: 3
+			animation: right-slide .9s cubic-bezier(0.33, 1, 0.68, 1)
+			animation-fill-mode: forwards
+			img
+				animation: image-scale--left .9s cubic-bezier(0.33, 1, 0.68, 1)
+				animation-fill-mode: forwards
+		&.right
+			z-index: 3
+			animation: left-slide .9s cubic-bezier(0.33, 1, 0.68, 1)
+			animation-fill-mode: forwards
+			img
+				animation: image-scale--right .9s cubic-bezier(0.33, 1, 0.68, 1)
+				animation-fill-mode: forwards
+		&.previous-slide
+			z-index: 2
