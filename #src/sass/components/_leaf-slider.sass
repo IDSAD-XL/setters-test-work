@@ -27,6 +27,11 @@
 	display: flex
 	align-items: center
 	position: relative
+	margin-bottom: 52px
+	@index media($type: tablet)
+		margin-bottom: 44px
+	@include media($type: mobile)
+		margin-bottom: 32px
 	&__track
 		position: relative
 		overflow: hidden
@@ -50,7 +55,8 @@
 			max-height: 100%
 	&__numeric
 		position: absolute
-		bottom: 0
+		bottom: -24px
+		transform: translateY(100%)
 		width: 100%
 		display: flex
 		justify-content: center
@@ -58,8 +64,10 @@
 		color: #989898
 		@include font($size:24 , $type: reg)
 		@include media($type: tablet)
+			bottom: -16px
 			@include font($size: 20, $type: reg)
 		@include media($type: mobile)
+			bottom: -8px
 			@include font($size: 16, $type: med)
 	&--prev
 		margin-left: 25px

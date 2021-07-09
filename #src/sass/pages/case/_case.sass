@@ -26,6 +26,9 @@
 			background-color: #fff
 			display: flex
 			justify-content: center
+			& > .container
+				padding-left: 0
+				padding-right: 0
 			@include media($type: mobile)
 				padding: 0 37.5px
 		&_next-project-block
@@ -100,3 +103,15 @@
 			@include media($type: mobile)
 				padding-left: 20px
 				font-size: 16px
+	&__quote-sign
+		width: 28px
+		height: 28px
+		transform: translateX(-50%)
+		@include media($type: mobile)
+			display: none
+		&-wrapper
+			top: 0
+			width: 100%
+			display: flex
+			justify-content: center
+			position: absolute

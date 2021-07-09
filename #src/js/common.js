@@ -558,7 +558,7 @@ class LeafSlider {
 		})
 		this.track = leafTrack
 		this.block.appendChild(leafTrack)
-		this.setSliderHeight(this.findHighestSlide())
+		this.adaptiveHeight()
 		this.setNumeric()
 	}
 	setSlidesClasses() {
@@ -570,14 +570,20 @@ class LeafSlider {
 	}
 	attachEventsListener() {
 		this.buttonPrev.addEventListener('click', (e) => {
+			e.preventDefault()
 			if (this.locked) return
 			this.slideDown(e)
 			this.lockSlider()
 		})
 		this.buttonNext.addEventListener('click', (e) => {
+			e.preventDefault()
 			if (this.locked) return
 			this.slideUp(e)
 			this.lockSlider()
+		})
+		window.addEventListener('resize', (e) => {
+			e.preventDefault()
+			this.adaptiveHeight()
 		})
 	}
 	slideUp() {
@@ -618,6 +624,9 @@ class LeafSlider {
 	}
 	setNumeric() {
 		this.numeric.innerHTML = `${this.index + 1}/${this.slides.length}`
+	}
+	adaptiveHeight() {
+		this.setSliderHeight(this.findHighestSlide())
 	}
 	findHighestSlide() {
 		let finalHeight = 0
