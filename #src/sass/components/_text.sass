@@ -62,6 +62,12 @@ p.text, span.text
 		&.bigger
 			@include media($type: mobile)
 				@include font($size: 20, $type: no-type)
+	&-big
+		@include font($size: 32)
+		@include media($type: tablet)
+			@include font($size: 24)
+		@include media($type: mobile)
+			@include font($size: 20)
 	&-small
 		@include font($size: 16, $type: reg)
 	&-extra-small
