@@ -71,8 +71,12 @@
 			@include font($size: 16, $type: med)
 	&--prev
 		margin-left: 25px
+		@include media($type: mobile)
+			margin-left: 10px
 	&--next
 		margin-right: 25px
+		@include media($type: mobile)
+			margin-right: 10px
 	&__slide
 		top: 0
 		overflow: hidden
