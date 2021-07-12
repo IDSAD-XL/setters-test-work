@@ -453,7 +453,7 @@ const parallaxBlocks = [
 	{
 		blockId: "cases-card-layout",
 		columns: [
-			{ id: "casesCardColumnLeft", k: 0.5 },
+			{ id: "casesCardColumnLeft", k: 0.3 },
 			{ id: "casesCardColumnRight", k: 0.1 }
 		]
 	}
@@ -518,6 +518,8 @@ if (itemsToAnimateImage) {
 			e.preventDefault()
 			if (!scale) {
 				gsap.to(image, {
+					x: 0,
+					y: 0,
 					duration: 0.61,
 					scaleX: 1.5,
 					scaleY: 1.5,
@@ -526,6 +528,8 @@ if (itemsToAnimateImage) {
 			}
 			else {
 				gsap.to(image, {
+					x: 0,
+					y: 0,
 					duration: 0.61,
 					ease: Power2.ease
 				})
