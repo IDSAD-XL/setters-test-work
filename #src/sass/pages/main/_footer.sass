@@ -1,0 +1,297 @@
+@import "settings/_variables.sass"
+
+.footer
+	width: 100vw
+	position: relative
+	z-index: 20
+	background-color: #F5F5F5
+	overflow-x: hidden
+	&-sticky
+		transition: .2s
+		overflow-x: hidden
+		display: flex
+		justify-content: space-between
+		width: 100%
+		height: 44px
+		background: #FFFFFF
+		color: #000
+		position: sticky
+		left: 0
+		bottom: 0
+		border: 2px solid #D7D7D7
+		z-index: 20
+		overflow-y: hidden
+		@include media($type: tablet)
+			justify-content: center
+		@include media($type: mobile)
+			height: 60px
+		&_hide
+			height: 0
+			bottom: -5px
+			width: 100%
+		&__item
+			height: 100%
+			display: flex
+			justify-content: center
+			align-items: center
+			text-transform: uppercase
+			@include font($size: 20, $type:med)
+			flex-grow: 1
+			transition: .1s
+			a
+				transition: .1s
+				color: #000
+				text-decoration: none
+				display: flex
+				align-items: center
+			&_tablet
+				display: none
+				@include media($max-width: $l)
+					display: flex
+					flex-grow: 0
+
+			&:hover
+				background-color: var(--color-blue)
+				a
+					color: #fff
+		&__left, &__right
+			display: flex
+		&__left
+			padding-left: 60px
+			@include media($type: tablet)
+				width: 100%
+				max-width: 750px
+				padding-right: 60px
+			@include media($type: mobile)
+				width: 100%
+				padding-left: 0
+		&__left &__item
+			padding: 0 20px
+			border-right: 2px solid #D7D7D7
+			&:nth-child(1)
+				border-left: 2px solid #D7D7D7
+				@include media($type: mobile)
+					border-left: 0
+			&:nth-last-child(1)
+				@include media($type: mobile)
+					width: 60px
+					border-right: 0
+		&__right &__item
+			min-width: 40px
+			border-left: 2px solid #D7D7D7
+		&__right &__item:nth-last-child(2)
+			padding: 0 20px
+		&__right &__item:nth-last-child(1)
+			width: 60px
+		&__right
+			@include media($type: tablet)
+				display: none
+		&__mobile-hide
+			@include media($type: mobile)
+				display: none
+		&__arrow-top
+			cursor: pointer
+			transition: .1s
+			path
+				transition: .2s
+			&:hover
+				path
+					stroke: #fff
+	&-content
+		width: 100%
+		height: 150px
+		display: flex
+		justify-content: space-between
+		padding: 0 70px
+		@include media($type: mobile)
+			text-align: center
+			height: 350px
+			padding: 0 50px
+			flex-wrap: wrap-reverse
+			justify-content: center
+		@include media($type: tablet)
+			height: 224px
+		&__left, &__right
+			display: flex
+			align-items: center
+			@include media($type: mobile)
+				width: 100%
+		&__right
+			display: flex
+			color: var(--color-font-additional)
+			@include font($size: 28, $type:med)
+			@include media($type: tablet)
+				justify-content: center
+				width: 100%
+			@include media($type: mobile)
+				justify-content: center
+			span
+				white-space: nowrap
+				@include media($type: mobile)
+					width: 100%
+					white-space: normal
+					@include font($size: 20, $type:med)
+				@include media($type: tablet)
+					margin-top: 32px
+					@include font($size: 20, $type:med)
+			form
+				display: flex
+				justify-content: center
+				align-items: center
+				max-width: 750px
+				width: 100%
+				padding: 0 60px
+				@include media($type: ultra-wide)
+					max-width: none
+				@include media($type: desktop)
+					max-width: none
+				@include media($type: mobile)
+					padding: 0
+					width: 100%
+					flex-wrap: wrap
+				@include media($type: tablet)
+					justify-content: space-between
+					align-items: flex-start
+			&-form-inner
+				display: flex
+				align-items: center
+				justify-content: flex-start
+				flex-wrap: wrap
+				@include media($type: tablet)
+					flex-direction: column
+					align-items: flex-start
+					margin-top: 24px
+					margin-bottom: 60px
+				@include media($type: mobile)
+					justify-content: center
+
+			button
+				height: 60px
+				@include media($type: tablet)
+					margin-top: 20px
+					margin-left: 10px
+				@include media($type: mobile)
+					width: 100%
+					margin-top: 16px
+			.input-wrapper
+				height: 60px
+				width: 250px
+				margin-left: 40px
+				margin-right: 20px
+
+				input
+					width: 100%
+					height: 100%
+					background-color: #E9E9E9
+				label
+					top: 20px
+				@include media($type: tablet)
+					margin-left: 0
+				@include media($type: mobile)
+					height: 60px
+					width: 100%
+					margin: 0
+					margin-top: 20px
+					label
+						top: 20px
+
+		&__left
+			@include media($max-width: $l)
+				display: none
+
+	&-bottom
+		padding-left: 70px
+		display: flex
+		align-items: center
+		height: 80px
+		border: 2px solid #D7D7D7
+		a
+			margin-right: 40px
+			@include media($type: mobile)
+				margin: 0 15px
+		@include media($type: mobile)
+			flex-wrap: wrap
+			justify-content: center
+			padding: 0 20px
+			text-align: center
+	&-tablet
+		height: 44px
+		display: none
+		background-color: #fff
+		border-bottom: 2px solid #D7D7D7
+		border-left: 2px solid #D7D7D7
+		border-right: 2px solid #D7D7D7
+		@include media($type: tablet)
+			display: flex
+			justify-content: center
+		&__inner
+			display: flex
+			justify-content: center
+			width: 100%
+			max-width: 630px
+		&__item
+			height: 100%
+			border-left: 2px solid #D7D7D7
+			display: flex
+			justify-content: center
+			align-items: center
+			min-width: 44px
+			a
+				color: #000
+				text-decoration: none
+				display: flex
+				align-items: center
+			&:nth-last-child(1)
+				border-right: 2px solid #D7D7D7
+				flex-grow: 1
+				text-transform: uppercase
+				@include font($size: 20, $type:med)
+				color: #000
+	&-mobile
+		border-left: 2px solid #D7D7D7
+		border-right: 2px solid #D7D7D7
+		display: none
+		@include media($type: mobile)
+			display: flex
+			flex-wrap: wrap
+			background-color: #fff
+			justify-content: center
+		&__item
+			min-width: 44px
+			height: 44px
+			border-left: 2px solid #D7D7D7
+			display: flex
+			justify-content: center
+			align-items: center
+			@include font($size: 20, $type:med)
+			color: #000
+			a
+				color: #000
+				text-decoration: none
+				display: flex
+				align-items: center
+			&:nth-last-child(1), &:nth-child(1)
+				border-bottom: 2px solid #D7D7D7
+				border-left: 0
+				width: 100%
+			&:nth-last-child(1)
+				border-top: 2px solid #D7D7D7
+			&:nth-last-child(2)
+				border-right: 2px solid #D7D7D7
+			@include media($type: $m)
+				height: 60px
+				min-width: 60px
+	&__mobile-hide
+		@include media($type: mobile)
+			display: none
+	&__social-link
+		transition: .2s
+		&:hover
+			color: #fff
+			background-color: var(--color-blue)
+			path
+				stroke: #fff
+			.social-link_telegram
+				path
+					fill: #fff
+					stroke: none

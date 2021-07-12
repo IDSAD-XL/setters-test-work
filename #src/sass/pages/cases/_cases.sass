@@ -1,0 +1,295 @@
+@import "settings/_variables.sass"
+
+@keyframes list-item-text
+	0%
+		transform: translateY(100%)
+	100%
+		transform: translateY(0)
+
+.cases
+	display: flex
+	justify-content: center
+	background-color: #fff
+	min-width: 100vw
+	min-height: 100vh
+	color: #000
+	&-top
+		padding: 0
+		display: flex
+		margin-top: 170px
+		flex-wrap: wrap
+		width: 100%
+		padding: 0 15px
+		@include media($type: tablet)
+			margin-top: 150px
+		@include media($type: mobile)
+			margin-top: 120px
+			padding: 0
+	&__title
+		display: flex
+		align-items: center
+		width: 50%
+		@include font($size:160, $type:med)
+		line-height: 1em
+		@include media($type: desktop)
+			@include font($size: 124, $type:med)
+		@include media($type: tablet)
+			@include font($size: 76, $type:med)
+		@include media($type: mobile)
+			margin-bottom: 16px
+			width: 100%
+			@include font($size: 40, $type:med)
+
+	&__description
+		display: flex
+		align-items: center
+		padding-right: 50px
+		width: 50%
+		@include font($size:20, $type:med)
+		@include media($type: desktop)
+			padding-top: 16px
+		@include media($type: tablet)
+			@include font($size: 16, $type:med)
+		@include media($type: mobile)
+			@include font($size: 16, $type:med)
+			width: 100%
+	&__subtitle
+		margin-top: 40px
+		@include media($type: mobile)
+		@include media($max-width: $l)
+			margin-top: -10px
+		a
+			circle
+				transition: .2s
+			svg
+				transform: translateY(5px)
+			@include font($size:76, $type:med)
+			@include media($type: desktop)
+				@include font($size: 60, $type:med)
+			@include media($type: tablet)
+				@include font($size: 40, $type:med)
+				svg
+					width: 32px
+					transform: translateY(12px)
+			@include media($type: mobile)
+				@include font($size: 20, $type:med)
+				svg
+					width: 32px
+					transform: translateY(20px)
+			&:hover
+				circle
+					fill: var(--button-color-hover)
+	&-inner
+		display: flex
+		align-items: center
+		flex-direction: column
+		padding: 0 140px
+		max-width: 100vw
+		@include media($type: tablet)
+			padding: 0
+		@include media($type: mobile)
+			padding: 0 37.5px
+
+	&-content
+		display: flex
+		flex-direction: column
+		align-items: center
+		position: relative
+		padding-bottom: 100px
+		width: 100%
+		&.mode-cards
+			.cases-cards
+				display: flex
+			.cases-list
+				display: none
+			.cases-list__item-name-inner
+				transform: translateY(100%)
+		&.mode-list
+			.cases-cards
+				display: none
+			.cases-list
+				display: block
+			.cases-list__item-name-inner
+				animation: list-item-text 1200ms ease
+				animation-fill-mode: forwards
+				transition: 1200ms ease
+	&-switches
+		margin-top: 60px
+		padding: 0
+		width: 100%
+		padding: 0 15px
+		@include media($type: tablet)
+			margin-top: 50px
+		@include media($type: mobile)
+			margin-top: 30px
+			padding: 0
+	&__switch
+		cursor: pointer
+		&:nth-child(1)
+			margin-right: 13px
+		rect
+			transition: .2s
+		&:hover
+			rect
+				fill: var(--color-blue)
+		@include media($max-width: $l)
+			&:nth-child(1)
+				margin-right: 5px
+				margin-left: -5px
+			svg
+				height: 24px
+		&_radio
+			opacity: 0
+			width: 0
+			height: 0
+			&:checked + svg
+				rect
+					fill: var(--color-blue)
+	&-cards
+		margin-top: 60px
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		align-content: center
+		padding: 0 15px
+		@include media($type: desktop)
+			margin-left: 3px
+		@include media($type: tablet)
+			margin-top: 40px
+		@include media($type: mobile)
+			max-width: 100%
+			margin-top: 32px
+			padding: 0
+	&-card
+		&:hover
+			@include media($max-width: $l)
+				.card__image, .card-slider, .card-inner
+					transform: none
+		img
+			max-width: 100%
+			max-height: 100%
+			@include media($type: mobile)
+				max-width: 300px
+		&.size-default
+			@include media($type: mobile)
+				img
+					width: 300px
+					height: 300px
+					object-fit: cover
+		&.size-small
+			@include media($type: mobile)
+				img
+					width: 300px
+					height: 160px
+					object-fit: cover
+		.card__text
+			color: #000
+			@include media($max-width: $l)
+				position: static
+				margin-top: 12px
+				max-height: none
+				opacity: 1
+				display: block
+			@include media($type: mobile)
+				@include font($size: 20, $type:med)
+	&-list
+		width: 100vw
+		margin-top: 60px
+		@include media($type: mobile)
+			max-width: 100%
+			margin-top: 30px
+		&__item
+			transition: .2s
+			display: flex
+			justify-content: center
+			position: relative
+			@include media($type: tablet)
+				height: 120px
+			@include media($type: mobile)
+				height: 80px
+			@include media($min-width: $l)
+				&:hover
+					background-color: var(--color-blue)
+					&::after
+						content: ""
+						position: absolute
+						width: 100%
+						height: calc(100% - 2px)
+						left: 0
+						top: -2px
+						border: 2px solid #D7D7D7
+						z-index: 1
+					.cases-list__item-inner
+						padding-left: 0
+						border: 0
+					.cases-list__item-image
+						opacity: 1
+					.cases-list__item-name
+						color: #fff
+			svg
+				margin-left: 20px
+				transform: translateY(3px)
+				@include media($max-width: $l)
+					display: none
+					transition: .2s
+			&-name
+				@include font($size: 40, $type: med)
+				color: #000
+				text-decoration: none
+				@include media($max-width: $l)
+					@include font($size: 32, $type: med)
+					color: var(--color-blue)
+					&:hover
+						color: var(--button-color-hover)
+				@include media($type: mobile)
+					@include font($size:20, $type:med)
+				&-wrapper
+					overflow-y: hidden
+				&-inner
+					transition: transform 1s ease
+					transform: translateY(100%)
+			&-inner
+				cursor: pointer
+				transition: .2s
+				display: flex
+				align-items: center
+				justify-content: space-between
+				padding-left: 60px
+				padding-bottom: 44px
+				padding-top: 44px
+				border-bottom: 2px solid #D7D7D7
+				position: relative
+				max-width: 1160px
+				@include media($type: tablet)
+					padding-left: 50px
+					padding-bottom: 44px
+					padding-top: 44px
+					max-width: 940px
+				@include media($type: mobile)
+					padding-left: 0
+					padding-bottom: 24px
+					padding-top: 24px
+
+			&:nth-child(1)
+				.cases-list__item-inner
+					&::after
+						content: ""
+						position: absolute
+						width: 100%
+						height: calc(100% - 2px)
+						left: 0
+						top: -2px
+						border-top: 2px solid #D7D7D7
+						z-index: 1
+
+			&-image
+				position: absolute
+				right: 0
+				transition: .2s
+				opacity: 0
+				width: 300px
+				height: 200px
+				z-index: 2
+				border-radius: 5px
+				@include media($max-width: $l)
+					display: none

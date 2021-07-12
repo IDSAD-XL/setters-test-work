@@ -1,0 +1,20 @@
+<div class="popup-rewards__inner-block">
+	<div class="popup-rewards__inner-block-title">
+		<a class="link link-primary popup-rewards__inner-block-title">
+			@@title
+		</a>
+	</div>
+	<div class="popup-rewards__inner-block-content">
+		<ul class="popup-rewards__rewards-list">
+			@@for (let i = 0; i < rewards.length; i++) { <li class="popup-rewards__rewards-list-item">
+				<span>
+					`+rewards[i].name+`
+				</span>
+				<span class="popup-rewards__`+rewards[i].placeClass+`">
+					`+rewards[i].place+`
+				</span>
+				</li>
+				}
+		</ul>
+	</div>
+</div>

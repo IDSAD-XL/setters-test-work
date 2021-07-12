@@ -1,0 +1,11 @@
+$borders: (t, border-top),
+		  (b, border-bottom),
+		  (l, border-left),
+		  (r, border-right);
+
+@each $item, $value in $borders {
+	.b#{$item} {
+		#{$value}: 2px solid var(--color-border-primary);
+	}
+}
+		

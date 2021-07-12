@@ -1,3 +1,9 @@
+//!Check if mobile
+const body = document.querySelector('body');
+if (window.innerWidth < 1024) {
+	body.classList.add('mobile')
+}
+
 //! Magnet circle at the first section
 class hoverEffect {
 	constructor(el) {
@@ -81,23 +87,28 @@ class hoverEffect {
 }
 const magnetScroll = document.querySelector("#scrollWrapper");
 const contentSection = document.querySelector('.content')
-new hoverEffect(magnetScroll);
-magnetScroll.addEventListener('click', (e) => {
-	e.preventDefault()
-	contentSection.scrollIntoView({ behavior: "smooth" })
-})
+if (magnetScroll && contentSection) {
+	new hoverEffect(magnetScroll);
+	magnetScroll.addEventListener('click', (e) => {
+		e.preventDefault()
+		contentSection.scrollIntoView({ behavior: "smooth" })
+	})
+}
+
 
 //! Mobile burger menu
 const menuCheckbox = document.querySelector('#menu__toggle')
-const body = document.querySelector('body');
 
-menuCheckbox.addEventListener('change', () => {
-	if (menuCheckbox.checked) {
-		setBodyScrollable()
-	} else {
-		setBodyUnScrollable()
-	}
-})
+
+if (menuCheckbox) {
+	menuCheckbox.addEventListener('change', () => {
+		if (menuCheckbox.checked) {
+			setBodyScrollable()
+		} else {
+			setBodyUnScrollable()
+		}
+	})
+}
 
 function setBodyScrollable() {
 	body.classList.add('menu-open')
@@ -110,11 +121,18 @@ function setBodyUnScrollable() {
 //! Footer scroll to top arrows
 const scrollTopArrows = document.querySelectorAll(".footer-sticky__arrow-top")
 const topSection = document.querySelector("#top-section")
-scrollTopArrows.forEach((e) => {
-	e.addEventListener('click', () => {
-		topSection.scrollIntoView({ behavior: "smooth" })
+
+if (scrollTopArrows) {
+	scrollTopArrows.forEach((e) => {
+		e.addEventListener('click', () => {
+			// topSection.scrollIntoView({ behavior: "smooth" })
+			window.scrollTo({
+				top: 0,
+				behavior: "smooth"
+			})
+		})
 	})
-})
+}
 
 //! Footer hide at top section
 const stickyFooter = document.querySelector("#footer-sticky")
@@ -132,47 +150,44 @@ window.addEventListener("scroll", () => {
 }, { passive: true })
 
 //! Popups
-//? textarea
-const requestTextarea = document.querySelector("#request-popup__details");
-//? textarea mobile
-function setRequestPopupPlaceholder() {
-	requestTextarea.placeholder = (window.innerWidth > 2024) ?
-		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством. Какую цель вы хотели бы достичь или какую главную проблему вы хотели бы решить с нашей помощью?"
-		:
-		"Пожалуйста, максимально подробно опишите задачу, которую вы ставите перед агентством"
-}
-setRequestPopupPlaceholder()
-window.addEventListener('resize', setRequestPopupPlaceholder, { passive: true })
-
-//! Popup open
 const popups = document.querySelectorAll(".popup")
 const popupToggles = document.querySelectorAll(".open-popup")
 
-popupToggles.forEach((e) => {
-	const targetPopup = document.getElementById(e.dataset.target)
-	e.addEventListener('click', (evt) => {
-		evt.preventDefault()
-		openPopup(targetPopup)
+if (popups) {
+	popups.forEach((e) => {
+		document.body.appendChild(e)
 	})
-	const popupBody = targetPopup.querySelector('.popup-body')
-	if (popupBody != null) {
-		targetPopup.addEventListener('click', (e) => {
-			e.preventDefault()
-			const clicked = e.target
-			if (clicked.classList.contains('open-popup')) return
-			if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+}
+
+//! Popup open
+if (popups && popupToggles) {
+	popupToggles.forEach((e) => {
+		const targetPopup = document.getElementById(e.dataset.target)
+		e.addEventListener('click', (evt) => {
+			evt.preventDefault()
+			openPopup(targetPopup)
+		})
+		const popupBody = targetPopup.querySelector('.popup-body')
+		if (popupBody != null) {
+			targetPopup.addEventListener('click', (e) => {
+				e.preventDefault()
+				const clicked = e.target
+				if (clicked.classList.contains('open-popup')) return
+				if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
+					closePopup(targetPopup)
+				}
+			})
+		}
+		const closeButton = targetPopup.querySelector('.close-popup')
+		if (closeButton != null) {
+			closeButton.addEventListener('click', (e) => {
+				e.preventDefault()
 				closePopup(targetPopup)
-			}
-		})
-	}
-	const closeButton = targetPopup.querySelector('.close-popup')
-	if (closeButton != null) {
-		closeButton.addEventListener('click', (e) => {
-			e.preventDefault()
-			closePopup(targetPopup)
-		})
-	}
-})
+			})
+		}
+	})
+}
+
 
 function closePopup(popup) {
 	popup.classList.add('popup_hide')
@@ -184,30 +199,58 @@ function openPopup(popup) {
 	body.classList.add('modal-open')
 }
 
-//!Card Sliders
-const cardSliders = document.querySelectorAll('.card-layout .splide');
-cardSliders.forEach((e) => {
-	const slider = new Splide(e, {
+//!Sliders
+const sliders = document.querySelectorAll('.splide');
+const slidersOptions = {
+	card: {
 		type: 'loop',
 		autoplay: true,
 		interval: 3000,
 		pauseOnHover: true,
-		arrows: false
-	}).mount();
-	const sliderNumber = e.querySelector('.splide__slide-number')
-	const slidesCount = slider.length;
-	sliderNumber.innerHTML = `1/${slidesCount}`
-	slider.on('moved', () => {
-		let currentSlide = slider.index
-		sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+	},
+	case: {
+		type: 'loop',
+		autoplay: false,
+		speed: 1200,
+		breakpoints: {
+			1023: {
+				arrows: false,
+				padding: {
+					right: '40px',
+					left: '40px'
+				}
+			}
+		}
+	}
+}
+if (sliders) {
+	sliders.forEach((e) => {
+		const options = e.classList.contains('card-slider') ?
+			slidersOptions.card : slidersOptions.case
+		const slider = new Splide(e, options).mount()
+		const sliderNumber = e.querySelector('.splide__slide-number')
+		const slidesCount = slider.length
+		sliderNumber.innerHTML = `1/${slidesCount}`
+		slider.on('moved', () => {
+			const currentSlide = slider.index
+			sliderNumber.innerHTML = `${currentSlide + 1}/${slidesCount}`
+		})
+		slider.on('move', (oldIndex, newIndex, destSlide) => {
+			const currentSlide = e.querySelector('.is-active')
+			currentSlide.classList.remove('splide__next-slide')
+			const nextSlide = currentSlide.nextElementSibling
+			nextSlide.classList.add('splide__next-slide')
+		})
 	})
-})
+}
 
 //!Top section heading 
-const glitchWords = ['стратегии', 'креативы']
+const glitchWords = ['стратегии', 'креатив', 'дизайн']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
 
-glitchWord(0)
+if (glitchTitle) {
+	glitchWord(0)
+}
 
 function glitchWord(ind) {
 	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
@@ -244,43 +287,364 @@ function randomInteger(min, max) {
 
 //!Card show 
 const cards = document.querySelectorAll('.card_show-animate')
-const cardLayout = document.querySelector('#main-card-layout')
-let lowestPoint = cardLayout.scrollTop
-let cardsShowedCount = 0
-document.addEventListener('scroll', animateCardsShow, { passive: true })
+const cardLayout = document.querySelector('.card-layout')
+let lowestPoint
+let cardsShowedCount
 
-animateCardsShow()
+setAnimateCards()
+function setAnimateCards() {
+	if (cardLayout && cards) {
+		hideAllCards()
+		document.addEventListener('scroll', animateCardsShow, { passive: true })
+		lowestPoint = cardLayout.scrollTop
+		cardsShowedCount = 0
+		animateCardsShow()
+	}
+}
+
+function hideAllCards() {
+	cards.forEach((card) => {
+		card.classList.remove('shown', 'visible')
+	})
+}
+
 function animateCardsShow() {
 	if (cardsShowedCount == cards.length) {
 		document.removeEventListener('scroll', animateCardsShow)
 	}
-	if (window.scrollY > lowestPoint) {
-		let visibleCards = []
-		cards.forEach((e) => {
-			if (isVisible(e) && !e.classList.contains('visible')) {
-				e.classList.add('visible')
-				visibleCards.push(e)
-			}
-		})
-		let leftCornerElement = visibleCards[0]
-		visibleCards.forEach((e) => {
-			if (e.offsetLeft < leftCornerElement.offsetLeft &&
-				e.offsetTop < leftCornerElement.offsetTop) {
-				leftCornerElement = e
-			}
-		})
-		visibleCards.forEach((e) => {
-			let distance = (Math.abs(leftCornerElement.offsetTop - e.offsetTop)) +
-				(Math.abs(leftCornerElement.offsetLeft - e.offsetLeft))
-			e.style.transitionDelay = `${distance}ms`
-			e.style.animationDelay = `${distance}ms`
-			e.classList.add('shown')
-			cardsShowedCount++
-		})
-	}
+	let visibleCards = []
+	cards.forEach((e) => {
+		if (isVisible(e) && !e.classList.contains('visible')) {
+			e.classList.add('visible')
+			visibleCards.push(e)
+		}
+	})
+	let leftCornerElement = visibleCards[0]
+	visibleCards.forEach((e) => {
+		if (e.offsetLeft < leftCornerElement.offsetLeft &&
+			e.offsetTop < leftCornerElement.offsetTop) {
+			leftCornerElement = e
+		}
+	})
+	visibleCards.forEach((e) => {
+		let distance = (Math.abs(leftCornerElement.offsetTop - e.offsetTop)) +
+			(Math.abs(leftCornerElement.offsetLeft - e.offsetLeft))
+		e.style.transitionDelay = `${distance}ms`
+		e.style.animationDelay = `${distance}ms`
+		e.classList.add('shown')
+		cardsShowedCount++
+	})
+
 }
 
 function isVisible(elem) {
 	const bound = elem.getBoundingClientRect()
 	return ((bound.top > 0 || bound.top + elem.offsetHeight > 0) && bound.top < window.innerHeight)
 }
+
+//!Cases
+const casesContent = document.querySelector('.cases-content')
+const casesSwitcher = document.getElementsByName('cases-switch')
+const casesSwitchList = document.getElementById('cases-switch-list')
+const casesSwitchCards = document.getElementById('cases-switch-cards')
+
+if (casesSwitcher) {
+	casesSwitcher.forEach((e) => {
+		e.addEventListener('change', (e) => {
+			if (casesSwitchCards.checked) {
+				casesContent.classList.add('mode-cards')
+				casesContent.classList.remove('mode-list')
+				setAnimateCards()
+			}
+			else {
+				casesContent.classList.remove('mode-cards')
+				casesContent.classList.add('mode-list')
+			}
+		})
+	})
+}
+
+//!Cases list
+const animateText = document.querySelectorAll('.text_animate-show')
+const animateBlocks = document.querySelectorAll('.block_animate-show')
+const casesList = document.querySelector('#casesList')
+const observeElements = document.querySelectorAll('.to-observe')
+
+function createAnimatedTextElement(el) {
+	const content = el.innerHTML
+	const newInner = `<div class="text_animate-show-inner">${content}</div>`
+	el.innerHTML = newInner
+}
+
+animateText.forEach((e) => {
+	createAnimatedTextElement(e)
+})
+
+const observer = new IntersectionObserver((entries, observer) => {
+	entries.forEach(entry => {
+		if (entry.isIntersecting) {
+			entry.target.classList.add('animated');
+		}
+	});
+});
+
+Array.prototype.forEach.call(observeElements, (el) => {
+	observer.observe(el);
+});
+
+if (casesList) {
+	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
+	let delay = 0
+	casesListName.forEach((e) => {
+		e.style.animationDelay = `${delay}ms`;
+		delay += 200
+	})
+}
+
+
+
+//!Cards parallax
+class ParallaxEffect {
+	constructor(el, block) {
+		this.block = block
+		this.blockTop = getCoords(block).top
+		this.coefficient = el.k
+		this.column = document.getElementById(el.id)
+		this.topCoods = getCoords(this.column).top
+		this.triggerPoint =
+			el.trigger == null ? this.topCoods : this.topCoods + el.trigger
+		this.attachEventsListener()
+	}
+	attachEventsListener() {
+		window.addEventListener("scroll", (e) => this.calculatePosition(), { passive: true })
+	}
+	calculatePosition() {
+		if (window.scrollY > this.blockTop) {
+			const distance = pageYOffset - this.blockTop
+			const y = -distance * this.coefficient
+			this.move(y)
+		}
+		else {
+			this.setDefaultPosition()
+		}
+	}
+	move(y) {
+		gsap.to(this.column, {
+			y: y,
+			duration: 0.4,
+			ease: Power1.easeOut
+		})
+	}
+	setDefaultPosition() {
+		this.column.style.transform = "none";
+	}
+}
+
+function getCoords(e) {
+	var box = e.getBoundingClientRect();
+	return {
+		top: box.top + pageYOffset,
+		left: box.left + pageXOffset
+	};
+
+}
+
+const parallaxBlocks = [
+	{
+		blockId: "cases-card-layout",
+		columns: [
+			{ id: "casesCardColumnLeft", k: 0.5 },
+			{ id: "casesCardColumnRight", k: 0.1 }
+		]
+	}
+]
+
+if (!body.classList.contains('mobile')) {
+	parallaxBlocks.forEach((e) => {
+		const block = document.getElementById(e.blockId)
+		if (block) {
+			e.columns.forEach((e) => {
+				new ParallaxEffect(e, block)
+			})
+		}
+	})
+}
+
+//!Readmore
+const readmoreBlocks = document.querySelectorAll('.readmore')
+readmoreBlocks.forEach((block) => {
+	const expandButton = block.querySelector('.readmore__expand')
+	expandButton.addEventListener('click', (button) => {
+		button.preventDefault();
+		block.style.maxHeight = `${block.scrollHeight + 100}px`
+		block.classList.remove('hidden')
+		block.classList.add('expanded')
+	})
+})
+
+//!List Image animation
+const itemsToAnimateImage = document.querySelectorAll('.image_animation-move')
+
+if (itemsToAnimateImage) {
+	itemsToAnimateImage.forEach((e) => {
+		const image = e.querySelector('.image_to-animate')
+		const scale = image.classList.contains('image_animation-no-scale')
+		e.addEventListener('mousemove', (e) => {
+			e.preventDefault()
+			const parent = e.target.closest('.image_animation-move')
+			const targetCoords = parent.getBoundingClientRect();
+			const xCoord = e.clientX - targetCoords.right;
+			const yCoord = e.clientY - targetCoords.top;
+			if (!scale) {
+				gsap.to(image, {
+					x: xCoord * 0.02,
+					y: yCoord * 0.02,
+					duration: 0.6,
+					scaleX: 1.2,
+					scaleY: 1.2,
+					ease: Power2.ease
+				});
+			}
+			else {
+				gsap.to(image, {
+					x: xCoord * 0.02,
+					y: yCoord * 0.02,
+					duration: 0.6,
+					ease: Power2.ease
+				});
+			}
+		})
+		e.addEventListener('mouseout', (e) => {
+			e.preventDefault()
+			if (!scale) {
+				gsap.to(image, {
+					duration: 0.61,
+					scaleX: 1.5,
+					scaleY: 1.5,
+					ease: Power2.ease
+				})
+			}
+			else {
+				gsap.to(image, {
+					duration: 0.61,
+					ease: Power2.ease
+				})
+			}
+
+		})
+	})
+}
+
+class LeafSlider {
+	constructor(block) {
+		this.block = block
+		this.index = 0
+		this.slides = block.querySelectorAll('.leaf-slider__slide')
+		this.buttonPrev = block.querySelector('.leaf-slider--prev')
+		this.buttonNext = block.querySelector('.leaf-slider--next')
+		this.numeric = block.querySelector('.leaf-slider__numeric')
+		this.locked = false
+		this.setSlidesClasses()
+		this.mount()
+		this.attachEventsListener()
+	}
+	mount() {
+		const leafTrack = document.createElement("div")
+		// this.setSliderHeight(this.findHighestSlide())
+		leafTrack.classList.add('leaf-slider__track')
+		this.slides.forEach((slide) => {
+			leafTrack.appendChild(slide)
+			slide.classList.add('mounted')
+		})
+		this.track = leafTrack
+		this.block.appendChild(leafTrack)
+		this.adaptiveHeight()
+		this.setNumeric()
+	}
+	setSlidesClasses() {
+		let counter = 0
+		this.slides.forEach((slide) => {
+			slide.classList.add(`leaf-slider__slide_${counter}`)
+			counter++
+		})
+	}
+	attachEventsListener() {
+		this.buttonPrev.addEventListener('click', (e) => {
+			e.preventDefault()
+			if (this.locked) return
+			this.slideDown(e)
+			this.lockSlider()
+		})
+		this.buttonNext.addEventListener('click', (e) => {
+			e.preventDefault()
+			if (this.locked) return
+			this.slideUp(e)
+			this.lockSlider()
+		})
+		window.addEventListener('resize', (e) => {
+			e.preventDefault()
+			this.adaptiveHeight()
+		})
+	}
+	slideUp() {
+		if (this.index + 1 > this.slides.length - 1) {
+			return
+		}
+		this.setPreviousSlide(this.slides[this.index])
+		this.index++
+		this.setActive(this.slides[this.index])
+		this.slides[this.index].classList.add('left')
+		this.setNumeric()
+	}
+	slideDown() {
+		if (this.index - 1 < 0) {
+			return
+		}
+		this.setPreviousSlide(this.slides[this.index])
+		this.index--
+		this.setActive(this.slides[this.index])
+		this.slides[this.index].classList.add('right')
+		this.setNumeric()
+	}
+	setPreviousSlide(slide) {
+		this.slides.forEach((e) => {
+			e.classList.remove('previous-slide')
+		})
+		slide.classList.add('previous-slide')
+	}
+	setActive(slide) {
+		this.slides.forEach((e) => {
+			e.classList.remove('active', 'left', 'right')
+		})
+		slide.classList.add('active')
+	}
+	lockSlider() {
+		this.locked = true
+		setTimeout(() => this.locked = false, 900)
+	}
+	setNumeric() {
+		this.numeric.innerHTML = `${this.index + 1}/${this.slides.length}`
+	}
+	adaptiveHeight() {
+		this.setSliderHeight(this.findHighestSlide())
+	}
+	findHighestSlide() {
+		let finalHeight = 0
+		this.slides.forEach((slide) => {
+			if (slide.offsetHeight > finalHeight) {
+				finalHeight = slide.offsetHeight
+			}
+		})
+		return finalHeight
+	}
+	setSliderHeight(height) {
+		this.block.style.height = `${height}px`
+	}
+
+}
+
+const leafSliders = document.querySelectorAll('.leaf-slider')
+leafSliders.forEach((e) => {
+	const slider = new LeafSlider(e)
+	console.log(slider);
+})

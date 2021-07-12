@@ -1,0 +1,85 @@
+@import "settings/_variables.sass"
+
+@keyframes animate-text-show
+	0%
+		transform: translateY(120%)
+	100%
+		transform: translateY(0)
+
+@keyframes animate-text-wrapper-overflow-y
+	0%
+		overflow-y: hidden
+	100%
+		overflow-y: visible
+.heading
+	color: #000
+	&.regular
+		@include font($type: reg)
+	&.white
+		color: #fff
+
+h1.heading
+	@include font($size:124, $type: med)
+	@include media($type: tablet)
+		@include font($size: 76, $type:med)
+		line-height: 56px
+	@include media($type: mobile)
+		@include font($size: 40, $type: med)
+
+h2.heading
+	@include font($size: 60, $type: med)
+	@include media($type: tablet)
+		@include font($size: 40, $type: med)
+	@include media($type: mobile)
+		@include font($size: 28, $type: med)
+h3.heading
+	@include font($size: 40, $type: med)
+	@include media($type: tablet)
+		@include font($size: 32, $type: med)
+	@include media($type: mobile)
+		@include font($size: 28, $type: med)
+		&.smaller-m
+			@include font($size: 20, $type: med)
+h4.heading
+	@include font($size: 28, $type: med)
+	@include media($type: tablet)
+		@include font($size: 24, $type: med)
+	@include media($type: mobile)
+		@include font($size: 20, $type: med)
+
+p.text, span.text
+	color: #000
+	&-primary
+		@include font($size: 20, $type: reg)
+		&.smaller
+			@include media($type: tablet)
+				@include font($size: 16, $type: no-type)
+			@include media($type: mobile)
+				@include font($size: 14, $type: no-type)
+		&.no-mobile
+			@include media($type: mobile)
+				@include font($size: 16, $type: no-type)
+		&.bigger
+			@include media($type: mobile)
+				@include font($size: 20, $type: no-type)
+	&-big
+		@include font($size: 32)
+		@include media($type: tablet)
+			@include font($size: 24)
+		@include media($type: mobile)
+			@include font($size: 20)
+	&-small
+		@include font($size: 16, $type: reg)
+	&-extra-small
+		@include font($size: 14, $type: reg)
+		@include media($type: mobile)
+			@include font($size: 12, $type: reg)
+	&-light
+		color: var(--color-font-secondary)
+	&-bold
+		@include font($type: med)
+	&.no-mobile-bold
+		@include media($type: mobile)
+			@include font($type: reg)
+	&.white
+		color: #fff

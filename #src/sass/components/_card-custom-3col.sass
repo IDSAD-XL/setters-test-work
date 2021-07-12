@@ -1,46 +1,39 @@
 .card-custom_3col
-	@media screen and ( max-width: $l ) and (min-width: $m - 1px)
-		flex-wrap: wrap
-		width: 940px
-	@media screen and ( max-width: $m - 1px )
-		flex-wrap: wrap
-		width: 100%
-		margin: 0 15px
-		margin: 0
+	width: 100%
 	.card-custom-part:nth-child(1)
 		justify-content: space-between
 		.link
 			margin-bottom: 40px
-			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			@include media($type: tablet)
 				margin-bottom: 0
-			@media screen and ( max-width: $m - 1px )
+			@include media($type: mobile)
 				display: none
 	.card-custom-part
 		&:nth-child(1)
 			margin-right: 100px
-			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			@include media($type: tablet)
 				margin-right: 0
 				padding-bottom: 32px
 				border-bottom: 2px solid var(--color-font-primary)
 				flex-direction: row
 				align-items: flex-end
 				width: 100%
-			@media screen and ( max-width: $m - 1px )
+			@include media($type: mobile)
 				flex-direction: row
 				width: 100%
 		&:nth-child(2)
 			flex-grow: 1
-			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			@include media($type: tablet)
 				padding-top: 32px
 				flex-direction: row
 				justify-content: space-between
 	.card-custom-part__item
 		&:nth-child(1)
-			margin-top: 30px
+			margin-top: 27px
 			padding-bottom: 25px
-			margin-bottom: 30px
+			margin-bottom: 32px
 			border-bottom: 2px solid var(--color-font-primary)
-			@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+			@include media($type: tablet)
 				margin-top: 0
 				margin-bottom: 0
 				padding-bottom: 0
@@ -49,13 +42,13 @@
 					flex-direction: column
 				.card-custom-part__item-block
 					width: 100%
-			@media screen and ( max-width: $m - 1px )
+			@include media($type: mobile)
 				margin-top: 32px
 		&:nth-child(2)
 			.card-custom-part__item-block:nth-child(1)
 				padding-right: 40px
-				@media screen and ( max-width: $l ) and (min-width: $m - 1px)
+				@include media($type: tablet)
 					a
 						padding-right: 40px
-				@media screen and ( max-width: $m - 1px )
+				@include media($type: mobile)
 					margin-bottom: 12px

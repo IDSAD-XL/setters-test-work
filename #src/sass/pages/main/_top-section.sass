@@ -1,0 +1,241 @@
+@import "settings/_variables.sass"
+
+@keyframes sponsors-sliding
+	0%
+		transform: translate(0)
+	100%
+		transform: translate(-100%)
+
+.top-section
+	position: relative
+	display: flex
+	flex-direction: column
+	align-items: center
+	width: 100%
+	min-height: calc(100vh - 44px)
+	@include media($type: tablet)
+		min-height: calc(100vh - 30px)
+	&__content
+		color: #fff
+		position: relative
+		display: flex
+		flex-direction: column
+		flex-grow: 1
+		justify-content: space-between
+		margin-bottom: 33px
+		padding-top: 178px
+		@include media($type: ultra-wide)
+			max-width: 1250px
+		@include media($type: desktop)
+			padding-top: 118px
+		@include media($type: tablet)
+			padding-top: 105px
+			margin-bottom: 10px
+		@include media($type: mobile)
+			padding-top: 120px
+	&__bubbles-wrapper
+		max-width: 100%
+		overflow-x: hidden
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		align-items: center
+	&__bubbles
+		list-style: none
+		display: flex
+		justify-content: center
+		@include media($type: mobile)
+			max-width: 500px
+			width: 100%
+			justify-content: space-between
+			padding: 0 10px
+
+	&__bubble
+		position: relative
+		margin: 0 20px
+		width: 56px
+		height: 56px
+		@include media($type: mobile)
+			margin: 0 0
+
+	&__bubble-number
+		position: absolute
+		top: 0
+		right: -10px
+		color: #000000
+		background-color: #fff
+		width: 20px
+		height: 20px
+		display: flex
+		justify-content: center
+		align-items: center
+	&__bubble-number.round
+		border-radius: 50%
+	&__bubble-number.grey
+		background-color: var(--color-font-secondary)
+	&__bubble-number.yellow
+		background-color: var(--color-yellow)
+	&__bubble-number.red
+		background-color: var(--color-red)
+	&__title
+		text-align: center
+		color: #fff
+		flex: 1 1 auto
+		@include media($type: ultra-wide)
+			margin-top: 104px
+		@include media($type: tablet)
+			padding-left: 35px
+			margin-top: 36px
+		@include media($type: desktop)
+			margin: 0
+			margin-bottom: 84px
+			margin-top: 76px
+		@include media($type: mobile)
+			margin-top: 76px
+
+		&_small
+			display: block
+			margin-bottom: 36px
+			@include media($type: ultra-wide)
+				@include font($size: 28, $type:med)
+				margin-bottom: 48px
+			@include media($type: desktop)
+				margin-bottom: 36px
+				@include font($size: 24, $type:med)
+			@include media($type: tablet)
+				@include font($size: 20, $type:med)
+				margin-bottom: 16px
+				margin-left: -16px
+			@include media($type: mobile)
+				@include font($size: 16, $type:med)
+				line-height: 24px
+				margin-bottom: 16px
+		&_big
+			display: block
+			@include media($type: ultra-wide)
+				@include font($size: 160, $type:med)
+				line-height: 1em
+			@include media($type: desktop)
+				@include font($size: 124, $type:med)
+				&-glitch
+					line-height: 140px
+			@include media($type: tablet)
+				line-height: 1em
+				letter-spacing: -0.02em
+				@include font($size: 76, $type:med)
+			@include media($type: mobile)
+				@include font($size: 44, $type:med)
+	&__sponsors
+		display: flex
+		justify-content: flex-start
+		position: relative
+		list-style: none
+		@include media($type: mobile)
+			width: 100%
+			justify-content: space-between
+			padding: 0 10px
+		@media screen and (min-width: 450px) and (min-height: 1000px)
+			justify-content: center
+		@include media($type: ultra-wide)
+			justify-content: center
+
+		&-item
+			display: flex
+			align-items: center
+			@include media($type: mobile)
+				margin-right: 30px
+			&_text
+				text-align: left
+				max-width: 280px
+				@include font($size: 20, $type:med)
+				@include media($type: tablet)
+					@include font($size: 16, $type:med)
+					line-height: 20px
+				@include media($type: mobile)
+					max-width: 228px
+					margin-right: 0
+					text-align: center
+		&-box
+			min-width: 290px
+			display: flex
+			justify-content: flex-start
+			@include media($type: ultra-wide)
+				margin-left: 23px
+			@include media($type: tablet)
+				margin-top: -4px
+			@include media($type: mobile)
+				margin-right: 0
+				margin-top: 28px
+			@include media($type: tablet)
+				margin-bottom: 14px
+		&-list
+			position: relative
+			overflow-x: hidden
+			display: flex
+			width: 100%
+			@include media($type: mobile)
+				width: 100%
+				margin-top: 15px
+				margin-right: 0
+				display: flex
+				justify-content: flex-start
+			&:after
+				content: ""
+				position: absolute
+				top: 0
+				width: 100%
+				height: 100%
+				z-index: 2
+				right: -2px
+				background: linear-gradient(90deg, rgba(49, 49, 49, 0) 80%, rgba(49,49,49,1) 100%)
+				@include media($type: desktop)
+					background: linear-gradient(90deg, rgba(49, 49, 49, 0) 75%, rgba(49,49,49,1) 80%)
+				@include media($type: tablet)
+					background: linear-gradient(90deg, rgba(49, 49, 49, 0) 60%, rgba(49,49,49,1) 80%)
+				@include media($type: mobile)
+					background: linear-gradient(90deg, rgba(49, 49, 49, 0) 90%, rgba(49,49,49,1) 100%)
+			&:before
+				content: ""
+				z-index: 2
+				position: absolute
+				left: -2px
+				width: 100%
+				height: 100%
+				background: linear-gradient(90deg, rgba(49, 49, 49, 1) 0%, rgba(49,49,49,0) 15%)
+		&-group
+			transform: translate(0)
+			&:nth-child(1)
+				animation: sponsors-sliding 30s linear infinite
+			&:nth-child(2)
+				animation: sponsors-sliding 30s linear infinite
+			.top-section__sponsors-item
+				width: 100px
+				height: 60px
+				margin: 0 30px
+				display: flex
+				justify-content: center
+				@include media($type: mobile)
+					margin: 0 15px
+				img
+					max-width: 100%
+					max-height: 100%
+				li
+					display: flex
+					justify-content: center
+		&-wrapper
+			width: 100%
+			display: flex
+			justify-content: center
+			align-items: center
+			overflow-x: hidden
+			position: relative
+			@include media($type: mobile)
+				flex-wrap: wrap-reverse
+			@include media($type: tablet)
+				align-items: flex-end
+
+	&__wrapper
+		&__item
+			width: 100%
+			display: flex
+			justify-content: center

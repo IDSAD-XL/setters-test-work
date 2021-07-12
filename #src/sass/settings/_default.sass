@@ -19,4 +19,6 @@ body
 	font-family: $font-garphik-regular
 	&.modal-open
 		padding-right: 17px
+		@include media($type: mobile)
+			padding-right: 0
 		overflow-y: hidden

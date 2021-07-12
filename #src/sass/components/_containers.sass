@@ -3,11 +3,11 @@
 .container
 	padding: 0 var(--container-side-paddings)
 	width: 100%
-	@media screen and (min-width: $xl)
+	@include media($type: ultra-wide)
 		max-width: calc(1160px + var(--container-side-paddings) * 2)
-	@media screen and (min-width: $l) and (max-width: $xl - 1px)
+	@include media($type: desktop)
 		max-width: calc(1160px + var(--container-side-paddings) * 2)
-	@media screen and (min-width: $m) and (max-width: $l - 1px)
+	@include media($type: tablet)
 		max-width: calc(940px + var(--container-side-paddings) * 2)
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
+	@include media($type: mobile)
 		width: 100vw

@@ -2,8 +2,8 @@
 
 .popup
 	position: fixed
-	width: 100%
-	height: 100%
+	width: 100vw
+	height: 100vh
 	top: 0
 	left: 0
 	z-index: 1000
@@ -13,7 +13,7 @@
 	opacity: 1
 	background-color: rgba(0, 0, 0, 0.7)
 	padding: 64px 140px
-	@media screen and (min-width: 0) and (max-width: $m - 1px)
+	@include media($type: mobile)
 		padding: 0
 	&_hide
 		opacity: 0
@@ -24,9 +24,11 @@
 		margin: auto
 		border-radius: 60px
 		background-color: #F5F5F5
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			margin: 0
 			border-radius: 0
+	&-video, &-image
+		max-width: 100%
 	&__title-wrapper
 		display: flex
 		align-items: center
@@ -36,7 +38,7 @@
 		background-color: #fff
 		min-height: 144px
 		border-bottom: 2px solid #D7D7D7
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			border-radius: 0
 			padding: 0 33px
 			min-height: 133px
@@ -44,7 +46,7 @@
 	&__title
 		color: #000
 		@include font($size: 60, $type:med)
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			@include font($size: 40, $type:med)
 	&__content
 		padding: 0 60px
@@ -52,7 +54,7 @@
 		padding-bottom: 48px
 		display: flex
 		flex-direction: column
-		@media screen and (min-width: 0) and (max-width: $m - 1px)
+		@include media($type: mobile)
 			padding-left: 33px
 			padding-right: 33px
 			padding-top: 40px
@@ -73,7 +75,7 @@
 			background-color: transparent
 			max-width: 90%
 			max-height: 90%
-			@media screen and (min-width: 0) and (max-width: $m - 1px)
+			@include media($type: mobile)
 				max-width: 80%
 		video
 			max-width: 100%
@@ -82,7 +84,7 @@
 			position: absolute
 			top: -30px
 			right: -30px
-			@media screen and (min-width: 0) and (max-width: $l - 1px)
+			@include media($max-width: $l)
 				width: 16px
 				height: 16px
 				top: -20px
