@@ -407,10 +407,10 @@ if (casesList) {
 class ParallaxEffect {
 	constructor(el, block) {
 		this.block = block
-		this.blockTop = getCoords(block).top
+		this.blockTop = getCoords(block)
 		this.coefficient = el.k
 		this.column = document.getElementById(el.id)
-		this.topCoods = getCoords(this.column).top
+		this.topCoods = getCoords(this.column)
 		this.triggerPoint =
 			el.trigger == null ? this.topCoods : this.topCoods + el.trigger
 		this.attachEventsListener()
@@ -419,8 +419,9 @@ class ParallaxEffect {
 		window.addEventListener("scroll", (e) => this.calculatePosition(), { passive: true })
 	}
 	calculatePosition() {
-		if (window.scrollY > this.blockTop) {
-			const distance = pageYOffset - this.blockTop
+		const blockBox = this.block.getBoundingClientRect()
+		if (blockBox.top < 0) {
+			const distance = pageYOffset - blockBox.top
 			const y = -distance * this.coefficient
 			this.move(y)
 		}
@@ -436,16 +437,17 @@ class ParallaxEffect {
 		})
 	}
 	setDefaultPosition() {
-		this.column.style.transform = "none";
+		gsap.to(this.column, {
+			y: 0,
+			duration: 0.4,
+			ease: Power1.easeOut
+		})
 	}
 }
 
 function getCoords(e) {
-	var box = e.getBoundingClientRect();
-	return {
-		top: box.top + pageYOffset,
-		left: box.left + pageXOffset
-	};
+	const box = e.getBoundingClientRect();
+	return box.top + pageYOffset
 
 }
 
@@ -453,8 +455,8 @@ const parallaxBlocks = [
 	{
 		blockId: "cases-card-layout",
 		columns: [
-			{ id: "casesCardColumnLeft", k: 0.3 },
-			{ id: "casesCardColumnRight", k: 0.1 }
+			{ id: "casesCardColumnLeft", k: 0.1 },
+			{ id: "casesCardColumnRight", k: 0.05 }
 		]
 	}
 ]
