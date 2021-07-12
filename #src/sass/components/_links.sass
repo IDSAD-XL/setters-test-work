@@ -1,12 +1,23 @@
 .link
 	cursor: pointer
 	text-decoration: none
+	color: var(--button-color-primary)
+	transition: .2s
+	&:hover
+		color: var(--button-color-hover)
 	&-primary
-		color: var(--button-color-primary)
-		transition: .2s
 		@include font($size: 28, $type:med)
+		&.mobile-smaller
+			@include media($type: mobile)
+				@include font($size: 20, $type: med)
+	&-small
+		@include font($size: 16, $type:med)
+		color: var(--button-color-primary)
 		&:hover
 			color: var(--button-color-hover)
 	&-light
 		@include font($size: 16, $type:med)
 		color: var(--color-font-secondary)
+	&-flex
+		display: flex
+		flex-align: center

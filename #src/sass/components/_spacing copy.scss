@@ -1,0 +1,97 @@
+$padding: (t, padding-top),
+		  (b, padding-bottom),
+		  (l, padding-left),
+		  (r, padding-right);
+
+$margin:  (t, margin-top),
+		  (b, margin-bottom),
+		  (l, margin-left),
+		  (r, margin-right);
+
+//?       (SIZE, >1920, >1440, >1024, <1024)
+$sizes:   (0, 0), 
+		  (1, 24px),
+		  (2, 32px), 
+		  (3, 40px),
+		  (4, 56px), 
+		  (5, 60px), 
+		  (6, 80px, 60px),
+		  (text-1, 4px),
+		  (text-2, 8px),
+		  (text-3, 12px),
+		  (text-4, 16px);
+
+
+@each $item, $margin-direction in $margin {
+	@each $size, $value in $sizes {
+		.m#{$item}-#{$size} {
+			#{$margin-direction}: #{$value};
+		}
+	}
+}
+
+@each $item, $margin-direction in $margin {
+	@each $size, $value in $sizes {
+		//? uw - ultra-wide
+		.m#{$item}-#{$size}-uw {
+			@include media($type: ultra-wide) {
+				#{$margin-direction}: #{$value};
+			}
+		}
+		//? d -  desktop
+		.m#{$item}-#{$size}-d {
+			@include media($type: desktop) {
+				#{$margin-direction}: #{$value};
+			}
+		}
+		//? t -  tablet
+		.m#{$item}-#{$size}-t {
+			@include media($type: tablet) {
+				#{$margin-direction}: #{$value};
+			}
+		}
+		//? m -  mobile
+		.m#{$item}-#{$size}-m {
+			@include media($type: mobile) {
+				#{$margin-direction}: #{$value};
+			}
+		}
+	}
+}
+
+@each $item, $padding-direction in $padding {
+	@each $size, $value in $sizes {
+		.p#{$item}-#{$size} {
+			#{$padding-direction}: #{$value};
+		}
+	}
+}
+
+@each $item, $padding-direction in $padding {
+	@each $size, $value in $sizes {
+		//? uw - ultra-wide
+		.p#{$item}-#{$size}-uw {
+			@include media($type: ultra-wide) {
+				#{$padding-direction}: #{$value};
+			}
+		}
+		//? d -  desktop
+		.p#{$item}-#{$size}-d {
+			@include media($type: desktop) {
+				#{$padding-direction}: #{$value};
+			}
+		}
+		//? t -  tablet
+		.p#{$item}-#{$size}-t {
+			@include media($type: tablet) {
+				#{$padding-direction}: #{$value};
+			}
+		}
+		//? m -  mobile
+		.p#{$item}-#{$size}-m {
+			@include media($type: mobile) {
+				#{$padding-direction}: #{$value};
+			}
+		}
+	}
+}

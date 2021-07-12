@@ -1,0 +1,100 @@
+@import "settings/_variables.sass"
+
+.header
+	position: fixed
+	display: flex
+	justify-content: center
+	will-change: transform
+	height: 80px
+	width: 100%
+	z-index: 10
+	background: rgba(49, 49, 49, 0.8)
+	backdrop-filter: blur(18px)
+	@include media($type: ultra-wide)
+		padding: 0 60px
+	@include media($type: desktop)
+		padding: 0 60px
+	@include media($type: tablet)
+		padding: 0 40px
+	@include media($type: mobile)
+		padding: 0 25px
+		position: fixed
+	&__inner
+		display: flex
+		align-items: center
+		width: 100%
+		max-width: 1920px
+		padding: 0
+	&__logo
+		width: 164px
+		height: 40px
+		&-wrapper
+			display: flex
+			align-items: center
+		&_dark
+			display: none
+		@include media($type: mobile)
+			height: 24px
+			width: 100px
+	&.dark
+		.header__logo_light
+			display: block
+		.header__logo_dark
+			display: none
+	&.light
+		background: rgba(255, 255, 255, 0.8)
+		backdrop-filter: blur(18px)
+		.header__logo_light
+			display: none
+		.header__logo_dark
+			display: block
+		.header__menu
+			a
+				color: #000
+				&:hover
+					color: var(--color-blue)
+		& ~ .menu .menu__button
+			span
+				background-color: #000
+				&::after , &::before
+					background-color: #000
+
+	&__menu
+		width: 100%
+		display: flex
+		justify-content: space-between
+		@include font($size: 16, $type:med)
+		&_left
+			display: flex
+			align-items: center
+		&_right
+			@include media($type: mobile)
+				display: none
+		&__items
+			display: flex
+			list-style: none
+			@include media($type: mobile)
+				display: none
+		&-item
+			margin-left: 40px
+			a
+				text-decoration: none
+				color: var(--color-font-primary)
+				position: relative
+				transition: .1s
+				&:hover
+					color: var(--color-blue)
+				&:after
+					content: ""
+					border-bottom: solid 1px #dfd3c3
+					position: absolute
+					bottom: -4px
+					left: 0
+					width: 100%
+					transform: scaleX(0)
+					transform-origin: right
+					transition: transform .3s cubic-bezier(.65,.05,.36,1), border-bottom .2s linear
+				&:hover::after
+					transform-origin: left
+					transform: scaleX(1)
+					border-bottom: solid 1px var(--color-blue)

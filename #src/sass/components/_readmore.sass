@@ -1,0 +1,32 @@
+.readmore
+	position: relative
+	transition: max-height 1.2s ease
+	overflow-x: hidden
+	&__expand
+		display: none
+	@include media($type: mobile)
+		position: relative
+		max-height: 600px
+		&.hidden
+			overflow-y: hidden
+		&:after
+			content: ""
+			position: absolute
+			background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 108px)
+			height: 216px
+			width: 100%
+			bottom: 0
+			z-index: 1
+			transition: height 1.2s ease
+		&__expand
+			position: absolute
+			z-index: 2
+			bottom: 60px
+			display: block
+			.link
+				font-size: 20px
+		&.expanded
+			&:after
+				height: 0
+			.readmore__expand
+				display: none
