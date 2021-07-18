@@ -382,7 +382,19 @@ animateText.forEach((e) => {
 
 const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
-		if (entry.isIntersecting) {
+		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+			const box = entry.target.getBoundingClientRect()
+			let delay = Math.sqrt((box.top ** 2) * 0.5 + (box.left ** 2) * 3)
+			const k = Math.abs((700 / delay) * 0.1) * 2	
+			if (delay > 700) delay = delay - (delay * k)
+			else delay = delay + (delay * k)
+			entry.target.style.transitionDelay = `${delay}ms`
+			entry.target.style.animationDelay = `${delay}ms`
+			if (entry.target.classList.contains('text_animate-show')) {
+				const textInner = entry.target.querySelector('.text_animate-show-inner')
+				textInner.style.transitionDelay = `${delay}ms`
+				textInner.style.animationDelay = `${delay}ms`
+			}
 			entry.target.classList.add('animated');
 		}
 	});
