@@ -500,12 +500,16 @@ if (itemsToAnimateImage) {
 	itemsToAnimateImage.forEach((e) => {
 		const image = e.querySelector('.image_to-animate')
 		const scale = image.classList.contains('image_animation-no-scale')
+		let enteredPoint = { x: 0, y: 0 }
+		e.addEventListener('mouseenter', (e) => {
+			enteredPoint.x = e.clientX
+			enteredPoint.y = e.clientY
+		})
 		e.addEventListener('mousemove', (e) => {
 			e.preventDefault()
 			const parent = e.target.closest('.image_animation-move')
-			const targetCoords = parent.getBoundingClientRect();
-			const xCoord = e.clientX - targetCoords.right;
-			const yCoord = e.clientY - targetCoords.top;
+			const xCoord = e.clientX - enteredPoint.x
+			const yCoord = e.clientY - enteredPoint.y
 			if (!scale) {
 				gsap.to(image, {
 					x: xCoord * 0.02,
@@ -521,6 +525,8 @@ if (itemsToAnimateImage) {
 					x: xCoord * 0.02,
 					y: yCoord * 0.02,
 					duration: 0.6,
+					scaleX: 1.2,
+					scaleY: 1.2,
 					ease: Power2.ease
 				});
 			}
