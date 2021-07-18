@@ -384,10 +384,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
 			const box = entry.target.getBoundingClientRect()
-			let delay = Math.sqrt((box.top ** 2) * 0.5 + (box.left ** 2) * 3)
-			const k = Math.abs((700 / delay) * 0.1) * 2	
-			if (delay > 700) delay = delay - (delay * k)
-			else delay = delay + (delay * k)
+			let delay = Math.sqrt((box.top ** 2) * 0.5 + (box.left ** 2) * 2)
 			entry.target.style.transitionDelay = `${delay}ms`
 			entry.target.style.animationDelay = `${delay}ms`
 			if (entry.target.classList.contains('text_animate-show')) {
@@ -404,14 +401,14 @@ Array.prototype.forEach.call(observeElements, (el) => {
 	observer.observe(el);
 });
 
-if (casesList) {
-	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
-	let delay = 0
-	casesListName.forEach((e) => {
-		e.style.animationDelay = `${delay}ms`;
-		delay += 200
-	})
-}
+// if (casesList) {
+// 	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
+// 	let delay = 0
+// 	casesListName.forEach((e) => {
+// 		e.style.animationDelay = `${delay}ms`;
+// 		delay += 200
+// 	})
+// }
 
 
 
