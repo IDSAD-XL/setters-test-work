@@ -137,17 +137,23 @@ if (scrollTopArrows) {
 //! Footer hide at top section
 const stickyFooter = document.querySelector("#footer-sticky")
 const gradientBorder = document.querySelector('#gradient-border')
+const contactBlock = document.querySelector('#contact-content')
 
-window.addEventListener("scroll", () => {
-	if (window.scrollY == 0) {
-		stickyFooter.classList.add('footer-sticky_hide')
-		gradientBorder.classList.add('gradient-border_fullscreen')
-	}
-	else {
-		stickyFooter.classList.remove('footer-sticky_hide')
-		gradientBorder.classList.remove('gradient-border_fullscreen')
-	}
-}, { passive: true })
+if (!contactBlock) {
+	window.addEventListener("scroll", () => {
+		if (window.scrollY == 0) {
+			stickyFooter.classList.add('footer-sticky_hide')
+			gradientBorder.classList.add('gradient-border_fullscreen')
+		}
+		else {
+			stickyFooter.classList.remove('footer-sticky_hide')
+			gradientBorder.classList.remove('gradient-border_fullscreen')
+		}
+	}, { passive: true })
+} else {
+	stickyFooter.classList.remove('footer-sticky_hide')
+	gradientBorder.classList.remove('gradient-border_fullscreen')
+}
 
 //! Popups
 const popups = document.querySelectorAll(".popup")

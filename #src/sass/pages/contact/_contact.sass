@@ -2,9 +2,9 @@
 	&-content
 		background-color: var(--color-bg-primary)
 		width: 100vw
-		min-height: 100vh
 		padding-top: 170px
 		display: flex
+		flex-grow: 1
 		justify-content: center
 		@include media($type: mobile)
 			padding-top: 128px
@@ -23,6 +23,7 @@
 		@include media($type: mobile)
 			border-bottom: 2px solid #666666
 		&-heading
+			padding-left: 1px
 			color: var(--color-font-secondary)
 			@include font($size: 20, $type: med)
 			@include media($type: mobile)

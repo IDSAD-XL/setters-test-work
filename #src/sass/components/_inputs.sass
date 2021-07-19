@@ -59,6 +59,8 @@
 		input
 			position: relative
 			color: #000
+			transition: background-color .2s ease
+			//! DEFAULT
 			&:focus ~ .input-underline, &:not(:placeholder-shown) ~ .input-underline
 				&::after
 					border-bottom: 2px solid var(--color-blue)
@@ -66,13 +68,17 @@
 			&:focus ~ .input-label, &:not(:placeholder-shown) ~ .input-label
 				top: 0
 				@include font($size: 10)
+
+			//! ERROR
 			&:not(:focus):not(:valid):not(:placeholder-shown)
+				background-color: #FFE8EA
 				& ~ .input-error-icon, & ~ .input-error-text
 					display: block
 				& ~ .input-underline
 					&::after
 						border-bottom: 2px solid var(--color-red)
 						animation: animate-border-2 .3s cubic-bezier(.65,.05,.36,1)
+			//! VALID
 			&:not(:focus):valid:not(:placeholder-shown)
 				& ~ .input-success-icon
 					display: block
@@ -80,6 +86,7 @@
 					&::after
 						border-bottom: 2px solid var(--color-green)
 						animation: animate-border-3 .3s cubic-bezier(.65,.05,.36,1)
+			//! UNFOCUSED
 			&:not(:focus)
 				& ~ .input-underline
 					&::after
@@ -102,7 +109,7 @@
 	&-error-text
 		display: none
 		position: absolute
-		bottom: -25px
+		bottom: -29px
 		left: 0
 		color: var(--color-red)
 		@include font($size: 16)
