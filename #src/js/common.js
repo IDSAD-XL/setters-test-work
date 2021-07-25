@@ -197,11 +197,15 @@ if (popups && popupToggles) {
 
 function closePopup(popup) {
 	popup.classList.add('popup_hide')
-	body.classList.remove('modal-open')
+	popup.classList.remove('popup_open')
+	setTimeout(() => {
+		body.classList.remove('modal-open')
+	}, 300)
 }
 
 function openPopup(popup) {
 	popup.classList.remove('popup_hide')
+	popup.classList.add('popup_open')
 	body.classList.add('modal-open')
 }
 

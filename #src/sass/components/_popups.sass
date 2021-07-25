@@ -9,21 +9,26 @@
 	z-index: 1000
 	overflow-x: hidden
 	overflow-y: auto
-	transition: .2s
-	opacity: 1
 	background-color: rgba(0, 0, 0, 0.7)
 	padding: 64px 140px
+	transition: all .3s
+	visibility: hidden
+	opacity: 0
 	@include media($type: mobile)
 		padding: 0
-	&_hide
-		opacity: 0
-		display: none
+	&_open
+		opacity: 1
+		visibility: visible
+		.popup-body
+			transform: scale(1)
 	&-body
 		position: relative
 		max-width: 1560px
 		margin: auto
 		border-radius: 60px
 		background-color: #F5F5F5
+		transition: .3s ease
+		transform: scale(0.9)
 		@include media($type: mobile)
 			margin: 0
 			border-radius: 0
@@ -70,8 +75,6 @@
 		display: flex
 		justify-content: center
 		align-items: center
-		&.popup_hide
-			display: none
 		.popup-body
 			background-color: transparent
 			max-width: 90%
