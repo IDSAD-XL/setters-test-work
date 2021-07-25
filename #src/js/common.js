@@ -374,22 +374,31 @@ if (casesSwitcher) {
 	})
 }
 
-//!Cases list
-const animateText = document.querySelectorAll('.text_animate-show')
-const animateBlocks = document.querySelectorAll('.block_animate-show')
+//!Text animations
+const animateText = document.querySelectorAll('.text_animate-show, h1, h2, h3, h4, h5, h6')
+const animateBlocks = document.querySelectorAll('.block_animate-show, p')
 const casesList = document.querySelector('#casesList')
-const observeElements = document.querySelectorAll('.to-observe')
 
 function createAnimatedTextElement(el) {
 	const content = el.innerHTML
+	el.classList.add('to-observe', 'text_animate-show')
 	const newInner = `<div class="text_animate-show-inner">${content}</div>`
 	el.innerHTML = newInner
+}
+
+function createAnimatedBlocksElement(el) {
+	el.classList.add('to-observe', 'block_animate-show')
 }
 
 animateText.forEach((e) => {
 	createAnimatedTextElement(e)
 })
 
+animateBlocks.forEach((e) => {
+	createAnimatedBlocksElement(e)
+})
+
+const observeElements = document.querySelectorAll('.to-observe')
 const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -410,17 +419,6 @@ const observer = new IntersectionObserver((entries, observer) => {
 Array.prototype.forEach.call(observeElements, (el) => {
 	observer.observe(el);
 });
-
-// if (casesList) {
-// 	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
-// 	let delay = 0
-// 	casesListName.forEach((e) => {
-// 		e.style.animationDelay = `${delay}ms`;
-// 		delay += 200
-// 	})
-// }
-
-
 
 //!Cards parallax
 class ParallaxEffect {
