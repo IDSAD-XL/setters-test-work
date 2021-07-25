@@ -67,9 +67,21 @@
 			</p>
 		</div>
 		<div class="flexbox-grid-block flexbox-grid-block--3 mt-2 mt-2-t">
-			<img class="mb-1-m  block_animate-show" src="img/case/image-1.png" alt=" ">
-			<img class="mb-1-m  block_animate-show" src="img/case/image-2.png" alt=" ">
-			<img class=" block_animate-show" src="img/case/image-3.png" alt=" ">
+			<img class="mb-1-m  block_animate-show open-popup" data-target="casePopup1" src="img/case/image-1.png" alt=" ">
+			<img class="mb-1-m  block_animate-show open-popup" data-target="casePopup2" src="img/case/image-2.png" alt=" ">
+			<img class=" block_animate-show open-popup" data-target="casePopup3" src="img/case/image-3.png" alt=" ">
+			@@include('../popups/_popup-video.html', {
+			"popupId": "casePopup1",
+			"popupsrc": "case/image-1.png"
+			})
+			@@include('../popups/_popup-video.html', {
+			"popupId": "casePopup2",
+			"popupsrc": "case/image-2.png"
+			})
+			@@include('../popups/_popup-video.html', {
+			"popupId": "casePopup3",
+			"popupsrc": "case/image-3.png"
+			})
 		</div>
 		<div class="flexbox-grid-block flexbox-grid-block--3 mt-3">
 			<img class="mb-1-m  block_animate-show" src="img/case/image-4.png" alt=" ">
