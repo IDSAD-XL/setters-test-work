@@ -381,13 +381,19 @@ const casesList = document.querySelector('#casesList')
 
 function createAnimatedTextElement(el) {
 	const content = el.innerHTML
-	el.classList.add('to-observe', 'text_animate-show')
-	const newInner = `<div class="text_animate-show-inner">${content}</div>`
-	el.innerHTML = newInner
+	el.classList.add('to-observe')
+	if (!el.classList.contains('block_animate-show')) {
+		el.classList.add('text_animate-show')
+		const newInner = `<div class="text_animate-show-inner">${content}</div>`
+		el.innerHTML = newInner
+	}
 }
 
 function createAnimatedBlocksElement(el) {
-	el.classList.add('to-observe', 'block_animate-show')
+	el.classList.add('to-observe')
+	if (!el.classList.contains('text_animate-show')) {
+		el.classList.add('block_animate-show')
+	}
 }
 
 animateText.forEach((e) => {
