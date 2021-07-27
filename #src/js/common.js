@@ -1,3 +1,7 @@
+import { HoverEffect } from "./modules/_HoverEffect.js";
+import { Popup } from "./modules/_Popup.js";
+import { GlitchWord } from "./modules/_GlitchWord.js"
+
 //!Check if mobile
 const body = document.querySelector('body');
 if (window.innerWidth < 1024) {
@@ -5,90 +9,11 @@ if (window.innerWidth < 1024) {
 }
 
 //! Magnet circle at the first section
-class hoverEffect {
-	constructor(el) {
-		this.el = el;
-		this.scrollCircle = el.querySelector(".scroll-circle");
-		this.scrollArrow = el.querySelector(".scroll-arrow");
-		this.hover = false;
-		this.calculatePosition();
-		this.attachEventsListener();
-		this.HandleScroll();
-	}
 
-	attachEventsListener() {
-		window.addEventListener("mousemove", (e) => this.onMouseMove(e));
-		window.addEventListener("resize", (e) => this.calculatePosition(e), { passive: true });
-		window.addEventListener("scroll", (e) => this.calculatePosition(e), { passive: true });
-	}
-
-	HandleScroll() {
-		gsap.to(this.scrollCircle, {
-			rotate: 180,
-			ease: Linear.easeNone
-		});
-	}
-
-	calculatePosition() {
-		gsap.set(this.el, {
-			x: 0,
-			y: 0
-		});
-		const box = this.el.getBoundingClientRect();
-		this.x = box.left + box.width * 0.5;
-		this.y = box.top + box.height * 0.5;
-		this.width = box.width;
-		this.height = box.height;
-	}
-
-	onMouseMove(e) {
-		let hover = false;
-		let hoverArea = this.hover ? 0.7 : 0.5;
-		let x = e.clientX - this.x;
-		let y = e.clientY - this.y;
-		let distance = Math.sqrt(x * x + y * y);
-		if (distance < this.width * hoverArea) {
-			hover = true;
-			if (!this.hover) {
-				this.hover = true;
-			}
-			this.onHover(e.clientX, e.clientY);
-		}
-
-		if (!hover && this.hover) {
-			this.onLeave();
-			this.hover = false;
-		}
-	}
-
-	onHover(x, y) {
-		gsap.to(this.scrollCircle, {
-			x: (x - this.x) * 0.2,
-			y: (y - this.y) * 0.2,
-			duration: 0.4,
-			ease: Power2.easeOut
-		});
-		gsap.to(this.scrollArrow, {
-			x: (x - this.x) * 0.3,
-			y: (y - this.y) * 0.3,
-			duration: 0.4,
-			ease: Power2.easeOut
-		});
-	}
-
-	onLeave() {
-		gsap.to([this.scrollArrow, this.scrollCircle], {
-			x: 0,
-			y: 0,
-			duration: 0.7,
-			ease: Power2.easeOut
-		});
-	}
-}
 const magnetScroll = document.querySelector("#scrollWrapper");
 const contentSection = document.querySelector('.content')
 if (magnetScroll && contentSection) {
-	new hoverEffect(magnetScroll);
+	new HoverEffect(magnetScroll);
 	magnetScroll.addEventListener('click', (e) => {
 		e.preventDefault()
 		contentSection.scrollIntoView({ behavior: "smooth" })
@@ -120,12 +45,10 @@ function setBodyUnScrollable() {
 
 //! Footer scroll to top arrows
 const scrollTopArrows = document.querySelectorAll(".footer-sticky__arrow-top")
-const topSection = document.querySelector("#top-section")
 
 if (scrollTopArrows) {
 	scrollTopArrows.forEach((e) => {
 		e.addEventListener('click', () => {
-			// topSection.scrollIntoView({ behavior: "smooth" })
 			window.scrollTo({
 				top: 0,
 				behavior: "smooth"
@@ -165,49 +88,9 @@ if (popups) {
 	})
 }
 
-//! Popup open
-if (popups && popupToggles) {
-	popupToggles.forEach((e) => {
-		const targetPopup = document.getElementById(e.dataset.target)
-		e.addEventListener('click', (evt) => {
-			evt.preventDefault()
-			openPopup(targetPopup)
-		})
-		const popupBody = targetPopup.querySelector('.popup-body')
-		if (popupBody != null) {
-			targetPopup.addEventListener('click', (e) => {
-				e.preventDefault()
-				const clicked = e.target
-				if (clicked.classList.contains('open-popup')) return
-				if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
-					closePopup(targetPopup)
-				}
-			})
-		}
-		const closeButton = targetPopup.querySelector('.close-popup')
-		if (closeButton != null) {
-			closeButton.addEventListener('click', (e) => {
-				e.preventDefault()
-				closePopup(targetPopup)
-			})
-		}
-	})
-}
-
-
-function closePopup(popup) {
-	popup.classList.add('popup_hide')
-	popup.classList.remove('popup_open')
-	setTimeout(() => {
-		body.classList.remove('modal-open')
-	}, 300)
-}
-
-function openPopup(popup) {
-	popup.classList.remove('popup_hide')
-	popup.classList.add('popup_open')
-	body.classList.add('modal-open')
-}
+popupToggles.forEach((e) => {
+	new Popup(e)
+})
 
 //!Sliders
 const sliders = document.querySelectorAll('.splide');

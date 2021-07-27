@@ -1,14 +1,15 @@
-let project_folder = require('path').basename(__dirname);
-let source_folder = '#src';
+const project_folder = require('path').basename(__dirname);
+const source_folder = '#src';
 const { deepStrictEqual } = require('assert');
-let fs = require('fs');
+const fs = require('fs');
 
-let path = {
+const path = {
 	build: {
 		html: project_folder + "/",
 		css: project_folder + "/css/",
 		cssFiles: project_folder + "/css/*.css",
 		js: project_folder + "/js/",
+		jsModules: project_folder + "/js/modules/",
 		img: project_folder + "/img/",
 		fonts: project_folder + "/fonts/",
 	},
@@ -19,6 +20,7 @@ let path = {
 		js: source_folder + "/js/*.js",
 		jsFolder: source_folder + "/js/",
 		jsLibs: source_folder + "/js/libs/*.js",
+		jsModules: source_folder + "/js/modules/_*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
@@ -26,6 +28,7 @@ let path = {
 		html: source_folder + "/**/*.html",
 		css: source_folder + "/sass/**/*.{sass,scss}",
 		js: source_folder + "/js/*.js",
+		jsModules: source_folder + "/js/modules/*.js",
 		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
@@ -33,7 +36,7 @@ let path = {
 	cleanFonts: "./" + source_folder + "/sass/_fonts.sass"
 }
 
-let { src, dest } = require('gulp'),
+const { src, dest } = require('gulp'),
 	gulp = require('gulp'),
 	browsersync = require('browser-sync').create(),
 	fileinclude = require("gulp-file-include"),
@@ -71,16 +74,18 @@ function html() {
 }
 
 function js() {
-	return src(path.src.js)
+	src(path.src.js)
 		.pipe(concat("common.min.js"))
 		.pipe(dest(path.build.js))
+	return src(path.src.jsModules)
+		.pipe(dest(path.build.jsModules))
 		.pipe(browsersync.stream())
 }
 
 function jsLibs() {
 	return src(path.src.jsLibs)
-		.pipe(concat("#libs.js"))
-		.pipe(dest(path.src.jsFolder))
+		.pipe(concat("libs.js"))
+		.pipe(dest(path.build.js))
 		.pipe(browsersync.stream())
 }
 
@@ -140,6 +145,8 @@ function watchfiles(params) {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css, cssLibs);
 	gulp.watch([path.watch.js], js);
+	gulp.watch([path.watch.jsModules], js);
+	gulp.watch([path.watch.jsLibs], jsLibs)
 	gulp.watch([path.watch.img], images);
 }
 
