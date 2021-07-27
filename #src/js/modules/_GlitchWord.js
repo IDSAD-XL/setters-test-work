@@ -12,7 +12,7 @@ export class GlitchWord {
 		const index = (ind + 1) > (this.words.length - 1) ? 0 : ind + 1
 		const word = this.words[index]
 		this.glitchLoop(0, word, word.length)
-		window.setTimeout(this.glitchWord, 2300, index)
+		window.setTimeout(this.glitchWord.bind(this), 2300, index)
 	}
 
 	glitchLoop(count, word) {
@@ -20,26 +20,24 @@ export class GlitchWord {
 			this.setGlitchWord(word)
 			return
 		}
-		console.log(this);
-		const randString = randomString(word.length)
-		this.setGlitchWord = randString
-		window.setTimeout(this.glitchLoop, 50, count + 1, word)
+		this.setGlitchWord(this.randomString(word.length))
+		window.setTimeout(this.glitchLoop.bind(this), 50, count + 1, word)
 	}
 
 	setGlitchWord(word) {
 		this.body.innerHTML = word
 	}
-}
 
-function randomString(len) {
-	let str = ''
-	for (let i = 0; i < len; i++) {
-		str += String.fromCharCode(randomInteger(33, 126))
+	randomString(len) {
+		let str = ''
+		for (let i = 0; i < len; i++) {
+			str += String.fromCharCode(this.randomInteger(33, 126))
+		}
+		return str
 	}
-	return str
-}
 
-function randomInteger(min, max) {
-	let rand = min + Math.random() * (max + 1 - min);
-	return Math.floor(rand);
+	randomInteger(min, max) {
+		let rand = min + Math.random() * (max + 1 - min);
+		return Math.floor(rand);
+	}
 }

@@ -140,43 +140,49 @@ if (sliders) {
 //!Top section heading 
 const glitchWords = ['стратегии', 'креатив', 'дизайн']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
-
 if (glitchTitle) {
-	glitchWord(0)
+	const mainTitleGlitch = new GlitchWord(glitchWords, glitchTitle)
+	console.log(mainTitleGlitch);
+	mainTitleGlitch.start()
 }
 
-function glitchWord(ind) {
-	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
-	const word = glitchWords[index]
-	glitchLoop(0, word, word.length)
-	setTimeout(glitchWord, 2300, index)
-}
 
-function glitchLoop(count, word) {
-	if (count > 3) {
-		setGlitchWord(word)
-		return
-	}
-	setGlitchWord(randomString(word.length))
-	setTimeout(glitchLoop, 50, count + 1, word)
-}
+// if (glitchTitle) {
+// 	glitchWord(0)
+// }
 
-function setGlitchWord(word) {
-	glitchTitle.innerHTML = word
-}
+// function glitchWord(ind) {
+// 	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
+// 	const word = glitchWords[index]
+// 	glitchLoop(0, word, word.length)
+// 	setTimeout(glitchWord, 2300, index)
+// }
 
-function randomString(len) {
-	let str = ''
-	for (let i = 0; i < len; i++) {
-		str += String.fromCharCode(randomInteger(33, 126))
-	}
-	return str
-}
+// function glitchLoop(count, word) {
+// 	if (count > 3) {
+// 		setGlitchWord(word)
+// 		return
+// 	}
+// 	setGlitchWord(randomString(word.length))
+// 	setTimeout(glitchLoop, 50, count + 1, word)
+// }
 
-function randomInteger(min, max) {
-	let rand = min + Math.random() * (max + 1 - min);
-	return Math.floor(rand);
-}
+// function setGlitchWord(word) {
+// 	glitchTitle.innerHTML = word
+// }
+
+// function randomString(len) {
+// 	let str = ''
+// 	for (let i = 0; i < len; i++) {
+// 		str += String.fromCharCode(randomInteger(33, 126))
+// 	}
+// 	return str
+// }
+
+// function randomInteger(min, max) {
+// 	let rand = min + Math.random() * (max + 1 - min);
+// 	return Math.floor(rand);
+// }
 
 //!Card show 
 const cards = document.querySelectorAll('.card_show-animate')
