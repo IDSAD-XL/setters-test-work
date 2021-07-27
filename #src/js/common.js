@@ -147,43 +147,6 @@ if (glitchTitle) {
 }
 
 
-// if (glitchTitle) {
-// 	glitchWord(0)
-// }
-
-// function glitchWord(ind) {
-// 	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
-// 	const word = glitchWords[index]
-// 	glitchLoop(0, word, word.length)
-// 	setTimeout(glitchWord, 2300, index)
-// }
-
-// function glitchLoop(count, word) {
-// 	if (count > 3) {
-// 		setGlitchWord(word)
-// 		return
-// 	}
-// 	setGlitchWord(randomString(word.length))
-// 	setTimeout(glitchLoop, 50, count + 1, word)
-// }
-
-// function setGlitchWord(word) {
-// 	glitchTitle.innerHTML = word
-// }
-
-// function randomString(len) {
-// 	let str = ''
-// 	for (let i = 0; i < len; i++) {
-// 		str += String.fromCharCode(randomInteger(33, 126))
-// 	}
-// 	return str
-// }
-
-// function randomInteger(min, max) {
-// 	let rand = min + Math.random() * (max + 1 - min);
-// 	return Math.floor(rand);
-// }
-
 //!Card show 
 const cards = document.querySelectorAll('.card_show-animate')
 const cardLayout = document.querySelector('.card-layout')
@@ -298,7 +261,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
 			const box = entry.target.getBoundingClientRect()
-			let delay = Math.sqrt((box.top ** 2) * 0.5 + (box.left ** 2) * 2)
+			const delay = Math.sqrt(((box.top ** 2) * 0.2) + (box.left ** 2) * 2)
 			entry.target.style.transitionDelay = `${delay}ms`
 			entry.target.style.animationDelay = `${delay}ms`
 			if (entry.target.classList.contains('text_animate-show')) {
