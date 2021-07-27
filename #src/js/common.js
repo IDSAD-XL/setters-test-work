@@ -260,8 +260,11 @@ const observeElements = document.querySelectorAll('.to-observe')
 const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+			const d = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2)
 			const box = entry.target.getBoundingClientRect()
-			const delay = Math.sqrt(((box.top ** 2) * 0.2) + (box.left ** 2) * 2)
+			const distance = Math.sqrt(box.top ** 2 + box.left ** 2)
+			const k = 1 / (d / distance)
+			const delay = 1500 * k
 			entry.target.style.transitionDelay = `${delay}ms`
 			entry.target.style.animationDelay = `${delay}ms`
 			if (entry.target.classList.contains('text_animate-show')) {
