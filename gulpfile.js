@@ -9,6 +9,7 @@ const path = {
 		css: project_folder + "/css/",
 		cssFiles: project_folder + "/css/*.css",
 		js: project_folder + "/js/",
+		jsTestFolder: project_folder + "/js/test/",
 		jsModules: project_folder + "/js/modules/",
 		img: project_folder + "/img/",
 		fonts: project_folder + "/fonts/",
@@ -18,6 +19,7 @@ const path = {
 		css: source_folder + "/sass/style.sass",
 		cssLibs: source_folder + "/css/*.css",
 		js: source_folder + "/js/*.js",
+		jsTestFolder: source_folder + "/js/test/**/*.js",
 		jsFolder: source_folder + "/js/",
 		jsLibs: source_folder + "/js/libs/*.js",
 		jsModules: source_folder + "/js/modules/_*.js",
@@ -27,8 +29,7 @@ const path = {
 	watch: {
 		html: source_folder + "/**/*.html",
 		css: source_folder + "/sass/**/*.{sass,scss}",
-		js: source_folder + "/js/*.js",
-		jsModules: source_folder + "/js/modules/*.js",
+		js: source_folder + "/js/**/*.js",
 		jsLibs: source_folder + "/js/libs/*.js",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
@@ -74,6 +75,8 @@ function html() {
 }
 
 function js() {
+	src(path.src.jsTestFolder)
+		.pipe(dest(path.build.jsTestFolder))
 	src(path.src.js)
 		.pipe(concat("common.min.js"))
 		.pipe(dest(path.build.js))
@@ -145,8 +148,7 @@ function watchfiles(params) {
 	gulp.watch([path.watch.html], html);
 	gulp.watch([path.watch.css], css, cssLibs);
 	gulp.watch([path.watch.js], js);
-	gulp.watch([path.watch.jsModules], js);
-	gulp.watch([path.watch.jsLibs], jsLibs)
+	gulp.watch([path.watch.jsLibs], jsLibs);
 	gulp.watch([path.watch.img], images);
 }
 
