@@ -1,6 +1,7 @@
 import { HoverEffect } from "./modules/_HoverEffect.js";
 import { Popup } from "./modules/_Popup.js";
 import { GlitchWord } from "./modules/_GlitchWord.js"
+import { ScrollSpy } from "./modules/_ScrollSpy.js";
 
 //!Check if mobile
 const body = document.querySelector('body');
@@ -538,3 +539,7 @@ leafSliders.forEach((e) => {
 	const slider = new LeafSlider(e)
 	console.log(slider);
 })
+
+//!ScrollSpy
+const scrollButtons = document.querySelectorAll('.scroll-button')
+new ScrollSpy(scrollButtons)
