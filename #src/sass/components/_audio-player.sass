@@ -1,0 +1,125 @@
+.audio-player
+	display: flex
+	height: 120px
+	border: 2px solid #D7D7D7
+	width: 100%
+	border-radius: 0 5px 5px 0
+	&__button
+		width: 120px
+		display: flex
+		justify-content: center
+		align-items: center
+	&__play
+		background-color: transparent
+		border: 0
+		cursor: pointer
+	&__image-wrapper
+		width: 120px
+		height: 100%
+		border-left: 2px solid #D7D7D7
+		border-right: 2px solid #D7D7D7
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+	&__info
+		flex: 1 1 auto
+		display: flex
+		flex-direction: column
+		justify-content: center
+		height: 100%
+		background-color: #313131
+		padding-left: 32px
+		p
+			color: #D7D7D7
+	&__progress
+		flex: 1 1 auto
+		height: 100%
+		background-color: #313131
+		display: flex
+		flex-direction: column
+		justify-content: center
+		input
+			position: relative
+			-webkit-appearance: none
+			width: 100%
+			margin: 0
+			padding: 0
+			height: 19px
+			float: left
+			outline: none
+			background-color: transparent
+		input::-webkit-slider-runnable-track
+			width: 100%
+			height: 8px
+			border-radius: 76px
+			cursor: pointer
+			background: #FFFFFF
+			box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25)
+		input::before
+			position: absolute
+			content: ""
+			top: 6px
+			border-radius: 76px 0 0 76px
+			left: 0
+			width: var(--seek-before-width)
+			height: 8px
+			background-color: #007db5
+			cursor: pointer
+		// Chrome
+		input::-webkit-slider-thumb
+			position: relative
+			-webkit-appearance: none
+			box-sizing: content-box
+			height: 15px
+			width: 15px
+			border-radius: 50%
+			background-color: #1C54FC
+			cursor: pointer
+			margin: -3px 0 0 0
+
+		input:active::-webkit-slider-thumb
+			transform: scale(1.2)
+			background: #007db5
+		//Mozilla
+		input::-moz-range-track
+			width: 100%
+			height: 8px
+			cursor: pointer
+			border-radius: 76px
+			background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width))
+			background: #FFFFFF
+			box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25)
+
+		input::-moz-range-progress
+			height: 8px
+			border-radius: 76px 0 0 76px
+			background-color: #007db5
+
+		input::-moz-focus-outer
+			border: 0
+
+		input::-moz-range-thumb
+			box-sizing: content-box
+			height: 15px
+			width: 15px
+			border: 0 
+			border-radius: 50%
+			cursor: pointer
+			background: #1C54FC
+
+		input:active::-moz-range-thumb
+			transform: scale(1.2)
+			background: #1C54FC
+
+	&__duration
+		height: 100%
+		background-color: #313131
+		display: flex
+		flex-direction: column
+		justify-content: center
+		color: #D7D7D7
+		padding-right: 26px
+		padding-left: 20px
+		border-radius: 0 5px 5px 0
+		@include font($size: 14, $type:reg)

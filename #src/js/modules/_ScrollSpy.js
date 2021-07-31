@@ -19,7 +19,6 @@ export class ScrollSpy {
 	}
 	checkScroll() {
 		let button
-		let topBlock
 		let temp = 10000
 		this.buttons.forEach((e) => {
 			const block = document.getElementById(e.dataset.scroll)
@@ -27,19 +26,18 @@ export class ScrollSpy {
 				const box = block.getBoundingClientRect()
 				if (box.top < temp && box.top > 0) {
 					temp = box.top
-					topBlock = block
 					button = e
 				}
 			}
 		})
 		this.setActive(button)
-		console.log(topBlock)
 	}
 	getBlockScrollOffset(block) {
 		const box = block.getBoundingClientRect()
 		return box.top + window.pageYOffset
 	}
 	setActive(button) {
+		if (!button) return
 		const input = button.querySelector('input')
 		if (input) {
 			input.checked = true

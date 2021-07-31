@@ -2,6 +2,8 @@ import { HoverEffect } from "./modules/_HoverEffect.js";
 import { Popup } from "./modules/_Popup.js";
 import { GlitchWord } from "./modules/_GlitchWord.js"
 import { ScrollSpy } from "./modules/_ScrollSpy.js";
+import { DoubleSlider } from "./modules/_DoubleSlider.js";
+import { AudioPlayer } from "./modules/_AudioPlayer.js";
 
 //!Check if mobile
 const body = document.querySelector('body');
@@ -94,7 +96,7 @@ popupToggles.forEach((e) => {
 })
 
 //!Sliders
-const sliders = document.querySelectorAll('.splide');
+const sliders = document.querySelectorAll('.splide__default');
 const slidersOptions = {
 	card: {
 		type: 'loop',
@@ -135,6 +137,13 @@ if (sliders) {
 			const nextSlide = currentSlide.nextElementSibling
 			nextSlide.classList.add('splide__next-slide')
 		})
+	})
+}
+
+const doubleSliders = document.querySelectorAll('.double-slider')
+if (doubleSliders) {
+	doubleSliders.forEach((e) => {
+		new DoubleSlider(e)
 	})
 }
 
@@ -542,4 +551,10 @@ leafSliders.forEach((e) => {
 
 //!ScrollSpy
 const scrollButtons = document.querySelectorAll('.scroll-button')
-new ScrollSpy(scrollButtons)
+const careerScrollSpy = new ScrollSpy(scrollButtons)
+
+//!AudioPlayer
+const audioPlayers = document.querySelectorAll('.audio-player')
+audioPlayers.forEach((e) => {
+	new AudioPlayer(e)
+})
