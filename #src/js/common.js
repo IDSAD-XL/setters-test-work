@@ -270,6 +270,7 @@ animateBlocks.forEach((e) => {
 })
 
 const observeElements = document.querySelectorAll('.to-observe')
+let tempDelay = 0
 const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
 		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
@@ -277,7 +278,7 @@ const observer = new IntersectionObserver((entries, observer) => {
 			const box = entry.target.getBoundingClientRect()
 			const distance = Math.sqrt(box.top ** 2 + box.left ** 2)
 			const k = 1 / (d / distance)
-			const delay = 1500 * k
+			const delay = 500 * k + tempDelay
 			entry.target.style.transitionDelay = `${delay}ms`
 			entry.target.style.animationDelay = `${delay}ms`
 			if (entry.target.classList.contains('text_animate-show')) {
@@ -286,9 +287,15 @@ const observer = new IntersectionObserver((entries, observer) => {
 				textInner.style.animationDelay = `${delay}ms`
 			}
 			entry.target.classList.add('animated');
+			tempDelay += 200
 		}
 	});
 });
+setInterval(() => {
+	if (tempDelay != 0) {
+		tempDelay = 0
+	}
+}, 50)
 
 Array.prototype.forEach.call(observeElements, (el) => {
 	observer.observe(el);
@@ -568,4 +575,17 @@ if (careerSponsors) {
 	document.addEventListener("DOMContentLoaded", () => {
 		careerSponsors.classList.add('loaded')
 	});
+}
+
+//!Career tabs
+const careerQuestionTabs = document.querySelectorAll('.career__question-tabs-item')
+if (careerQuestionTabs) {
+	careerQuestionTabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			careerQuestionTabs.forEach((e) => {
+				e.classList.remove('active')
+			})
+			tab.classList.add('active')
+		})
+	})
 }

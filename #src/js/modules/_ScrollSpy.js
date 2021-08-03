@@ -19,18 +19,28 @@ export class ScrollSpy {
 	}
 	checkScroll() {
 		let button
-		let temp = 10000
+		let temp = {
+			top: 100000,
+			bottom: 100000
+		}
 		this.buttons.forEach((e) => {
 			const block = document.getElementById(e.dataset.scroll)
 			if (block) {
 				const box = block.getBoundingClientRect()
-				if (box.top < temp && box.top > 0) {
-					temp = box.top
+				if (window.scrollY > this.getBlockScrollOffset(block) - window.innerHeight / 2) {
 					button = e
 				}
 			}
 		})
 		this.setActive(button)
+	}
+	checkOnScreen(e) {
+		const box = e.getBoundingClientRect()
+		if ((box.top < 0 && box.bottom < 0)
+			|| (box.top > 0 && box.bottom > 0)
+		) {
+
+		}
 	}
 	getBlockScrollOffset(block) {
 		const box = block.getBoundingClientRect()
