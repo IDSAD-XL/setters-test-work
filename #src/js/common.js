@@ -104,10 +104,11 @@ const slidersOptions = {
 		interval: 3000,
 		pauseOnHover: true,
 	},
-	case: {
+	primary: {
 		type: 'loop',
 		autoplay: false,
 		speed: 1200,
+		gap: 20,
 		breakpoints: {
 			1023: {
 				arrows: false,
@@ -122,7 +123,7 @@ const slidersOptions = {
 if (sliders) {
 	sliders.forEach((e) => {
 		const options = e.classList.contains('card-slider') ?
-			slidersOptions.card : slidersOptions.case
+			slidersOptions.card : slidersOptions.primary
 		const slider = new Splide(e, options).mount()
 		const sliderNumber = e.querySelector('.splide__slide-number')
 		const slidesCount = slider.length
@@ -243,8 +244,9 @@ const casesList = document.querySelector('#casesList')
 
 function createAnimatedTextElement(el) {
 	const content = el.innerHTML
-	el.classList.add('to-observe')
-	if (!el.classList.contains('block_animate-show')) {
+	if (!el.classList.contains('block_animate-show')
+		&& !el.classList.contains('no-animation')) {
+		el.classList.add('to-observe')
 		el.classList.add('text_animate-show')
 		const newInner = `<div class="text_animate-show-inner">${content}</div>`
 		el.innerHTML = newInner
@@ -252,8 +254,9 @@ function createAnimatedTextElement(el) {
 }
 
 function createAnimatedBlocksElement(el) {
-	el.classList.add('to-observe')
-	if (!el.classList.contains('text_animate-show')) {
+	if (!el.classList.contains('text_animate-show')
+		&& !el.classList.contains('no-animation')) {
+		el.classList.add('to-observe')
 		el.classList.add('block_animate-show')
 	}
 }
@@ -558,3 +561,11 @@ const audioPlayers = document.querySelectorAll('.audio-player')
 audioPlayers.forEach((e) => {
 	new AudioPlayer(e)
 })
+
+//!Content loaded
+const careerSponsors = document.querySelector('.career__sponsors')
+if (careerSponsors) {
+	document.addEventListener("DOMContentLoaded", () => {
+		careerSponsors.classList.add('loaded')
+	});
+}

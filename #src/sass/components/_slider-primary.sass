@@ -1,0 +1,38 @@
+.slider-primary
+	.splide
+		&__slide
+			img
+				width: 100%
+				object-fit: cover
+				border-radius: 5px
+		&__arrows
+			display: block
+			@include media($type: mobile)
+				display: none
+		&__arrow
+			display: block
+			background-color: transparent
+			width: 34px
+			height: 34px
+			&--prev
+
+			&--next
+
+			svg
+				width: 100%
+				height: 100%
+		&__pagination
+			display: none
+		&__slide-number
+			margin-top: 24px
+			display: flex
+			width: 100%
+			justify-content: center
+			color: var(--color-font-secondary)
+			@include font($size:24, $type:med)
+			@include media($type: tablet)
+				margin-top: 16px
+				@include font($size: 20, $type:med)
+			@include media($type: mobile)
+				margin-top: 8px
+				@include font($size: 16, $type:med)

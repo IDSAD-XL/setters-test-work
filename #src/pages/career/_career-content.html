@@ -1,8 +1,8 @@
 <div class="career-content-wrapper">
-	@@include('_career-progress.html')
+	@@include('_career-spy.html')
 	<div class="career-content" id="career__nachalo">
 		<div class="career-inner container">
-			<div class="flexbox-grid-block flexbox-grid-block--2 contact__block mb-text-3-m">
+			<div class="flexbox-grid-block flexbox-grid-block--2  mb-text-3-m">
 				<h1 class="heading to-observe text_animate-show career__title">Карьера</h1>
 				<div>
 					<p class="text text-primary text-bold">
@@ -30,7 +30,7 @@
 				</div>
 				<div>
 					<h2 class="heading mt-5">
-						мы ценим
+						мы ценим <img src="img/icons/brilliant.svg" alt="">
 					</h2>
 					<ul class="mt-3">
 						<li class="mb-text-5">
@@ -75,43 +75,11 @@
 					</div>
 					<div class="splide__arrows mt-5">
 						<button class="splide__arrow splide__arrow--prev">
-							<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g filter="url(#filter0_d)">
-									<path fill-rule="evenodd" clip-rule="evenodd"
-										d="M17 28C23.6274 28 29 22.6274 29 16C29 9.37258 23.6274 4 17 4C10.3726 4 5 9.37258 5 16C5 22.6274 10.3726 28 17 28ZM16.3126 10.5488C15.9221 10.1582 15.2889 10.1582 14.8984 10.5488C14.5078 10.9393 14.5078 11.5724 14.8984 11.963L18.9354 16L14.8984 20.0371C14.5078 20.4276 14.5078 21.0608 14.8984 21.4513C15.2889 21.8419 15.9221 21.8419 16.3126 21.4513L21.0568 16.7072C21.4473 16.3166 21.4473 15.6835 21.0568 15.2929L16.3126 10.5488Z" fill="black" />
-								</g>
-								<defs>
-									<filter id="filter0_d" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-										<feFlood flood-opacity="0" result="BackgroundImageFix" />
-										<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-										<feOffset dy="1" />
-										<feGaussianBlur stdDeviation="2.5" />
-										<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
-										<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-										<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
-									</filter>
-								</defs>
-							</svg>
+							@@include('../components/_slider-arrow_black.html')
 						</button>
 						<div class="splide__slide-number"></div>
 						<button class="splide__arrow splide__arrow--next">
-							<svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g filter="url(#filter0_d)">
-									<path fill-rule="evenodd" clip-rule="evenodd"
-										d="M17 28C23.6274 28 29 22.6274 29 16C29 9.37258 23.6274 4 17 4C10.3726 4 5 9.37258 5 16C5 22.6274 10.3726 28 17 28ZM16.3126 10.5488C15.9221 10.1582 15.2889 10.1582 14.8984 10.5488C14.5078 10.9393 14.5078 11.5724 14.8984 11.963L18.9354 16L14.8984 20.0371C14.5078 20.4276 14.5078 21.0608 14.8984 21.4513C15.2889 21.8419 15.9221 21.8419 16.3126 21.4513L21.0568 16.7072C21.4473 16.3166 21.4473 15.6835 21.0568 15.2929L16.3126 10.5488Z" fill="black" />
-								</g>
-								<defs>
-									<filter id="filter0_d" x="0" y="0" width="34" height="34" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-										<feFlood flood-opacity="0" result="BackgroundImageFix" />
-										<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-										<feOffset dy="1" />
-										<feGaussianBlur stdDeviation="2.5" />
-										<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.15 0" />
-										<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow" />
-										<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape" />
-									</filter>
-								</defs>
-							</svg>
+							@@include('../components/_slider-arrow_black.html')
 						</button>
 					</div>
 				</div>
@@ -135,7 +103,7 @@
 	</div>
 	<div class="career-content white pt-7 pb-8">
 		<div class="career-inner container">
-			<div class="flexbox-grid-block flexbox-grid-block--2 contact__block mb-text-3-m">
+			<div class="flexbox-grid-block flexbox-grid-block--2  mb-text-3-m">
 				<h3 class="heading to-observe text_animate-show">Заботимся о ментальном здоровье</h3>
 				<div>
 					<p class="text text-small text-bold">
@@ -175,26 +143,160 @@
 	</div>
 	<div class="career-content pt-7 pb-8">
 		<div class="career-inner container">
-			<div class="flexbox-grid-block flexbox-grid-block--2 contact__block mb-text-3-m">
-				<h3 class="heading to-observe text_animate-show">Вместе занимаемся спортом</h3>
+			<div class="flexbox-grid-block flexbox-grid-block--1-2  mb-text-3-m">
 				<div>
+					<h3 class="heading to-observe text_animate-show">Вместе занимаемся спортом</h3>
 					<p class="text text-small text-bold">
 						Спорт расширяет границы возможностей. Мы регулярно предлагаем занятия в новых направлениях — от бокса до сквоша — и любим устраивать свои командные соревнования.
 					</p>
 				</div>
+				<div>
+					<div class="splide splide__default slider-primary">
+						<div class="splide__track">
+							<ul class="splide__list">
+								<li class="splide__slide">
+									<img src="img/career/slider-image-1.png" alt="">
+								</li>
+								<li class="splide__slide">
+									<img src="img/career/slider-image.png" alt="">
+								</li>
+								<li class="splide__slide">
+									<img src="img/career/slider-image-1.png" alt="">
+								</li>
+							</ul>
+						</div>
+						<div class="splide__arrows mt-text-4">
+							<button class="splide__arrow splide__arrow--prev">
+								@@include('../components/_slider-arrow_white.html')
+							</button>
+							<div class="splide__slide-number"></div>
+							<button class="splide__arrow splide__arrow--next">
+								@@include('../components/_slider-arrow_white.html')
+							</button>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="career-content white pt-7 pb-8">
+	<div class="career-content white pt-7 pb-7 mb-3">
 		<div class="career-inner container">
-			<div class="flexbox-grid-block flexbox-grid-block--2 contact__block mb-text-3-m">
+			<div class="flexbox-grid-block flexbox-grid-block--2  mb-text-3-m">
 				<h3 class="heading to-observe text_animate-show">Работаем <br> с удовольствием</h3>
+				<p class="text text-small text-bold">
+					Превращаем проекты в кейсы, <br>
+					которые не стыдно показать в портфолио
+				</p>
+			</div>
+			@@include('_career__sponsors.html')
+		</div>
+	</div>
+	<div class="career-content dark pt-7 pb-8" id="career__comanda">
+		<div class="career-inner container">
+			<div class="flexbox-grid-block flexbox-grid-block--2  mb-text-3-m">
 				<div>
-					<p class="text text-small text-bold">
-						Превращаем проекты в кейсы, <br>
-						которые не стыдно показать в портфолио
+					<h2 class="heading white to-observe text_animate-show">
+						Сначала в SETTERS <img src="img/icons/victory-hand.svg" alt=""> <br> было трое
+					</h2>
+					<p class="text white text-big text-bold mt-3">
+						Сооснователи SETTERS
 					</p>
 				</div>
+			</div>
+			<div class="flexbox-grid-block flexbox-grid-block--3 career__team-cards">
+				<div>
+					<div class="career__team-card">
+						<div class="career__team-card-image">
+							<img src="img/career/team/team1.png" alt="">
+						</div>
+						<div class="career__team-card-info">
+							<div class="career__team-card-description">
+								<p class="no-animation text text-small text-bold">
+									«‎В теории, разницы между теорией и практикой — нет, а на практике — есть»‎
+								</p>
+							</div>
+							<div class="career__team-card-bottom">
+								<p class="text career__team-card-name mb-text-1">
+									Евгений Давыдов
+								</p>
+								<p class="text text-light text-bold text-small">
+									Генеральный директор SETTERS
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="career__team-card">
+						<div class="career__team-card-image">
+							<img src="img/career/team/team2.png" alt="">
+						</div>
+						<div class="career__team-card-info">
+							<div class="career__team-card-description">
+								<p class="no-animation text text-small text-bold">
+									«Мы с вами можем всё что угодно, не потому что мы мужчины или женщины. А потому что мы — это мы»
+								</p>
+							</div>
+							<div class="career__team-card-bottom">
+								<p class="text career__team-card-name mb-text-1">
+									Александра Жаркова
+								</p>
+								<p class="text text-light text-bold text-small">
+									Директор по развитию SETTERS, <br>
+									ген. директор SETTERS EDUCATION
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="career__team-card">
+						<div class="career__team-card-image">
+							<img src="img/career/team/team3.png" alt="">
+						</div>
+						<div class="career__team-card-info">
+							<div class="career__team-card-description">
+								<p class="no-animation text text-small text-bold">
+									«Когда ты ценишь себя, непредвзят и открыт к окружающим, — ты всевластен!»
+								</p>
+							</div>
+							<div class="career__team-card-bottom">
+								<p class="text career__team-card-name mb-text-1">
+									Алина Чичина
+								</p>
+								<p class="text text-light text-bold text-small">
+									Арт-директор SETTERS
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flexbox-grid-block flexbox-grid-block--2">
+				<div>
+					<h2 class="heading white to-observe text_animate-show">
+						Теперь нас <img src="img/icons/150.svg" alt="">
+					</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="career-content dark pb-8">
+		<div class="career-inner">
+			<div class="cases-list" id="casesList">
+				@@loop('../cases/_cases-list-item.html', [
+				{"src": "case_1.png", "name": "Рекламщики — меткие"},
+				{"src": "case_2.png", "name": "Проджекты — старательные"},
+				{"src": "case_3.png", "name": "Дизайнеры — утончённые"},
+				{"src": "case_4.png", "name": "Инфлюенс менеджеры — общительные"},
+				{"src": "case_5.png", "name": "Продюсеры — бесподобные"},
+				{"src": "case_6.png", "name": "Стратеги — умные"},
+				{"src": "case_7.png", "name": "Аккаунты — вежливые"},
+				{"src": "case_8.png", "name": "Финансисты — щедрые"},
+				{"src": "case_8.png", "name": "Пиарщики — неугомонные"},
+				{"src": "case_8.png", "name": "HR — человечный"},
+				{"src": "case_8.png", "name": "Эдьюкейшен — заботливый"},
+				])
 			</div>
 		</div>
 	</div>
