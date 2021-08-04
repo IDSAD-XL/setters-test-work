@@ -238,8 +238,8 @@ if (casesSwitcher) {
 }
 
 //!Text animations
-const animateText = document.querySelectorAll('.text_animate-show, h1, h2, h3, h4, h5, h6')
-const animateBlocks = document.querySelectorAll('.block_animate-show, p')
+const animateText = document.querySelectorAll('.text_animate-show, h1')
+const animateBlocks = document.querySelectorAll('.block_animate-show, p, h2, h3, h4, h5, h6')
 const casesList = document.querySelector('#casesList')
 
 function createAnimatedTextElement(el) {

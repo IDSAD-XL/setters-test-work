@@ -206,3 +206,30 @@
 			margin-top: 0
 			overflow: hidden
 			max-height: 0
+	&__icon
+		&--small
+			width: 52px
+			height: 52px
+			transform: translateY(7px)
+		&--big
+			width: 124px
+			height: 124px
+			transform: translateY(40px)
+	&__list
+		list-style: none
+		li
+			p
+				position: relative
+				display: flex
+				align-items: center
+				color: #313131
+				&::after
+					content: ""
+					position: absolute
+					left: 0
+					background: #1C54FC
+					width: 20px
+					height: 9px
+					border-radius: 58px
+			span
+				margin-left: 40px
