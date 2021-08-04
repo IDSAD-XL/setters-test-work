@@ -12,7 +12,8 @@
 				@include font($size: 20, $type: med)
 	&-big
 		@include font($size: 32, $type:med)
-		
+		@include media($max-width: $l)
+			@include font($size: 20, $type: med)
 	&-small
 		@include font($size: 16, $type:med)
 		color: var(--button-color-primary)

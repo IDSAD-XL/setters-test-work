@@ -1,14 +1,26 @@
 .double-slider
 	display: flex
+	@include media($type: mobile)
+		flex-wrap: wrap-reverse
+
 	&__text
+		@include media($type: mobile)
+			width: 100%
+			.splide__track
+				padding-bottom: 40px
+				border-bottom: 2px solid #D7D7D7
 		&-heading
 			@include font($size: 32, $type:med)
 			color: #000
+			@include media($type: mobile)
+				@include font($size: 20, $type:med)
 		.splide__slide
 			@include font($size: 20, $type:med)
 			color: #313131
 
 	&__image
+		@include media($type: mobile)
+			width: 100%
 		img
 			width: 100%
 			object-fit: cover

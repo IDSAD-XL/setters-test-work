@@ -1,18 +1,31 @@
 .audio-player
 	display: flex
+	position: relative
 	height: 120px
 	border: 2px solid #D7D7D7
 	width: 100%
 	border-radius: 0 5px 5px 0
+	@include media($type: mobile)
+		height: 76px
 	&__button
 		width: 120px
 		display: flex
 		justify-content: center
 		align-items: center
+		z-index: 1
+		@include media($type: mobile)
+			width: 76px
+			background: rgba(49, 49, 49, 0.47)
 	&__play
 		background-color: transparent
 		border: 0
 		cursor: pointer
+		@include media($type: mobile)
+			svg
+				width: 24px
+				height: 30px
+				path
+					fill: #fff
 	&__image-wrapper
 		width: 120px
 		height: 100%
@@ -22,6 +35,10 @@
 			width: 100%
 			height: 100%
 			object-fit: cover
+		@include media($type: mobile)
+			width: 76px
+			position: absolute
+			left: 0
 	&__info
 		flex: 1 1 auto
 		display: flex
@@ -31,6 +48,12 @@
 		padding-left: 32px
 		@include media($type: tablet)
 			height: auto
+		@include media($type: mobile)
+			padding: 12px 0 12px 20px
+			.text
+				line-height: 16px
+			.text-primary
+				@include font($size: 12, $type: med)
 		p
 			color: #D7D7D7
 	&__content
@@ -57,6 +80,8 @@
 			float: left
 			outline: none
 			background-color: transparent
+			@include media($type: mobile)
+				height: 4px
 		input::-webkit-slider-runnable-track
 			width: 100%
 			height: 8px
@@ -64,6 +89,10 @@
 			cursor: pointer
 			background: #FFFFFF
 			box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25)
+			@include media($type: mobile)
+				border-radius: 0
+				height: 4px
+				box-shadow: inset 0px 4px 4px #fff
 		input::before
 			position: absolute
 			content: ""
@@ -74,6 +103,9 @@
 			height: 8px
 			background-color: #007db5
 			cursor: pointer
+			@include media($type: mobile)
+				height: 4px
+				border-radius: 0
 		// Chrome
 		input::-webkit-slider-thumb
 			position: relative
@@ -85,6 +117,8 @@
 			background-color: #1C54FC
 			cursor: pointer
 			margin: -3px 0 0 0
+			@include media($type: mobile)
+				display: none
 
 		input:active::-webkit-slider-thumb
 			transform: scale(1.2)
@@ -98,11 +132,18 @@
 			background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width))
 			background: #FFFFFF
 			box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25)
+			@include media($type: mobile)
+				border-radius: 0
+				height: 4px
+				box-shadow: inset 0px 4px 4px #fff
 
 		input::-moz-range-progress
 			height: 8px
 			border-radius: 76px 0 0 76px
 			background-color: #007db5
+			@include media($type: mobile)
+				border-radius: 0
+				height: 4px
 
 		input::-moz-focus-outer
 			border: 0
@@ -115,6 +156,8 @@
 			border-radius: 50%
 			cursor: pointer
 			background: #1C54FC
+			@include media($type: mobile)
+				display: none
 
 		input:active::-moz-range-thumb
 			transform: scale(1.2)
@@ -125,6 +168,11 @@
 		@include media($type: tablet)
 			width: 100%
 			padding-left: 32px
+		@include media($type: mobile)
+			position: absolute
+			left: 0
+			top: -4px
+			width: 100%
 	&__duration
 		height: 100%
 		display: flex
@@ -135,3 +183,5 @@
 		padding-left: 20px
 		border-radius: 0 5px 5px 0
 		@include font($size: 14, $type:reg)
+		@include media($type: mobile)
+			display: none
