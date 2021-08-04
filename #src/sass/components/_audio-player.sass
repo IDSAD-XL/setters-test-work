@@ -28,14 +28,22 @@
 		flex-direction: column
 		justify-content: center
 		height: 100%
-		background-color: #313131
 		padding-left: 32px
+		@include media($type: tablet)
+			height: auto
 		p
 			color: #D7D7D7
+	&__content
+		display: flex
+		flex: 1 1 auto
+		background-color: #313131
+		@include media($type: tablet)
+			padding-top: 20px
+			padding-bottom: 20px
+			flex-wrap: wrap-reverse
 	&__progress
 		flex: 1 1 auto
 		height: 100%
-		background-color: #313131
 		display: flex
 		flex-direction: column
 		justify-content: center
@@ -111,10 +119,14 @@
 		input:active::-moz-range-thumb
 			transform: scale(1.2)
 			background: #1C54FC
-
+	&__timeline
+		display: flex
+		flex: 1 1 auto
+		@include media($type: tablet)
+			width: 100%
+			padding-left: 32px
 	&__duration
 		height: 100%
-		background-color: #313131
 		display: flex
 		flex-direction: column
 		justify-content: center
