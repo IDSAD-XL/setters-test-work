@@ -1,7 +1,7 @@
 export class AudioPlayer {
 	constructor(block) {
 		this.audioPlayerContainer = block
-		this.playIconContainer = block.querySelector('.audio-player__play')
+		this.playIconContainer = block.querySelector('.audio-player__button')
 		this.seekSlider = block.querySelector('.seek-slider')
 		this.audio = block.querySelector('audio')
 		this.durationContainer = block.querySelector('.audio-player__duration')
@@ -27,10 +27,14 @@ export class AudioPlayer {
 			if (this.playState === 'play') {
 				this.audio.play();
 				requestAnimationFrame(this.whilePlaying);
+				this.playIconContainer.classList.add('play')
+				this.playIconContainer.classList.remove('pause')
 				this.playState = 'pause';
 			} else {
 				this.audio.pause();
 				cancelAnimationFrame(this.rAF);
+				this.playIconContainer.classList.remove('play')
+				this.playIconContainer.classList.add('pause')
 				this.playState = 'play';
 			}
 		});

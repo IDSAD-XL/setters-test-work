@@ -13,13 +13,40 @@
 		justify-content: center
 		align-items: center
 		z-index: 1
+		position: relative
 		@include media($type: mobile)
 			width: 76px
 			background: rgba(49, 49, 49, 0.47)
+		&.pause
+			.audio-player__play
+				transform: scale(1)
+				opacity: 1
+		&.play
+			.audio-player__pause
+				transform: scale(1)
+				opacity: 1
 	&__play
 		background-color: transparent
 		border: 0
 		cursor: pointer
+		position: absolute
+		transition: opacity .3s ease, transform .1s ease
+		transform: scale(1.1)
+		opacity: 0
+		@include media($type: mobile)
+			svg
+				width: 24px
+				height: 30px
+				path
+					fill: #fff
+	&__pause
+		background-color: transparent
+		border: 0
+		cursor: pointer
+		position: absolute
+		transition: opacity .3s ease, transform .1s ease
+		transform: scale(1.1)
+		opacity: 0
 		@include media($type: mobile)
 			svg
 				width: 24px
@@ -46,6 +73,8 @@
 		justify-content: center
 		height: 100%
 		padding-left: 32px
+		@include media($min-width: $l)
+			width: 0
 		@include media($type: tablet)
 			height: auto
 		@include media($type: mobile)
