@@ -36,6 +36,8 @@
 			width: 100%
 		.input-wrapper
 			height: 120px
+			@include media($type: mobile)
+				height: 130px
 		textarea
 			overflow-y: auto
 			text-indent: 0
@@ -44,6 +46,8 @@
 			width: 100%
 			resize: none
 			color: var(--color-font-additional-night)
+			@include media($type: mobile)
+				@include font($size: 12, $type: reg)
 	&__bottom
 		display: flex
 		flex-wrap: wrap
@@ -56,6 +60,9 @@
 		button
 			margin-right: 46px
 			margin-bottom: 12px
+			@include media($type: mobile)
+				width: 100%
+				margin-right: 0
 	&__title
 		@include media($type: mobile)
 			max-width: 150px

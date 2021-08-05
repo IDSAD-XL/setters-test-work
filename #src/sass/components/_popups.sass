@@ -16,6 +16,8 @@
 	opacity: 0
 	@include media($type: mobile)
 		padding: 0
+	&_hide
+		pointer-events: none
 	&_open
 		opacity: 1
 		visibility: visible
@@ -55,9 +57,7 @@
 		@include media($type: mobile)
 			@include font($size: 40, $type:med)
 	&__content
-		padding: 0 60px
-		padding-top: 40px
-		padding-bottom: 48px
+		padding: 40px 60px 60px 60px
 		display: flex
 		flex-direction: column
 		@include media($type: mobile)

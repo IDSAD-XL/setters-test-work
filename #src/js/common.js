@@ -81,20 +81,6 @@ if (!contactBlock) {
 	gradientBorder.classList.remove('gradient-border_fullscreen')
 }
 
-//! Popups
-const popups = document.querySelectorAll(".popup")
-const popupToggles = document.querySelectorAll(".open-popup")
-
-if (popups) {
-	popups.forEach((e) => {
-		document.body.appendChild(e)
-	})
-}
-
-popupToggles.forEach((e) => {
-	new Popup(e)
-})
-
 //!Sliders
 const sliders = document.querySelectorAll('.splide__default');
 const slidersOptions = {
@@ -569,13 +555,6 @@ audioPlayers.forEach((e) => {
 	new AudioPlayer(e)
 })
 
-//!Content loaded
-const careerSponsors = document.querySelector('.career__sponsors')
-if (careerSponsors) {
-	document.addEventListener("DOMContentLoaded", () => {
-		careerSponsors.classList.add('loaded')
-	});
-}
 
 //!Career tabs
 const careerQuestionTabs = document.querySelectorAll('.career__question-tabs-item')
@@ -589,3 +568,26 @@ if (careerQuestionTabs) {
 		})
 	})
 }
+
+//!Content loaded
+const careerSponsors = document.querySelector('.career__sponsors')
+if (careerSponsors) {
+	document.addEventListener("DOMContentLoaded", () => {
+		careerSponsors.classList.add('loaded')
+	});
+}
+//! Popups
+const popups = document.querySelectorAll(".popup")
+const popupToggles = document.querySelectorAll(".open-popup")
+
+document.addEventListener("DOMContentLoaded", () => {
+	if (popups) {
+		popups.forEach((e) => {
+			document.body.appendChild(e)
+		})
+	}
+
+	popupToggles.forEach((e) => {
+		new Popup(e)
+	})
+})
