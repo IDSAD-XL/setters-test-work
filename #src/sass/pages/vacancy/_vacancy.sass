@@ -1,0 +1,72 @@
+.vacancy
+	&-content
+		background-color: #F5F5F5
+		width: 100%
+		display: flex
+		justify-content: center
+		&-wrapper
+			width: 100vw
+			min-height: 100vh
+			background-color: #F5F5F5
+			padding-top: 170px
+		&.dark
+			background-color: #313131
+	&__top-slider
+		width: 760px
+		height: 470px
+		&-wrapper
+			justify-content: center
+	&__video-wrapper
+		display: flex
+		align-items: center
+		img
+			width: 300px
+			height: 300px
+	&__list
+		list-style: none
+		margin-left: 40px
+		li
+			margin-bottom: 12px
+			position: relative
+			&:nth-last-child(1)
+				margin-bottom: 0
+			&::before
+				content: ""
+				position: absolute
+				left: -40px
+				top: 7.5px
+				width: 10px
+				height: 10px
+				background-color: var(--color-blue)
+				border-radius: 50%
+		&--light
+			.text
+				color: #fff
+			li::before
+				background-color: #fff
+	&__quote
+		&-text
+			&-block
+				justify-content: center
+				padding-left: 100px
+				padding-right: 60px
+				position: relative
+			&-inner
+				.text
+					color: #313131
+					@include font($size: 24, $type: med)
+		&-sign
+			left: 0
+			top: 34px
+			position: absolute
+		&-image
+			&-inner
+				display: flex
+				img
+					width: 100px
+					height: 100px
+			&-description
+				margin-left: 12px
+				display: flex
+				flex-direction: column
+				justify-content: center
