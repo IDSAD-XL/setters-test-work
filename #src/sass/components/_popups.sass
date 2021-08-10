@@ -110,11 +110,13 @@
 					padding-top: 40px
 			&__content-title
 				display: flex
-				align-items: center
-				& > *:nth-child(1)
-					margin-right: 70px
-					@include media($type: mobile)
-						margin-right: 0
+				align-items: flex-start
+				justify-content: space-between
+				&--bottom
+					align-items: center
+					justify-content: flex-start
+					& > *:nth-child(1)
+						margin-right: 70px
 				@include media($type: mobile)
 					flex-wrap: wrap
 			&-request
