@@ -9,11 +9,22 @@
 			min-height: 100vh
 			background-color: #F5F5F5
 			padding-top: 170px
+			@include media($type: mobile)
+				padding-top: 130px
+			.container
+				padding: 0 37.5px
+				&.no-padding-m
+					@include media($type: mobile)
+						padding: 0
+
 		&.dark
 			background-color: #313131
 	&__top-slider
 		width: 760px
 		height: 470px
+		@include media($type: mobile)
+			width: 100%
+			height: auto
 		&-wrapper
 			justify-content: center
 	&__video-wrapper
@@ -22,12 +33,29 @@
 		img
 			width: 300px
 			height: 300px
+			object-fit: cover
+			border-radius: 50%
+			@include media($type: tablet)
+				width: 220px
+				height: 220px
+		@include media($type: mobile)
+			flex-wrap: wrap
+			img
+				width: 100%
+				border-radius: 0
+
 	&__list
 		list-style: none
 		margin-left: 40px
+		@include media($type: mobile)
+			margin-left: 30px
 		li
 			margin-bottom: 12px
 			position: relative
+			@include media($type: mobile)
+				.text
+					@include font($size: 16)
+
 			&:nth-last-child(1)
 				margin-bottom: 0
 			&::before
@@ -39,6 +67,8 @@
 				height: 10px
 				background-color: var(--color-blue)
 				border-radius: 50%
+				@include media($type: mobile)
+					left: -30px
 		&--light
 			.text
 				color: #fff
@@ -51,22 +81,38 @@
 				padding-left: 100px
 				padding-right: 60px
 				position: relative
+				@include media($type: mobile)
+					padding-left: 0
+					padding-right: 0
 			&-inner
 				.text
 					color: #313131
 					@include font($size: 24, $type: med)
+					@include media($type: mobile)
+						@include font($size: 16, $type: med)
 		&-sign
 			left: 0
 			top: 34px
 			position: absolute
+			@include media($type: mobile)
+				width: 43px
+				height: 35px
+				top: 12px
+				transform: translateX(-50%)
+
 		&-image
 			&-inner
 				display: flex
 				img
 					width: 100px
 					height: 100px
+					@include media($type: mobile)
+						width: 80px
+						height: 80px
 			&-description
 				margin-left: 12px
 				display: flex
 				flex-direction: column
 				justify-content: center
+				@include media($type: mobile)
+					margin-left: 32px

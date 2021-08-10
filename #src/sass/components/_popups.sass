@@ -101,18 +101,35 @@
 	&--onpage
 		background-color: #fff
 		transform: none
+		@include media($type: mobile)
+			border-radius: 60px
 		.popup
-			&-body
 			&__content
 				padding-top: 60px
+				@include media($type: mobile)
+					padding-top: 40px
 			&__content-title
 				display: flex
 				align-items: center
 				& > *:nth-child(1)
 					margin-right: 70px
-			&-request__input-wrapper
-				width: 100%
-			&-request__bottom
-				margin-top: 20px
+					@include media($type: mobile)
+						margin-right: 0
+				@include media($type: mobile)
+					flex-wrap: wrap
+			&-request
+				&__input-wrapper
+					width: 100%
+					@include media($type: mobile)
+						margin: 10px 0
+				&__bottom
+					margin-top: 20px
+					@include media($type: mobile)
+						margin-top: 32px
+				&__details
+					@include media($type: mobile)
+						margin: 10px 0
+						textarea
+							@include font($size: 16)
 .open-popup
 	cursor: pointer
