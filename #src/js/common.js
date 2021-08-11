@@ -4,6 +4,7 @@ import { GlitchWord } from "./modules/_GlitchWord.js"
 import { ScrollSpy } from "./modules/_ScrollSpy.js";
 import { DoubleSlider } from "./modules/_DoubleSlider.js";
 import { AudioPlayer } from "./modules/_AudioPlayer.js";
+import { FileInput } from "./modules/_FileInput.js";
 
 //!Check if mobile
 const body = document.querySelector('body');
@@ -591,3 +592,11 @@ document.addEventListener("DOMContentLoaded", () => {
 		new Popup(e)
 	})
 })
+
+//!File inputs
+const uploadInputs = document.querySelectorAll('.upload')
+if (uploadInputs) {
+	uploadInputs.forEach((e) => {
+		new FileInput(e)
+	})
+}

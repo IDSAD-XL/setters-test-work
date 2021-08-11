@@ -1,0 +1,315 @@
+.upload {
+  --btn-color: #1C54FC;
+  --progress-color: #00CF6B;
+  --ease-in-out-quartic: cubic-bezier(0.77, 0, 0.175, 1);
+
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: #E9E9E9;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 1.7px 1.4px rgba(0, 0, 0, 0.02),
+    0 4px 3.3px rgba(0, 0, 0, 0.028), 0 7.5px 6.3px rgba(0, 0, 0, 0.035),
+    0 13.4px 11.2px rgba(0, 0, 0, 0.042), 0 25.1px 20.9px rgba(0, 0, 0, 0.05),
+    0 60px 50px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  transform: rotate(0);
+  margin-top: 20px;
+  height: 60px;
+
+  &__info {
+    display: flex;
+    align-items: center;
+	flex: 1 1 auto;
+	max-width: 160px;
+	@include media($type: tablet) {
+		max-width: 130px;
+	}
+  }
+
+  &__top-label {
+	  position: absolute;
+	  @include font($size: 12, $type: med);
+	  top: 4px;
+	  left: 20px;
+	  color: #989898;
+	  opacity: 0;
+  }
+
+  &__filename {
+    padding-left: 20px;
+	color: #666666;
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding-right: 10px;
+  }
+
+  &__button {
+    position: relative;
+    margin: 0;
+	min-width: 135px;
+    font-size: 100%;
+    font-family: inherit;
+    color: white;
+    background: none;
+    border: none;
+    border-radius: inherit;
+    outline: none;
+	@include media($type: tablet) {
+		min-width: 115px;
+	}
+
+	input {
+		position: absolute;
+		top: 10px;
+      	left: 0;
+      	width: calc(100% - 10px);
+      	height: 40px;
+		opacity: 0;
+		cursor: pointer;
+		z-index: 10;
+	}
+
+	label {
+		position: absolute;
+		top: 10px;
+      	left: 0;
+      	width: calc(100% - 10px);
+      	height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+		span {
+			@include font($size: 16, $type: med);
+			cursor: pointer;
+		}
+	}
+
+    &::before {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      top: 10px;
+      right: 10px;
+      width: calc(100% - 10px);
+      height: 40px;
+      background-color: transparent;
+      border-radius: 5px;
+	  border: 2px solid #1C54FC;
+	  box-sizing: border-box;
+      transform-origin: right;
+	  transition: background-color 0.4s, right 0.4s, top 0.4s, height 0.4s;
+    }
+  }
+
+  &__hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    transform: translateY(100%);
+	@include font($size: 16, $type: med);
+	text-transform: uppercase;
+  }
+
+  &__progress {
+    position: absolute;
+    content: "";
+    top: 58px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: white;
+    background: var(--progress-color);
+    transform: scaleX(0);
+    transform-origin: left;
+	@include font($size: 16, $type: med);
+	text-transform: uppercase;
+
+    .check {
+      stroke-dasharray: 16px;
+      stroke-dashoffset: 16px;
+      margin-right: 6px;
+    }
+  }
+
+  &__text-ready {
+	display: none;
+	color: #00CF6B;
+  }
+
+  &__text-empty {
+	color: #1C54FC;
+  }
+
+  &.uploading {
+    .upload__button {
+      animation: expand 0.3s forwards;
+
+      &::before {
+		background-color: #1C54FC;
+		top: 0;
+		right: 0;
+		height: 100%;
+        animation: fill-left 1.2s 0.4s var(--ease-in-out-quartic) forwards;
+		@include media($type: mobile) {
+			animation: fill-left-fast  1.2s 0.4s var(--ease-in-out-quartic) forwards;
+		}
+      }
+    }
+
+    .upload__info > *,
+    .upload__button__text {
+      animation: fade-up-out 0.4s 0.4s forwards;
+    }
+
+    .upload__hint {
+      animation: fade-up-in 0.4s 0.8s forwards;
+    }
+
+    .upload__progress {
+      animation: fill-right 2s 1s var(--ease-in-out-quartic) forwards;
+    }
+  }
+
+  &.uploaded {
+    .upload__progress {
+      animation: slide-up 1s var(--ease-in-out-quartic) forwards;
+
+      .check {
+        animation: stroke-in 0.6s 0.4s var(--ease-in-out-quartic) forwards;
+      }
+    }
+  }
+
+  &.uploaded-after {
+    .upload__info {
+      animation: slide-down-info 1s var(--ease-in-out-quartic) forwards;
+    }
+
+    .upload__button {
+      animation: slide-down-button 1s var(--ease-in-out-quartic) forwards;
+    }
+
+    .upload__progress {
+      animation: slide-down-progress 1s var(--ease-in-out-quartic) forwards;
+    }
+  }
+  &.success {
+	  background-color: #F9F9F9;
+	  .upload__top-label {
+		  opacity: 1;
+	  }
+
+	  .upload__filename {
+		  color: #000;
+	  }
+
+	  .upload__button:before {
+		  border-color: #00CF6B;
+	  }
+
+	  .upload__text-empty {
+		  display: none;
+		}
+
+	  .upload__text-ready {
+		  display: block;
+	  }
+  }
+}
+
+@keyframes expand {
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fill-left {
+  to {
+    transform: scale(4, 1.2);
+  }
+}
+
+@keyframes fill-left-fast {
+	to {
+	  transform: scale(8, 1.2);
+	}
+  }
+
+@keyframes fade-up-out {
+  to {
+    opacity: 0;
+    transform: translateY(-40%);
+  }
+}
+
+@keyframes fade-up-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fill-right {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: scaleX(1) translateY(0);
+  }
+
+  to {
+    transform: scaleX(1) translateY(-58px);
+  }
+}
+
+@keyframes stroke-in {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes slide-down-info {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-down-button {
+  from {
+    transform: scale(1) translateY(-100%);
+  }
+
+  to {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-down-progress {
+  from {
+    transform: scaleX(1) translateY(-90%);
+  }
+
+  to {
+    transform: scaleX(1) translateY(10%);
+  }
+}

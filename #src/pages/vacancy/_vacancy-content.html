@@ -222,51 +222,41 @@
 										"type": "text",
 										"customClass": "popup-request__input",
 										"customWrapperClass": "popup-request__input-wrapper",
-										"placeholder": "Ваше имя",
+										"placeholder": "Имя",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__name"
+										"id": "vacancy-form__name"
 										})
 									</div>
 									<div>
 										@@include('../components/_input.html', {
-										"type": "tel",
+										"type": "text",
 										"customClass": "popup-request__input",
 										"customWrapperClass": "popup-request__input-wrapper",
-										"placeholder": "Телефон",
+										"placeholder": "Фамилия",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__tel"
+										"id": "vacancy-form__surname"
 										})
 									</div>
 									<div>
 										@@include('../components/_input.html', {
-										"type": "email",
+										"type": "text",
 										"customClass": "popup-request__input",
 										"customWrapperClass": "popup-request__input-wrapper",
-										"placeholder": "E-mail",
+										"placeholder": "Город",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__email"
+										"id": "vacancy-form__city"
 										})
 									</div>
 								</div>
 								<div class="fgb fgb--3">
 									<div>
 										@@include('../components/_input.html', {
-										"type": "text",
-										"customClass": "popup-request__input",
-										"customWrapperClass": "popup-request__input-wrapper",
-										"placeholder": "Ваше имя",
-										"errorText": "Текст ошибки",
-										"id": "popup-request__name"
-										})
-									</div>
-									<div>
-										@@include('../components/_input.html', {
 										"type": "tel",
 										"customClass": "popup-request__input",
 										"customWrapperClass": "popup-request__input-wrapper",
 										"placeholder": "Телефон",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__tel"
+										"id": "vacancy-form__tel"
 										})
 									</div>
 									<div>
@@ -276,7 +266,17 @@
 										"customWrapperClass": "popup-request__input-wrapper",
 										"placeholder": "E-mail",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__email"
+										"id": "vacancy-form__email"
+										})
+									</div>
+									<div>
+										@@include('../components/_input.html', {
+										"type": "text",
+										"customClass": "popup-request__input",
+										"customWrapperClass": "popup-request__input-wrapper",
+										"placeholder": "Ссылка на портфолио",
+										"errorText": "Текст ошибки",
+										"id": "vacancy-form__portfolio"
 										})
 									</div>
 								</div>
@@ -287,9 +287,9 @@
 											"type": "text",
 											"customClass": "popup-request__input",
 											"customWrapperClass": "popup-request__input-wrapper",
-											"placeholder": "Ваше имя",
+											"placeholder": "Расскажи нам о своём опыте, навыках и увлечениях.",
 											"errorText": "Текст ошибки",
-											"id": "popup-request__name"
+											"id": "vacancy-form__tellus"
 											})
 										</div>
 										<div class="show-mobile">
@@ -303,12 +303,12 @@
 									</div>
 									<div>
 										@@include('../components/_input.html', {
-										"type": "tel",
+										"type": "file",
 										"customClass": "popup-request__input",
 										"customWrapperClass": "popup-request__input-wrapper",
-										"placeholder": "Телефон",
+										"placeholder": "Загрузите файл",
 										"errorText": "Текст ошибки",
-										"id": "popup-request__tel"
+										"id": "vacancy-form__file"
 										})
 									</div>
 								</div>
