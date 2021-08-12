@@ -137,3 +137,30 @@
 			svg
 				path
 					stroke: var(--button-color-hover)
+	&__card-wrapper
+		position: relative
+		img
+			width: 100%
+	&__play-button
+		position: absolute
+		z-index: 1
+		left: 50%
+		top: 50%
+		transform: translateX(-50%) translateY(-50%)
+		width: 80px
+		height: 80px
+		@include media($type: tablet)
+			width: 60px
+			height: 60px
+		@include media($type: mobile)
+			width: 60px
+			height: 60px
+		&--big
+			width: 100px
+			height: 100px
+			@include media($type: tablet)
+				width: 80px
+				height: 80px
+			@include media($type: mobile)
+				width: 60px
+				height: 60px

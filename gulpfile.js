@@ -12,6 +12,7 @@ const path = {
 		jsTestFolder: project_folder + "/js/test/",
 		jsModules: project_folder + "/js/modules/",
 		audio: project_folder + "/audio/",
+		video: project_folder + "/video/",
 		img: project_folder + "/img/",
 		fonts: project_folder + "/fonts/",
 	},
@@ -25,6 +26,7 @@ const path = {
 		jsLibs: source_folder + "/js/libs/*.js",
 		jsModules: source_folder + "/js/modules/_*.js",
 		audio: source_folder + "/audio/**/*.{mp3, wav}",
+		video: source_folder + "/video**/*.{mp4, webm, aci}",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 		fonts: source_folder + "/fonts/*.ttf",
 	},
@@ -34,6 +36,7 @@ const path = {
 		js: source_folder + "/js/**/*.js",
 		jsLibs: source_folder + "/js/libs/*.js",
 		audio: source_folder + "/audio/**/*.{mp3, wav}",
+		video: source_folder + "/video/**/*.{mp4, webm, aci}",
 		img: source_folder + "/img/**/*.{jpg,png,svg,gif,ico,webp}",
 	},
 	clean: "./" + project_folder + "/",
@@ -136,6 +139,12 @@ function audio() {
 		.pipe(browsersync.stream())
 }
 
+function video() {
+	return src(path.src.video)
+		.pipe(dest(path.build.video))
+		.pipe(browsersync.stream())
+}
+
 function fonts() {
 	src(path.src.fonts)
 		.pipe(ttf2woff())
@@ -160,13 +169,14 @@ function watchfiles(params) {
 	gulp.watch([path.watch.jsLibs], jsLibs);
 	gulp.watch([path.watch.img], images);
 	gulp.watch([path.watch.audio], audio);
+	gulp.watch([path.watch.video], video);
 }
 
 function clean(params) {
 	return del(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, audio, fonts, cssLibs));
+let build = gulp.series(clean, gulp.parallel(jsLibs, js, html, css, images, audio, video, fonts, cssLibs));
 let watch = gulp.parallel(build, watchfiles, browserSync);
 
 exports.fonts = fonts;

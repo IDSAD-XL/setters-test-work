@@ -4,7 +4,10 @@ export class Popup {
 		this.popupId = el.dataset?.target
 		this.popup = document.getElementById(this.popupId)
 		this.close = this?.popup.querySelector('.close-popup')
-		this.popupBody = this?.popup.querySelector('.popup-body')
+		this.popupContent = this?.popup.querySelector('.popup__inner')
+		if (!this.popupContent) {
+			this.popupContent = this?.popup.querySelector('.popup-body')
+		}
 		if (this.popup && this.close) {
 			this.attachEventsListeners()
 		}
@@ -19,7 +22,7 @@ export class Popup {
 			evt.preventDefault()
 			const clicked = evt.target
 			if (clicked.classList.contains('open-popup')) return
-			if (!this.popupBody.contains(clicked) && document.body.classList.contains('modal-open')) {
+			if (!this.popupContent.contains(clicked) && document.body.classList.contains('modal-open')) {
 				this.closePopup()
 			}
 		})

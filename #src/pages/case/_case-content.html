@@ -10,7 +10,17 @@
 				</a>
 				<h1 class="heading mt-6 mt-3-t mt-2-m">КомплиMentos </h1>
 				<h3 class="heading mt-1 smaller-m">Спецпроект к запуску новой упаковки</h3>
-				<img class="mt-6 mb-3 mt-4-t mb-3-t mb-3-m block_animate-show" src="img/case/mentos-main.png" alt=" ">
+				<div class="case__card-wrapper block_animate-show">
+					@@include('../components/_play-button.html', {
+					"customClass": "case__play-button case__play-button--big",
+					"popupId": "casePopup4"
+					})
+					@@include('../popups/_popup-video.html', {
+					"popupId": "casePopup4",
+					"popupsrc": "cases/showreel.png"
+					})
+					<img class="mt-6 mb-3 mt-4-t mb-3-t mb-3-m" src="img/case/mentos-main.png" alt=" ">
+				</div>
 			</div>
 			<div class="fgb fgb--2 bb pb-5 pb-5-t pb-3-m">
 				<div class="mb-text-5-m">
@@ -74,20 +84,38 @@
 				</p>
 			</div>
 			<div class="fgb fgb--3 mt-2 mt-2-t">
-				<img class="mb-1-m  block_animate-show open-popup" data-target="casePopup1" src="img/case/image-1.png" alt=" ">
-				<img class="mb-1-m  block_animate-show open-popup" data-target="casePopup2" src="img/case/image-2.png" alt=" ">
-				<img class=" block_animate-show open-popup" data-target="casePopup3" src="img/case/image-3.png" alt=" ">
+				<div class="mb-1-m case__card-wrapper block_animate-show">
+					@@include('../components/_play-button.html', {
+					"customClass": "case__play-button",
+					"popupId": "casePopup1"
+					})
+					<img src="img/case/image-1.png" alt=" ">
+				</div>
+				<div class="mb-1-m case__card-wrapper block_animate-show">
+					@@include('../components/_play-button.html', {
+					"customClass": "case__play-button",
+					"popupId": "casePopup2"
+					})
+					<img src="img/case/image-2.png" alt=" ">
+				</div>
+				<div class="mb-1-m case__card-wrapper block_animate-show">
+					@@include('../components/_play-button.html', {
+					"customClass": "case__play-button",
+					"popupId": "casePopup3"
+					})
+					<img src="img/case/image-3.png" alt=" ">
+				</div>
 				@@include('../popups/_popup-video.html', {
 				"popupId": "casePopup1",
-				"popupsrc": "case/image-1.png"
+				"popupsrc": "cases/showreel.png"
 				})
 				@@include('../popups/_popup-video.html', {
 				"popupId": "casePopup2",
-				"popupsrc": "case/image-2.png"
+				"popupsrc": "cases/showreel.png"
 				})
 				@@include('../popups/_popup-video.html', {
 				"popupId": "casePopup3",
-				"popupsrc": "case/image-3.png"
+				"popupsrc": "cases/showreel.png"
 				})
 			</div>
 			<div class="fgb fgb--3 mt-3">
