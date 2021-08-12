@@ -28,12 +28,15 @@
 				border-bottom: 2px solid #D7D7D7
 		&-heading
 			@include font($size: 32, $type:med)
+			line-height: 40px
 			color: #000
 			@include media($type: mobile)
 				@include font($size: 20, $type:med)
 		.splide__slide
-			@include font($size: 20, $type:med)
+			@include font($size: 20, $type: med)
 			color: #313131
+			@include media($max-width: $l)
+				@include font($size: 16, $type: med)
 
 	&__image
 		@include media($type: mobile)

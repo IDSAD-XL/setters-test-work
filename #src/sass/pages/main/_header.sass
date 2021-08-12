@@ -19,11 +19,14 @@
 	@include media($type: mobile)
 		padding: 0 25px
 		position: fixed
+	&.no-popup-trigger
+		.header__menu_right
+			display: none
 	&__inner
 		display: flex
 		align-items: center
 		width: 100%
-		max-width: 1920px
+		max-width: none
 		padding: 0
 	&__logo
 		width: 164px
