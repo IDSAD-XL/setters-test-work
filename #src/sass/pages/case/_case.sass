@@ -3,13 +3,18 @@
 .case
 	&-content
 		background-color: #F5F5F5
-		width: 100vw
-		min-height: 100vh
-		padding-top: 170px
 		display: flex
 		justify-content: center
-		@include media($type: mobile)
-			padding-top: 128px
+		&-wrapper
+			width: 100vw
+			min-height: 100vh
+			background-color: #F5F5F5
+			padding-top: 170px
+			@include media($type: mobile)
+				padding-top: 130px
+				overflow: hidden
+			@include media($type: mobile)
+				padding-top: 128px
 		img
 			border-radius: 5px
 			max-width: 100%
@@ -19,7 +24,7 @@
 			overflow-x: hidden
 			@include media($type: mobile)
 				padding: 0 37.5px
-				max-width: 375px
+
 		&_review
 			border: 0
 			width: 100%
@@ -104,6 +109,8 @@
 		padding-left: 25px
 		&--numbers
 			list-style: decimal
+			@include media($type: mobile)
+				font-size: 16px
 		&--dots
 			list-style: disc
 		&--small
@@ -122,3 +129,11 @@
 			display: flex
 			justify-content: center
 			position: absolute
+	&__go-back
+		svg
+			path
+				transition: .3s
+		&:hover
+			svg
+				path
+					stroke: var(--button-color-hover)

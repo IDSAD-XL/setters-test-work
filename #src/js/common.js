@@ -95,9 +95,10 @@ const slidersOptions = {
 		type: 'loop',
 		autoplay: false,
 		speed: 1200,
-		gap: 20,
+		gap: 30,
 		breakpoints: {
 			1023: {
+				gap: 20,
 				arrows: false,
 				padding: {
 					right: '40px',
