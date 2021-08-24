@@ -59,32 +59,39 @@
 		input
 			position: relative
 			color: #000
-			&:focus ~ .input-underline, &:not(:placeholder-shown) ~ .input-underline
+			transition: background-color .2s ease
+			//! DEFAULT
+			&:focus ~ .input__underline, &:not(:placeholder-shown) ~ .input__underline
 				&::after
 					border-bottom: 2px solid var(--color-blue)
 					animation: animate-border-1 .3s cubic-bezier(.65,.05,.36,1)
-			&:focus ~ .input-label, &:not(:placeholder-shown) ~ .input-label
+			&:focus ~ .input__label, &:not(:placeholder-shown) ~ .input__label
 				top: 0
 				@include font($size: 10)
+
+			//! ERROR
 			&:not(:focus):not(:valid):not(:placeholder-shown)
-				& ~ .input-error-icon, & ~ .input-error-text
+				background-color: #FFE8EA
+				& ~ .input__error-icon, & ~ .input__error-text
 					display: block
-				& ~ .input-underline
+				& ~ .input__underline
 					&::after
 						border-bottom: 2px solid var(--color-red)
 						animation: animate-border-2 .3s cubic-bezier(.65,.05,.36,1)
+			//! VALID
 			&:not(:focus):valid:not(:placeholder-shown)
-				& ~ .input-success-icon
+				& ~ .input__success-icon
 					display: block
-				& ~ .input-underline
+				& ~ .input__underline
 					&::after
 						border-bottom: 2px solid var(--color-green)
 						animation: animate-border-3 .3s cubic-bezier(.65,.05,.36,1)
+			//! UNFOCUSED
 			&:not(:focus)
-				& ~ .input-underline
+				& ~ .input__underline
 					&::after
 						animation: animate-border-4 .3s cubic-bezier(.65,.05,.36,1)
-	&-underline
+	&__underline
 		position: absolute
 		bottom: 0
 		width: 100%
@@ -99,14 +106,14 @@
 			transform-origin: right
 			transform: scaleX(1)
 
-	&-error-text
+	&__error-text
 		display: none
 		position: absolute
-		bottom: -25px
+		bottom: -29px
 		left: 0
 		color: var(--color-red)
 		@include font($size: 16)
-	&-success-icon, &-error-icon
+	&__success-icon, &__error-icon
 		display: none
 		position: absolute
 		right: 20px

@@ -174,14 +174,19 @@
 		@include media($min-width: $m)
 			.card__text
 				opacity: 1
-			.card__image, .card-slider, .card-inner
+			.card__image, .splide__track, .card-inner
 				transform: translateY(-35px)
+			.splide__pagination
+				transform: translateY(-35px) translateX(-50%)
 
 	&-slider
 		position: relative
 		transition: transform .2s ease-in-out
 		.splide
+			&__track
+				transition: transform .2s ease-in-out
 			&__pagination
+				transition: transform .2s ease-in-out
 				&__page
 					font-weight: 700
 					margin: 2px
@@ -191,14 +196,16 @@
 						background-color: var(--color-blue)
 			&__arrow
 				background-color: transparent
+				transition: opacity .2s ease
 				&--next
 					transform: scaleX(-1) translateY(-50%)
+				img
+					width: 24px
+					height: 24px
 
-				svg
-					transform: none
-					width: 100%
-					height: 100%
 			&__slide-number
+				@include font($size: 12, $type:med)
+				font-weight: 700
 				color: #fff
 				position: absolute
 				top: 16px
@@ -218,7 +225,7 @@
 			right: 14px
 			top: 16px
 			z-index: 1
-			@include font($size:ui)
+			@include font($size: 12, $type: med)
 			font-weight: 700
 			filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.35))
 	&-inner

@@ -3,13 +3,18 @@
 .case
 	&-content
 		background-color: #F5F5F5
-		width: 100vw
-		min-height: 100vh
-		padding-top: 170px
 		display: flex
 		justify-content: center
-		@include media($type: mobile)
-			padding-top: 128px
+		&-wrapper
+			width: 100vw
+			min-height: 100vh
+			background-color: #F5F5F5
+			padding-top: 170px
+			@include media($type: mobile)
+				padding-top: 130px
+				overflow: hidden
+			@include media($type: mobile)
+				padding-top: 128px
 		img
 			border-radius: 5px
 			max-width: 100%
@@ -19,16 +24,13 @@
 			overflow-x: hidden
 			@include media($type: mobile)
 				padding: 0 37.5px
-				max-width: 375px
+
 		&_review
 			border: 0
 			width: 100%
 			background-color: #fff
 			display: flex
 			justify-content: center
-			& > .container
-				padding-left: 0
-				padding-right: 0
 			@include media($type: mobile)
 				padding: 0 37.5px
 		&_next-project-block
@@ -36,12 +38,22 @@
 			width: 100%
 			display: flex
 			justify-content: center
+			&:hover
+				img
+					opacity: 1
+			&__image-block
+				width: 342px
+				height: 228px
 			img
+				opacity: 0
+				transition: opacity .8s ease
 				max-width: 100%
+				transform: scale(1.2)
 			@include media($type: mobile)
 				padding: 0 37.5px
-				img
+				&__image-block
 					display: none
+
 	&-slider
 		.splide
 			&__slide
@@ -97,6 +109,8 @@
 		padding-left: 25px
 		&--numbers
 			list-style: decimal
+			@include media($type: mobile)
+				font-size: 16px
 		&--dots
 			list-style: disc
 		&--small
@@ -115,3 +129,38 @@
 			display: flex
 			justify-content: center
 			position: absolute
+	&__go-back
+		svg
+			path
+				transition: .3s
+		&:hover
+			svg
+				path
+					stroke: var(--button-color-hover)
+	&__card-wrapper
+		position: relative
+		img
+			width: 100%
+	&__play-button
+		position: absolute
+		z-index: 1
+		left: 50%
+		top: 50%
+		transform: translateX(-50%) translateY(-50%)
+		width: 80px
+		height: 80px
+		@include media($type: tablet)
+			width: 60px
+			height: 60px
+		@include media($type: mobile)
+			width: 60px
+			height: 60px
+		&--big
+			width: 100px
+			height: 100px
+			@include media($type: tablet)
+				width: 80px
+				height: 80px
+			@include media($type: mobile)
+				width: 60px
+				height: 60px

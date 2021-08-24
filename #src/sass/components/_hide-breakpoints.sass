@@ -1,0 +1,40 @@
+.show-uwide
+	@include media($type: desktop)
+		display: none
+	@include media($type: tablet)
+		display: none
+	@include media($type: mobile)
+		display: none
+.show-desktop
+	@include media($type: ultra-wide)
+		display: none
+	@include media($type: tablet)
+		display: none
+	@include media($type: mobile)
+		display: none
+.show-tablet
+	@include media($type: ultra-wide)
+		display: none
+	@include media($type: desktop)
+		display: none
+	@include media($type: mobile)
+		display: none
+.show-mobile
+	@include media($type: desktop)
+		display: none
+	@include media($type: tablet)
+		display: none
+	@include media($type: ultra-wide)
+		display: none
+.hide-uwide
+	@include media($type: ultra-wide)
+		display: none
+.hide-desktop
+	@include media($type: desktop)
+		display: none
+.hide-tablet
+	@include media($type: tablet)
+		display: none
+.hide-mobile
+	@include media($type: mobile)
+		display: none

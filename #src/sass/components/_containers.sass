@@ -11,3 +11,6 @@
 		max-width: calc(940px + var(--container-side-paddings) * 2)
 	@include media($type: mobile)
 		width: 100vw
+	&.no-padding-m
+		@include media($type: mobile)
+			padding: 0

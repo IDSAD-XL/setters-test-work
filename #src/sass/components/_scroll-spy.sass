@@ -1,0 +1,73 @@
+.scroll-spy
+	position: fixed
+	top: 100px
+	z-index: 10
+	padding-left: 70px
+	@include media($type: tablet)
+		display: none
+	@include media($type: mobile)
+		display: none
+	&__item
+		display: flex
+		align-items: center
+		margin-bottom: 12px
+		cursor: pointer
+	&__checkmark
+		position: relative
+		width: 20px
+		height: 20px
+		border-radius: 50%
+		border: 2px solid #666666
+		&:before
+			content: ''
+			position: absolute
+			background-color: #1C54FC
+			opacity: 0
+			transition: opacity .3s ease, transform .3s ease
+			left: 2px
+			top: 2px
+			width: 12px
+			height: 12px
+			border-radius: 50%
+			transform: scale(0.5)
+	&__text
+		position: relative
+		width: 76px
+		height: 32px
+		margin-left: 8px
+		display: flex
+		justify-content: center
+		align-items: center
+		background-color: rgba(0, 0, 0, 0.76)
+		border-radius: 5px
+		color: #D7D7D7
+		opacity: 0
+		transition: opacity .2s ease
+		transition-delay: .1s
+		@include font($size: 12, $type: med)
+		font-weight: bold
+		&:before
+			position: absolute
+			content: ''
+			left: -4px
+			top: 50%
+			width: 0
+			height: 0
+			border-style: solid
+			border-width: 8px 4px 8px 0
+			border-color: transparent rgba(0, 0, 0, 0.76) transparent transparent
+			transform: translateY(-50%)
+	input
+		position: absolute
+		opacity: 0
+		height: 0
+		width: 0
+		&:checked ~ .scroll-spy__checkmark:before
+			opacity: 1
+			transform: scale(1)
+		&:checked ~ .scroll-spy__text
+			opacity: 1
+		&:hover:not(:checked) ~ .scroll-spy__text
+			opacity: 0.7
+		&:hover:not(:checked) ~ .scroll-spy__checkmark:before
+			opacity: 0.7

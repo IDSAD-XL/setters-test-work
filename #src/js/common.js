@@ -1,3 +1,11 @@
+import { HoverEffect } from "./modules/_HoverEffect.js";
+import { Popup } from "./modules/_Popup.js";
+import { GlitchWord } from "./modules/_GlitchWord.js"
+import { ScrollSpy } from "./modules/_ScrollSpy.js";
+import { DoubleSlider } from "./modules/_DoubleSlider.js";
+import { AudioPlayer } from "./modules/_AudioPlayer.js";
+import { FileInput } from "./modules/_FileInput.js";
+
 //!Check if mobile
 const body = document.querySelector('body');
 if (window.innerWidth < 1024) {
@@ -5,90 +13,11 @@ if (window.innerWidth < 1024) {
 }
 
 //! Magnet circle at the first section
-class hoverEffect {
-	constructor(el) {
-		this.el = el;
-		this.scrollCircle = el.querySelector(".scroll-circle");
-		this.scrollArrow = el.querySelector(".scroll-arrow");
-		this.hover = false;
-		this.calculatePosition();
-		this.attachEventsListener();
-		this.HandleScroll();
-	}
 
-	attachEventsListener() {
-		window.addEventListener("mousemove", (e) => this.onMouseMove(e));
-		window.addEventListener("resize", (e) => this.calculatePosition(e), { passive: true });
-		window.addEventListener("scroll", (e) => this.calculatePosition(e), { passive: true });
-	}
-
-	HandleScroll() {
-		gsap.to(this.scrollCircle, {
-			rotate: 180,
-			ease: Linear.easeNone
-		});
-	}
-
-	calculatePosition() {
-		gsap.set(this.el, {
-			x: 0,
-			y: 0
-		});
-		const box = this.el.getBoundingClientRect();
-		this.x = box.left + box.width * 0.5;
-		this.y = box.top + box.height * 0.5;
-		this.width = box.width;
-		this.height = box.height;
-	}
-
-	onMouseMove(e) {
-		let hover = false;
-		let hoverArea = this.hover ? 0.7 : 0.5;
-		let x = e.clientX - this.x;
-		let y = e.clientY - this.y;
-		let distance = Math.sqrt(x * x + y * y);
-		if (distance < this.width * hoverArea) {
-			hover = true;
-			if (!this.hover) {
-				this.hover = true;
-			}
-			this.onHover(e.clientX, e.clientY);
-		}
-
-		if (!hover && this.hover) {
-			this.onLeave();
-			this.hover = false;
-		}
-	}
-
-	onHover(x, y) {
-		gsap.to(this.scrollCircle, {
-			x: (x - this.x) * 0.2,
-			y: (y - this.y) * 0.2,
-			duration: 0.4,
-			ease: Power2.easeOut
-		});
-		gsap.to(this.scrollArrow, {
-			x: (x - this.x) * 0.3,
-			y: (y - this.y) * 0.3,
-			duration: 0.4,
-			ease: Power2.easeOut
-		});
-	}
-
-	onLeave() {
-		gsap.to([this.scrollArrow, this.scrollCircle], {
-			x: 0,
-			y: 0,
-			duration: 0.7,
-			ease: Power2.easeOut
-		});
-	}
-}
 const magnetScroll = document.querySelector("#scrollWrapper");
 const contentSection = document.querySelector('.content')
 if (magnetScroll && contentSection) {
-	new hoverEffect(magnetScroll);
+	new HoverEffect(magnetScroll);
 	magnetScroll.addEventListener('click', (e) => {
 		e.preventDefault()
 		contentSection.scrollIntoView({ behavior: "smooth" })
@@ -120,12 +49,10 @@ function setBodyUnScrollable() {
 
 //! Footer scroll to top arrows
 const scrollTopArrows = document.querySelectorAll(".footer-sticky__arrow-top")
-const topSection = document.querySelector("#top-section")
 
 if (scrollTopArrows) {
 	scrollTopArrows.forEach((e) => {
 		e.addEventListener('click', () => {
-			// topSection.scrollIntoView({ behavior: "smooth" })
 			window.scrollTo({
 				top: 0,
 				behavior: "smooth"
@@ -137,70 +64,26 @@ if (scrollTopArrows) {
 //! Footer hide at top section
 const stickyFooter = document.querySelector("#footer-sticky")
 const gradientBorder = document.querySelector('#gradient-border')
+const contactBlock = document.querySelector('#contact-content')
 
-window.addEventListener("scroll", () => {
-	if (window.scrollY == 0) {
-		stickyFooter.classList.add('footer-sticky_hide')
-		gradientBorder.classList.add('gradient-border_fullscreen')
-	}
-	else {
-		stickyFooter.classList.remove('footer-sticky_hide')
-		gradientBorder.classList.remove('gradient-border_fullscreen')
-	}
-}, { passive: true })
-
-//! Popups
-const popups = document.querySelectorAll(".popup")
-const popupToggles = document.querySelectorAll(".open-popup")
-
-if (popups) {
-	popups.forEach((e) => {
-		document.body.appendChild(e)
-	})
-}
-
-//! Popup open
-if (popups && popupToggles) {
-	popupToggles.forEach((e) => {
-		const targetPopup = document.getElementById(e.dataset.target)
-		e.addEventListener('click', (evt) => {
-			evt.preventDefault()
-			openPopup(targetPopup)
-		})
-		const popupBody = targetPopup.querySelector('.popup-body')
-		if (popupBody != null) {
-			targetPopup.addEventListener('click', (e) => {
-				e.preventDefault()
-				const clicked = e.target
-				if (clicked.classList.contains('open-popup')) return
-				if (!popupBody.contains(clicked) && body.classList.contains('modal-open')) {
-					closePopup(targetPopup)
-				}
-			})
+if (!contactBlock) {
+	window.addEventListener("scroll", () => {
+		if (window.scrollY == 0) {
+			stickyFooter.classList.add('footer-sticky_hide')
+			gradientBorder.classList.add('gradient-border_fullscreen')
 		}
-		const closeButton = targetPopup.querySelector('.close-popup')
-		if (closeButton != null) {
-			closeButton.addEventListener('click', (e) => {
-				e.preventDefault()
-				closePopup(targetPopup)
-			})
+		else {
+			stickyFooter.classList.remove('footer-sticky_hide')
+			gradientBorder.classList.remove('gradient-border_fullscreen')
 		}
-	})
-}
-
-
-function closePopup(popup) {
-	popup.classList.add('popup_hide')
-	body.classList.remove('modal-open')
-}
-
-function openPopup(popup) {
-	popup.classList.remove('popup_hide')
-	body.classList.add('modal-open')
+	}, { passive: true })
+} else {
+	stickyFooter.classList.remove('footer-sticky_hide')
+	gradientBorder.classList.remove('gradient-border_fullscreen')
 }
 
 //!Sliders
-const sliders = document.querySelectorAll('.splide');
+const sliders = document.querySelectorAll('.splide__default');
 const slidersOptions = {
 	card: {
 		type: 'loop',
@@ -208,12 +91,14 @@ const slidersOptions = {
 		interval: 3000,
 		pauseOnHover: true,
 	},
-	case: {
+	primary: {
 		type: 'loop',
 		autoplay: false,
 		speed: 1200,
+		gap: 30,
 		breakpoints: {
 			1023: {
+				gap: 20,
 				arrows: false,
 				padding: {
 					right: '40px',
@@ -226,7 +111,7 @@ const slidersOptions = {
 if (sliders) {
 	sliders.forEach((e) => {
 		const options = e.classList.contains('card-slider') ?
-			slidersOptions.card : slidersOptions.case
+			slidersOptions.card : slidersOptions.primary
 		const slider = new Splide(e, options).mount()
 		const sliderNumber = e.querySelector('.splide__slide-number')
 		const slidesCount = slider.length
@@ -244,46 +129,22 @@ if (sliders) {
 	})
 }
 
+const doubleSliders = document.querySelectorAll('.double-slider')
+if (doubleSliders) {
+	doubleSliders.forEach((e) => {
+		new DoubleSlider(e)
+	})
+}
+
 //!Top section heading 
 const glitchWords = ['стратегии', 'креатив', 'дизайн']
 const glitchTitle = document.querySelector('#top-section__title-glitch-word')
-
 if (glitchTitle) {
-	glitchWord(0)
+	const mainTitleGlitch = new GlitchWord(glitchWords, glitchTitle)
+	console.log(mainTitleGlitch);
+	mainTitleGlitch.start()
 }
 
-function glitchWord(ind) {
-	const index = (ind + 1) > (glitchWords.length - 1) ? 0 : ind + 1
-	const word = glitchWords[index]
-	glitchLoop(0, word, word.length)
-	setTimeout(glitchWord, 2300, index)
-}
-
-function glitchLoop(count, word) {
-	if (count > 3) {
-		setGlitchWord(word)
-		return
-	}
-	setGlitchWord(randomString(word.length))
-	setTimeout(glitchLoop, 50, count + 1, word)
-}
-
-function setGlitchWord(word) {
-	glitchTitle.innerHTML = word
-}
-
-function randomString(len) {
-	let str = ''
-	for (let i = 0; i < len; i++) {
-		str += String.fromCharCode(randomInteger(33, 126))
-	}
-	return str
-}
-
-function randomInteger(min, max) {
-	let rand = min + Math.random() * (max + 1 - min);
-	return Math.floor(rand);
-}
 
 //!Card show 
 const cards = document.querySelectorAll('.card_show-animate')
@@ -364,53 +225,78 @@ if (casesSwitcher) {
 	})
 }
 
-//!Cases list
-const animateText = document.querySelectorAll('.text_animate-show')
-const animateBlocks = document.querySelectorAll('.block_animate-show')
+//!Text animations
+const animateText = document.querySelectorAll('.text_animate-show, h1')
+const animateBlocks = document.querySelectorAll('.block_animate-show, p, h2, h3, h4, h5, h6')
 const casesList = document.querySelector('#casesList')
-const observeElements = document.querySelectorAll('.to-observe')
 
 function createAnimatedTextElement(el) {
 	const content = el.innerHTML
-	const newInner = `<div class="text_animate-show-inner">${content}</div>`
-	el.innerHTML = newInner
+	if (!el.classList.contains('block_animate-show')
+		&& !el.classList.contains('no-animation')) {
+		el.classList.add('to-observe')
+		el.classList.add('text_animate-show')
+		const newInner = `<div class="text_animate-show-inner">${content}</div>`
+		el.innerHTML = newInner
+	}
+}
+
+function createAnimatedBlocksElement(el) {
+	if (!el.classList.contains('text_animate-show')
+		&& !el.classList.contains('no-animation')) {
+		el.classList.add('to-observe')
+		el.classList.add('block_animate-show')
+	}
 }
 
 animateText.forEach((e) => {
 	createAnimatedTextElement(e)
 })
 
+animateBlocks.forEach((e) => {
+	createAnimatedBlocksElement(e)
+})
+
+const observeElements = document.querySelectorAll('.to-observe')
+let tempDelay = 0
 const observer = new IntersectionObserver((entries, observer) => {
 	entries.forEach(entry => {
-		if (entry.isIntersecting) {
+		if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+			const d = Math.sqrt(window.innerWidth ** 2 + window.innerHeight ** 2)
+			const box = entry.target.getBoundingClientRect()
+			const distance = Math.sqrt(box.top ** 2 + box.left ** 2)
+			const k = 1 / (d / distance)
+			const delay = 500 * k + tempDelay
+			entry.target.style.transitionDelay = `${delay}ms`
+			entry.target.style.animationDelay = `${delay}ms`
+			if (entry.target.classList.contains('text_animate-show')) {
+				const textInner = entry.target.querySelector('.text_animate-show-inner')
+				textInner.style.transitionDelay = `${delay}ms`
+				textInner.style.animationDelay = `${delay}ms`
+			}
 			entry.target.classList.add('animated');
+			tempDelay += 200
 		}
 	});
 });
+setInterval(() => {
+	if (tempDelay != 0) {
+		tempDelay = 0
+	}
+}, 50)
 
 Array.prototype.forEach.call(observeElements, (el) => {
 	observer.observe(el);
 });
 
-if (casesList) {
-	const casesListName = casesList.querySelectorAll('.cases-list__item-name-inner')
-	let delay = 0
-	casesListName.forEach((e) => {
-		e.style.animationDelay = `${delay}ms`;
-		delay += 200
-	})
-}
-
-
-
 //!Cards parallax
 class ParallaxEffect {
 	constructor(el, block) {
 		this.block = block
-		this.blockTop = getCoords(block).top
+		this.blockTop = getCoords(block)
 		this.coefficient = el.k
 		this.column = document.getElementById(el.id)
-		this.topCoods = getCoords(this.column).top
+		this.topCoods = getCoords(this.column)
 		this.triggerPoint =
 			el.trigger == null ? this.topCoods : this.topCoods + el.trigger
 		this.attachEventsListener()
@@ -419,8 +305,9 @@ class ParallaxEffect {
 		window.addEventListener("scroll", (e) => this.calculatePosition(), { passive: true })
 	}
 	calculatePosition() {
-		if (window.scrollY > this.blockTop) {
-			const distance = pageYOffset - this.blockTop
+		const blockBox = this.block.getBoundingClientRect()
+		if (blockBox.top < 0) {
+			const distance = pageYOffset - blockBox.top
 			const y = -distance * this.coefficient
 			this.move(y)
 		}
@@ -436,16 +323,17 @@ class ParallaxEffect {
 		})
 	}
 	setDefaultPosition() {
-		this.column.style.transform = "none";
+		gsap.to(this.column, {
+			y: 0,
+			duration: 0.4,
+			ease: Power1.easeOut
+		})
 	}
 }
 
 function getCoords(e) {
-	var box = e.getBoundingClientRect();
-	return {
-		top: box.top + pageYOffset,
-		left: box.left + pageXOffset
-	};
+	const box = e.getBoundingClientRect();
+	return box.top + pageYOffset
 
 }
 
@@ -453,8 +341,8 @@ const parallaxBlocks = [
 	{
 		blockId: "cases-card-layout",
 		columns: [
-			{ id: "casesCardColumnLeft", k: 0.5 },
-			{ id: "casesCardColumnRight", k: 0.1 }
+			{ id: "casesCardColumnLeft", k: 0.1 },
+			{ id: "casesCardColumnRight", k: 0.05 }
 		]
 	}
 ]
@@ -489,12 +377,16 @@ if (itemsToAnimateImage) {
 	itemsToAnimateImage.forEach((e) => {
 		const image = e.querySelector('.image_to-animate')
 		const scale = image.classList.contains('image_animation-no-scale')
+		let enteredPoint = { x: 0, y: 0 }
+		e.addEventListener('mouseenter', (e) => {
+			enteredPoint.x = e.clientX
+			enteredPoint.y = e.clientY
+		})
 		e.addEventListener('mousemove', (e) => {
 			e.preventDefault()
 			const parent = e.target.closest('.image_animation-move')
-			const targetCoords = parent.getBoundingClientRect();
-			const xCoord = e.clientX - targetCoords.right;
-			const yCoord = e.clientY - targetCoords.top;
+			const xCoord = e.clientX - enteredPoint.x
+			const yCoord = e.clientY - enteredPoint.y
 			if (!scale) {
 				gsap.to(image, {
 					x: xCoord * 0.02,
@@ -510,6 +402,8 @@ if (itemsToAnimateImage) {
 					x: xCoord * 0.02,
 					y: yCoord * 0.02,
 					duration: 0.6,
+					scaleX: 1.2,
+					scaleY: 1.2,
 					ease: Power2.ease
 				});
 			}
@@ -518,6 +412,8 @@ if (itemsToAnimateImage) {
 			e.preventDefault()
 			if (!scale) {
 				gsap.to(image, {
+					x: 0,
+					y: 0,
 					duration: 0.61,
 					scaleX: 1.5,
 					scaleY: 1.5,
@@ -526,6 +422,8 @@ if (itemsToAnimateImage) {
 			}
 			else {
 				gsap.to(image, {
+					x: 0,
+					y: 0,
 					duration: 0.61,
 					ease: Power2.ease
 				})
@@ -648,3 +546,58 @@ leafSliders.forEach((e) => {
 	const slider = new LeafSlider(e)
 	console.log(slider);
 })
+
+//!ScrollSpy
+const scrollButtons = document.querySelectorAll('.scroll-button')
+const careerScrollSpy = new ScrollSpy(scrollButtons)
+
+//!AudioPlayer
+const audioPlayers = document.querySelectorAll('.audio-player')
+audioPlayers.forEach((e) => {
+	new AudioPlayer(e)
+})
+
+
+//!Career tabs
+const careerQuestionTabs = document.querySelectorAll('.career__question-tabs-item')
+if (careerQuestionTabs) {
+	careerQuestionTabs.forEach((tab) => {
+		tab.addEventListener('click', () => {
+			careerQuestionTabs.forEach((e) => {
+				e.classList.remove('active')
+			})
+			tab.classList.add('active')
+		})
+	})
+}
+
+//!Content loaded
+const careerSponsors = document.querySelector('.career__sponsors')
+if (careerSponsors) {
+	document.addEventListener("DOMContentLoaded", () => {
+		careerSponsors.classList.add('loaded')
+	});
+}
+//! Popups
+const popups = document.querySelectorAll(".popup")
+const popupToggles = document.querySelectorAll(".open-popup")
+
+document.addEventListener("DOMContentLoaded", () => {
+	if (popups) {
+		popups.forEach((e) => {
+			document.body.appendChild(e)
+		})
+	}
+
+	popupToggles.forEach((e) => {
+		new Popup(e)
+	})
+})
+
+//!File inputs
+const uploadInputs = document.querySelectorAll('.upload')
+if (uploadInputs) {
+	uploadInputs.forEach((e) => {
+		new FileInput(e)
+	})
+}

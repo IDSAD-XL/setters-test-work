@@ -1,6 +1,6 @@
 @import "settings/_variables.sass"
 
-.flexbox-grid-block
+.fgb
 	width: 100%
 	display: flex
 	flex-wrap: wrap
@@ -35,6 +35,7 @@
 			&:nth-child(3n+2)
 				margin-left: 20px
 				margin-right: 20px
+
 			&:nth-child(3n+3)
 				margin-left: 20px
 			@include media($type: tablet)
@@ -54,6 +55,50 @@
 					margin-left: 0
 					margin-right: 0
 				&:nth-child(3n+3)
+					margin-left: 0
+	&--1-2
+		& > *
+			&:nth-child(2n+1)
+				width: calc(100%/3 - 80px/3)
+				margin-right: 20px
+			&:nth-child(2n+2)
+				flex: 1 1 auto
+				margin-left: 20px
+			@include media($type: tablet)
+				&:nth-child(2n+1)
+					width: calc(100%/3 - 40px/3)
+					margin-right: 10px
+				&:nth-child(2n+2)
+					flex: 1 1 auto
+					margin-left: 10px
+			@include media($type: mobile)
+				&:nth-child(2n+1)
+					width: 100%
+					margin-right: 0
+				&:nth-child(2n+2)
+					width: 100%
+					margin-left: 0
+	&--2-1
+		& > *
+			&:nth-child(2n+1)
+				flex: 1 1 auto
+				margin-right: 20px
+			&:nth-child(2n+2)
+				width: calc(100%/3 - 80px/3)
+				margin-left: 20px
+			@include media($type: tablet)
+				&:nth-child(2n+1)
+					flex: 1 1 auto
+					margin-right: 10px
+				&:nth-child(2n+2)
+					width: calc(100%/3 - 40px/3)
+					margin-left: 10px
+			@include media($type: mobile)
+				&:nth-child(2n+1)
+					width: 100%
+					margin-right: 0
+				&:nth-child(2n+2)
+					width: 100%
 					margin-left: 0
 	& > *
 		max-width: 100%
@@ -90,6 +135,13 @@
 					margin-right: 5px
 				&:nth-child(even)
 					margin-left: 5px
+		&.mobile-unset
+			& > *
+				width: auto
+				&:nth-child(odd)
+					margin-right: 0
+				&:nth-child(even)
+					margin-left: 0
 
 	&--last-element-bottom
 		display: flex

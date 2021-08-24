@@ -1,0 +1,73 @@
+.double-slider
+	display: flex
+	@include media($type: mobile)
+		flex-wrap: wrap-reverse
+
+	&__text
+		@include media($type: tablet)
+			display: flex
+			flex-direction: column
+			.splide__track
+				flex: 1 1 auto
+			.splide__arrows
+				height: 15px
+				position: relative
+				&:before
+					content: ""
+					position: absolute
+					height: 2px
+					width: 100%
+					background-color: #D7D7D7
+					top: -50px
+			.double-slider__text-heading
+				border-bottom: 0
+		@include media($type: mobile)
+			width: 100%
+			.splide__track
+				padding-bottom: 40px
+				border-bottom: 2px solid #D7D7D7
+		&-heading
+			@include font($size: 32, $type:med)
+			line-height: 40px
+			color: #000
+			@include media($type: mobile)
+				@include font($size: 20, $type:med)
+		.splide__slide
+			@include font($size: 20, $type: med)
+			color: #313131
+			@include media($max-width: $l)
+				@include font($size: 16, $type: med)
+
+	&__image
+		@include media($type: mobile)
+			width: 100%
+		img
+			width: 100%
+			object-fit: cover
+			border-radius: 5px
+	.splide__arrows
+		position: relative
+	.splide__arrow
+		position: absolute
+		background-color: transparent
+		width: 34px
+		height: 34px
+		top: 0
+		&--prev
+			left: -10px
+		&--next
+			right: -10px
+		svg
+			width: 100%
+			height: 100%
+	.splide__slide-number
+		position: absolute
+		left: 50%
+		transform: translateX(-50%) translateY(-50%)
+		@include font($size: 24, $type:med)
+		color: #989898
+	&_popup
+		img
+			height: 470px
+			@include media($type: mobile)
+				height: 186px

@@ -22,16 +22,22 @@ h1.heading
 	@include font($size:124, $type: med)
 	@include media($type: tablet)
 		@include font($size: 76, $type:med)
-		line-height: 56px
+		line-height: 65px
 	@include media($type: mobile)
 		@include font($size: 40, $type: med)
 
 h2.heading
 	@include font($size: 60, $type: med)
+	line-height: 64px
 	@include media($type: tablet)
 		@include font($size: 40, $type: med)
+		line-height: 64px
 	@include media($type: mobile)
 		@include font($size: 28, $type: med)
+		&.bigger-m
+			@include font($size: 32, $type: med)
+		&.smaller-m
+			@include font($size: 20, $type: med)
 h3.heading
 	@include font($size: 40, $type: med)
 	@include media($type: tablet)
@@ -47,10 +53,14 @@ h4.heading
 	@include media($type: mobile)
 		@include font($size: 20, $type: med)
 
-p.text, span.text
-	color: #000
+p.text, span.text, div.text
+	color: #313131
+	&-black
+		color: #000
 	&-primary
-		@include font($size: 20, $type: reg)
+		@include font($size: 20, $type: no-type)
+		@include media($type: mobile)
+			@include font($size: 16, $type: no-type)
 		&.smaller
 			@include media($type: tablet)
 				@include font($size: 16, $type: no-type)
@@ -74,6 +84,9 @@ p.text, span.text
 		@include font($size: 14, $type: reg)
 		@include media($type: mobile)
 			@include font($size: 12, $type: reg)
+		&.smaller-t
+			@include media($type: tablet)
+				@include font($size: 12, $type: reg)
 	&-light
 		color: var(--color-font-secondary)
 	&-bold
